@@ -1,48 +1,90 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
   {
     id: 1,
-    title: "Nuestra Nueva Era Comienza Ahora",
-    subtitle: "Temporada 2025-2026",
-    description: "Descubre la programacion de nuestra nueva temporada con conciertos inolvidables.",
-    cta: "Explorar Temporada",
-    image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=1920&q=80",
+    title: "Descubre nuestra historia y misión",
+    subtitle: "Sobre Nosotros",
+    description: "Nacimos en 2018 para dinamizar la vida musical mierense",
+    cta: "Quiénes somos",
+    image: "Marco.jpg",
   },
   {
     id: 2,
-    title: "Banda Sinfonica en Concierto",
-    subtitle: "Sabado, 15 de Marzo",
-    description: "Una noche magica con las mejores obras del repertorio sinfonico.",
-    cta: "Comprar Entradas",
-    image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1920&q=80",
+    title: "Comienza nuestra nueva temporada",
+    subtitle: "Temporada 2026-2027",
+    description: "Descubre la programacion de nuestra nueva temporada con conciertos inolvidables.",
+    cta: "Explorar Temporada",
+    image: "banner.jpg",
   },
   {
     id: 3,
+    title: "Descubre nuestra galería de imágenes",
+    subtitle: "Área Multimedia",
+    description: "Una noche magica con las mejores obras del repertorio sinfonico.",
+    cta: "Comprar Entradas",
+    image: "foto_family.JPG",
+  },
+  {
+    id: 4,
     title: "Unete a Nuestra Familia Musical",
     subtitle: "Hazte Socio",
     description: "Apoya la musica en tu comunidad y disfruta de beneficios exclusivos.",
     cta: "Mas Informacion",
+    image: "pasacalles.jpg",
+  },
+  {
+    id: 5,
+    title: "Síguenos en Redes Sociales",
+    subtitle: "Redes Sociales",
+    description: "Síguenos para estar al tanto de nuestras últimas noticias",
+    cta: "Contacto",
     image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
   },
 ]
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
+  const intervalRef = useRef<NodeJS.Timeout | null>(null) 
+  const startAutoPlay = () => {
+    intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 6000)
-    return () => clearInterval(timer)
+  }
+
+  useEffect(() => {
+    startAutoPlay()
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
   }, [])
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length)
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  const resetAutoPlay = () => {
+  if (intervalRef.current) clearInterval(intervalRef.current)
+  startAutoPlay()
+}
+
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev + 1) % slides.length)
+  //   }, 6000)
+  //   return () => clearInterval(timer)
+  // }, [])
+
+  const nextSlide = () => {
+     setCurrentSlide((prev) => (prev + 1) % slides.length)
+     resetAutoPlay()
+  }
+  const prevSlide = () => {
+     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+     resetAutoPlay()
+  }
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -121,7 +163,9 @@ export function HeroSection() {
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
+            onClick={() => {
+              setCurrentSlide(index)
+              resetAutoPlay()}}
             className={`h-0.5 transition-all duration-300 ${
               index === currentSlide 
                 ? "w-12 bg-white" 
