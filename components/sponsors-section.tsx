@@ -35,8 +35,8 @@ export function SponsorsSection() {
 
         {/* Sponsors grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border mb-16">
-          {sponsors.map((sponsor, index) => (
-            <div className="flex flex-col items-center justify-center gap-4 bg-white transition-colors">
+          {sponsors.map((sponsor) => (
+            <div key={sponsor.name} className="flex flex-col items-center justify-center gap-4 bg-white transition-colors">
               {/*Logo click*/}
               <a
                 href={sponsor.link}
@@ -47,7 +47,7 @@ export function SponsorsSection() {
                 <img
                   src={sponsor.logo}
                   alt={sponsor.name}
-                  className="h-16 object-contain grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-300"
+                  className="h-16 object-contain hover:scale-105 transition-all duration-300"
                 />
               </a>
               {/* Sponsor name */}

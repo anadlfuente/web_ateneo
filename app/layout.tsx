@@ -15,25 +15,25 @@ const dmSerif = DM_Serif_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Agrupación Musical X | Música que une',
+  title: 'Ateneo Musical de Mieres',
   description: 'Somos una agrupación musical que engloba banda sinfónica, coros, banda de rock y charanga. Únete a nosotros y forma parte de la música.',
-  generator: 'v0.app',
+  //generator: 'v0.app',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/logo_ateneo.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/logo_ateneo.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/logo_ateneo.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/logo_ateneo.png',
   },
 }
 

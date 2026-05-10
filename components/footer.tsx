@@ -2,11 +2,6 @@ import Link from "next/link"
 import { Instagram, Facebook, Youtube, Twitter } from "lucide-react"
 
 const footerLinks = {
-  conciertos: [
-    { name: "Calendario", href: "#calendario" },
-    { name: "Comprar Entradas", href: "#entradas" },
-    { name: "Abonos", href: "#abonos" },
-  ],
   agrupaciones: [
     { name: "Banda Sinfonica", href: "#banda-sinfonica" },
     { name: "Coral Cantares", href: "#coral" },
@@ -72,11 +67,11 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <span className="font-serif text-2xl text-white">
-                Agrupacion<span className="text-secondary"> X</span>
+                Ateneo Musical de <span className="text-secondary"> Mieres</span>
               </span>
             </Link>
             <p className="text-white/50 text-sm mb-8">
-              Mas de 25 anos haciendo musica juntos.
+              Dinamizando la vida musical mierense desde 2018
             </p>
             
             {/* Social links */}
@@ -95,19 +90,6 @@ export function Footer() {
           </div>
 
           {/* Links columns */}
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Conciertos</h4>
-            <ul className="space-y-3">
-              {footerLinks.conciertos.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           <div>
             <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Agrupaciones</h4>
             <ul className="space-y-3">
@@ -154,10 +136,10 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
             <p>
-              © {new Date().getFullYear()} Agrupacion Musical X. Todos los derechos reservados.
+              © {new Date().getFullYear()} Ateneo Musical de Mieres. Todos los derechos reservados.
             </p>
             <p>
-              Asturias, Espana
+              Asturias, España
             </p>
           </div>
         </div>

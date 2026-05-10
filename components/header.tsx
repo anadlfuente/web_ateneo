@@ -58,8 +58,8 @@ export function Header() { //Componente React
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center justify-between h-10 text-xs">
             <div className={`flex items-center gap-6 ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
-              <a href="tel:+34985000000" className="hover:text-foreground transition-colors">
-                +34 985 00 00 00
+              <a href="tel:+34681188519" className="hover:text-foreground transition-colors">
+                +34 681 18 85 19
               </a>
               <a href="mailto:ateneomusicaldemieres@gmail.com" className="hover:text-foreground transition-colors">
                 ateneomusicaldemieres@gmail.com
