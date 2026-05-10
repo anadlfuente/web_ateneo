@@ -4,16 +4,16 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 const sponsors = [
-  { name: "Espacio Cultura 1910", tier: "principal" },
-  { name: "RTVE", tier: "principal" },
-  { name: "La Nueva Espana", tier: "principal" },
-  { name: "Montepio", tier: "colaborador" },
-  { name: "Iberia Cargo", tier: "colaborador" },
-  { name: "Viajes Mythos", tier: "colaborador" },
-  { name: "DrinkVar", tier: "colaborador" },
-  { name: "Madreselva", tier: "colaborador" },
-  { name: "Fergu Bus", tier: "colaborador" },
-  { name: "Asoc. Cultural Santa Barbara", tier: "colaborador" },
+  { name: "Espacio Cultura 1910", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/"},
+  { name: "RTVE", tier: "principal", logo: "/sponsors/rtve.png", link: "https://www.instagram.com/1910mieres/" },
+  { name: "La Nueva Espana", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "Montepio", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "Iberia Cargo", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "Viajes Mythos", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "DrinkVar", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "Madreselva", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "Fergu Bus", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "Asoc. Cultural Santa Barbara", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
 ]
 
 export function SponsorsSection() {
@@ -36,17 +36,28 @@ export function SponsorsSection() {
         {/* Sponsors grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border mb-16">
           {sponsors.map((sponsor, index) => (
-            <div
-              key={index}
-              className={`flex items-center justify-center p-8 bg-white hover:bg-muted transition-colors ${
-                sponsor.tier === 'principal' ? 'md:col-span-1' : ''
-              }`}
-            >
-              <span className={`text-center font-medium text-sm tracking-wide ${
-                sponsor.tier === 'principal'
-                  ? 'text-foreground'
-                  : 'text-muted-foreground'
-              }`}>
+            <div className="flex flex-col items-center justify-center gap-4 bg-white transition-colors">
+              {/*Logo click*/}
+              <a
+                href={sponsor.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="h-16 object-contain grayscale hover:scale-105 group-hover:grayscale-0 transition-all duration-300"
+                />
+              </a>
+              {/* Sponsor name */}
+              <span
+                className={`text-center font-medium text-sm tracking-wide ${
+                  sponsor.tier === "principal"
+                    ? "text-foreground"
+                    : "text-muted-foreground"
+                }`}
+              >
                 {sponsor.name}
               </span>
             </div>
@@ -60,7 +71,7 @@ export function SponsorsSection() {
             <p className="text-muted-foreground">Unete a nuestra familia de colaboradores y apoya la musica.</p>
           </div>
           <Button className="bg-foreground text-white hover:bg-foreground/90 text-sm font-medium tracking-wide uppercase group">
-            Contactanos
+            Contáctanos
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
