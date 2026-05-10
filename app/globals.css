@@ -1,0 +1,177 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* NY Phil inspired - Elegant, sophisticated palette */
+  --primary-blue: #3399FE;
+  --accent-yellow: #F6F61B;
+  --accent-green: #285943;
+  --light: #FFFFFF;
+  --dark: #0A0A0A;
+  
+  /* Semantic tokens - Clean, minimal light theme */
+  --background: #FFFFFF;
+  --foreground: #0A0A0A;
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0A0A;
+  --primary: #0A0A0A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #3399FE;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F5F5F5;
+  --muted-foreground: #666666;
+  --accent: #3399FE;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #0A0A0A;
+  --chart-1: #3399FE;
+  --chart-2: #F6F61B;
+  --chart-3: #285943;
+  --chart-4: #0A0A0A;
+  --chart-5: #666666;
+  --radius: 0rem;
+}
+
+.dark {
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --card: #141414;
+  --card-foreground: #FFFFFF;
+  --popover: #141414;
+  --popover-foreground: #FFFFFF;
+  --primary: #FFFFFF;
+  --primary-foreground: #0A0A0A;
+  --secondary: #3399FE;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1F1F1F;
+  --muted-foreground: #999999;
+  --accent: #3399FE;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #2A2A2A;
+  --input: #2A2A2A;
+  --ring: #FFFFFF;
+}
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Elegant hover transitions */
+.hover-elegant {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-elegant:hover {
+  transform: translateY(-2px);
+}
+
+/* Text underline animation */
+.underline-animation {
+  position: relative;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.underline-animation:hover::after {
+  width: 100%;
+}
+
+/* Image overlay effect */
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+  z-index: 1;
+}
+
+/* Custom scrollbar - minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Section divider */
+.section-divider {
+  width: 60px;
+  height: 1px;
+  background: #0A0A0A;
+}
