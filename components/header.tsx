@@ -27,30 +27,25 @@ const navigation = [
   { name: "Noticias", href: "#noticias" },
   { name: "Contacto", href: "#contacto" },
     {
-    name: "Conciertos",
+    name: "Calendario",
     href: "#calendario",
-    submenu: [
-      { name: "Calendario completo", href: "#calendario" },
-      { name: "Comprar entradas", href: "#entradas" },
-      { name: "Abonos de temporada", href: "#abonos" },
-    ],
   },
 ]
 
-export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export function Header() { //Componente React
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false) // Estado base del menu móvil, la función setMobileMenuOpen cambia el estado
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
 
-  useEffect(() => {
+  useEffect(() => { //Efecuta cuando el componente aparece
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 50) //Si scroleas más de 50 px, el estado de scrolled se vuelve true, cambia estilos
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll) // Controla el scroll constantemente
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  return (
+  return ( // Aquí empieza el JSX, parte visual del componente
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
@@ -100,7 +95,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:gap-10">
-            {navigation.map((item) => (
+            {navigation.map((item) => ( //Recorre el array de navegación
               <div
                 key={item.name}
                 className="relative"
@@ -120,7 +115,7 @@ export function Header() {
                 </Link>
                 
                 {item.submenu && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-4 w-64 bg-white border border-border shadow-xl animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute top-full left-0 mt-0.5 w-64 bg-white border border-border shadow-xl animate-in fade-in slide-in-from-top-2">
                     <div className="py-2">
                       {item.submenu.map((subItem) => (
                         <Link
