@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 const slides = [
   {
@@ -11,6 +12,7 @@ const slides = [
     subtitle: "Sobre Nosotros",
     description: "Nacimos en 2018 para dinamizar la vida musical mierense",
     cta: "Quiénes somos",
+    href: "/historia",
     image: "Marco.jpg",
   },
   {
@@ -19,6 +21,7 @@ const slides = [
     subtitle: "Temporada 2026-2027",
     description: "Descubre la programacion de nuestra nueva temporada con conciertos inolvidables.",
     cta: "Explorar Temporada",
+    href: "/historia",
     image: "banner.jpg",
   },
   {
@@ -27,6 +30,7 @@ const slides = [
     subtitle: "Área Multimedia",
     description: "Una noche magica con las mejores obras del repertorio sinfonico.",
     cta: "Comprar Entradas",
+    href: "#galeria-imagenes",
     image: "foto_family.JPG",
   },
   {
@@ -35,6 +39,7 @@ const slides = [
     subtitle: "Hazte Socio",
     description: "Apoya la musica en tu comunidad y disfruta de beneficios exclusivos.",
     cta: "Mas Informacion",
+    href: "#hazte-socio",
     image: "pasacalles.jpg",
   },
   {
@@ -43,6 +48,7 @@ const slides = [
     subtitle: "Redes Sociales",
     description: "Síguenos para estar al tanto de nuestras últimas noticias",
     cta: "Contacto",
+    href: "#contacto",
     image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
   },
 ]
@@ -126,14 +132,16 @@ export function HeroSection() {
                   {slide.description}
                 </p>
                 
-                <Button 
-                  className={`bg-white text-foreground hover:bg-white/90 px-10 py-6 text-sm font-medium tracking-wide uppercase group transition-all duration-700 delay-500 ${
-                    index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  }`}
-                >
-                  {slide.cta}
-                  <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href={slide.href}>
+                  <Button 
+                    className={`bg-white text-foreground hover:bg-white/90 px-10 py-6 text-sm font-medium tracking-wide uppercase group transition-all duration-700 delay-500 ${
+                      index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
+                  >
+                    {slide.cta}
+                    <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </ Link>
               </div>
             </div>
           </div>
