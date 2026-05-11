@@ -14,6 +14,7 @@ const slides = [
     cta: "Quiénes somos",
     href: "/historia",
     image: "Marco.jpg",
+    color: "blue",
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const slides = [
     cta: "Explorar Temporada",
     href: "/historia",
     image: "banner.jpg",
+    color: "yellow",
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const slides = [
     cta: "Comprar Entradas",
     href: "#galeria-imagenes",
     image: "foto_family.JPG",
+    color: "green",
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ const slides = [
     cta: "Mas Informacion",
     href: "#hazte-socio",
     image: "pasacalles.jpg",
+    color: "blue"
   },
   {
     id: 5,
@@ -50,6 +54,7 @@ const slides = [
     cta: "Contacto",
     href: "#contacto",
     image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
+    color: "yellow"
   },
 ]
 
@@ -62,6 +67,14 @@ export function HeroSection() {
     }, 6000)
   }
 
+  const getAccentColor = (color: string) => {
+    switch(color) {
+      case "blue": return "bg-primary-blue"
+      case "yellow": return "bg-accent-yellow"
+      case "green": return "bg-accent-green"
+      default: return "bg-primary-blue"
+    }
+  }
   useEffect(() => {
     startAutoPlay()
     return () => {
@@ -113,14 +126,16 @@ export function HeroSection() {
           {/* Content */}
           <div className="relative z-10 h-full flex items-center">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-              <div className="max-w-3xl">
-                <p className={`text-white/80 text-sm tracking-[0.3em] uppercase mb-4 transition-all duration-700 delay-200 ${
+              <div className="max-w-3xl pl-6">
+                <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6 transition-all duration-700 delay-200 ${
                   index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}>
-                  {slide.subtitle}
-                </p>
+                } ${slide.color === "blue" ? "bg-primary-blue" : slide.color === "yellow" ? "bg-accent-yellow" : "bg-accent-green"}`}>
+                  <span className={`text-sm font-bold tracking-wider uppercase ${slide.color === "yellow" ? "text-foreground" : "text-white"}`}>
+                    {slide.subtitle}
+                  </span>
+                </div>
                 
-                <h1 className={`font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] mb-6 transition-all duration-700 delay-300 ${
+                <h1 className={`font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-6 transition-all duration-700 delay-300 ${
                   index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}>
                   {slide.title}
@@ -134,8 +149,13 @@ export function HeroSection() {
                 
                 <Link href={slide.href}>
                   <Button 
-                    className={`bg-white text-foreground hover:bg-white/90 px-10 py-6 text-sm font-medium tracking-wide uppercase group transition-all duration-700 delay-500 ${
-                      index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    size="lg"
+                    className={`px-8 py-6 text-base font-semibold tracking-wide group ${
+                      slide.color === "blue" 
+                        ? "bg-primary-blue hover:bg-primary-blue/90 text-white" 
+                        : slide.color === "yellow"
+                        ? "bg-accent-yellow hover:bg-accent-yellow/90 text-foreground"
+                        : "bg-accent-green hover:bg-accent-green/90 text-white"
                     }`}
                   >
                     {slide.cta}
