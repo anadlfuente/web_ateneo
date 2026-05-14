@@ -11,7 +11,7 @@ const footerLinks = {
   informacion: [
     { name: "Sobre Nosotros", href: "#sobre-nosotros" },
     { name: "Patrocinadores", href: "#patrocinadores" },
-    { name: "Prensa", href: "#prensa" },
+    { name: "Noticias", href: "#prensa" },
     { name: "Contacto", href: "#contacto" },
   ],
   legal: [
@@ -22,44 +22,15 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { name: "Instagram", icon: Instagram, href: "#" },
-  { name: "Facebook", icon: Facebook, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/bandademieres/" },
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/Bandaateneomieres/" },
+  { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g" },
+  { name: "X", icon: Twitter, href: "https://x.com/BandaMusMieres" },
 ]
 
 export function Footer() {
   return (
     <footer className="bg-foreground text-white">
-      {/* Newsletter section */}
-      <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <h3 className="font-serif text-2xl text-white mb-2">
-                Mantente Informado
-              </h3>
-              <p className="text-white/60 text-sm">
-                Recibe noticias, ofertas especiales y contenido exclusivo.
-              </p>
-            </div>
-            <form className="flex gap-0">
-              <input 
-                type="email"
-                placeholder="Tu email"
-                className="px-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40 w-64"
-              />
-              <button 
-                type="submit"
-                className="px-6 py-3 bg-secondary text-foreground font-medium text-sm tracking-wide uppercase hover:bg-secondary/90 transition-colors"
-              >
-                Suscribirse
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
