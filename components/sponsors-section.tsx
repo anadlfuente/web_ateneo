@@ -1,53 +1,57 @@
 "use client"
 
+import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 const sponsors = [
   { name: "Espacio Cultura 1910", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/"},
   { name: "RTVE", tier: "principal", logo: "/sponsors/rtve.png", link: "https://www.instagram.com/1910mieres/" },
-  { name: "La Nueva Espana", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "Montepio", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "Iberia Cargo", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "Viajes Mythos", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "DrinkVar", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "Madreselva", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "Fergu Bus", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
-  { name: "Asoc. Cultural Santa Barbara", tier: "colaborador", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/" },
+  { name: "La Nueva España", tier: "principal", logo: "/sponsors/La nueva España.png", link: "https://www.lne.es/" },
+  { name: "Montepio", tier: "colaborador", logo: "/sponsors/montepio-horizontal.png", link: "https://www.montepio.es/" },
+  { name: "Iberia Cargo", tier: "colaborador", logo: "/sponsors/iberiacargo.png", link: "https://grupo.iberia.es/pressrelease/details/12990" },
+  { name: "Viajes Mythos", tier: "colaborador", logo: "/sponsors/logo_mythos.png", link: "https://viajesmythos.com/" },
+  { name: "DrinkVar", tier: "colaborador", logo: "/sponsors/DrinkVar.jpeg", link: "https://www.instagram.com/drinkvar/" },
+  { name: "Madreselva", tier: "colaborador", logo: "/sponsors/madreselva.jpg", link: "https://www.facebook.com/madreselvamieres/" },
+  { name: "Fergu Bus", tier: "colaborador", logo: "/sponsors/fergubus.png", link: "https://fergubus.com/" },
+  { name: "Asoc. Cultural Santa Barbara", tier: "colaborador", logo: "/sponsors/santabarbara.jpg", link: "https://asociacionsantabarbara.com/" },
 ]
+
 
 export function SponsorsSection() {
   return (
-    <section id="patrocinadores" className="py-24 bg-white border-t border-border">
+    <section id="patrocinadores" className="py-20 bg-muted relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
-          <div>
-            <p className="text-secondary text-sm tracking-[0.3em] uppercase mb-4">
-              Patrocinadores
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground leading-tight">
-              Gracias a Ellos
-            </h2>
-          </div>
-          <div className="section-divider hidden md:block" />
+        {/* Simple header */}
+        <div className="text-center mb-12">
+          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+            Nuestros Patrocinadores
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground">
+            Gracias por apoyarnos en este maravilloso proyecto
+          </h2>
         </div>
 
-        {/* Sponsors grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border mb-16">
+        {/* Sponsors grid - simple and clean */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-12">
           {sponsors.map((sponsor) => (
-            <div key={sponsor.name} className="flex flex-col items-center justify-center gap-4 bg-white transition-colors">
-              {/*Logo click*/}
+            <div
+              key={sponsor.name}
+              className="group bg-white rounded-lg p-6 flex flex-col items-center justify-center text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            >{/*Logo click*/}
               <a
                 href={sponsor.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
               >
-                <img
+                <Image
                   src={sponsor.logo}
                   alt={sponsor.name}
-                  className="h-16 object-contain hover:scale-105 transition-all duration-300"
+                  width={140}
+                  height={80}
+                  className="max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </a>
               {/* Sponsor name */}
@@ -64,15 +68,23 @@ export function SponsorsSection() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-8 bg-muted">
-          <div>
-            <h3 className="font-serif text-2xl text-foreground mb-2">Conviertete en Patrocinador</h3>
-            <p className="text-muted-foreground">Unete a nuestra familia de colaboradores y apoya la musica.</p>
-          </div>
-          <Button className="bg-foreground text-white hover:bg-foreground/90 text-sm font-medium tracking-wide uppercase group">
-            Contáctanos
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+        {/* CTA - Become a sponsor */}
+        <div className="text-center bg-accent rounded-xl p-8 md:p-12">
+          <h3 className="font-serif text-2xl md:text-3xl text-white mb-3">
+            Apoya la cultura musical en Mieres
+          </h3>
+          <p className="text-white/80 mb-6 max-w-lg mx-auto">
+            Unete a nuestra familia de colaboradores y ayúdanos a llevar nuestra música a más gente.
+          </p>
+          <Button 
+            asChild
+            size="lg"
+            className="bg-white text-accent hover:bg-white/90 font-semibold px-8"
+          >
+            <Link href="#contacto">
+              Quiero ser patrocinador
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
           </Button>
         </div>
       </div>
