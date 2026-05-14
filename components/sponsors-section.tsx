@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react"
 
 const sponsors = [
   { name: "Espacio Cultura 1910", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/"},
-  { name: "RTVE", tier: "principal", logo: "/sponsors/rtve.png", link: "https://www.instagram.com/1910mieres/" },
+  { name: "RTVE", tier: "principal", logo: "/sponsors/rtve.png", link: "https://www.rtve.es/" },
   { name: "La Nueva España", tier: "principal", logo: "/sponsors/La nueva España.png", link: "https://www.lne.es/" },
-  { name: "Montepio", tier: "colaborador", logo: "/sponsors/montepio-horizontal.png", link: "https://www.montepio.es/" },
+  { name: "Montepío", tier: "colaborador", logo: "/sponsors/montepio-horizontal.png", link: "https://www.montepio.es/" },
   { name: "Iberia Cargo", tier: "colaborador", logo: "/sponsors/iberiacargo.png", link: "https://grupo.iberia.es/pressrelease/details/12990" },
   { name: "Viajes Mythos", tier: "colaborador", logo: "/sponsors/logo_mythos.png", link: "https://viajesmythos.com/" },
   { name: "DrinkVar", tier: "colaborador", logo: "/sponsors/DrinkVar.jpeg", link: "https://www.instagram.com/drinkvar/" },
@@ -81,7 +81,7 @@ export function SponsorsSection() {
             size="lg"
             className="bg-white text-accent hover:bg-white/90 font-semibold px-8"
           >
-            <Link href="#contacto">
+            <Link href="/contacto">
               Quiero ser patrocinador
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
