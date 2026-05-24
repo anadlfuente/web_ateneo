@@ -3,8 +3,9 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
- 
+import { ChevronLeft, ChevronRight, Music, Mic2 } from "lucide-react"
+import { RehearsalSection } from "@/components/rehearsal-schedule"
+
 // Define groups
 type Group = "banda" | "coro" | "claxon" | "charanga"
 
@@ -52,6 +53,11 @@ const categoryStyles: Record<Group, string> = {
   claxon: "bg-accent-green/10 text-accent-green-700 border-accent-green",
   charanga: "bg-primary-blue/10 text-primary-blue-700 border-primary-blue"
 }
+
+const ensayos = [
+  { agrupacion: "Banda Sinfónica", dia: "Lunes y Miércoles", hora: "20:00 - 22:00", color: "#3399FE", icon: Music },
+  { agrupacion: "Coral Cantares", dia: "Martes y Jueves", hora: "19:30 - 21:30", color: "#F6F61B", icon: Mic2 },
+]
 
 export default function CalendarPage() {
   // Set actual month and day
@@ -124,7 +130,7 @@ export default function CalendarPage() {
       </section>
 
       {/* Contenido */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="max-w-6xl mx-auto px-6 py-20 ">
         <h2 className="text-4xl font-serif mb-10">No te pierdas ninguno de nuestros conciertos!</h2>
         <div className="flex items-center justify-between mb-6">
           <button
@@ -246,6 +252,9 @@ export default function CalendarPage() {
           })}
         </div>
       </div> 
+      </section >
+      <section className="mb-10">
+        <RehearsalSection ensayos={ensayos} />
       </section>
       <Footer />
     </main>
