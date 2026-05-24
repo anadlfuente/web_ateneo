@@ -66,9 +66,9 @@ export function CalendarSection() {
         {/* Section header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-              <Calendar className="w-4 h-4 text-primary" />
-              <span className="text-primary text-sm font-semibold tracking-wider uppercase">Calendario</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 rounded-full mb-6">
+              <Calendar className="w-4 h-4 text-primary-blue" />
+              <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Calendario</span>
             </div>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
               Proximos <span className="text-primary">Conciertos</span>
