@@ -67,7 +67,7 @@ export default function HistoriaPage() {
           {/* Imagen */}
           <div className="overflow-hidden rounded-2xl shadow-xl max-w-lg md:max-w-2xl lg:max-w-2xl mx-auto">
             <img
-              src="/historia/BanderaAteneo.jpg"
+              src="/historia/BanderaAteneo.JPG"
               alt="Historia Ateneo"
               className="w-full h-[450px] block"
             />

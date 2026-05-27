@@ -13,7 +13,7 @@ const slides = [
     description: "Nacimos en 2018 para dinamizar la vida musical mierense",
     cta: "Quiénes somos",
     href: "/historia",
-    image: "Marco.jpg",
+    image: "Marco.JPG",
     color: "blue",
   },
   {
@@ -43,7 +43,7 @@ const slides = [
     description: "Apoya la musica en tu comunidad y disfruta de beneficios exclusivos.",
     cta: "Mas Informacion",
     href: "#hazte-socio",
-    image: "pasacalles.jpg",
+    image: "pasacalles.JPG",
     color: "blue"
   },
   {
