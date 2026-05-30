@@ -58,7 +58,7 @@ export default function LegalPage() {
       <section className="relative h-[30vh] w-full">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/banner.jpg')" }}
+          style={{ backgroundImage: "url('/banner_2.png')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
 
