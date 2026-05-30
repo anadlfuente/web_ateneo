@@ -40,7 +40,7 @@ export const seccionesBanda = [
   },
 ]
 
-export default function HistoriaPage() {
+export default function BandaPage() {
   return (
     <main className="min-h-screen">
       <Header />

@@ -3,21 +3,21 @@ import { Instagram, Facebook, Youtube, Twitter } from "lucide-react"
 
 const footerLinks = {
   agrupaciones: [
-    { name: "Banda Sinfonica", href: "#banda-sinfonica" },
-    { name: "Coral Cantares", href: "#coral" },
-    { name: "Claxon Boys", href: "#claxon-boys" },
-    { name: "Charanga", href: "#charanga" },
+    { name: "Banda Sinfonica", href: "/banda" },
+    { name: "Coral Cantares", href: "/coral" },
+    { name: "Claxon Boys", href: "/claxon" },
+    { name: "Charanga", href: "/charanga" },
   ],
   informacion: [
-    { name: "Sobre Nosotros", href: "#sobre-nosotros" },
+    { name: "Sobre Nosotros", href: "/historia" },
     { name: "Patrocinadores", href: "#patrocinadores" },
     { name: "Noticias", href: "#prensa" },
     { name: "Contacto", href: "#contacto" },
   ],
   legal: [
-    { name: "Privacidad", href: "#privacidad" },
-    { name: "Aviso Legal", href: "#aviso-legal" },
-    { name: "Cookies", href: "#cookies" },
+    { name: "Aviso Legal", href: "/legal?section=legal" },
+    { name: "Privacidad", href: "/legal?section=privacy" },
+    { name: "Cookies", href: "/legal?section=cookies" },
   ],
 }
 

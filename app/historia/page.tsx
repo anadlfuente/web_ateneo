@@ -8,7 +8,7 @@ export default function HistoriaPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[60vh] w-full">
+      <section className="relative h-[40vh] w-full">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/banner.jpg')" }}
@@ -17,7 +17,7 @@ export default function HistoriaPage() {
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <h1 className="text-white text-5xl md:text-7xl font-serif">
-            Nuestra Historia
+            Sobre Nosotros
           </h1>
         </div>
       </section>

@@ -10,8 +10,8 @@ const navigation = [
     submenu: [
       { name: "Historia", href: "/historia" },
       { name: "Junta Directiva", href: "#junta" },
-      { name: "Reglamento", href: "#reglamento" },
-      { name: "Estatutos", href: "#reglamento" },
+      { name: "Reglamento", href: "/legal" },
+      { name: "Transparencia", href: "#transparencia" },
     ],
    },
   {
