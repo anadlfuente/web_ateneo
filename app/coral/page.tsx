@@ -1,6 +1,44 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import Organigram  from "@/components/organigram-section"
 
+export const seccionesCoral = [
+  {
+    nombre: "Sopranos",
+    miembros: [
+      "Ana Pérez",
+      "Laura Fernández",
+      "Marta García",
+    ],
+  },
+  {
+    nombre: "Mezzosopranos",
+    miembros: [
+      "Lucía Rodríguez",
+      "Elena Martínez",
+    ],
+  },
+  {
+    nombre: "Contraltos",
+    miembros: [
+      "Sofía Alonso",
+      "María López",
+    ],
+  },
+  {
+    nombre: "Tenores",
+    miembros: [
+      "Juan López",
+      "Carlos Pérez",
+    ],
+  },
+  {
+    nombre: "Bajos",
+    miembros: [
+      "Miguel Sánchez",
+    ],
+  },
+]
 
 export default function HistoriaPage() {
   return (
@@ -98,8 +136,15 @@ export default function HistoriaPage() {
             </p>
           </div>
         </div>
-
       </section>
+      <section className="pb-10">
+              <div className="max-w-5xl mx-auto py-10">
+                  <Organigram
+                  titulo="Organigrama"
+                  secciones={seccionesCoral}
+              />
+              </div>
+            </section>
       <Footer />
     </main>
   )

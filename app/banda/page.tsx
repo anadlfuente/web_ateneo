@@ -1,6 +1,44 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import Organigram  from "@/components/organigram-section"
 
+export const seccionesBanda = [
+  {
+    nombre: "Flautas",
+    miembros: [
+      "Ana Pérez",
+      "María García",
+      "Laura Fernández",
+    ],
+  },
+  {
+    nombre: "Oboes",
+    miembros: [
+      "Juan López",
+      "Carlos Rodríguez",
+    ],
+  },
+  {
+    nombre: "Clarinetes",
+    miembros: [
+      "Pedro Martínez",
+      "Sofía Alonso",
+    ],
+  },
+  {
+    nombre: "Saxofones",
+    miembros: [
+      "Luis Fernández",
+    ],
+  },
+  {
+    nombre: "Trompetas",
+    miembros: [
+      "Miguel Sánchez",
+      "Elena García",
+    ],
+  },
+]
 
 export default function HistoriaPage() {
   return (
@@ -22,7 +60,7 @@ export default function HistoriaPage() {
         </div>
       </section>
       {/* Contenido */}
-      <section className="max-w-6xl mx-auto px-6 py-24 space-y-32">
+      <section className="max-w-6xl mx-auto px-6 py-12 space-y-16">
 
         {/* Bloque 1 */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -98,7 +136,14 @@ export default function HistoriaPage() {
             </p>
           </div>
         </div>
-
+      </section>
+      <section className="pb-10">
+        <div className="max-w-5xl mx-auto py-10">
+            <Organigram
+            titulo="Organigrama"
+            secciones={seccionesBanda}
+          />
+        </div>
       </section>
       <Footer />
     </main>
