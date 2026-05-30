@@ -87,7 +87,7 @@ export function GroupsSection() {
             return (
               <Link
                 key={group.id}
-                href={`#${group.id}`}
+                href={group.href}
                 className="group relative bg-white rounded-2xl overflow-hidden border border-border hover:border-transparent transition-all duration-300 hover-card-vibrant"
               >
                 {/* Image */}
