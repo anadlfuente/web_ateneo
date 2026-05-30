@@ -55,8 +55,8 @@ const categoryStyles: Record<Group, string> = {
 }
 
 const ensayos = [
-  { agrupacion: "Banda Sinfónica", dia: "Lunes y Miércoles", hora: "20:00 - 22:00", color: "#3399FE", icon: Music },
-  { agrupacion: "Coral Cantares", dia: "Martes y Jueves", hora: "19:30 - 21:30", color: "#F6F61B", icon: Mic2 },
+  { agrupacion: "Banda Sinfónica", dia: "Lunes y Miércoles", hora: "20:00 - 22:00", color: "#3399FE", icon: Music, href: "/banda" },
+  { agrupacion: "Coral Cantares", dia: "Martes y Jueves", hora: "19:30 - 21:30", color: "#F6F61B", icon: Mic2, href: "/coral" },
 ]
 
 export default function CalendarPage() {

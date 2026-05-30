@@ -75,7 +75,7 @@ export function CalendarSection() {
             </h2>
           </div>
           <Link 
-            href="#calendario-completo"
+            href="/calendar"
             className="inline-flex items-center text-primary text-sm font-semibold tracking-wide uppercase hover:text-primary/80 transition-colors group"
           >
             Ver Calendario Completo

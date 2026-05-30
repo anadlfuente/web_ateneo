@@ -9,6 +9,7 @@ type Ensayo = {
   hora: string
   color: string
   icon: React.ElementType
+  href: string
 }
 
 type Props = {
@@ -36,52 +37,54 @@ export function RehearsalSection({ ensayos }: Props) {
     {ensayos.map((ensayo) => {
 
       return (
+        <Link
+            key={ensayo.agrupacion}
+            href={ensayo.href}
+        >
         <div
-          key={ensayo.agrupacion}
           className="p-5 rounded-xl hover:scale-[1.03] transition-transform flex justify-between items-start gap-4"
           style={{ backgroundColor: ensayo.color }}
         >
 
           {/* LEFT CONTENT */}
-          <div>
-            <h4
-              className="font-bold mb-1"
-              style={{
-                color:
-                  ensayo.color === "#F6F61B"
-                    ? "#302B27"
-                    : "#FFFFFF",
-              }}
-            >
-              {ensayo.agrupacion}
-            </h4>
+            <div>
+              <h4
+                className="font-bold mb-1"
+                style={{
+                  color:
+                    ensayo.color === "#F6F61B"
+                      ? "#302B27"
+                      : "#FFFFFF",
+                }}
+              >
+                {ensayo.agrupacion}
+              </h4>
 
-            <p
-              className="font-serif text-lg"
-              style={{
-                color:
-                  ensayo.color === "#F6F61B"
-                    ? "#302B27"
-                    : "#FFFFFF",
-              }}
-            >
-              {ensayo.dia}
-            </p>
+              <p
+                className="font-serif text-lg"
+                style={{
+                  color:
+                    ensayo.color === "#F6F61B"
+                      ? "#302B27"
+                      : "#FFFFFF",
+                }}
+              >
+                {ensayo.dia}
+              </p>
 
-            <p
-              className="text-sm flex items-center gap-1.5 mt-1"
-              style={{
-                color:
-                  ensayo.color === "#F6F61B"
-                    ? "rgba(48,43,39,0.7)"
-                    : "rgba(255,255,255,0.7)",
-              }}
-            >
-              <Clock className="w-3.5 h-3.5" />
-              {ensayo.hora}
-            </p>
-          </div>
-
+              <p
+                className="text-sm flex items-center gap-1.5 mt-1"
+                style={{
+                  color:
+                    ensayo.color === "#F6F61B"
+                      ? "rgba(48,43,39,0.7)"
+                      : "rgba(255,255,255,0.7)",
+                }}
+              >
+                <Clock className="w-3.5 h-3.5" />
+                {ensayo.hora}
+              </p>
+            </div>
           {/* RIGHT ICON */}
           <div
             className="shrink-0 opacity-80"
@@ -96,6 +99,7 @@ export function RehearsalSection({ ensayos }: Props) {
           </div>
 
         </div>
+        </Link>
       )
     })}
   </div>
