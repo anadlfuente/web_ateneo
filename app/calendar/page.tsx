@@ -3,7 +3,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useState } from "react"
-import { ChevronLeft, ChevronRight, Music, Mic2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, Music, Mic2, MapPin,Clock } from "lucide-react"
 import { RehearsalSection } from "@/components/rehearsal-schedule"
 
 // Define groups
@@ -16,6 +16,7 @@ type Event = {
   start: string
   group: Group
   tipo?: string
+  location?: string
   poster?: string  // 👈 opcional
 }
 
@@ -26,6 +27,7 @@ const events: Event[] = [
     date: "2026-05-12",
     start: "2026-05-12T20:30",
     group: "banda",
+    location: " Teodoro Cuesta",
     tipo: "Concierto",
     poster : "/poster/festival-poster.jpeg"
 
@@ -35,6 +37,7 @@ const events: Event[] = [
     title: "Ensayo general",
     date: "2026-05-18",
     start: "2026-05-23T20:30",
+    location: "DrinkVar",
     group: "claxon",
   },
   {
@@ -42,6 +45,7 @@ const events: Event[] = [
     title: "Cantares de Chigre",
     date: "2026-05-18",
     start: "2026-05-18T20:30",
+    location: "DrinkVar",
     group: "coro",
     poster : "/poster/festival-poster.jpeg"
   },
@@ -219,6 +223,11 @@ export default function CalendarPage() {
                       {event.title}
                     </div>
                     <div className="text-[10px] opacity-70">
+                      <MapPin className="w-3 h-3" />
+                      {event.location}
+                    </div>
+                    <div className="text-[10px] opacity-70">
+                      <Clock className="w-3 h-3" /> 
                       {event.start.slice(11, 16)}
                     </div>
 
