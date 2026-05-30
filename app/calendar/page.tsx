@@ -172,8 +172,9 @@ export default function CalendarPage() {
         </button>
         </div>
         {/*Calendar*/}
-        <div className="bg-muted/30 border rounded-3xl p-6 shadow-sm">
-          <div className="grid grid-cols-7 text-center font-semibold text-sm mb-2">
+        <div className="overflow-x-auto">
+          <div className="min-w-[850px] bg-muted/30 border rounded-3xl p-6 shadow-sm">
+            <div className="grid grid-cols-7 text-center font-semibold text-sm mb-2">
             {["L", "M", "X", "J", "V", "S", "D"].map(d => (
               <div key={d}>{d}</div>
             ))}
@@ -251,7 +252,9 @@ export default function CalendarPage() {
             )
           })}
         </div>
-      </div> 
+          
+        </div> 
+      </div>
       </section >
       <section className="mb-10">
         <RehearsalSection ensayos={ensayos} />
