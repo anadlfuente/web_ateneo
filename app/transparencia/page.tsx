@@ -2,7 +2,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 
-export default function JuntaPage() {
+export default function TransparenciaPage() {
   return (
     <main className="min-h-screen">
       <Header />
@@ -17,7 +17,7 @@ export default function JuntaPage() {
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <h1 className="text-white text-5xl md:text-7xl font-serif">
-            Junta directiva
+            Transparencia
           </h1>
         </div>
       </section>

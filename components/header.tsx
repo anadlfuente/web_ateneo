@@ -11,7 +11,7 @@ const navigation = [
       { name: "Historia", href: "/historia" },
       { name: "Junta Directiva", href: "/junta" },
       { name: "Reglamento", href: "/legal" },
-      { name: "Transparencia", href: "#transparencia" },
+      { name: "Transparencia", href: "/transparencia" },
     ],
    },
   {
