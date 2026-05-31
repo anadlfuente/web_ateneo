@@ -40,7 +40,7 @@ export const seccionesCoral = [
   },
 ]
 
-export default function HistoriaPage() {
+export default function CoralPage() {
   return (
     <main className="min-h-screen">
       <Header />
