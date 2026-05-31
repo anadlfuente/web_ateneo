@@ -11,7 +11,7 @@ export default function JoinPage() {
       <section className="relative h-[40vh] w-full">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/banner.jpg')" }}
+          style={{ backgroundImage: "url('/banner_2.png')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
 

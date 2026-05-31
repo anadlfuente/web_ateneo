@@ -9,7 +9,7 @@ const navigation = [
   { name: "Sobre nosotros", href: "#sobre-nosotros",
     submenu: [
       { name: "Historia", href: "/historia" },
-      { name: "Junta Directiva", href: "#junta" },
+      { name: "Junta Directiva", href: "/junta" },
       { name: "Reglamento", href: "/legal" },
       { name: "Transparencia", href: "#transparencia" },
     ],
@@ -25,7 +25,7 @@ const navigation = [
     ],
   },
   { name: "Noticias", href: "#noticias" },
-  { name: "Contacto", href: "#contacto" },
+  { name: "Contacto", href: "/contacto" },
     {
     name: "Calendario",
     href: "/calendar",
