@@ -24,12 +24,10 @@ const navigation = [
       { name: "Charanga New Paentamala", href: "/charanga" },
     ],
   },
-  { name: "Noticias", href: "#noticias" },
+  { name: "Noticias", href: "/noticias" },
   { name: "Contacto", href: "/contacto" },
-    {
-    name: "Calendario",
-    href: "/calendar",
-  },
+  {name: "Calendario", href: "/calendar",},
+  {name: "Galería", href: "/galeria",},
 ]
 
 export function Header() { //Componente React

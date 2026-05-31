@@ -8,7 +8,7 @@ export default function JuntaPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[40vh] w-full">
+      <section className="relative h-[30vh] w-full">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/banner_2.png')" }}
