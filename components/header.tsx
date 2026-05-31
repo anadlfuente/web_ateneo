@@ -45,6 +45,18 @@ export function Header() { //Componente React
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+  }, [mobileMenuOpen])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : ""
+  }, [mobileMenuOpen])
+
   return ( // Aquí empieza el JSX, parte visual del componente
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -158,40 +170,54 @@ export function Header() { //Componente React
       </nav>
 
       {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-border">
-          <div className="px-6 py-6 space-y-1">
-            {navigation.map((item) => (
-              <div key={item.name}>
-                <Link
-                  href={item.href}
-                  className="block py-4 text-lg font-medium text-foreground hover:text-secondary transition-colors border-b border-border"
-                  onClick={() => !item.submenu && setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-                {item.submenu && (
-                  <div className="pl-4 py-2 space-y-1">
-                    {item.submenu.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block py-2 text-sm text-muted-foreground hover:text-secondary transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <Button className="w-full mt-6 bg-secondary text-white hover:bg-secondary/90 text-sm font-medium tracking-wide uppercase">
-              Hazte Socio
-            </Button>
+      {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto">
+            
+            {/* header del menú móvil */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+              <span className="font-serif text-lg">Menú</span>
+
+              <button onClick={() => setMobileMenuOpen(false)}>
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* contenido scrollable */}
+            <div className="px-6 py-6 space-y-1">
+              {navigation.map((item) => (
+                <div key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="block py-4 text-lg font-medium text-foreground hover:text-secondary transition-colors border-b border-border"
+                    onClick={() => !item.submenu && setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+
+                  {item.submenu && (
+                    <div className="pl-4 py-2 space-y-1">
+                      {item.submenu.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block py-2 text-sm text-muted-foreground hover:text-secondary transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              <Button className="w-full mt-6 bg-secondary text-white hover:bg-secondary/90 text-sm font-medium tracking-wide uppercase">
+                Hazte Socio
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </header>
   )
 }
