@@ -147,15 +147,17 @@ export function Header() { //Componente React
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-6">
-            <Button 
-              className={`px-8 py-2 text-sm font-medium tracking-wide uppercase transition-all radius-md ${
-                scrolled
-                  ? "bg-secondary text-white hover:bg-secondary/90"
-                  : "bg-white text-foreground hover:bg-white/90"
-              }`}
-            >
-              Hazte Socio
-            </Button>
+            <Link href="/join">
+              <Button 
+                className={`px-8 py-2 text-sm font-medium tracking-wide uppercase transition-all radius-md ${
+                  scrolled
+                    ? "bg-secondary text-white hover:bg-secondary/90"
+                    : "bg-white text-foreground hover:bg-white/90"
+                }`}
+              >
+                Hazte Socio
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}

@@ -12,7 +12,8 @@ const footerLinks = {
     { name: "Sobre Nosotros", href: "/historia" },
     { name: "Patrocinadores", href: "#patrocinadores" },
     { name: "Noticias", href: "#prensa" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Contacto", href: "/contacto" },
+    { name: "Hazte Socio", href: "/join" },
   ],
   legal: [
     { name: "Aviso Legal", href: "/legal?section=legal" },

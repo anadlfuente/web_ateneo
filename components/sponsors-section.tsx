@@ -25,9 +25,10 @@ export function SponsorsSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Simple header */}
         <div className="text-center mb-12">
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
-            Nuestros Patrocinadores
-          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 rounded-full mb-6">
+            <span className="w-2 h-2 bg-primary-blue rounded-full animate-pulse" />
+            <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Nuestros Patrocinadores</span>
+          </div>
           <h2 className="font-serif text-3xl md:text-4xl text-foreground">
             Gracias por apoyarnos en este maravilloso proyecto
           </h2>
