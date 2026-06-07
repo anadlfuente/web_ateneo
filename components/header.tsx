@@ -18,8 +18,15 @@ const navigation = [
     name: "Agrupaciones",
     href: "#agrupaciones",
     submenu: [
-      { name: "Banda Sinfonica", href: "/banda" },
-      { name: "Coral Cantares", href: "/coral" },
+      { name: "Banda Sinfonica", href: "/banda/historia", submenu: [
+      { name: "Historia", href: "/banda/historia" },
+      { name: "Directores", href: "/banda/directores" },
+    ]
+     },
+      { name: "Coral Cantares", href: "/coral/historia", submenu: [
+      { name: "Historia", href: "/banda/historia" },
+      { name: "Director", href: "/banda/director" },
+    ] },
       { name: "Claxon Boys", href: "/claxon" },
       { name: "Charanga New Paentamala", href: "/charanga" },
     ],
@@ -85,7 +92,7 @@ export function Header() { //Componente React
       </div>
 
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-50 lg:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 group">
           {/*Icono*/}
@@ -128,13 +135,28 @@ export function Header() { //Componente React
                   <div className="absolute top-full left-0 mt-0.5 w-64 bg-white border border-border shadow-xl animate-in fade-in slide-in-from-top-2">
                     <div className="py-2">
                       {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-6 py-3 text-sm text-foreground hover:bg-muted hover:text-secondary transition-colors"
-                        >
-                          {subItem.name}
-                        </Link>
+                        <div key={subItem.name}>
+                          <Link
+                            href={subItem.href}
+                            className="block px-6 py-3 text-sm text-foreground hover:bg-muted hover:text-secondary transition-colors"
+                          >
+                            {subItem.name}
+                          </Link>
+
+                          {"submenu" in subItem && subItem.submenu && (
+                            <div className="pl-6 pb-2">
+                              {subItem.submenu.map((deepItem) => (
+                                <Link
+                                  key={deepItem.name}
+                                  href={deepItem.href}
+                                  className="block py-2 text-xs text-muted-foreground hover:text-secondary"
+                                >
+                                  {deepItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
