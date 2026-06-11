@@ -92,7 +92,7 @@ export function Header() { //Componente React
       </div>
 
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex items-center justify-between h-50 lg:h-28">
+        <div className="flex items-center justify-between h-24 lg:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 group">
           {/*Icono*/}
