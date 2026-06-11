@@ -220,14 +220,32 @@ export function Header() { //Componente React
                   {item.submenu && (
                     <div className="pl-4 py-2 space-y-1">
                       {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block py-2 text-sm text-muted-foreground hover:text-secondary transition-colors"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
+                        <div key={subItem.name}>
+                          
+                          <Link
+                            href={subItem.href}
+                            className="block py-2 text-sm text-muted-foreground hover:text-secondary"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+
+                          {"submenu" in subItem && subItem.submenu && (
+                            <div className="pl-4 space-y-1">
+                              {subItem.submenu.map((deepItem) => (
+                                <Link
+                                  key={deepItem.name}
+                                  href={deepItem.href}
+                                  className="block py-2 text-xs text-muted-foreground hover:text-secondary"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  {deepItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+
+                        </div>
                       ))}
                     </div>
                   )}
