@@ -24,8 +24,8 @@ const navigation = [
     ]
      },
       { name: "Coral Cantares", href: "/coral/historia", submenu: [
-      { name: "Historia", href: "/banda/historia" },
-      { name: "Director", href: "/banda/director" },
+      { name: "Historia", href: "/coral/historia" },
+      { name: "Director", href: "/coral/director" },
     ] },
       { name: "Claxon Boys", href: "/claxon" },
       { name: "Charanga New Paentamala", href: "/charanga" },
