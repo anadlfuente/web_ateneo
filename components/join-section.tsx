@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight, CheckCircle2, Pencil } from "lucide-react"
+import Link from "next/link"
 
 export function JoinSection() {
   const [submitted, setSubmitted] = useState(false)
@@ -14,103 +15,127 @@ export function JoinSection() {
   }
 
   return (
-    <section id="hazte-socio" className="py-24 bg-foreground text-white">
+    <section id="hazte-socio" className="py-24 bg-accent-green relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left column - Content */}
-          <div>
-            <p className="text-secondary text-sm tracking-[0.3em] uppercase mb-4">
-              Hazte Socio
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
-              Apoya Tu<br />
-              Orquesta
+          <div className="text-white">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-yellow/10 rounded-full mb-6">
+              <Pencil className="w-4 h-4 text-accent-yellow" /> 
+              <span className="text-accent-yellow text-sm font-semibold tracking-wider uppercase">Hazte socio</span>
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
+              Apoya tu Orchestra,<br />
+              <span className="text-accent-yellow">Transforma la Musica</span>
             </h2>
-            <p className="text-white/70 text-lg mb-8 max-w-md">
-              Transforma tu experiencia y ayudanos a transformar la musica sinfonica 
-              en nuestra comunidad haciendote socio.
+            <p className="text-white/80 text-lg mb-8 leading-relaxed">
+              Conviértete en socio del Ateneo Musical de Mieres y ayúdanos a transformar 
+              la música en nuestro concejo. Te lo agradeceremos con beneficios exclusivos 
+               para socios.
             </p>
             
+            {/* Benefits list */}
             <div className="space-y-4 mb-8">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-white/80">Acceso prioritario a entradas</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-white/80">Descuentos exclusivos en conciertos</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-white/80">Pases para ensayos abiertos</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-white/80">Reconocimiento en programas</span>
-              </div>
+              {[
+                "Acceso prioritario a conciertos",
+                "Descuentos exclusivos en eventos especiales",
+                "Pases para ensayos abiertos",
+                "Reconocimiento en programas de conciertos"
+              ].map((benefit, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent-yellow flex-shrink-0" />
+                  <span className="text-white/90">{benefit}</span>
+                </div>
+              ))}
             </div>
+
+            {/* Donation amounts like NY Phil */}
+            {/* <div className="flex flex-wrap gap-3">
+              {["30€", "50€", "100€", "Otra cantidad"].map((amount, index) => (
+                <button
+                  key={index}
+                  className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                    index === 1 
+                      ? "bg-secondary text-foreground" 
+                      : "bg-white/10 text-white hover:bg-white/20 border border-white/20"
+                  }`}
+                >
+                  {amount}
+                </button>
+              ))}
+            </div> */}
           </div>
 
           {/* Right column - Form */}
-          <div className="bg-white text-foreground p-8 lg:p-12">
+          <div className="bg-white rounded-lg p-8 lg:p-10 shadow-2xl">
             {submitted ? (
               <div className="text-center py-12">
-                <CheckCircle2 className="w-16 h-16 text-secondary mx-auto mb-6" />
-                <h3 className="font-serif text-2xl text-foreground mb-3">Gracias por tu interes</h3>
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="font-serif text-2xl text-foreground mb-3">Gracias por tu Interes</h3>
                 <p className="text-muted-foreground">Nos pondremos en contacto contigo muy pronto.</p>
               </div>
             ) : (
               <>
-                <h3 className="font-serif text-2xl text-foreground mb-8">
-                  Solicita informacion
+                <h3 className="font-serif text-2xl text-foreground mb-2">
+                  Solicita tu Alta
                 </h3>
+                <p className="text-muted-foreground mb-6">Completa el formulario y te contactaremos</p>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Nombre completo *</label>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <Input 
                       required
-                      placeholder="Tu nombre y apellidos"
-                      className="border-border focus:border-foreground bg-transparent"
+                      placeholder="Nombre *"
+                      className="border-border focus:border-accent"
                     />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Correo electronico *</label>
                     <Input 
-                      type="email"
                       required
-                      placeholder="tu@email.com"
-                      className="border-border focus:border-foreground bg-transparent"
+                      placeholder="Apellidos *"
+                      className="border-border focus:border-accent"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Telefono</label>
-                    <Input 
-                      type="tel"
-                      placeholder="+34 600 000 000"
-                      className="border-border focus:border-foreground bg-transparent"
-                    />
-                  </div>
+                  <Input 
+                    type="email"
+                    required
+                    placeholder="Email *"
+                    className="border-border focus:border-accent"
+                  />
 
-                  <div className="flex items-start gap-3">
+                  <Input 
+                    type="tel"
+                    placeholder="Telefono"
+                    className="border-border focus:border-accent"
+                  />
+
+                  <div className="flex items-start gap-3 pt-2">
                     <input 
                       type="checkbox" 
                       required
-                      className="mt-1 w-4 h-4 border-border text-foreground focus:ring-foreground"
+                      className="mt-1 w-4 h-4 rounded border-border text-accent focus:ring-accent"
                     />
                     <p className="text-sm text-muted-foreground">
-                      Acepto la politica de privacidad y el tratamiento de datos personales.
-                    </p>
+                        Acepto la{" "}
+                        <Link
+                          href="/legal?section=privacy"
+                          className="text-accent hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          política de privacidad
+                        </Link>{" "}
+                        y el tratamiento de datos personales.
+                      </p>
                   </div>
 
                   <Button 
                     type="submit"
-                    className="w-full bg-foreground text-white hover:bg-foreground/90 text-sm font-medium tracking-wide uppercase py-6 group"
+                    className="w-full bg-accent-green hover:bg-accent-green/90 text-white font-semibold py-6"
                   >
-                    Enviar solicitud
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    Enviar Solicitud
+                    <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </form>
               </>
