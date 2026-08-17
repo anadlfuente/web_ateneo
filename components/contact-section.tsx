@@ -26,7 +26,7 @@ export function ContactSection() {
             {/* Contact info */}
             <div className="space-y-6 mb-10">
               <a 
-                href="mailto:rrssateneomieres@gmail.ecom" 
+                href="mailto:rrssateneomieres@gmail.com" 
                 className="flex items-center gap-4 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
