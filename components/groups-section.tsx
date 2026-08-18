@@ -6,10 +6,10 @@ import Link from "next/link"
 const groups = [
   {
     id: "banda-sinfonica",
-    name: "Banda Sinfonica",
-    description: "Mas de 60 músicos interpretando desde clasicos hasta bandas sonoras contemporáneas.",
+    name: "Banda Sinfónica",
+    description: "Más de 60 músicos interpretando desde clásicos hasta bandas sonoras contemporáneas.",
     image: "pasacalles.JPG",
-    href: "/banda",
+    href: "/banda/historia",
     color: "primary",
     members: "60+",
     icon: Music,
@@ -17,9 +17,9 @@ const groups = [
   {
     id: "coral",
     name: "Coral Cantares",
-    description: "Voces que armonizan para crear momentos unicos desde musica sacra hasta arreglos modernos.",
+    description: "Un grupo de voces unidas por las ganas de cantar y disfrutar la  música, con especial cariño por nuestros cantares de chigre.",
     image: "coral_cantares.jpg",
-    href: "/coral",
+    href: "/coral/historia",
     color: "secondary",
     members: "20+",
     icon: Mic2,
@@ -27,7 +27,7 @@ const groups = [
   {
     id: "claxon-boys",
     name: "Claxon Boys",
-    description: "El alma rockera de nuestra agrupacion. Energia pura con los clasicos del rock.",
+    description: "Un grupo de amigos unidos por la música y las ganas de pasarlo bien: pop, rock y todo lo necesario para animar el ambiente.",
     image: "claxon_boys.jpg",
     href: "/claxon",
     color: "accent",
@@ -37,7 +37,7 @@ const groups = [
   {
     id: "charanga",
     name: "Charanga New Paentamala",
-    description: "La fiesta asegurada en fiestas populares, bodas y eventos con repertorio festivo.",
+    description: "La fiesta asegurada en fiestas populares, bodas y todo lo que te propongas",
     image: "charanga.jpeg",
     href: "/charanga",
     color: "primary",
@@ -71,10 +71,10 @@ export function GroupsSection() {
             <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Nuestras Agrupaciones</span>
           </div>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4">
-            Cuatro estilos, <span className="text-gradient-animated">una pasion</span>
+            Mucho más que <span className="text-gradient-animated">una banda</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Desde la solemnidad de la banda sinfonica hasta la energia del rock, tenemos algo para cada momento.
+            Diferentes agrupaciones, diferentes sonidos pero una misma pasión por la música.
           </p>
         </div>
 
