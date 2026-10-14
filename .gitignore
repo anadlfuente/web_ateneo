@@ -14,4 +14,9 @@ node_modules
 .next/
 .DS_Store
 
+# Backend PHP
+api/vendor/
+api/config.php
+
+# Web estática generada
 out/
