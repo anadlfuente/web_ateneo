@@ -9,8 +9,6 @@ const navigation = [
   { name: "Sobre nosotros", href: "#sobre-nosotros",
     submenu: [
       { name: "Historia", href: "/historia" },
-      { name: "Junta Directiva", href: "/junta" },
-      { name: "Reglamento", href: "/legal" },
       { name: "Transparencia", href: "/transparencia" },
     ],
    },
