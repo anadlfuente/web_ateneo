@@ -1,10 +1,54 @@
 "use client"
 
+import { useState, type ChangeEvent, type FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Mail, Phone, MapPin, Send, User } from "lucide-react"
+import { Mail, Phone, MapPin, Send, User, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
+
+// En local usa la dirección de .env.development.local; en el hosting, /api/contacto.php
+const URL_CONTACTO = process.env.NEXT_PUBLIC_CONTACT_URL || "/api/contacto.php"
+
+const formularioVacio = { nombre: "", email: "", asunto: "", mensaje: "", web: "" }
 
 export function ContactSection() {
+  const [form, setForm] = useState(formularioVacio)
+  const [privacidad, setPrivacidad] = useState(false)
+  const [estado, setEstado] = useState<"inicial" | "enviando" | "enviado" | "error">("inicial")
+  const [mensajeError, setMensajeError] = useState("")
+
+  // Guarda lo que se escribe en cada campo
+  function cambiar(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  // Envía los datos al PHP
+  async function enviar(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setEstado("enviando")
+    setMensajeError("")
+
+    try {
+      const respuesta = await fetch(URL_CONTACTO, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+      const datos = await respuesta.json().catch(() => null)
+
+      if (respuesta.ok && datos?.ok) {
+        setEstado("enviado")
+        setForm(formularioVacio)
+        setPrivacidad(false)
+      } else {
+        setEstado("error")
+        setMensajeError(datos?.error || "No se ha podido enviar el mensaje. Inténtalo más tarde.")
+      }
+    } catch {
+      setEstado("error")
+      setMensajeError("No se ha podido conectar. Comprueba tu conexión e inténtalo de nuevo.")
+    }
+  }
+
   return (
     <section id="contacto" className="py-24 bg-white relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -12,23 +56,20 @@ export function ContactSection() {
           {/* Left column - Info */}
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 rounded-full mb-6">
-              <User className="w-4 h-4 text-primary-blue" /> 
+              <User className="w-4 h-4 text-primary-blue" />
               <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Contacto</span>
             </div>
             <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
               Hablemos
             </h2>
             <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-              Ya sea para unirte a una de nuestras agrupaciones, contratar nuestros servicios 
+              Ya sea para unirte a una de nuestras agrupaciones, contratar nuestros servicios
               o simplemente saludarnos, estamos aquí para ayudarte.
             </p>
-            
+
             {/* Contact info */}
             <div className="space-y-6 mb-10">
-              <a 
-                href="mailto:rrssateneomieres@gmail.com" 
-                className="flex items-center gap-4 group"
-              >
+              <a href="mailto:rrssateneomieres@gmail.com" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
                   <Mail className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
                 </div>
@@ -37,11 +78,8 @@ export function ContactSection() {
                   <p className="font-medium text-foreground">rrssateneomieres@gmail.com</p>
                 </div>
               </a>
-              
-              <a 
-                href="tel:+34681188519" 
-                className="flex items-center gap-4 group"
-              >
+
+              <a href="tel:+34681188519" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
                   <Phone className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
                 </div>
@@ -66,8 +104,8 @@ export function ContactSection() {
             <div className="p-6 bg-muted rounded-lg">
               <h3 className="font-semibold text-foreground mb-3">Nuestros Servicios</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Ofrecemos servicios musicales para todo tipo de eventos: conciertos, 
-                fiestas patronales, celebraciones, eventos corporativos y mucho más. 
+                Ofrecemos servicios musicales para todo tipo de eventos: conciertos,
+                fiestas patronales, celebraciones, eventos corporativos y mucho más.
                 Contacta con nosotros para un presupuesto personalizado.
               </p>
             </div>
@@ -77,46 +115,117 @@ export function ContactSection() {
           <div>
             <div className="bg-muted rounded-lg p-8 lg:p-10">
               <h3 className="font-serif text-2xl text-foreground mb-6">
-                Envianos un Mensaje
+                Envíanos un mensaje
               </h3>
-              
-              <form className="space-y-4">
+
+              <form onSubmit={enviar} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <Input 
+                  <Input
+                    name="nombre"
+                    value={form.nombre}
+                    onChange={cambiar}
                     placeholder="Nombre"
+                    required
+                    maxLength={100}
                     className="bg-white border-border focus:border-accent"
                   />
-                  <Input 
+                  <Input
+                    name="email"
                     type="email"
+                    value={form.email}
+                    onChange={cambiar}
                     placeholder="Email"
+                    required
                     className="bg-white border-border focus:border-accent"
                   />
                 </div>
 
-                <select 
+                <select
+                  name="asunto"
+                  value={form.asunto}
+                  onChange={cambiar}
                   className="w-full px-4 py-3 rounded-md bg-white border border-border text-foreground focus:border-accent focus:outline-none"
                 >
                   <option value="">Selecciona un asunto</option>
-                  <option value="unirse">Quiero unirme a una agrupacion</option>
+                  <option value="unirse">Quiero unirme a una agrupación</option>
                   <option value="contratar">Contratar servicios</option>
-                  <option value="patrocinio">Informacion sobre patrocinio</option>
+                  <option value="patrocinio">Información sobre patrocinio</option>
                   <option value="socio">Hacerme socio</option>
                   <option value="otro">Otro</option>
                 </select>
 
-                <textarea 
+                <textarea
+                  name="mensaje"
+                  value={form.mensaje}
+                  onChange={cambiar}
                   rows={5}
                   placeholder="Tu mensaje..."
+                  required
+                  maxLength={5000}
                   className="w-full px-4 py-3 rounded-md bg-white border border-border text-foreground focus:border-accent focus:outline-none resize-none"
                 />
 
-                <Button 
+                {/* Campo trampa antispam: invisible para las personas, los robots lo rellenan */}
+                <input
+                  type="text"
+                  name="web"
+                  value={form.web}
+                  onChange={cambiar}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-2499.75 w-px h-px opacity-0"
+                />
+
+                {/* Aceptación de la política de privacidad */}
+                <label className="flex items-start gap-3 text-sm text-muted-foreground cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={privacidad}
+                    onChange={(e) => setPrivacidad(e.target.checked)}
+                    required
+                    className="mt-1 h-4 w-4 accent-accent"
+                  />
+                  <span>
+                    He leído y acepto la{" "}
+                    <a href="/legal/" target="_blank" className="text-accent underline hover:no-underline">
+                      política de privacidad
+                    </a>
+                    .
+                  </span>
+                </label>
+
+                <Button
                   type="submit"
+                  disabled={estado === "enviando"}
                   className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-6"
                 >
-                  <Send className="w-4 h-4 mr-2" />
-                  Enviar Mensaje
+                  {estado === "enviando" ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Enviar mensaje
+                    </>
+                  )}
                 </Button>
+
+                {/* Mensajes de resultado */}
+                {estado === "enviado" && (
+                  <div className="flex items-start gap-3 p-4 rounded-md bg-green-50 text-green-800 text-sm" role="status">
+                    <CheckCircle2 className="w-5 h-5 shrink-0" />
+                    <p>¡Gracias! Hemos recibido tu mensaje y te responderemos lo antes posible.</p>
+                  </div>
+                )}
+                {estado === "error" && (
+                  <div className="flex items-start gap-3 p-4 rounded-md bg-red-50 text-red-800 text-sm" role="alert">
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <p>{mensajeError}</p>
+                  </div>
+                )}
               </form>
             </div>
           </div>
