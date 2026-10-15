@@ -29,7 +29,7 @@ export default function BandaPage() {
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 py-16 md:pt-20 pb-12 space-y-24">
-        <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 md:text-justify">
+        <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 text-justify hyphens-auto">
           {banda.introduccion.map((p, i) => (
             <p key={i}>
               <TextoRico texto={p} />
