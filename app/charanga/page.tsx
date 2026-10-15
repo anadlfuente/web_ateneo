@@ -27,7 +27,7 @@ export default function CharangaPage() {
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-12">
         <div>
           <h2 className="text-3xl md:text-4xl font-serif mb-6">{charanga.titulo}</h2>
-          <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 md:text-justify">
+          <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 text-justify hyphens-auto">
             {charanga.parrafos.map((p, i) => (
               <p key={i}>
                 <TextoRico texto={p} />
