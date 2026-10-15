@@ -17,7 +17,7 @@ export default function BloqueHistoria({ titulo, parrafos, imagen, alt, invertid
     if (imgRef.current?.complete) leerProporcion()
     }, [])
     const texto = (
-    <div className="text-lg leading-relaxed text-muted-foreground space-y-6 md:text-justify">
+    <div className="text-lg leading-relaxed text-muted-foreground space-y-6 text-justify hyphens-auto">
       {parrafos.map((p, i) => (
         <p key={i}>
           <TextoRico texto={p} />
