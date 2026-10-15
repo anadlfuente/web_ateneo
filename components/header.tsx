@@ -6,65 +6,67 @@ import { Menu, X, ChevronDown, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
-  { name: "Sobre nosotros", href: "#sobre-nosotros",
+  {
+    name: "Sobre nosotros",
+    href: "#sobre-nosotros",
     submenu: [
       { name: "Historia", href: "/historia" },
       { name: "Transparencia", href: "/transparencia" },
     ],
-   },
+  },
   {
     name: "Agrupaciones",
     href: "#agrupaciones",
     submenu: [
-      { name: "Banda Sinfonica", href: "/banda/historia", submenu: [
-      { name: "Historia", href: "/banda/historia" },
-      { name: "Directores", href: "/banda/directores" },
-    ]
-     },
-      { name: "Coral Cantares", href: "/coral/historia", submenu: [
-      { name: "Historia", href: "/coral/historia" },
-      { name: "Director", href: "/coral/director" },
-    ] },
+      {
+        name: "Banda Sinfónica",
+        href: "/banda/historia",
+        submenu: [
+          { name: "Historia", href: "/banda/historia" },
+          { name: "Directores", href: "/banda/directores" },
+        ],
+      },
+      {
+        name: "Coral Cantares",
+        href: "/coral/historia",
+        submenu: [
+          { name: "Historia", href: "/coral/historia" },
+          { name: "Director", href: "/coral/director" },
+        ],
+      },
       { name: "Claxon Boys", href: "/claxon" },
-      { name: "Charanga New Paentamala", href: "/charanga" },
+      { name: "New Charanga Paentamala", href: "/charanga" },
     ],
   },
   { name: "Noticias", href: "/noticias" },
   { name: "Contacto", href: "/contacto" },
-  {name: "Calendario", href: "/calendar",},
-  {name: "Galería", href: "/galeria",},
+  { name: "Calendario", href: "/calendar" },
+  { name: "Galería", href: "/galeria" },
 ]
 
-export function Header() { //Componente React
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false) // Estado base del menu móvil, la función setMobileMenuOpen cambia el estado
+export function Header() { // Componente React
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false) // Estado del menú móvil; setMobileMenuOpen lo cambia
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
 
-  useEffect(() => { //Efecuta cuando el componente aparece
+  useEffect(() => { // Se ejecuta cuando el componente aparece
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50) //Si scroleas más de 50 px, el estado de scrolled se vuelve true, cambia estilos
+      setScrolled(window.scrollY > 50) // Si se hace scroll más de 50 px, scrolled pasa a true y cambian los estilos
     }
-    window.addEventListener("scroll", handleScroll) // Controla el scroll constantemente
+    window.addEventListener("scroll", handleScroll) // Escucha el scroll constantemente
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-  }, [mobileMenuOpen])
-
+  // Con el menú móvil abierto, bloquea el scroll de la página
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : ""
   }, [mobileMenuOpen])
 
-  return ( // Aquí empieza el JSX, parte visual del componente
-    <header 
+  return ( // Aquí empieza el JSX, la parte visual del componente
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? "bg-white border-b border-border" 
+        scrolled
+          ? "bg-white border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -93,7 +95,7 @@ export function Header() { //Componente React
         <div className="flex items-center justify-between h-24 lg:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 group">
-          {/*Icono*/}
+            {/* Icono */}
             <img
               src="/logo_ateneo.png"
               alt="Ateneo Musical de Mieres"
@@ -108,9 +110,9 @@ export function Header() { //Componente React
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:gap-10">
-            {navigation.map((item) => ( //Recorre el array de navegación
+          {/* Desktop Navigation (a partir de 1280 px) */}
+          <div className="hidden xl:flex xl:items-center xl:gap-8">
+            {navigation.map((item) => ( // Recorre el array de navegación
               <div
                 key={item.name}
                 className="relative"
@@ -119,16 +121,16 @@ export function Header() { //Componente React
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 text-xs font-medium tracking-wide uppercase transition-colors underline-animation ${
-                    scrolled 
-                      ? "text-foreground hover:text-secondary" 
+                  className={`whitespace-nowrap flex items-center gap-1 text-xs font-medium tracking-wide uppercase transition-colors underline-animation ${
+                    scrolled
+                      ? "text-foreground hover:text-secondary"
                       : "text-white hover:text-white/70"
                   }`}
                 >
                   {item.name}
                   {item.submenu && <ChevronDown className="w-3 h-3" />}
                 </Link>
-                
+
                 {item.submenu && activeDropdown === item.name && (
                   <div className="absolute top-full left-0 mt-0.5 w-64 bg-white border border-border shadow-xl animate-in fade-in slide-in-from-top-2">
                     <div className="py-2">
@@ -164,9 +166,9 @@ export function Header() { //Componente React
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden xl:flex items-center gap-6">
             <Link href="/join">
-              <Button 
+              <Button
                 className={`px-8 py-2 text-sm font-medium tracking-wide uppercase transition-all radius-md ${
                   scrolled
                     ? "bg-secondary text-white hover:bg-secondary/90"
@@ -178,10 +180,11 @@ export function Header() { //Componente React
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button (por debajo de 1280 px) */}
           <button
             type="button"
-            className={`lg:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
+            aria-label="Abrir menú"
+            className={`xl:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -190,72 +193,71 @@ export function Header() { //Componente React
       </nav>
 
       {/* Mobile menu */}
-      {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto">
-            
-            {/* header del menú móvil */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-              <span className="font-serif text-lg">Menú</span>
+      {mobileMenuOpen && (
+        <div className="xl:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto">
 
-              <button onClick={() => setMobileMenuOpen(false)}>
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+          {/* Cabecera del menú móvil */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+            <span className="font-serif text-lg">Menú</span>
 
-            {/* contenido scrollable */}
-            <div className="px-6 py-6 space-y-1">
-              {navigation.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="block py-4 text-lg font-medium text-foreground hover:text-secondary transition-colors border-b border-border"
-                    onClick={() => !item.submenu && setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
+            <button aria-label="Cerrar menú" onClick={() => setMobileMenuOpen(false)}>
+              <X className="w-6 h-6" />
+            </button>
+          </div>
 
-                  {item.submenu && (
-                    <div className="pl-4 py-2 space-y-1">
-                      {item.submenu.map((subItem) => (
-                        <div key={subItem.name}>
-                          
-                          <Link
-                            href={subItem.href}
-                            className="block py-2 text-sm text-muted-foreground hover:text-secondary"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {subItem.name}
-                          </Link>
+          {/* Contenido con scroll */}
+          <div className="px-6 py-6 space-y-1">
+            {navigation.map((item) => (
+              <div key={item.name}>
+                <Link
+                  href={item.href}
+                  className="block py-4 text-lg font-medium text-foreground hover:text-secondary transition-colors border-b border-border"
+                  onClick={() => !item.submenu && setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
 
-                          {"submenu" in subItem && subItem.submenu && (
-                            <div className="pl-4 space-y-1">
-                              {subItem.submenu.map((deepItem) => (
-                                <Link
-                                  key={deepItem.name}
-                                  href={deepItem.href}
-                                  className="block py-2 text-xs text-muted-foreground hover:text-secondary"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                >
-                                  {deepItem.name}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
+                {item.submenu && (
+                  <div className="pl-4 py-2 space-y-1">
+                    {item.submenu.map((subItem) => (
+                      <div key={subItem.name}>
+                        <Link
+                          href={subItem.href}
+                          className="block py-2 text-sm text-muted-foreground hover:text-secondary"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
 
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                        {"submenu" in subItem && subItem.submenu && (
+                          <div className="pl-4 space-y-1">
+                            {subItem.submenu.map((deepItem) => (
+                              <Link
+                                key={deepItem.name}
+                                href={deepItem.href}
+                                className="block py-2 text-xs text-muted-foreground hover:text-secondary"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {deepItem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
 
+            <Link href="/join" onClick={() => setMobileMenuOpen(false)} className="block">
               <Button className="w-full mt-6 bg-secondary text-white hover:bg-secondary/90 text-sm font-medium tracking-wide uppercase">
                 Hazte Socio
               </Button>
-            </div>
+            </Link>
           </div>
-        )}
+        </div>
+      )}
     </header>
   )
 }

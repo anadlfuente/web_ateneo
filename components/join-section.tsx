@@ -25,8 +25,8 @@ export function JoinSection() {
               <span className="text-accent-yellow text-sm font-semibold tracking-wider uppercase">Hazte socio</span>
             </div>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
-              Apoya tu Orchestra,<br />
-              <span className="text-accent-yellow">Transforma la Musica</span>
+              Apoya a la asociación,<br />
+              <span className="text-accent-yellow">Transforma la Música</span>
             </h2>
             <p className="text-white/80 text-lg mb-8 leading-relaxed">
               Conviértete en socio del Ateneo Musical de Mieres y ayúdanos a transformar 
