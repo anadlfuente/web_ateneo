@@ -28,7 +28,7 @@ export default function BandaPage() {
       </section>
 
       {/* Contenido */}
-      <section className="max-w-7xl mx-auto px-6 py-16 md:py-20 space-y-24">
+      <section className="max-w-7xl mx-auto px-6 py-16 md:pt-20 pb-12 space-y-24">
         <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 md:text-justify">
           {banda.introduccion.map((p, i) => (
             <p key={i}>
@@ -41,9 +41,8 @@ export default function BandaPage() {
           <BloqueHistoria key={bloque.titulo} {...bloque} invertido={i % 2 === 1} />
         ))}
       </section>
-
-      <section className="pb-10">
-        <div className="max-w-5xl mx-auto py-10">
+      <section className="pb-16">
+        <div className="max-w-7xl mx-auto px-6">
           <Organigram titulo="Organigrama" secciones={banda.organigrama} />
         </div>
       </section>

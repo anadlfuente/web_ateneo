@@ -116,19 +116,22 @@ export const banda = {
         "A lo largo de estos años, la Banda Sinfónica ha experimentado un crecimiento constante tanto en número de músicos como en calidad artística.",
         "Su repertorio se ha ampliado progresivamente, incorporando obras originales para banda, música contemporánea, bandas sonoras, espectáculos temáticos y proyectos multidisciplinares junto a coros, bandas de gaitas, solistas vocales y agrupaciones instrumentales.",
         "Este espíritu innovador ha convertido a la Banda Sinfónica del Ateneo Musical de Mieres en una agrupación capaz de afrontar proyectos cada vez más ambiciosos sin perder la esencia con la que nació en 2018: **hacer música de calidad, fomentar la convivencia entre sus integrantes y contribuir al desarrollo cultural de Mieres**.",
+        "Hoy, la Banda Sinfónica continúa escribiendo su historia concierto tras concierto. Lo que comenzó como **el sueño compartido de un grupo de músicos se ha transformado en una realidad consolidada**, reconocida dentro y fuera de Asturias, y con un futuro lleno de nuevos retos, nuevos escenarios y nuevos proyectos que seguirán llevando el nombre del Ateneo Musical de Mieres allí donde la música tenga cabida.",
       ],
     },
   ],
 
-  // Párrafo final de cierre, mostrado destacado y centrado
-  cierre:
-    "Hoy, la Banda Sinfónica continúa escribiendo su historia concierto tras concierto. Lo que comenzó como el sueño compartido de un grupo de músicos se ha transformado en una realidad consolidada, reconocida dentro y fuera de Asturias, y con un futuro lleno de nuevos retos, nuevos escenarios y nuevos proyectos que seguirán llevando el nombre del Ateneo Musical de Mieres allí donde la música tenga cabida.",
-
   organigrama: [
-    { nombre: "Flautas", miembros: ["Ana Pérez", "María García", "Laura Fernández"] },
-    { nombre: "Oboes", miembros: ["Juan López", "Carlos Rodríguez"] },
-    { nombre: "Clarinetes", miembros: ["Pedro Martínez", "Sofía Alonso"] },
-    { nombre: "Saxofones", miembros: ["Luis Fernández"] },
-    { nombre: "Trompetas", miembros: ["Miguel Sánchez", "Elena García"] },
+    { nombre: "Clarinetes", miembros: ["Nacho Fernández López (Concertino)", "Alma Suárez","Carlos Álvarez Vázquez","Carlos García Rodríguez","Corona Morató Cecchini","Daniela Boto López","Graciela Pozo","Héctor Gil Ortiz","Iñaki de Barutell García","Pablo García González","Pablo Laviana","Paula García Valles","Pilar Sierra García","Soraya Álvarez Ferreras","Gerardo Rodríguez Suárez"] },
+    { nombre: "Flautas", miembros: ["Alba Díaz de Anda", "Alba Fernández Antomil", "Ana de la Fuente","Chus Fernández","Miriam González Rodríguez","Nora Fariz Muñoz","Pablo Paniagua Álvarez","Simón Garnacho Escayo"] },
+    { nombre: "Oboes", miembros: ["Clara Suárez Díaz", "Lucia del Casar Cabal"] },
+    { nombre: "Saxofones", miembros: ["Ismael Fernández Arboleya","Jesús Martínez Barrial","José María Castillo Rojo","Lola Villa Suárez","Marta Carro Amigo","Pablo Jiménez Nogales","Siria González","Carmen Loriente Medina","Juanjo Ceñal Moral","Pablo Rodríguez"] },
+    { nombre: "Trompas", miembros: ["Beatriz Martínez Pardo", "Juan Cecchini Neketan","Yelitza J Piniella Grillet"] },
+    { nombre: "Trompetas", miembros: ["Diego García Jiménez", "Juan Neira","Laura López Quesada","Mara Moreno Ramos","Marcos Soto Díaz","Mateo Velasco Fernández","Pelayo Herrero Antolín"] },
+    { nombre: "Trombones", miembros: ["Marcos Malnero", "Mateo Valdés"] },
+    { nombre: "Bombardinos y Tubas", miembros: ["Alicia Gutiérrez Rico", "Pedro Blanco Rodríguez","Boniel Llaneza Carrio","Anna J Piniella Grillet","Julián Oliver López"] },
+    { nombre: "Violonchelos y Contrabajo", miembros: ["David García Cueto", "Valeria Pérez","Marco Pérez"] },
+    { nombre: "Percusión", miembros: ["Clara Sampietro Rafel", "Jose Ramón Vidal","Jaime Montaño Domínguez","Sergio Costa Pesquera","Miriam Casanova Benavent"] },
+    { nombre: "Piano", miembros: ["Hugo Álvarez Llanero"] },
   ],
 }
