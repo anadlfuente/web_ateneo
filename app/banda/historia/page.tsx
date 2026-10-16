@@ -4,6 +4,7 @@ import Organigram from "@/components/organigram-section"
 import BloqueHistoria from "@/components/text-design"
 import TextoRico from "@/components/text-bold"
 import { banda } from "@/data/banda.js"
+import { PageHero } from "@/components/page-hero"
 
 export default function BandaPage() {
   return (
@@ -11,21 +12,18 @@ export default function BandaPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[60vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${banda.banner.imagen}')` }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
-            {banda.banner.titulo}
-          </h1>
-          <p className="text-white/90 text-xl md:text-2xl lg:text-3xl font-serif mt-6 max-w-4xl">
-            {banda.banner.subtitulo}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        imagen={banda.banner.imagen}
+        altoMinimo="min-h-[60vh]"
+        centrado
+      >
+        <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
+          {banda.banner.titulo}
+        </h1>
+        <p className="text-white/90 text-xl md:text-2xl lg:text-3xl font-serif mt-6 max-w-4xl mx-auto">
+          {banda.banner.subtitulo}
+        </p>
+      </PageHero>
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 py-16 md:pt-20 pb-12 space-y-24">

@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { ChevronDown } from "lucide-react"
+import { PageHero } from "@/components/page-hero"
 
 import { LegalNotice } from "@/components/legal/LegalNotice"
 import { PrivacyPolicy } from "@/components/legal/PrivacyPolicy"
@@ -56,19 +57,15 @@ export default function LegalClient() {
           <Header />
     
           {/* Banner */}
-          <section className="relative h-[30vh] w-full">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/banner_2.png')" }}
-            />
-            <div className="absolute inset-0 bg-black/50" />
-    
-            <div className="relative z-10 h-full flex items-center justify-center">
-              <h1 className="text-white text-5xl md:text-7xl font-serif">
-                Reglamento
-              </h1>
-            </div>
-          </section>
+          <PageHero
+            imagen="/banner_2.png"
+            altoMinimo="min-h-[40vh]"
+            centrado
+          >
+            <h1 className="text-white text-5xl md:text-7xl font-serif leading-tight">
+              Reglamento
+            </h1>
+          </PageHero>
           <section className="relative w-full">
             <div className="max-w-4xl mx-auto py-20 px-6">
             

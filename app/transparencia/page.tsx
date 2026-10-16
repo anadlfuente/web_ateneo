@@ -1,6 +1,6 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-
+import { PageHero } from "@/components/page-hero"
 
 export default function TransparenciaPage() {
   return (
@@ -8,19 +8,15 @@ export default function TransparenciaPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[30vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/banner_2.png')" }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-white text-5xl md:text-7xl font-serif">
-            Transparencia
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        imagen="/banner_2.png"
+        altoMinimo="min-h-[40vh]"
+        centrado
+      >
+        <h1 className="text-white text-4xl md:text-7xl font-serif leading-tight">
+          Transparencia
+        </h1>
+      </PageHero>
       {/* Contenido */}
       <section className="max-w-6xl mx-auto px-6 py-24 space-y-32">
         <div>

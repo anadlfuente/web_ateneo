@@ -16,7 +16,7 @@ const navigation = [
   },
   {
     name: "Agrupaciones",
-    href: "#agrupaciones",
+    href: "/#agrupaciones",
     submenu: [
       {
         name: "Banda Sinfónica",

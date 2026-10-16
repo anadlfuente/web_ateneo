@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import TextoRico from "@/components/text-bold"
 import BloqueHistoria from "@/components/text-design"
 import { historia } from "@/data/historia"
+import { PageHero } from "@/components/page-hero"
 
 export default function HistoriaPage() {
   return (
@@ -10,21 +11,18 @@ export default function HistoriaPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[35vh] min-h-[220px] md:h-[40vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${historia.banner.imagen}')` }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
-            {historia.banner.titulo}
-          </h1>
-          <p className="text-white/90 text-lg md:text-xl lg:text-2xl font-serif mt-4 max-w-4xl">
-            {historia.banner.subtitulo}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        imagen={historia.banner.imagen}
+        altoMinimo="min-h-[40vh]"
+        centrado
+      >
+        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
+          {historia.banner.titulo}
+        </h1>
+        <p className="text-white/90 text-lg md:text-xl lg:text-2xl font-serif mt-4 max-w-4xl mx-auto">
+          {historia.banner.subtitulo}
+        </p>
+      </PageHero>
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-24">

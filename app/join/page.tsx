@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { JoinSection } from "@/components/join-section"
+import { PageHero } from "@/components/page-hero"
 
 export default function JoinPage() {
   return (
@@ -8,19 +9,15 @@ export default function JoinPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[30vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/banner.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-white text-5xl md:text-7xl font-serif">
-            Hazte Socio
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        imagen="/banner.jpg"
+        altoMinimo="min-h-[40vh]"
+        centrado
+      >
+        <h1 className="text-white text-5xl md:text-7xl font-serif leading-tight">
+          Hazte Socio
+        </h1>
+      </PageHero>
         <main>
             <JoinSection />
         </main>

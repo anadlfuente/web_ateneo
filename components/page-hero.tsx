@@ -10,17 +10,28 @@ interface PageHeroProps {
   alt?: string
   altoMinimo?: string // clase de Tailwind, p. ej. "min-h-[50vh]"
   children: ReactNode
+  posicion?: string
+  centrado?: boolean
 }
 
 // Alto del header (si no está definido en globals.css, se usa 6rem)
 // + espacio extra para que el contenido "respire".
 const ESPACIO_SUPERIOR = "calc(var(--header-h, 6rem) + 3.5rem)"
 
-export function PageHero({ imagen, alt = "", altoMinimo = "min-h-[50vh]", children }: PageHeroProps) {
+export function PageHero({ imagen, alt = "", altoMinimo = "min-h-[50vh]", posicion = "center", centrado = false, children }: PageHeroProps) {
   return (
-    <section className={`relative w-full ${altoMinimo} flex flex-col justify-end`}>
+    <section
+      className={`relative w-full ${altoMinimo} flex flex-col ${
+        centrado ? "justify-center text-center" : "justify-end"
+      }`}
+    >
       {/* Imagen y degradado: ocupan toda la sección, incluida la zona del header */}
-      <img src={imagen} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
+      <img
+        src={imagen}
+        alt={alt}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: posicion }}
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
 
       {/* Contenido: reserva arriba el alto del header + aire */}
