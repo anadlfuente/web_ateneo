@@ -37,6 +37,7 @@
   --chart-4: #0A0A0A;
   --chart-5: #666666;
   --radius: 0rem;
+  --header-h: 5rem;   /* alto del header en móvil */
 }
 
 .dark {
@@ -177,4 +178,10 @@ html {
   width: 60px;
   height: 1px;
   background: #0A0A0A;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 6rem; /* alto del header en escritorio */
+  }
 }
