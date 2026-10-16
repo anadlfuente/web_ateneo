@@ -89,15 +89,20 @@ export function ContactSection() {
                 </div>
               </a>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-accent" />
+              <a
+                href="https://www.google.com/maps/place/Ateneo+Musical+de+Mieres/@43.251465,-5.7737534,566m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd36f7d4f0f7e245:0x6780eb25dfba4437!8m2!3d43.251465!4d-5.7737534!16s%2Fg%2F11f9x52syn?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group"
+              >
+                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
+                  <MapPin className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Dirección</p>
                   <p className="font-medium text-foreground">Pl. del Mercado, 33600 Mieres, Asturias</p>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* Services list */}
