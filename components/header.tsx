@@ -22,7 +22,6 @@ const navigation = [
         name: "Banda Sinfónica",
         href: "/banda/historia",
         submenu: [
-          { name: "Historia", href: "/banda/historia" },
           { name: "Directores", href: "/banda/directores" },
         ],
       },
@@ -30,7 +29,6 @@ const navigation = [
         name: "Coral Cantares",
         href: "/coral/historia",
         submenu: [
-          { name: "Historia", href: "/coral/historia" },
           { name: "Director", href: "/coral/director" },
         ],
       },
