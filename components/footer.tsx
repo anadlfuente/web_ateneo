@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Instagram, Facebook, Youtube, Twitter } from "lucide-react"
+import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-cookies"
 
 const footerLinks = {
   agrupaciones: [
@@ -98,6 +99,9 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <BotonConfigurarCookies className="text-sm text-white/70 hover:text-white transition-colors text-left" />
+              </li>
             </ul>
           </div>
         </div>

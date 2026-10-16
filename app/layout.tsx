@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, DM_Serif_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { ConsentimientoProvider } from "@/components/cookies/consentimiento-provider"
+import { BannerCookies } from "@/components/cookies/banner-cookies"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -45,7 +47,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${dmSerif.variable} bg-background`}>
       <body className="font-sans antialiased">
-        {children}
+        <ConsentimientoProvider>
+          {children}
+          <BannerCookies />
+        </ConsentimientoProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
