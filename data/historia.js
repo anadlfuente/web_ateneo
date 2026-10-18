@@ -20,10 +20,10 @@ export const historia = {
     {
       titulo: "Un Ateneo, muchas agrupaciones",
       flotante:true,
-      imagen: "/historia/agrupaciones.webp", // ← añade esta foto
+      imagen: "/historia/ateneo_diagram.svg", // ← añade esta foto
       alt: "Agrupaciones del Ateneo Musical de Mieres",
       parrafos: [
-        "A lo largo de los años se han ido creando e incorporando nuevas agrupaciones, tanto de carácter temporal, como los pequeños grupos de cámara, como de manera permanente: la **Coral Cantares**, la **New Charanga Paentamala**, **Claxon Boys** y la **Banda Sinfónica**, agrupación fundadora de la asociación.",
+        "A lo largo de los años se han ido creando e incorporando nuevas agrupaciones, tanto de carácter temporal, como los pequeños grupos de cámara, como de manera permanente: la **Coral Cantares**, la **Charanga New Paentamala**, **Claxon Boys** y la **Banda Sinfónica**, agrupación fundadora de la asociación.",
         "Esta evolución ha permitido que el Ateneo abarque estilos y formatos musicales muy diversos, desde la música sinfónica tradicional hasta la música coral, las charangas populares, pequeños conjuntos instrumentales o proyectos contemporáneos. Gracias a esta diversidad, la asociación ha logrado adaptarse a diferentes públicos y participar en un amplio abanico de actividades culturales.",
         "Además, este **ecosistema musical** promueve la colaboración entre las distintas agrupaciones, que no solo comparten escenarios, sino también integrantes. Es habitual que un mismo músico forme parte de varias agrupaciones simultáneamente, enriqueciendo así su formación musical y favoreciendo el intercambio de experiencias entre los diferentes proyectos. Esta colaboración constante fortalece el sentimiento de pertenencia y crea una identidad común dentro del Ateneo Musical de Mieres.",
       ],
@@ -42,11 +42,21 @@ export const historia = {
     {
       titulo: "Espacio Cultural 19-10: nuestra casa",
       flotante:true,
-      imagen: "/historia/espacio-1910.webp", // ← añade esta foto
-      alt: "Sede del Ateneo Musical de Mieres en el Espacio Cultural 19•10",
+      imagen: null,
+      alt: "",
+      fotos: [
+        {
+          src: "/sponsors/espacio-cultura.jfif",
+          alt: "Sala grande del Espacio Cultural 19-10, donde ensayan la Banda Sinfónica y la Charanga New Paentamala",
+        },
+        {
+          src: "/historia/espacio-1910-sala-peque.webp",
+          alt: "Sala pequeña del Espacio Cultural 19-10, utilizada por la Coral Cantares y los grupos de cámara",
+        },
+      ],
       parrafos: [
-        "Actualmente, el Ateneo Musical de Mieres tiene su sede en la primera planta del **Espacio Cultural 19•10**, un edificio que se ha convertido en el centro neurálgico de la actividad de la asociación.",
-        "Este espacio ofrece dos salas: una de ellas alberga los ensayos de las agrupaciones más numerosas, como la Banda Sinfónica y la New Charanga Paentamala, mientras que la segunda, de menor tamaño, es utilizada por la Coral Cantares, los grupos de cámara, Claxon Boys y otras formaciones de pequeño formato.",
+        "Actualmente, el Ateneo Musical de Mieres tiene su sede en la primera planta del **Espacio Cultural 19-10**, un edificio que se ha convertido en el centro neurálgico de la actividad de la asociación.",
+        "Este espacio ofrece dos salas: una de ellas alberga los ensayos de las agrupaciones más numerosas, como la Banda Sinfónica y la Charanga New Paentamala, mientras que la segunda, de menor tamaño, es utilizada por la Coral Cantares, los grupos de cámara, Claxon Boys y otras formaciones de pequeño formato.",
         "Contar con unas **instalaciones propias** ha supuesto un importante impulso para el crecimiento del Ateneo, ya que permite organizar ensayos simultáneos, realizar reuniones, preparar conciertos y desarrollar nuevos proyectos musicales con mayor flexibilidad.",
       ],
     },
