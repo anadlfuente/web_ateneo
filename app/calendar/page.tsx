@@ -1,5 +1,6 @@
 "use client"
 
+import { EventosMes } from "@/components/eventos-mes"
 import { PageHero } from "@/components/page-hero"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -256,28 +257,12 @@ export default function CalendarPage() {
           </div>
         </div>
 
-        {/* Lista del mes (móvil): la cuadrícula de 7 columnas no cabe */}
-        <div className={`md:hidden space-y-3 ${cargando ? "opacity-50" : ""}`}>
-          {visibles.map((event) => {
-            const agrupacion = infoAgrupacion(event.agrupacion)
-            return (
-              <div
-                key={event.id}
-                className={`rounded-2xl border-l-4 border bg-white p-4 shadow-sm ${agrupacion.chip}`}
-              >
-                <div className="text-xs uppercase tracking-wider opacity-70 mb-1">
-                  {fechaLarga(event.fecha)}{event.hora ? ` · ${event.hora}` : ""}
-                </div>
-                <Link href={`/evento?id=${event.id}`} className="block font-semibold text-foreground hover:underline">
-                  {event.titulo}
-                </Link>
-                <div className="text-sm text-muted-foreground mt-1">
-                  {agrupacion.nombre} · {TIPOS[event.tipo]}
-                </div>
-                <LugarMaps evento={event} className="text-sm text-muted-foreground mt-1" />
-              </div>
-            )
-          })}
+         {/* Eventos del mes en zigzag (en el móvil sustituye a la cuadrícula) */}
+        <div className={cargando ? "opacity-50" : ""}>
+          <EventosMes
+            eventos={visibles.filter((e) => e.tipo !== "ensayo")}
+            titulo={`Eventos de ${monthName} ${year}`}
+          />
         </div>
 
         {!cargando && !error && visibles.length === 0 && (
