@@ -106,7 +106,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-[100svh] min-h-[560px] w-full overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -124,24 +124,24 @@ export function HeroSection() {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 h-full flex items-center">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-              <div className="max-w-3xl pl-6">
-                <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6 transition-all duration-700 delay-200 ${
+          <div className="relative z-10 h-full flex items-center pt-24 pb-24">
+            <div className="max-w-7xl mx-auto px-6 md:px-24 lg:px-32 w-full">
+              <div className="max-w-3xl">
+                <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full mb-4 md:mb-6 transition-all duration-700 delay-200 ${
                   index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 } ${slide.color === "blue" ? "bg-primary-blue" : slide.color === "yellow" ? "bg-accent-yellow" : "bg-accent-green"}`}>
-                  <span className={`text-sm font-bold tracking-wider uppercase ${slide.color === "yellow" ? "text-foreground" : "text-white"}`}>
+                  <span className={`text-xs sm:text-sm font-bold tracking-wider uppercase ${slide.color === "yellow" ? "text-foreground" : "text-white"}`}>
                     {slide.subtitle}
                   </span>
                 </div>
                 
-                <h1 className={`font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-6 transition-all duration-700 delay-300 ${
+                <h1 className={`font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-4 md:mb-6 break-words transition-all duration-700 delay-300 ${
                   index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}>
                   {slide.title}
                 </h1>
                 
-                <p className={`text-white/80 text-lg md:text-xl max-w-xl mb-10 transition-all duration-700 delay-400 ${
+                <p className={`text-white/80 text-base md:text-xl max-w-xl mb-8 md:mb-10 transition-all duration-700 delay-400 ${
                   index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}>
                   {slide.description}
@@ -150,7 +150,7 @@ export function HeroSection() {
                 <Link href={slide.href}>
                   <Button 
                     size="lg"
-                    className={`px-8 py-6 text-base font-semibold tracking-wide group ${
+                    className={`px-6 py-5 md:px-8 md:py-6 text-base font-semibold tracking-wide group ${
                       slide.color === "blue" 
                         ? "bg-primary-blue hover:bg-primary-blue/90 text-white" 
                         : slide.color === "yellow"
@@ -161,46 +161,68 @@ export function HeroSection() {
                     {slide.cta}
                     <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                </ Link>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       ))}
 
-      {/* Navigation Arrows */}
-      <div className="absolute bottom-1/2 translate-y-1/2 left-6 lg:left-12 z-20">
+      {/* Navigation Arrows (tablet y escritorio) */}
+      <div className="hidden md:block absolute bottom-1/2 translate-y-1/2 left-6 lg:left-12 z-20">
         <button 
           onClick={prevSlide}
+          aria-label="Diapositiva anterior"
           className="w-12 h-12 border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-foreground transition-all"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
       </div>
-      <div className="absolute bottom-1/2 translate-y-1/2 right-6 lg:right-12 z-20">
+      <div className="hidden md:block absolute bottom-1/2 translate-y-1/2 right-6 lg:right-12 z-20">
         <button 
           onClick={nextSlide}
+          aria-label="Diapositiva siguiente"
           className="w-12 h-12 border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-foreground transition-all"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              setCurrentSlide(index)
-              resetAutoPlay()}}
-            className={`h-0.5 transition-all duration-300 ${
-              index === currentSlide 
-                ? "w-12 bg-white" 
-                : "w-6 bg-white/40 hover:bg-white/60"
-            }`}
-          />
-        ))}
+      {/* Slide Indicators (+ flechas en móvil) */}
+      <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+        <button
+          onClick={prevSlide}
+          aria-label="Diapositiva anterior"
+          className="md:hidden w-10 h-10 border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-foreground transition-all"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
+        <div className="flex items-center gap-2 md:gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              aria-label={`Ir a la diapositiva ${index + 1}`}
+              onClick={() => {
+                setCurrentSlide(index)
+                resetAutoPlay()
+              }}
+              className={`h-0.5 transition-all duration-300 ${
+                index === currentSlide 
+                  ? "w-8 md:w-12 bg-white" 
+                  : "w-4 md:w-6 bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={nextSlide}
+          aria-label="Diapositiva siguiente"
+          className="md:hidden w-10 h-10 border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-foreground transition-all"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Scroll indicator */}
