@@ -26,7 +26,7 @@ interface Video {
 // ── Edita aquí la lista. El primero es el que aparece al cargar la página. ──
 const videos: Video[] = [
   { id: "pwpK8ZQyvNo", titulo: "Star Wars (Antroxu 2026)", agrupacion: "Banda Sinfónica", fecha: "2026" },
-  { id: "fuh-PHW75zs", titulo: "SKANDA (Folixa na Primavera 2024)", agrupacion: "Banda Sinfónica", fecha: "2025" },
+  { id: "fuh-PHW75zs", titulo: "SKANDA (Folixa na Primavera 2025)", agrupacion: "Banda Sinfónica", fecha: "2025" },
   { id: "QEBpcIM9A1o", titulo: "Pasodoble Ateneo Musical de Mieres", agrupacion: "Banda Sinfónica", fecha: "2023" },
   { id: "KzxI5TT36v8", titulo: "At Kitty O´Shea´s (Festival de Bandas Villa de Mieres)", agrupacion: "Banda Sinfónica", fecha: "2023" },
 ]
