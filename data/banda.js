@@ -54,7 +54,7 @@ export const banda = {
     {
       titulo: "Una programación cada vez más ambiciosa",
       flotante: true,
-      imagen: "/historia/conciertos.jpg", // ← añade esta foto
+      imagen: "/banda/conciertos-ateneo.png", // ← añade esta foto
       alt: "Concierto de la Banda Sinfónica del Ateneo Musical de Mieres",
       parrafos: [
         "Consolidada ya como una de las principales agrupaciones del concejo, la Banda Sinfónica comenzó a desarrollar una intensa actividad artística, participando cada año en los conciertos de **Primavera**, **Santa Cecilia** y **Navidad**, además de numerosos festivales y actuaciones organizadas por el Ayuntamiento de Mieres.",
@@ -65,8 +65,8 @@ export const banda = {
     {
       titulo: "El hermanamiento con Totana y la gira por Murcia",
       flotante: true,
-      imagen: "/historia/totana.jpg", // ← añade esta foto
-      alt: "Concierto conjunto de la Banda Sinfónica del Ateneo y la Agrupación Musical de Totana",
+      imagen: "/banda/ateneo-aguilas.webp", // ← añade esta foto
+      alt: "Banda del Ateneo Musical de Mieres en Águilas",
       parrafos: [
         "Uno de los momentos más importantes de la historia reciente de la Banda Sinfónica tuvo lugar en 2022, con motivo del hermanamiento con la **Agrupación Musical de Totana** (Murcia).",
         "La banda viajó hasta la Región de Murcia para ofrecer un concierto conjunto en Totana y participar posteriormente en otro hermanamiento musical con la banda del patronato de **Águilas**, compartiendo experiencias con músicos de otras comunidades autónomas y representando a Mieres fuera de Asturias por primera vez como agrupación.",
@@ -97,6 +97,16 @@ export const banda = {
         "Durante varios días, los músicos participaron en conciertos, desfiles y actividades culturales junto a agrupaciones procedentes de diferentes países, llevando el nombre del Ateneo Musical de Mieres a uno de los festivales más prestigiosos del mundo celta.",
       ],
     },
+    {
+      titulo: "Skanda regresa en clave de banda",
+      flotante: true,
+      imagen: "/banda/skanda-ateneo.jpg", // ← añade esta foto
+      alt: "La Banda Sinfónica del Ateneo Musical de Mieres en la Folixa Na Primavera 2025 con Skanda",
+      parrafos: [
+        "La vocación innovadora de la banda quedó nuevamente patente en la **Folixa na Primavera de 2025**, al acompañar a **Skanda**, referente del folk-rock asturiano, en su regreso a los escenarios tras una década de silencio, en un concierto extraordinario en el que también participó la Banda de Gaites Villa de Mieres. Esta colaboración permitió fusionar el sonido sinfónico con la energía del folk-rock en un espectáculo preparado especialmente para la ocasión, reafirmando la apuesta de la Banda Sinfónica por **proyectos transversales que conectan tradición, música popular y repertorio sinfónico**.",
+        ],
+    },
+
     {
       titulo: "Villafranca de los Caballeros",
       flotante: true,

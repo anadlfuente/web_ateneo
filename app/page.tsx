@@ -15,8 +15,8 @@ export default function Home() {
       <Header />
       <HeroSection />
       <VideosSection />
-      <GroupsSection />
       <CalendarSection />
+      <GroupsSection />
       <NewsSection />
       <SponsorsSection />
       <JoinSection />
