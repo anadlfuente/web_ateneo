@@ -4,6 +4,9 @@ import TextoRico from "@/components/text-bold"
 import Carrusel from "@/components/carrusel"
 import { charanga } from "@/data/charanga"
 import { PageHero } from "@/components/page-hero"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export default function CharangaPage() {
   return (
@@ -33,7 +36,33 @@ export default function CharangaPage() {
             ))}
           </div>
         </div>
+        {/* Contratación */}
+        <div className="rounded-2xl bg-primary-blue/15 border border-primary-blue/40 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="max-w-2xl">
+            <h3 className="text-2xl md:text-3xl font-serif mb-2">
+              ¿Quieres llevar la charanga a tu evento?
+            </h3>
+            <p className="text-base md:text-lg text-muted-foreground">
+              Ponemos música y ambiente en fiestas, celebraciones y todo tipo de eventos.
+              Escríbenos por instagram y cuéntanos qué tienes en mente, nosotros te ayudamos.
+            </p>
+          </div>
 
+          <a
+            href="https://www.instagram.com/charanganewpaentamala/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0"
+          >
+            <Button
+              size="lg"
+              className="w-full md:w-auto px-8 py-6 text-white font-semibold tracking-wide group bg-primary-blue hover:bg-primary-blue/90"
+            >
+              Contacta con nosotros
+              <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </a>
+        </div>
         <Carrusel fotos={charanga.fotos} />
       </section>
 

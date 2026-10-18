@@ -4,6 +4,9 @@ import TextoRico from "@/components/text-bold"
 import Carrusel from "@/components/carrusel"
 import { claxon } from "@/data/claxon"
 import { PageHero } from "@/components/page-hero"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export default function ClaxonPage() {
   return (
@@ -31,6 +34,18 @@ export default function ClaxonPage() {
                 <TextoRico texto={p} />
               </p>
             ))}
+          </div>
+          <div className="flex justify-center mt-8">
+            <Link href="/#contacto">
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-6 py-5 text-base font-semibold group border-primary-blue text-primary-blue bg-transparent hover:bg-primary-blue hover:text-white"
+              >
+                Contactar
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
         </div>
 
