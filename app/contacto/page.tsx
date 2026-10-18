@@ -12,7 +12,6 @@ export default function JoinPage() {
       <PageHero
         imagen="/banner_2.png"
         altoMinimo="min-h-[40vh]"
-        centrado
       >
         <h1 className="text-white text-5xl md:text-7xl font-serif leading-tight">
           Contacto

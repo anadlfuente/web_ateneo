@@ -1,0 +1,3 @@
+<FilesMatch "^(eventos-config|eventos-config\.local|eventos-db)\.php$">
+  Require all denied
+</FilesMatch>

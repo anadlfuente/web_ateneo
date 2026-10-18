@@ -20,3 +20,7 @@ api/config.php
 
 # Web estática generada
 out/
+
+# Calendario: contraseña del hosting e imágenes subidas
+api/eventos-config.php
+uploads/
