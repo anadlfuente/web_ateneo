@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight, Music, Mic2, MapPin, Clock } from "lucide-react"
-import { RehearsalSection } from "@/components/rehearsal-schedule"
+import { RehearsalSection, type Ensayo } from "@/components/rehearsal-schedule"
 import {
   type Evento, type AgrupacionId,
   AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, aISO, fechaLarga, urlMaps,
@@ -14,9 +14,9 @@ import {
 
 // Horario fijo de ensayos (cambia poco, así que sigue aquí).
 // Los ensayos puntuales (ensayo general, etc.) se meten como eventos de tipo "Ensayo".
-const ensayos = [
-  { agrupacion: "Banda Sinfónica", dia: "Lunes y Miércoles", hora: "20:00 - 22:00", color: "#3399FE", icon: Music, href: "/banda" },
-  { agrupacion: "Coral Cantares", dia: "Martes y Jueves", hora: "19:30 - 21:30", color: "#F6F61B", icon: Mic2, href: "/coral" },
+const ensayos: Ensayo[] = [
+  { agrupacion: "banda", dias: "Lunes y miércoles", hora: "20:00 – 22:00", icon: Music, href: "/banda" },
+  { agrupacion: "coral", dias: "Martes y jueves",   hora: "19:30 – 21:30", icon: Mic2,  href: "/coral" },
 ]
 
 const navButton = `
@@ -287,7 +287,7 @@ export default function CalendarPage() {
         )}
       </section>
 
-      <section className="mb-10">
+      <section className="mb-20">
         <RehearsalSection ensayos={ensayos} />
       </section>
       <Footer />
