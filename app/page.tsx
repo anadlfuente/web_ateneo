@@ -7,12 +7,14 @@ import { SponsorsSection } from "@/components/sponsors-section"
 import { JoinSection } from "@/components/join-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { VideosSection } from "@/components/youtube-section"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
       <HeroSection />
+      <VideosSection />
       <GroupsSection />
       <CalendarSection />
       <NewsSection />

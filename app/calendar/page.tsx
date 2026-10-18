@@ -37,7 +37,7 @@ function LugarMaps({ evento, className = "" }: { evento: Evento; className?: str
       title="Ver en Google Maps"
       className={`flex items-center gap-1 hover:underline ${className}`}
     >
-      <MapPin className="w-3 h-3 flex-shrink-0" />
+      <MapPin className="w-3 h-3 shrink-0" />
       <span className="truncate">{evento.lugar}</span>
     </a>
   )
@@ -195,7 +195,7 @@ export default function CalendarPage() {
             </div>
             <div className="grid grid-cols-7 gap-2">
               {calendarDays.map((day, index) => {
-                if (!day) return <div key={index} className="min-h-[90px]" />
+                if (!day) return <div key={index} className="min-h-22.5" />
 
                 const columna = index % 7
                 const isWeekend = columna >= 5
@@ -206,7 +206,7 @@ export default function CalendarPage() {
                   <div
                     key={index}
                     className={`
-                      min-h-[110px] rounded-2xl border p-3 shadow-sm
+                      min-h-27.5 rounded-2xl border p-3 shadow-sm
                       hover:shadow-md hover:-translate-y-1 transition-all duration-200
                       ${isWeekend ? "bg-primary-blue/5" : "bg-white"}
                       ${esHoy ? "border-primary-blue ring-2 ring-primary-blue/30" : "border-border/50"}
@@ -230,7 +230,7 @@ export default function CalendarPage() {
 
                         {event.hora && (
                           <div className="text-[10px] opacity-70 flex items-center gap-1">
-                            <Clock className="w-3 h-3 flex-shrink-0" />
+                            <Clock className="w-3 h-3 shrink-0" />
                             {event.hora}
                           </div>
                         )}
