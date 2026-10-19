@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
-import { getNoticias, formatearFecha, type Categoria } from "@/lib/noticias"
+import { getNoticias, formatearFecha, BANNER_NOTICIAS, type Categoria } from "@/lib/noticias"
 import { RedesFlotante } from "@/components/redes-flotante"
 
 const POR_PAGINA = 6
@@ -39,7 +39,7 @@ export default function NoticiasPage() {
       <Header />
 
       {/* Banner */}
-      <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
+      <PageHero imagen={BANNER_NOTICIAS} altoMinimo="min-h-[40vh]">
         <h1 className="text-white text-5xl md:text-7xl font-serif">Últimas noticias</h1>
       </PageHero>
 
@@ -64,30 +64,46 @@ export default function NoticiasPage() {
           <div className="space-y-10">
             {actuales.map((item) => (
               <article key={item.slug} className="group border-b border-border pb-10">
-                <Link href={`/noticias/${item.slug}`} className="block">
-                  <div className="overflow-hidden rounded-2xl mb-6">
-                    <img
-                      src={item.imagen}
-                      alt={item.titulo}
-                      className="w-full h-[300px] object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                <Link
+                  href={`/noticias/${item.slug}`}
+                  className="grid md:grid-cols-[2fr_3fr] gap-6 md:gap-10 items-center"
+                >
+                  {/* Foto con su proporción real (sin recortes), con un límite de altura */}
+                    <div className="flex justify-center">
+                      <div className="overflow-hidden rounded-2xl">
+                        <img
+                          src={item.imagen}
+                          alt={item.titulo}
+                          loading="lazy"
+                          className="block w-auto h-auto max-w-full max-h-[20rem] group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    </div>
+
+                  {/* Texto */}
+                  <div>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground mb-3 uppercase tracking-wider">
+                      <span>{item.categoria}</span>
+                      <span>•</span>
+                      <time dateTime={item.fecha}>{formatearFecha(item.fecha)}</time>
+                      {item.fuente && (
+                        <>
+                          <span>•</span>
+                          <span>{item.fuente.medio}</span>
+                        </>
+                      )}
+                    </div>
+
+                    <h2 className="font-serif text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors">
+                      {item.titulo}
+                    </h2>
+                    <p className="text-muted-foreground mb-4 line-clamp-3">{item.resumen}</p>
+
+                    <span className="inline-flex items-center text-accent font-semibold uppercase text-sm">
+                      Leer más
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </div>
-
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3 uppercase tracking-wider">
-                    <span>{item.categoria}</span>
-                    <span>•</span>
-                    <time dateTime={item.fecha}>{formatearFecha(item.fecha)}</time>
-                  </div>
-
-                  <h2 className="font-serif text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors">
-                    {item.titulo}
-                  </h2>
-                  <p className="text-muted-foreground mb-4 max-w-3xl">{item.resumen}</p>
-
-                  <span className="inline-flex items-center text-accent font-semibold uppercase text-sm">
-                    Leer más
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </span>
                 </Link>
               </article>
             ))}
