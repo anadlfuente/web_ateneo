@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 const sponsors = [
-  { name: "Espacio Cultura 1910", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/"},
+  { name: "Espacio Cultural 1910", tier: "principal", logo: "/sponsors/espacio-cultura.jfif", link: "https://www.instagram.com/1910mieres/"},
   { name: "RTVE", tier: "principal", logo: "/sponsors/rtve.png", link: "https://www.rtve.es/" },
   { name: "La Nueva España", tier: "principal", logo: "/sponsors/La nueva España.png", link: "https://www.lne.es/" },
   { name: "Montepío", tier: "colaborador", logo: "/sponsors/montepio-horizontal.png", link: "https://www.montepio.es/" },
@@ -75,7 +75,7 @@ export function SponsorsSection() {
             Apoya la cultura musical en Mieres
           </h3>
           <p className="text-white/80 mb-6 max-w-lg mx-auto">
-            Unete a nuestra familia de colaboradores y ayúdanos a llevar nuestra música a más gente.
+            Únete a nuestra familia de colaboradores y ayúdanos a llevar nuestra música a más gente.
           </p>
           <Button 
             asChild

@@ -25,7 +25,7 @@ export const directores = {
         "Ha dirigido la Agrupación Musical Cruz Cubierta y la Banda Juvenil de Benetússer, en Valencia, y es director de la **Banda Sinfónica del Ateneo Musical de Mieres** desde septiembre de 2025. Ha escrito varias obras de teatro musical, además de un pasodoble y una marcha de procesión.",
         "Ha desarrollado su experiencia como docente durante diez años en escuelas de música de Valencia, Catarroja, Benetússer (Valencia), Herencia (Ciudad Real) y Villafranca de los Caballeros (Toledo). Además, fue profesor de música en el IES Maimónides de Córdoba durante un curso.",
         "Ha trabajado como profesor de tuba y bombardino en los conservatorios profesionales de música de Santander, Gijón y Oviedo, donde ejerce actualmente su labor docente.",
-        "En el mundo de las charangas, es fundador de la charanga «La Melopea» (Toledo), con la que ha ganado varios premios nacionales y grabó el CD «Si me gusta la música, es por el bombo». Ha sido jurado en el Concurso Nacional de Charangas de Escucha (Teruel). Actualmente es miembro de la **New Charanga Paentamala**, agrupación del Ateneo Musical de Mieres.",
+        "En el mundo de las charangas, es fundador de la charanga «La Melopea» (Toledo), con la que ha ganado varios premios nacionales y grabó el CD «Si me gusta la música, es por el bombo». Ha sido jurado en el Concurso Nacional de Charangas de Escucha (Teruel). Actualmente es miembro de la **Charanga New Paentamala**, agrupación del Ateneo Musical de Mieres.",
         "Apasionado de la música y la enseñanza, participa activamente en la creación de proyectos atractivos para el público y los intérpretes, intentando transmitir la pasión con la que vive este arte.",
       ],
     },

@@ -63,7 +63,7 @@ export function ContactSection() {
               Hablemos
             </h2>
             <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-              Ya sea para unirte a una de nuestras agrupaciones, contratar nuestros servicios
+              Ya sea para unirte a la banda o la coral, contratar nuestros servicios
               o simplemente saludarnos, estamos aquí para ayudarte.
             </p>
 
@@ -105,15 +105,6 @@ export function ContactSection() {
               </a>
             </div>
 
-            {/* Services list */}
-            <div className="p-6 bg-muted rounded-lg">
-              <h3 className="font-semibold text-foreground mb-3">Nuestros Servicios</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Ofrecemos servicios musicales para todo tipo de eventos: conciertos,
-                fiestas patronales, celebraciones, eventos corporativos y mucho más.
-                Contacta con nosotros para un presupuesto personalizado.
-              </p>
-            </div>
           </div>
 
           {/* Right column - Form */}
@@ -152,7 +143,8 @@ export function ContactSection() {
                   className="w-full px-4 py-3 rounded-md bg-white border border-border text-foreground focus:border-accent focus:outline-none"
                 >
                   <option value="">Selecciona un asunto</option>
-                  <option value="unirse">Quiero unirme a una agrupación</option>
+                  <option value="unirse">Quiero unirme a la banda</option>
+                  <option value="unirse">Quiero unirme a la coral</option>
                   <option value="contratar">Contratar servicios</option>
                   <option value="patrocinio">Información sobre patrocinio</option>
                   <option value="socio">Hacerme socio</option>

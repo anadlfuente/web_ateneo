@@ -8,12 +8,19 @@ export const transparencia = {
   },
 
   junta: [
-    { cargo: "Vicepresidencia", nombre: "Nombre Apellido Apellido" },
-    { cargo: "Secretaría", nombre: "Nombre Apellido Apellido" },
-    { cargo: "Tesorería", nombre: "Anabel Vidal" },
-    { cargo: "Inspector", nombre: "Jose María Castillo" },
+    { cargo: "Vicepresidencia", nombre: "Yolanda Díaz Calvo" },
+    { cargo: "Secretaría", nombre: "Jorge Enrique Pérez" },
+    { cargo: "Tesorería", nombre: "Ana Isabel Vidal Pereira" },
+    { cargo: "Inspector", nombre: "Jose María Castillo Rojo" },
+    { cargo: "Vocal", nombre: "Ignacio Fernández López" },
+    { cargo: "Vocal", nombre: "Mª Asunción Tejedor Huerta" },
+    { cargo: "Vocal", nombre: "Jesús Calvete Mato" },
     { cargo: "Vocal", nombre: "Marco Pérez" },
   ],
+  estatutos : {
+    archivo: "/documentos/estatutos-ateneo.pdf",
+    actualizacion: "2018",
+  },
 
   memorias: [
     { year: 2025, archivo: "/memorias/memoria-2025.pdf" },

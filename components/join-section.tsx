@@ -26,7 +26,7 @@ export function JoinSection() {
             </div>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
               Apoya a la asociación,<br />
-              <span className="text-accent-yellow">Transforma la Música</span>
+              <span className="text-accent-yellow">transforma la Música</span>
             </h2>
             <p className="text-white/80 text-lg mb-8 leading-relaxed">
               Conviértete en socio del Ateneo Musical de Mieres y ayúdanos a transformar 
@@ -73,7 +73,7 @@ export function JoinSection() {
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle2 className="w-8 h-8 text-accent" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground mb-3">Gracias por tu Interes</h3>
+                <h3 className="font-serif text-2xl text-foreground mb-3">Gracias por tu Interés</h3>
                 <p className="text-muted-foreground">Nos pondremos en contacto contigo muy pronto.</p>
               </div>
             ) : (
@@ -106,7 +106,7 @@ export function JoinSection() {
 
                   <Input 
                     type="tel"
-                    placeholder="Telefono"
+                    placeholder="Teléfono"
                     className="border-border focus:border-accent"
                   />
 
