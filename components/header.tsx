@@ -33,7 +33,7 @@ const navigation = [
         ],
       },
       { name: "Claxon Boys", href: "/claxon" },
-      { name: "New Charanga Paentamala", href: "/charanga" },
+      { name: "Charanga New Paentamala", href: "/charanga" },
     ],
   },
   { name: "Noticias", href: "/noticias" },
