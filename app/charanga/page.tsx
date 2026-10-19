@@ -8,6 +8,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { RedesFlotante } from "@/components/redes-flotante"
+import Image from "next/image"
 
 export default function CharangaPage() {
   return (
@@ -27,11 +28,21 @@ export default function CharangaPage() {
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-12">
-        <div>
+        <div className="flow-root">
           <h2 className="text-3xl md:text-4xl font-serif mb-6">{charanga.titulo}</h2>
-          <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 text-justify hyphens-auto">
+
+          <div className="text-lg md:text-xl leading-relaxed text-muted-foreground text-justify hyphens-auto">
+            {/* Logo flotante */}
+            <Image
+              src={charanga.logo.imagen}
+              alt={charanga.logo.alt}
+              width={600}
+              height={600}
+              className="block mx-auto mb-8 w-2/3 max-w-xs h-auto md:float-right md:w-[38%] md:max-w-sm md:ml-10 md:mb-6 md:mt-1"
+            />
+
             {charanga.parrafos.map((p, i) => (
-              <p key={i}>
+              <p key={i} className="mb-6 last:mb-0">
                 <TextoRico texto={p} />
               </p>
             ))}

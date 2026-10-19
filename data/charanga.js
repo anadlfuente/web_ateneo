@@ -5,6 +5,10 @@ export const charanga = {
   },
 
   titulo: "La música sale a la calle",
+  logo: {
+  imagen: "/charanga/charanga-logo.png",
+  alt: "Logo de la Charanga New Paentamala",
+  },
 
   parrafos: [
     "La **charanga New Paentamala** nace en Mieres en el verano de 2023 con la idea de cuatro amigos de retomar la antigua charanga Paentamala, agrupación en la que se habían formado y desarrollado dentro de esta faceta musical.",

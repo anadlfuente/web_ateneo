@@ -5,6 +5,7 @@ import Carrusel from "@/components/carrusel"
 import { claxon } from "@/data/claxon"
 import { PageHero } from "@/components/page-hero"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
@@ -26,16 +27,27 @@ export default function ClaxonPage() {
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-12">
-        <div>
+        <div className="flow-root">
           <h2 className="text-3xl md:text-4xl font-serif mb-6">{claxon.titulo}</h2>
-          <div className="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 text-justify hyphens-auto">
+
+          <div className="text-lg md:text-xl leading-relaxed text-muted-foreground text-justify hyphens-auto">
+            {/* Logo flotante */}
+            <Image
+              src={claxon.logo.imagen}
+              alt={claxon.logo.alt}
+              width={600}
+              height={600}
+              className="block mx-auto mb-8 w-2/3 max-w-xs h-auto md:float-right md:w-[38%] md:max-w-sm md:ml-10 md:mb-6 md:mt-1"
+            />
+
             {claxon.parrafos.map((p, i) => (
-              <p key={i}>
+              <p key={i} className="mb-6 last:mb-0">
                 <TextoRico texto={p} />
               </p>
             ))}
           </div>
-          <div className="flex justify-center mt-8">
+
+          <div className="clear-both flex justify-center pt-8">
             <Link href="/#contacto">
               <Button
                 variant="outline"

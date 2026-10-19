@@ -5,6 +5,10 @@ export const claxon = {
   },
 
   titulo: "Música para cantar, bailar y recordar",
+  logo: {
+  imagen: "/claxon/claxon-logo.png",
+  alt: "Logo de los Claxon Boys",
+  },
 
   parrafos: [
     "Los **Claxon Boys** son una formación mierense que destaca por su repertorio variado y su apuesta por la música popular. Desde los grandes éxitos de los años 60 hasta los temas más conocidos de los 2000, sus actuaciones invitan a cantar, bailar y disfrutar de canciones que forman parte de la memoria colectiva. La rumba, el pasodoble, la cumbia y la música asturiana completan una propuesta que combina estilos y generaciones.",
@@ -14,7 +18,10 @@ export const claxon = {
   ],
 
   fotos: [
+    { src: "/claxon/claxon5.jpg", alt: "Descripción de la foto 1" },
+    { src: "/claxon/claxon4.jpg", alt: "Descripción de la foto 1" },
     { src: "/claxon/claxon1.jpg", alt: "Descripción de la foto 1" },
     { src: "/claxon/claxon2.jpg", alt: "Descripción de la foto 2" },
+    { src: "/claxon/claxon3.jpg", alt: "Descripción de la foto 2" },
   ],
 }
