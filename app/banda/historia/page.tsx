@@ -5,6 +5,7 @@ import BloqueHistoria from "@/components/text-design"
 import TextoRico from "@/components/text-bold"
 import { banda } from "@/data/banda.js"
 import { PageHero } from "@/components/page-hero"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function BandaPage() {
   return (
@@ -44,7 +45,7 @@ export default function BandaPage() {
           <Organigram titulo="Organigrama" secciones={banda.organigrama} />
         </div>
       </section>
-
+      <RedesFlotante />
       <Footer />
     </main>
   )

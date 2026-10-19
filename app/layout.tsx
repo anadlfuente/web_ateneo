@@ -53,7 +53,6 @@ export default function RootLayout({
           <BannerCookies />
         </ConsentimientoProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
-        <RedesFlotante />
       </body>
     </html>
   )

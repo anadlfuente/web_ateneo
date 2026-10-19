@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Organigram  from "@/components/organigram-section"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export const seccionesCoral = [
   {
@@ -145,6 +146,7 @@ export default function CoralPage() {
               />
               </div>
             </section>
+      <RedesFlotante agrupacion="coral" />
       <Footer />
     </main>
   )

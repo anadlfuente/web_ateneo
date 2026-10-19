@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import BloqueHistoria from "@/components/text-design"
 import { coralDirector } from "@/data/director-coral"
 import { PageHero } from "@/components/page-hero"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function CoralDirectorPage() {
   return (
@@ -30,7 +31,7 @@ export default function CoralDirectorPage() {
           <BloqueHistoria key={bloque.titulo} {...bloque} invertido={i % 2 === 1} />
         ))}
       </section>
-
+      <RedesFlotante agrupacion="coral"/>
       <Footer />
     </main>
   )

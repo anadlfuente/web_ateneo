@@ -7,6 +7,7 @@ import { PageHero } from "@/components/page-hero"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function CharangaPage() {
   return (
@@ -65,6 +66,7 @@ export default function CharangaPage() {
         </div>
         <Carrusel fotos={charanga.fotos} />
       </section>
+      <RedesFlotante agrupacion="charanga" />
 
       <Footer />
     </main>

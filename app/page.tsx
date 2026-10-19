@@ -8,6 +8,7 @@ import { JoinSection } from "@/components/join-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { VideosSection } from "@/components/youtube-section"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <SponsorsSection />
       <JoinSection />
       <ContactSection />
+      <RedesFlotante />
       <Footer />
     </main>
   )

@@ -10,6 +10,7 @@ import { PageHero } from "@/components/page-hero"
 import { LegalNotice } from "@/components/legal/LegalNotice"
 import { PrivacyPolicy } from "@/components/legal/PrivacyPolicy"
 import { CookiesPolicy } from "@/components/legal/CookiesPolicy"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 function AccordionItem({ title, isOpen, onClick, children }: any) {
   return (
@@ -95,6 +96,7 @@ export default function LegalClient() {
     
           </div>
           </section>
+          <RedesFlotante />
           <Footer />
         </main>
   )

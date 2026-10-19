@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { JoinSection } from "@/components/join-section"
 import { PageHero } from "@/components/page-hero"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function JoinPage() {
   return (
@@ -10,9 +11,8 @@ export default function JoinPage() {
 
       {/* Banner */}
       <PageHero
-        imagen="/banner.jpg"
+        imagen="/banner_2.png"
         altoMinimo="min-h-[40vh]"
-        centrado
       >
         <h1 className="text-white text-5xl md:text-7xl font-serif leading-tight">
           Hazte Socio
@@ -21,6 +21,7 @@ export default function JoinPage() {
         <main>
             <JoinSection />
         </main>
+      <RedesFlotante />
       <Footer />
     </main>
   )

@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import BloqueHistoria from "@/components/text-design"
 import { directores } from "@/data/directores-banda"
 import { PageHero } from "@/components/page-hero"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function DirectoresPage() {
   return (
@@ -27,6 +28,7 @@ export default function DirectoresPage() {
           <BloqueHistoria key={bloque.titulo} {...bloque} invertido={i % 2 === 1} />
         ))}
       </section>
+      <RedesFlotante />
 
       <Footer />
     </main>

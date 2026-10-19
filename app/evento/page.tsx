@@ -13,6 +13,7 @@ import { Footer } from "@/components/footer"
 import {
   type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS,
 } from "@/lib/eventos"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 function DetalleEvento() {
   const id = Number(useSearchParams().get("id"))
@@ -211,6 +212,7 @@ export default function EventoPage() {
       <Suspense fallback={<div className="min-h-[60vh]" />}>
         <DetalleEvento />
       </Suspense>
+      <RedesFlotante />
       <Footer />
     </main>
   )

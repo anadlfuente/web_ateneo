@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 const IMAGES = [
   {
@@ -167,7 +168,7 @@ const [openGroup, setOpenGroup] = useState<string | null>(null)
           ))}
         </div>
       </main>
-
+      <RedesFlotante />
       <Footer />
     </>
   )

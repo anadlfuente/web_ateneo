@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero"
 import { Button } from "@/components/ui/button"
 import { FileText, ArrowUpRight, Download, Scale } from "lucide-react"
 import { transparencia } from "@/data/transparencia"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 const acentos = ["border-t-primary-blue", "border-t-accent-yellow", "border-t-accent-green"]
 
@@ -160,7 +161,7 @@ export default function TransparenciaPage() {
           )}
         </div>
       </section>
-
+      <RedesFlotante />
       <Footer />
     </main>
   )

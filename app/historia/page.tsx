@@ -4,6 +4,7 @@ import TextoRico from "@/components/text-bold"
 import BloqueHistoria from "@/components/text-design"
 import { historia } from "@/data/historia"
 import { PageHero } from "@/components/page-hero"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function HistoriaPage() {
   return (
@@ -50,7 +51,7 @@ export default function HistoriaPage() {
           </p>
         </div>
       </section>
-
+      <RedesFlotante />
       <Footer />
     </main>
   )

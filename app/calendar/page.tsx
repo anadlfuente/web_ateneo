@@ -12,6 +12,7 @@ import {
   type Evento, type AgrupacionId,
   AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, aISO, fechaLarga, urlMaps,
 } from "@/lib/eventos"
+import {RedesFlotante} from "@/components/redes-flotante"
 
 // Horario fijo de ensayos (cambia poco, así que sigue aquí).
 // Los ensayos puntuales (ensayo general, etc.) se meten como eventos de tipo "Ensayo".
@@ -275,6 +276,7 @@ export default function CalendarPage() {
       <section className="mb-20">
         <RehearsalSection ensayos={ensayos} />
       </section>
+      <RedesFlotante />
       <Footer />
     </main>
   )

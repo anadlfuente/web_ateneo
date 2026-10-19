@@ -9,6 +9,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
 import { getNoticias, formatearFecha, type Categoria } from "@/lib/noticias"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 const POR_PAGINA = 6
 
@@ -118,7 +119,7 @@ export default function NoticiasPage() {
           )}
         </div>
       </div>
-
+      <RedesFlotante />
       <Footer />
     </main>
   )

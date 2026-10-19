@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/components/contact-section"
 import { PageHero } from "@/components/page-hero"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 export default function JoinPage() {
   return (
@@ -20,6 +21,7 @@ export default function JoinPage() {
         <main>
             <ContactSection />
         </main>
+      <RedesFlotante />
       <Footer />
     </main>
   )

@@ -8,6 +8,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
 import { getNoticias, getNoticia, formatearFecha, estiloCategoria } from "@/lib/noticias"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 // Necesario para exportar la web como estática: genera una página por noticia
 export function generateStaticParams() {
@@ -108,7 +109,7 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
-
+      <RedesFlotante />
       <Footer />
     </main>
   )
