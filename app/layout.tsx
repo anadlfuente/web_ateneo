@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ConsentimientoProvider } from "@/components/cookies/consentimiento-provider"
 import { BannerCookies } from "@/components/cookies/banner-cookies"
+import { RedesFlotante } from "@/components/redes-flotante"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
           <BannerCookies />
         </ConsentimientoProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <RedesFlotante />
       </body>
     </html>
   )
