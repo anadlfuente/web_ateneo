@@ -8,7 +8,7 @@ export const historia = {
   banner: {
     titulo: "Historia del Ateneo Musical de Mieres",
     subtitulo: "Dinamizando la vida musical mierense desde 2018",
-    imagen: "/banner.jpg",
+    imagen: "/banda/Marco.JPG",
   },
 
   introduccion: [

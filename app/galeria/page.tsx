@@ -4,7 +4,7 @@ import { useMemo, useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { RedesFlotante } from "@/components/redes-flotante"
-
+import { PageHero } from "@/components/page-hero" 
 const IMAGES = [
   {
     id: "1",
@@ -65,19 +65,10 @@ const [openGroup, setOpenGroup] = useState<string | null>(null)
     <>
       <Header />
     {/* Banner */}
-      <section className="relative h-[30vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/banner_2.png')" }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-white text-5xl md:text-7xl font-serif">
-            Galería de imágenes
-          </h1>
-        </div>
-      </section>
+          <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
+            <p className="text-white text-5xl md:text-7xl font-serif">Galería de Imágenes</p>
+          </PageHero>
+    
       <main className="max-w-6xl mx-auto">
         {/* FILTROS */}
         <div className="p-4 flex flex-col gap-4">

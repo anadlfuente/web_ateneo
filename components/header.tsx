@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 const navigation = [
   {
     name: "Sobre nosotros",
-    href: "#sobre-nosotros",
+    href: "/historia",
     submenu: [
       { name: "Historia", href: "/historia" },
       { name: "Transparencia", href: "/transparencia" },

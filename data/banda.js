@@ -9,7 +9,7 @@ export const banda = {
   banner: {
     titulo: "La Banda Sinfónica del Ateneo Musical de Mieres",
     subtitulo: "Una historia de crecimiento, compromiso e innovación",
-    imagen: "/banner.jpg",
+    imagen: "/banda/Marco.JPG",
   },
 
   introduccion: [
@@ -120,7 +120,7 @@ export const banda = {
     {
       titulo: "Una agrupación en constante evolución",
       flotante: true,
-      imagen: "/foto_family.JPG",
+      imagen: "/banda/foto_family.JPG",
       alt: "Foto de familia de los músicos de la Banda Sinfónica del Ateneo Musical de Mieres",
       parrafos: [
         "A lo largo de estos años, la Banda Sinfónica ha experimentado un crecimiento constante tanto en número de músicos como en calidad artística.",

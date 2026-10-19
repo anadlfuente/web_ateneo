@@ -8,7 +8,7 @@ const groups = [
     id: "banda-sinfonica",
     name: "Banda Sinfónica",
     description: "Más de 60 músicos interpretando desde clásicos hasta bandas sonoras contemporáneas.",
-    image: "pasacalles.JPG",
+    image: "/banda/pasacalles.JPG",
     href: "/banda/historia",
     color: "primary",
     members: "60+",
@@ -18,7 +18,7 @@ const groups = [
     id: "coral",
     name: "Coral Cantares",
     description: "Un grupo de voces unidas por las ganas de cantar y disfrutar la  música, con especial cariño por nuestros cantares de chigre.",
-    image: "coral_cantares.jpg",
+    image: "/coral/coral_cantares.jpg",
     href: "/coral/historia",
     color: "secondary",
     members: "20+",
@@ -28,7 +28,7 @@ const groups = [
     id: "claxon-boys",
     name: "Claxon Boys",
     description: "Un grupo de amigos unidos por la música y las ganas de pasarlo bien: pop, rock y todo lo necesario para animar el ambiente.",
-    image: "claxon_boys.jpg",
+    image: "/claxon/claxon1.jpg",
     href: "/claxon",
     color: "accent",
     members: "4",
@@ -38,7 +38,7 @@ const groups = [
     id: "charanga",
     name: "Charanga New Paentamala",
     description: "La fiesta asegurada en fiestas populares, bodas y todo lo que te propongas",
-    image: "charanga.jpeg",
+    image: "/charanga/charanga2.jpg",
     href: "/charanga",
     color: "primary",
     members: "15+",
@@ -91,26 +91,26 @@ export function GroupsSection() {
                 className="group relative bg-white rounded-2xl overflow-hidden border border-border hover:border-transparent transition-all duration-300 hover-card-vibrant"
               >
                 {/* Image */}
-                <div className="aspect-[16/10] relative overflow-hidden">
+                <div className="relative overflow-hidden flex flex-col justify-end min-h-[20rem] md:min-h-0 md:aspect-[16/10]">
                   <img 
                     src={group.image} 
                     alt={group.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent ${colors.hover}/20 transition-colors`} />
                   
                   {/* Icon badge */}
-                  <div className={`absolute top-4 left-4 w-12 h-12 ${colors.bg} rounded-xl flex items-center justify-center`}>
+                  <div className={`absolute top-4 left-4 z-10 w-12 h-12 ${colors.bg} rounded-xl flex items-center justify-center`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   
                   {/* Members badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
+                  <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
                     <span className="text-sm font-bold text-foreground">{group.members} miembros</span>
                   </div>
                   
-                  {/* Content overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                  {/* Content */}
+                  <div className="relative p-6 pt-20">
                     <h3 className="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:text-secondary transition-colors">
                       {group.name}
                     </h3>
