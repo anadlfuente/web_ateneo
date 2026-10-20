@@ -1,164 +1,229 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { RedesFlotante } from "@/components/redes-flotante"
-import { PageHero } from "@/components/page-hero" 
-const IMAGES = [
-  {
-    id: "1",
-    url: "/images/img1.jpg",
-    date: "2025-11-22",
-    tags: ["Banda", "Santa Cecilia 2025"],
-  },
-  {
-    id: "2",
-    url: "/images/img2.jpg",
-    date: "2025-11-23",
-    tags: ["Coral", "Santa Cecilia 2025"],
-  },
-  {
-    id: "3",
-    url: "/images/img3.jpg",
-    date: "2024-06-10",
-    tags: ["Banda"],
-  },
-]
+import { PageHero } from "@/components/page-hero"
+import { FiltrosGaleria } from "@/components/galeria/filtros-galeria"
+import { TarjetasEventos } from "@/components/galeria/tarjetas-eventos"
+import { Mosaico } from "@/components/galeria/mosaico"
+import { Visor } from "@/components/galeria/visor"
+import {
+  SIN_FECHA,
+  contarFotos,
+  cumpleAgrupaciones,
+  cumpleAnio,
+  formatearFecha,
+  type Evento,
+  type FotoConEvento,
+} from "@/components/galeria/tipos"
 
-const TAG_GROUPS = [
-  {
-    label: "Asociación",
-    key: "association",
-    options: ["Banda", "Coral"],
-  },
-  {
-    label: "Eventos",
-    key: "event",
-    options: ["Santa Cecilia 2025"],
-  },
-]
-const ALL_TAGS = ["Banda", "Coral", "Santa Cecilia 2025"]
+// De dónde se lee el listado. Cuando exista el PHP, cambiar por "/api/galeria.php"
+const URL_LISTADO = "/galeria.json"
 
-export default function GalleryPage() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-const [openGroup, setOpenGroup] = useState<string | null>(null)
-  const [fromDate, setFromDate] = useState("")
-  const [toDate, setToDate] = useState("")
+type Vista = "eventos" | "fotos"
 
-  const filteredImages = useMemo(() => {
-    return IMAGES.filter((img) => {
-      const matchesTags =
-        selectedTags.length === 0 ||
-        selectedTags.every((tag) => img.tags.includes(tag))
+export default function GaleriaPage() {
+  const [eventos, setEventos] = useState<Evento[]>([])
+  const [estado, setEstado] = useState<"cargando" | "listo" | "error">("cargando")
+  const [vista, setVista] = useState<Vista>("eventos")
+  const [eventoAbierto, setEventoAbierto] = useState<Evento | null>(null)
+  const [agrupaciones, setAgrupaciones] = useState<string[]>([])
+  const [anio, setAnio] = useState("")
+  const [indiceVisor, setIndiceVisor] = useState<number | null>(null)
+  const inicioRef = useRef<HTMLDivElement>(null)
 
-      const imgDate = new Date(img.date)
+  // Carga el listado de la galería
+  useEffect(() => {
+    fetch(URL_LISTADO, { cache: "no-store" })
+      .then((r) => {
+        if (!r.ok) throw new Error()
+        return r.json()
+      })
+      .then((datos) => {
+        setEventos(datos.eventos ?? [])
+        setEstado("listo")
+      })
+      .catch(() => setEstado("error"))
+  }, [])
 
-      const matchesFrom = fromDate ? imgDate >= new Date(fromDate) : true
-      const matchesTo = toDate ? imgDate <= new Date(toDate) : true
+  const eventosFiltrados = useMemo(
+    () => eventos.filter((e) => cumpleAnio(e, anio) && cumpleAgrupaciones(e, agrupaciones)),
+    [eventos, anio, agrupaciones]
+  )
 
-      return matchesTags && matchesFrom && matchesTo
-    })
-  }, [selectedTags, fromDate, toDate])
+  const todasLasFotos = useMemo<FotoConEvento[]>(
+    () => eventosFiltrados.flatMap((e) => e.fotos.map((f) => ({ ...f, evento: e }))),
+    [eventosFiltrados]
+  )
+
+  // Agrupaciones disponibles, con cuántos eventos (o fotos) tiene cada una
+  const opcionesAgrupacion = useMemo(() => {
+    const conteo = new Map<string, number>()
+    for (const e of eventos) {
+      if (!cumpleAnio(e, anio)) continue
+      for (const a of e.agrupaciones) {
+        conteo.set(a, (conteo.get(a) ?? 0) + (vista === "eventos" ? 1 : e.fotos.length))
+      }
+    }
+    return Array.from(conteo.entries())
+      .map(([nombre, cantidad]) => ({ nombre, cantidad }))
+      .sort((x, y) => x.nombre.localeCompare(y.nombre, "es"))
+  }, [eventos, anio, vista])
+
+  // Años disponibles (más recientes primero) y "Sin fecha" si hace falta
+  const opcionesAnio = useMemo(() => {
+    const anios = Array.from(new Set(eventos.filter((e) => e.anio !== null).map((e) => String(e.anio))))
+    anios.sort((a, b) => Number(b) - Number(a))
+    if (eventos.some((e) => e.anio === null)) anios.push(SIN_FECHA)
+    return anios
+  }, [eventos])
+
+  // Fotos que recorre el visor: las del evento abierto o todas las filtradas
+  const fotosVisor = useMemo<FotoConEvento[]>(
+    () => (eventoAbierto ? eventoAbierto.fotos.map((f) => ({ ...f, evento: eventoAbierto })) : todasLasFotos),
+    [eventoAbierto, todasLasFotos]
+  )
+
+  const hayFiltros = agrupaciones.length > 0 || anio !== ""
+
+  function subir() {
+    inicioRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  function abrirEvento(evento: Evento) {
+    setEventoAbierto(evento)
+    subir()
+  }
+
+  function cerrarEvento() {
+    setEventoAbierto(null)
+    subir()
+  }
+
+  function quitarFiltros() {
+    setAgrupaciones([])
+    setAnio("")
+  }
+
+  const sinResultados = (
+    <div className="py-16 text-center text-gray-600">
+      <p>No hay {vista === "eventos" ? "eventos" : "fotos"} con estos filtros.</p>
+      <button type="button" onClick={quitarFiltros} className="mt-2 text-primary-blue hover:underline">
+        Quitar filtros
+      </button>
+    </div>
+  )
 
   return (
     <>
       <Header />
-    {/* Banner */}
-          <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
-            <p className="text-white text-5xl md:text-7xl font-serif">Galería de Imágenes</p>
-          </PageHero>
-    
-      <main className="max-w-6xl mx-auto">
-        {/* FILTROS */}
-        <div className="p-4 flex flex-col gap-4">
-          <div className="flex gap-2 flex-wrap">
-            {TAG_GROUPS.map((group) => (
-                <div key={group.key} className="border rounded-lg p-3 bg-white">
 
-                {/* HEADER DEL DROPDOWN */}
-                <button
-                    onClick={() =>
-                    setOpenGroup(openGroup === group.key ? null : group.key)
-                    }
-                    className="w-full flex justify-between items-center font-medium text-left"
-                >
-                    <span>{group.label}</span>
-                    <span className="text-gray-500">
-                    {openGroup === group.key ? "▲" : "▼"}
-                </span>
-                </button>
+      {/* Banner */}
+      <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
+        <p className="font-serif text-5xl text-white md:text-7xl">Galería de Imágenes</p>
+      </PageHero>
 
-                {/* OPTIONS */}
-                {openGroup === group.key && (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                    {group.options.map((tag) => (
-                        <button
-                        key={tag}
-                        onClick={() =>
-                            setSelectedTags((prev) =>
-                            prev.includes(tag)
-                                ? prev.filter((t) => t !== tag)
-                                : [...prev, tag]
-                            )
-                        }
-                        className={`px-3 py-1 rounded-full border text-sm transition ${
-                            selectedTags.includes(tag)
-                            ? "bg-primary-blue text-white border-primary-blue"
-                            : "bg-white text-gray-700 hover:bg-primary-blue/10"
-                        }`}
-                        >
-                        {tag}
-                        </button>
-                    ))}
-                    </div>
-                )}
-                </div>
-            ))}
+      <main className="mx-auto max-w-6xl px-4 py-10">
+        <div ref={inicioRef} className="scroll-mt-28" />
 
-            {/* FECHAS */}
-            <div className="flex gap-4 pt-2">
-                <input
-                type="date"
-                value={fromDate}
-                onChange={(e) => setFromDate(e.target.value)}
-                className="border rounded px-2 py-1"
-                />
-                <input
-                type="date"
-                value={toDate}
-                onChange={(e) => setToDate(e.target.value)}
-                className="border rounded px-2 py-1"
-                />
-            </div>
+        {estado === "cargando" && <p className="py-20 text-center text-gray-500">Cargando galería…</p>}
 
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
-            <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-        </div>
+        {estado === "error" && (
+          <p className="py-20 text-center text-gray-600">
+            No se ha podido cargar la galería. Inténtalo de nuevo más tarde.
+          </p>
+        )}
 
-        {/* GALERÍA */}
-        <div className="p-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {filteredImages.map((img) => (
-            <div key={img.id} className="border rounded-lg overflow-hidden">
-              <img src={img.url} className="w-full h-48 object-cover" />
+        {estado === "listo" && eventos.length === 0 && (
+          <p className="py-20 text-center text-gray-600">Todavía no hay fotos en la galería.</p>
+        )}
 
-              <div className="p-2 text-xs text-gray-600">
-                {img.date}
-                <div className="flex gap-1 flex-wrap mt-1">
-                  {img.tags.map((t) => (
-                    <span key={t} className="border px-2 py-0.5 rounded-full">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+        {/* ÁLBUM DE UN EVENTO */}
+        {estado === "listo" && eventoAbierto && (
+          <section>
+            <button type="button" onClick={cerrarEvento} className="mb-6 text-primary-blue hover:underline">
+              ← Volver a la galería
+            </button>
+
+            <h2 className="font-serif text-3xl md:text-4xl">{eventoAbierto.titulo}</h2>
+            <p className="mt-1 text-gray-600">
+              {[formatearFecha(eventoAbierto.fecha), contarFotos(eventoAbierto.fotos.length)]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+
+            {eventoAbierto.agrupaciones.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1">
+                {eventoAbierto.agrupaciones.map((a) => (
+                  <span key={a} className="rounded-full border px-2 py-0.5 text-xs text-gray-600">
+                    {a}
+                  </span>
+                ))}
               </div>
+            )}
+
+            <div className="mt-8">
+              <Mosaico fotos={fotosVisor} onAbrir={setIndiceVisor} />
             </div>
-          ))}
-        </div>
+          </section>
+        )}
+
+        {/* VISTA GENERAL: EVENTOS O TODAS LAS FOTOS */}
+        {estado === "listo" && !eventoAbierto && eventos.length > 0 && (
+          <>
+            <div className="mb-6 inline-flex rounded-full border bg-white p-1">
+              {(["eventos", "fotos"] as Vista[]).map((v) => (
+                <button
+                  key={v}
+                  type="button"
+                  aria-pressed={vista === v}
+                  onClick={() => setVista(v)}
+                  className={`rounded-full px-4 py-1.5 text-sm transition ${
+                    vista === v ? "bg-primary-blue text-white" : "text-gray-700 hover:bg-primary-blue/10"
+                  }`}
+                >
+                  {v === "eventos" ? "Eventos" : "Todas las fotos"}
+                </button>
+              ))}
+            </div>
+
+            <FiltrosGaleria
+              opcionesAgrupacion={opcionesAgrupacion}
+              seleccionadas={agrupaciones}
+              onCambiarSeleccionadas={setAgrupaciones}
+              opcionesAnio={opcionesAnio}
+              anio={anio}
+              onCambiarAnio={setAnio}
+              hayFiltros={hayFiltros}
+              onQuitarFiltros={quitarFiltros}
+            />
+
+            {vista === "eventos" ? (
+              eventosFiltrados.length > 0 ? (
+                <TarjetasEventos eventos={eventosFiltrados} onAbrir={abrirEvento} />
+              ) : (
+                sinResultados
+              )
+            ) : todasLasFotos.length > 0 ? (
+              <Mosaico fotos={todasLasFotos} onAbrir={setIndiceVisor} mostrarEvento />
+            ) : (
+              sinResultados
+            )}
+          </>
+        )}
       </main>
+
+      {indiceVisor !== null && (
+        <Visor
+          fotos={fotosVisor}
+          indice={indiceVisor}
+          onCambiar={setIndiceVisor}
+          onCerrar={() => setIndiceVisor(null)}
+        />
+      )}
+
       <RedesFlotante />
       <Footer />
     </>

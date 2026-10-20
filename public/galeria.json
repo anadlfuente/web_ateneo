@@ -1,0 +1,87 @@
+{
+  "generado": "2026-10-20T17:56:14.531Z",
+  "eventos": [
+    {
+      "id": "2026-05-01-santa-cruz-de-la-zarza",
+      "titulo": "Concierto en Santa Cruz de la Zarza (Toledo)",
+      "fecha": "2026-05-01",
+      "anio": 2026,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/003.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/004.webp",
+          "tipo": "imagen",
+          "ancho": 1089,
+          "alto": 1600,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/005.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/006.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/007.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/008.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/009.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1067,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        },
+        {
+          "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/010.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1075,
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        }
+      ]
+    }
+  ]
+}
