@@ -58,11 +58,11 @@ export function RedesFlotante({ agrupacion = "ateneo" }) {
   if (!datos.enlaces.length) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-none">
       {/* Iconos de redes */}
       <ul
         className={`flex flex-col items-end gap-3 transition-all duration-300 ${
-          abierto ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+          abierto ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none invisible"
         }`}
       >
         {datos.enlaces.map(({ tipo, url }) => {
@@ -89,7 +89,7 @@ export function RedesFlotante({ agrupacion = "ateneo" }) {
 
       {/* Bocadillo de aviso */}
       {bocadillo && !abierto && (
-        <div className="relative max-w-[220px] rounded-2xl bg-white border border-border shadow-xl px-4 py-3 pr-9 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
+        <div className="pointer-events-auto relative max-w-[220px] rounded-2xl bg-white border border-border shadow-xl px-4 py-3 pr-9 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
           <p className="text-sm font-semibold text-primary-blue leading-snug">
             ¡Sigue a {datos.nombre} en redes!
           </p>
@@ -107,7 +107,7 @@ export function RedesFlotante({ agrupacion = "ateneo" }) {
       )}
 
       {/* Botón principal */}
-      <div className="relative">
+      <div className="relative pointer-events-auto">
         {!visto && (
           <span className="absolute inset-0 rounded-full bg-primary-blue motion-safe:animate-ping opacity-40" />
         )}
