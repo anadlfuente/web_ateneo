@@ -66,7 +66,7 @@ export default function CharangaPage() {
           </div>
 
           <a
-            href="https://www.instagram.com/charanganewpaentamala/"
+            href="https://ig.me/m/charanganewpaentamala"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0"
