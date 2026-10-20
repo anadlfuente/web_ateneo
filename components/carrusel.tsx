@@ -6,6 +6,8 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 type Foto = {
   src: string
   alt: string
+  tipo?: "foto" | "video" // si no se pone, se entiende que es foto
+  poster?: string // imagen de portada del vídeo (opcional)
 }
 
 type Props = {
@@ -16,6 +18,7 @@ export default function Carrusel({ fotos }: Props) {
   const [actual, setActual] = useState(0)
   const [ampliada, setAmpliada] = useState(false)
   const inicioX = useRef<number | null>(null)
+  const videos = useRef<(HTMLVideoElement | null)[]>([])
   const total = fotos.length
 
   // Al llegar al final vuelve a la primera, y al revés
@@ -33,6 +36,13 @@ export default function Carrusel({ fotos }: Props) {
     if (diferencia > 50) anterior()
     inicioX.current = null
   }
+
+  // Pausar los vídeos del carrusel al cambiar de diapositiva o al abrir la vista ampliada
+  useEffect(() => {
+    videos.current.forEach((video, i) => {
+      if (video && (i !== actual || ampliada)) video.pause()
+    })
+  }, [actual, ampliada])
 
   // Vista ampliada: teclado (flechas y Escape) y bloquear el scroll de la página
   useEffect(() => {
@@ -52,6 +62,8 @@ export default function Carrusel({ fotos }: Props) {
 
   if (total === 0) return null
 
+  const elementoActual = fotos[actual]
+
   return (
     <div>
       {/* Carrusel */}
@@ -63,18 +75,33 @@ export default function Carrusel({ fotos }: Props) {
             onTouchStart={alTocar}
             onTouchEnd={alSoltar}
           >
-            {fotos.map((foto) => (
+            {fotos.map((foto, i) => (
               <div
                 key={foto.src}
                 className="w-full shrink-0 flex items-center justify-center h-64 md:h-[500px] px-12 md:px-16"
               >
-                <img
-                  src={foto.src}
-                  alt={foto.alt}
-                  draggable={false}
-                  onClick={() => setAmpliada(true)}
-                  className="w-auto h-auto max-w-full max-h-full rounded-md shadow-md cursor-zoom-in select-none"
-                />
+                {foto.tipo === "video" ? (
+                  <video
+                    ref={(el) => {
+                      videos.current[i] = el
+                    }}
+                    src={foto.src}
+                    poster={foto.poster}
+                    aria-label={foto.alt}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-auto h-auto max-w-full max-h-full rounded-md shadow-md bg-black"
+                  />
+                ) : (
+                  <img
+                    src={foto.src}
+                    alt={foto.alt}
+                    draggable={false}
+                    onClick={() => setAmpliada(true)}
+                    className="w-auto h-auto max-w-full max-h-full rounded-md shadow-md cursor-zoom-in select-none"
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -84,14 +111,14 @@ export default function Carrusel({ fotos }: Props) {
           <>
             <button
               onClick={anterior}
-              aria-label="Foto anterior"
+              aria-label="Anterior"
               className="absolute left-0 top-1/2 -translate-y-1/2 bg-secondary text-white rounded-full p-2 shadow-md hover:opacity-90"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={siguiente}
-              aria-label="Foto siguiente"
+              aria-label="Siguiente"
               className="absolute right-0 top-1/2 -translate-y-1/2 bg-secondary text-white rounded-full p-2 shadow-md hover:opacity-90"
             >
               <ChevronRight className="w-5 h-5" />
@@ -107,7 +134,7 @@ export default function Carrusel({ fotos }: Props) {
             <button
               key={foto.src}
               onClick={() => setActual(i)}
-              aria-label={`Ir a la foto ${i + 1}`}
+              aria-label={`Ir al elemento ${i + 1}`}
               className={`h-2.5 rounded-full transition-all ${
                 i === actual ? "w-6 bg-secondary" : "w-2.5 bg-secondary/30 hover:bg-secondary/50"
               }`}
@@ -124,13 +151,27 @@ export default function Carrusel({ fotos }: Props) {
           onTouchStart={alTocar}
           onTouchEnd={alSoltar}
         >
-          <img
-            src={fotos[actual].src}
-            alt={fotos[actual].alt}
-            draggable={false}
-            onClick={(e) => e.stopPropagation()}
-            className="max-w-[90vw] max-h-[85vh] w-auto h-auto object-contain select-none"
-          />
+          {elementoActual.tipo === "video" ? (
+            <video
+              key={elementoActual.src}
+              src={elementoActual.src}
+              poster={elementoActual.poster}
+              aria-label={elementoActual.alt}
+              controls
+              autoPlay
+              playsInline
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-[90vw] max-h-[85vh] w-auto h-auto"
+            />
+          ) : (
+            <img
+              src={elementoActual.src}
+              alt={elementoActual.alt}
+              draggable={false}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-[90vw] max-h-[85vh] w-auto h-auto object-contain select-none"
+            />
+          )}
 
           <button
             onClick={(e) => {
@@ -150,7 +191,7 @@ export default function Carrusel({ fotos }: Props) {
                   e.stopPropagation()
                   anterior()
                 }}
-                aria-label="Foto anterior"
+                aria-label="Anterior"
                 className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2"
               >
                 <ChevronLeft className="w-10 h-10" />
@@ -160,7 +201,7 @@ export default function Carrusel({ fotos }: Props) {
                   e.stopPropagation()
                   siguiente()
                 }}
-                aria-label="Foto siguiente"
+                aria-label="Siguiente"
                 className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2"
               >
                 <ChevronRight className="w-10 h-10" />

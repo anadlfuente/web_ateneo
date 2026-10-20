@@ -9,14 +9,14 @@ export const redes = {
     ],
   },
   charanga: {
-    nombre: "la Charanga New Paentamala",
+    nombre: "Charanga New Paentamala",
     enlaces: [
       { tipo: "instagram", url: "https://www.instagram.com/charanganewpaentamala/" },
       { tipo: "facebook", url: "https://www.facebook.com/p/Charanga-New-Paentamala-61557611586322/" },
     ],
   },
   coral: {
-    nombre: " laCoral Cantares",
+    nombre: "Coral Cantares",
     enlaces: [
       { tipo: "instagram", url: "https://www.instagram.com/coral.cantares/" },
       { tipo: "facebook", url: "https://www.facebook.com/p/Coral-Cantares-100091749137504/?locale=es_ES" },

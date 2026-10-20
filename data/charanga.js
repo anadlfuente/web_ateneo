@@ -1,7 +1,7 @@
 export const charanga = {
   banner: {
     titulo: "Charanga New Paentamala",
-    imagen: "/charanga/charanga2.jpg",
+    imagen: "/charanga/charanga4.jpeg",
   },
 
   titulo: "La música sale a la calle",
@@ -19,10 +19,12 @@ export const charanga = {
   ],
 
   fotos: [
-    { src: "/charanga/charanga1.jpg", alt: "Descripción de la foto 1" },
-    { src: "/charanga/charanga2.jpg", alt: "Descripción de la foto 2" },
+    { src: "/charanga/charanga2.jpeg", alt: "Descripción de la foto 2" },
     { src: "/charanga/charanga3.jpeg", alt: "Descripción de la foto 3" },
-    { src: "/charanga/charanga4.jpg", alt: "Descripción de la foto 4" },
-    { src: "/charanga/charanga5.jpg", alt: "Descripción de la foto 5" },
+    { src: "/charanga/charanga4.jpeg", alt: "Descripción de la foto 4" },
+    { src: "/charanga/charanga5.jpeg", alt: "Descripción de la foto 5" },
+    { src: "/charanga/charanga1.jpeg", alt: "Descripción de la foto 1" },
+    { src: "/charanga/charanga-video.mp4", tipo: "video", alt: "La charanga en una de sus fiestas" },
+
   ],
 }

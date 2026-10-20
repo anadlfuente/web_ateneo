@@ -38,7 +38,7 @@ const groups = [
     id: "charanga",
     name: "Charanga New Paentamala",
     description: "La fiesta asegurada en fiestas populares, bodas y todo lo que te propongas",
-    image: "/charanga/charanga2.jpg",
+    image: "/charanga/charanga2.jpeg",
     href: "/charanga",
     color: "primary",
     members: "15+",
