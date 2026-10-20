@@ -105,8 +105,34 @@ export function HeroSection() {
      resetAutoPlay()
   }
 
+  const touchInicio = useRef<{ x: number; y: number } | null>(null)
+  const DISTANCIA_MINIMA = 50 // px que hay que deslizar para cambiar de diapositiva
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0]
+    touchInicio.current = { x: t.clientX, y: t.clientY }
+  }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!touchInicio.current) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - touchInicio.current.x
+    const dy = t.clientY - touchInicio.current.y
+    touchInicio.current = null
+
+    // Solo cuenta si el gesto es claramente horizontal
+    if (Math.abs(dx) < DISTANCIA_MINIMA || Math.abs(dx) < Math.abs(dy)) return
+
+    if (dx < 0) nextSlide() // dedo hacia la izquierda → siguiente
+    else prevSlide()        // dedo hacia la derecha → anterior
+  }
+
   return (
-    <section className="relative h-[100svh] min-h-[560px] w-full overflow-hidden">
+    <section
+      className="relative h-[100svh] min-h-[560px] w-full overflow-hidden"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -190,14 +216,6 @@ export function HeroSection() {
 
       {/* Slide Indicators (+ flechas en móvil) */}
       <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
-        <button
-          onClick={prevSlide}
-          aria-label="Diapositiva anterior"
-          className="md:hidden w-10 h-10 border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-foreground transition-all"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-
         <div className="flex items-center gap-2 md:gap-3">
           {slides.map((_, index) => (
             <button
@@ -215,14 +233,6 @@ export function HeroSection() {
             />
           ))}
         </div>
-
-        <button
-          onClick={nextSlide}
-          aria-label="Diapositiva siguiente"
-          className="md:hidden w-10 h-10 border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-foreground transition-all"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
       </div>
 
       {/* Scroll indicator */}
