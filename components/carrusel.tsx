@@ -6,8 +6,8 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 type Foto = {
   src: string
   alt: string
-  tipo?: "foto" | "video" // si no se pone, se entiende que es foto
-  poster?: string // imagen de portada del vídeo (opcional)
+  tipo?: string // "video" para vídeos; si no se pone, es foto
+  poster?: string
 }
 
 type Props = {

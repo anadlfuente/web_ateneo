@@ -9,6 +9,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { RedesFlotante } from "@/components/redes-flotante"
 import Image from "next/image"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Charanga New Paentamala",
+}
 
 export default function CharangaPage() {
   return (

@@ -2,6 +2,11 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Organigram  from "@/components/organigram-section"
 import { RedesFlotante } from "@/components/redes-flotante"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Coral Cantares",
+}
 
 export const seccionesCoral = [
   {

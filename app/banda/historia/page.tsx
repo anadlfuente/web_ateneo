@@ -6,6 +6,11 @@ import TextoRico from "@/components/text-bold"
 import { banda } from "@/data/banda.js"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Banda Sinfónica",
+}
 
 export default function BandaPage() {
   return (

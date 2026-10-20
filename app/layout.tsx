@@ -18,7 +18,10 @@ const dmSerif = DM_Serif_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Ateneo Musical de Mieres | Web Oficial',
+  title: {
+    default: 'Ateneo Musical de Mieres | Web Oficial',
+    template: '%s | Ateneo Musical de Mieres',
+  },
   description: 'Somos una asociación musical de Mieres fundada en 2018 que engloba banda sinfónica, coros, banda contemporánea y charanga. Únete a nosotros y forma parte de la música.',
   //generator: 'v0.app',
   icons: {
