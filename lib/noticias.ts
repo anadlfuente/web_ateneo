@@ -83,18 +83,19 @@ export interface Noticia extends Omit<NoticiaDatos, "imagen"> {
 
 const noticias: NoticiaDatos[] = [
   {
-    slug: "certamen-regional-de-bandas-2026",
-    titulo: "La Banda Sinfónica gana el Certamen Regional de Bandas",
+    slug: "estrenamos-web-2026",
+    titulo: "El Ateneo Musical de Mieres estrena página web",
     resumen:
-      "La Banda Sinfónica del Ateneo se alzó con el primer premio en el Certamen Regional, fruto de años de trabajo y dedicación.",
-    fecha: "2026-02-10",
-    categoria: "Logros",
-    imagen: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=1200&q=80",
+      "El Ateneo Musical de Mieres presenta su nueva web, un espacio para conocer su historia, sus agrupaciones y toda su actividad musical.",
+    fecha: "2026-11-10",
+    categoria: "Noticias",
+    imagen: "/banda/Marco.JPG",
     destacada: true,
-    agrupaciones: ["banda-sinfonica"],
+    agrupaciones: [],
     contenido: [
-      "Primer párrafo de la noticia completa.",
-      "Segundo párrafo de la noticia completa.",
+      "El Ateneo Musical de Mieres estrena su página web oficial, un nuevo punto de encuentro para músicos, socios, familias y para todas las personas que siguen la vida musical de Mieres. La web nace con la intención de acercar la asociación al público y de reunir en un solo lugar su trayectoria y su actividad.",
+      "En ella se puede recorrer la historia del Ateneo desde sus orígenes con la Banda Sinfónica, y conocer las agrupaciones que han ido creciendo a su alrededor: la Coral Cantares, la Charanga New Paentamala y los Claxon Boys. Además, la web incluye el calendario de conciertos y actividades, una sección de noticias, una galería de fotografías y la posibilidad de contactar y hacerse socio.",
+      "Con este estreno, el Ateneo da un paso más para compartir su música y su historia con Mieres y con todo aquel que quiera acercarse. La web se irá actualizando con nuevos contenidos, fotos y próximas citas.",
     ],
   },
   {
