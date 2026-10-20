@@ -46,11 +46,11 @@ export const historia = {
       alt: "",
       fotos: [
         {
-          src: "/sponsors/espacio-cultura.jfif",
+          src: "/historia/sala-grande.jpeg",
           alt: "Sala grande del Espacio Cultural 19-10, donde ensayan la Banda Sinfónica y la Charanga New Paentamala",
         },
         {
-          src: "/historia/espacio-1910-sala-peque.webp",
+          src: "/historia/sala-pequena.jpeg",
           alt: "Sala pequeña del Espacio Cultural 19-10, utilizada por la Coral Cantares y los grupos de cámara",
         },
       ],
@@ -73,7 +73,7 @@ export const historia = {
     {
       titulo: "Formación y relevo generacional",
       flotante:true,
-      imagen: "/historia/vicuper.webp", // ← añade esta foto
+      imagen: "/historia/academia-vicuper.jpg", // ← añade esta foto
       alt: "Alumnos de la Escuela de Música Vicuper",
       parrafos: [
         "El Ateneo está ligado al proyecto **Escuela de Música Vicuper**, en el que varios músicos del Ateneo desarrollan su labor docente como profesores.",
