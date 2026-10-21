@@ -4,7 +4,7 @@ import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-co
 
 const footerLinks = {
   agrupaciones: [
-    { name: "Banda Sinfonica", href: "/banda/historia" },
+    { name: "Banda Sinfónica", href: "/banda/historia" },
     { name: "Coral Cantares", href: "/coral/historia" },
     { name: "Claxon Boys", href: "/claxon" },
     { name: "Charanga", href: "/charanga" },

@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${dmSerif.variable} bg-background`}>
+    <html lang="es" className={`${inter.variable} ${dmSerif.variable} bg-background`} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
         <ConsentimientoProvider>
           {children}

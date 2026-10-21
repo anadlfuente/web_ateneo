@@ -26,16 +26,16 @@ export function JoinSection() {
             </div>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
               Apoya a la asociación,<br />
-              <span className="text-accent-yellow">transforma la Música</span>
+              <span className="text-accent-yellow">transforma la música</span>
             </h2>
             <p className="text-white/80 text-lg mb-8 leading-relaxed">
               Conviértete en socio del Ateneo Musical de Mieres y ayúdanos a transformar 
               la música en nuestro concejo. Te lo agradeceremos con beneficios exclusivos 
-               para socios.
+              para socios.
             </p>
             
             {/* Benefits list */}
-            <div className="space-y-4 mb-8">
+            {/* <div className="space-y-4 mb-8">
               {[
                 "Acceso prioritario a conciertos",
                 "Descuentos exclusivos en eventos especiales",
@@ -47,7 +47,7 @@ export function JoinSection() {
                   <span className="text-white/90">{benefit}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             {/* Donation amounts like NY Phil */}
             {/* <div className="flex flex-wrap gap-3">

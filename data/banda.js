@@ -21,7 +21,7 @@ export const banda = {
     {
       titulo: "Los primeros pasos",
       flotante: true,
-      imagen: "/historia/first_concert.jpg",
+      imagen: "/banda/foto-oficial-18.jpeg",
       altura: "400px",
       alt: "Primer concierto de la Banda Sinfónica del Ateneo Musical de Mieres",
       parrafos: [
@@ -33,7 +33,7 @@ export const banda = {
     {
       titulo: "La banda que dio origen al Ateneo",
       flotante: true,
-      imagen: "/historia/BanderaAteneo.JPG",
+      imagen: "/galeria-section/2018-11-17-santa-cecilia/002.webp",
       alt: "Bandera del Ateneo Musical de Mieres",
       parrafos: [
         "La **Banda Sinfónica** no solo fue la primera agrupación del Ateneo Musical de Mieres, sino también el motor que impulsó el nacimiento del resto de proyectos de la asociación.",

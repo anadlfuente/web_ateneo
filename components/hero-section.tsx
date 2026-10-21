@@ -38,9 +38,9 @@ const slides = [
   },
   {
     id: 4,
-    title: "Unete a Nuestra Familia Musical",
+    title: "Unete a nuestra familia musical",
     subtitle: "Hazte Socio",
-    description: "Apoya la musica en tu comunidad y disfruta de beneficios exclusivos.",
+    description: "Apoya la música de nuestra región.",
     cta: "Colabora",
     href: "/join",
     image: "/banda/pasacalles.JPG",
@@ -52,7 +52,7 @@ const slides = [
     subtitle: "Redes Sociales",
     description: "Síguenos para estar al tanto de nuestras últimas noticias",
     cta: "Contacto",
-    href: "#contacto",
+    href: "/contacto",
     image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
     color: "yellow"
   },
