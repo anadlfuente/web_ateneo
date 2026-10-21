@@ -1,6 +1,60 @@
 {
-  "generado": "2026-10-20T17:56:14.531Z",
+  "generado": "2026-10-21T17:16:41.971Z",
   "eventos": [
+    {
+      "id": "2026-10-03-vermu-solidario",
+      "titulo": "Vermú Solidario 2026",
+      "fecha": "2026-10-03",
+      "anio": 2026,
+      "agrupaciones": [
+        "Coral Cantares"
+      ],
+      "portada": "/galeria-section/2026-10-03-vermu-solidario/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2026-10-03-vermu-solidario/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2026-10-03-vermu-solidario/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2026-10-03-vermu-solidario/003.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2026-10-03-vermu-solidario/004.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1200,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2026-10-03-vermu-solidario/005.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2026-10-03-vermu-solidario/006.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1081,
+          "autor": "J. R. Viejo"
+        }
+      ]
+    },
     {
       "id": "2026-05-01-santa-cruz-de-la-zarza",
       "titulo": "Concierto en Santa Cruz de la Zarza (Toledo)",
@@ -80,6 +134,309 @@
           "ancho": 1600,
           "alto": 1075,
           "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+        }
+      ]
+    },
+    {
+      "id": "2024-04-21-folixa-na-primavera-13-reyes",
+      "titulo": "Estreno 13 reyes I (Folixa na Primavera 2024)",
+      "fecha": "2024-04-21",
+      "anio": 2024,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 544,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1104,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/003.webp",
+          "tipo": "imagen",
+          "ancho": 1200,
+          "alto": 817,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/004.webp",
+          "tipo": "imagen",
+          "ancho": 1195,
+          "alto": 1600,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/005.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1200,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/006.webp",
+          "tipo": "imagen",
+          "ancho": 1066,
+          "alto": 1600,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/007.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1158,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/008.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 777,
+          "autor": "J. R. Viejo"
+        }
+      ]
+    },
+    {
+      "id": "2023-06-18-antologia-zarzuela",
+      "titulo": "Antología de la Zarzuela",
+      "fecha": "2023-06-18",
+      "anio": 2023,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2023-06-18-antologia-zarzuela/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2023-06-18-antologia-zarzuela/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2023-06-18-antologia-zarzuela/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2023-06-18-antologia-zarzuela/003.webp",
+          "tipo": "imagen",
+          "ancho": 1066,
+          "alto": 1600,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2023-06-18-antologia-zarzuela/004.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2023-06-18-antologia-zarzuela/005.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        }
+      ]
+    },
+    {
+      "id": "2022-06-26-ii-festival-bandas-mieres",
+      "titulo": "II Festival de Bandas Villa de Mieres",
+      "fecha": "2022-06-26",
+      "anio": 2022,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/001.webp",
+          "tipo": "imagen",
+          "ancho": 1308,
+          "alto": 1600,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/003.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/004.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/005.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1141,
+          "autor": "J. R. Viejo"
+        }
+      ]
+    },
+    {
+      "id": "2022-04-09-folixa-na-primavera",
+      "titulo": "Folixa na Primavera 2022",
+      "fecha": "2022-04-09",
+      "anio": 2022,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2022-04-09-folixa-na-primavera/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2022-04-09-folixa-na-primavera/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1200,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-04-09-folixa-na-primavera/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1108,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-04-09-folixa-na-primavera/003.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1030,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2022-04-09-folixa-na-primavera/004.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1100,
+          "autor": "J. R. Viejo"
+        }
+      ]
+    },
+    {
+      "id": "2019-12-14-homenaje-lorca",
+      "titulo": "Concierto Homenaje a Lorca",
+      "fecha": "2019-12-14",
+      "anio": 2019,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2019-12-14-homenaje-lorca/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1063,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1063,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/003.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1063,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/004.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1063,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/005.webp",
+          "tipo": "imagen",
+          "ancho": 1063,
+          "alto": 1600,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/006.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1063,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2019-12-14-homenaje-lorca/007.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1063,
+          "autor": "J. R. Viejo"
+        }
+      ]
+    },
+    {
+      "id": "2018-11-17-santa-cecilia",
+      "titulo": "Estreno de la Banda Sinfónica (Santa Cecilia 2018)",
+      "fecha": "2018-11-17",
+      "anio": 2018,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2018-11-17-santa-cecilia/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2018-11-17-santa-cecilia/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2018-11-17-santa-cecilia/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1066,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2018-11-17-santa-cecilia/003.webp",
+          "tipo": "imagen",
+          "ancho": 1279,
+          "alto": 1600,
+          "autor": "J. R. Viejo"
+        },
+        {
+          "src": "/galeria-section/2018-11-17-santa-cecilia/004.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1095,
+          "autor": "J. R. Viejo"
         }
       ]
     }

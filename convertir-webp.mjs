@@ -20,8 +20,8 @@ const CARPETA_PUBLIC = "public";
 const CARPETA_GALERIA = "public/galeria-section";   // carpeta de la galería (fotos por eventos)
 // dónde buscar referencias a las fotos (las que no existan se ignoran)
 const CARPETAS_CODIGO = ["app", "components", "src", "pages", "lib", "data", "index.html"];
-const LADO_MAXIMO = 1920;  // px del lado más largo
-const CALIDAD = 82;        // 80-85 es visualmente igual al original
+const LADO_MAXIMO = 2560;  // px del lado más largo
+const CALIDAD = 88;        // 80-85 es visualmente igual al original
 // -----------------------------
 
 const PRUEBA = process.argv.includes("--prueba");
