@@ -30,7 +30,7 @@ const slides = [
     id: 3,
     title: "Descubre nuestra galería de imágenes",
     subtitle: "Área Multimedia",
-    description: "Un recorrido en imágenes por la historia y la actividad del Ateneo Musical de Mieres y sus agrupaciones.",
+    description: "Un recorrido por la historia y la actividad del Ateneo Musical de Mieres y sus agrupaciones.",
     cta: "Visita nuestra galería",
     href: "/galeria",
     image: "/banda/foto_family.JPG",
@@ -41,7 +41,7 @@ const slides = [
     title: "Unete a Nuestra Familia Musical",
     subtitle: "Hazte Socio",
     description: "Apoya la musica en tu comunidad y disfruta de beneficios exclusivos.",
-    cta: "Mas Información",
+    cta: "Colabora",
     href: "/join",
     image: "/banda/pasacalles.JPG",
     color: "blue"
@@ -138,8 +138,9 @@ export function HeroSection() {
         <div
           key={slide.id}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
+            index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
+          aria-hidden={index !== currentSlide}
         >
           {/* Background Image */}
           <div 

@@ -11,7 +11,7 @@ import { ArrowLeft, Calendar, Clock, MapPin, Ticket, Navigation } from "lucide-r
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
-  type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS,
+  type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS, imagenEvento,
 } from "@/lib/eventos"
 import { RedesFlotante } from "@/components/redes-flotante"
 
@@ -74,6 +74,7 @@ function DetalleEvento() {
 
   const agrupacion = infoAgrupacion(evento.agrupacion)
   const cartel = rutaImagen(evento.imagen)
+  const imagen = imagenEvento(evento)
   const mapa = urlMaps(evento)
   const yaPasado = evento.fecha < aISO(new Date())
 
@@ -86,9 +87,9 @@ function DetalleEvento() {
         <ArrowLeft className="w-4 h-4" /> Volver al calendario
       </Link>
 
-      <div className={`grid gap-10 md:gap-14 ${cartel ? "md:grid-cols-[2fr_3fr]" : ""}`}>
-        {/* Cartel (solo si lo hay) */}
-        {cartel && (
+      <div className={`grid gap-10 md:gap-14 ${imagen ? "md:grid-cols-[2fr_3fr]" : ""}`}>
+        {/* Cartel, o foto de la agrupación si no hay cartel */}
+        {cartel ? (
           <a href={cartel} target="_blank" rel="noopener" className="block group">
             <img
               src={cartel}
@@ -99,7 +100,13 @@ function DetalleEvento() {
               Ver cartel a tamaño completo
             </span>
           </a>
-        )}
+        ) : imagen ? (
+          <img
+            src={imagen}
+            alt={agrupacion.nombre}
+            className="w-full rounded-2xl shadow-xl border border-border"
+          />
+        ) : null}
 
         {/* Información */}
         <div className={cartel ? "" : "max-w-3xl"}>
