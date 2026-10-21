@@ -3,10 +3,21 @@
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Mail, Phone, MapPin, Send, User, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
+import {
+  Mail, Phone, MapPin, Send, User, CheckCircle2, AlertCircle, Loader2,
+  Instagram, Facebook, Youtube, Twitter,
+} from "lucide-react"
 
 // En local usa la dirección de .env.development.local; en el hosting, /api/contacto.php
 const URL_CONTACTO = process.env.NEXT_PUBLIC_CONTACT_URL || "/api/contacto.php"
+
+// Redes sociales (las mismas que en el pie de página)
+const redesSociales = [
+  { nombre: "Instagram", icono: Instagram, url: "https://www.instagram.com/bandademieres/" },
+  { nombre: "Facebook", icono: Facebook, url: "https://www.facebook.com/Bandaateneomieres/" },
+  { nombre: "YouTube", icono: Youtube, url: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g" },
+  { nombre: "X (Twitter)", icono: Twitter, url: "https://x.com/BandaMusMieres" },
+]
 
 const formularioVacio = { nombre: "", email: "", asunto: "", mensaje: "", web: "" }
 
@@ -105,6 +116,26 @@ export function ContactSection() {
               </a>
             </div>
 
+            {/* Redes sociales */}
+            <div>
+              <p className="text-xl text-black-foreground mb-4 font-bold">¡Síguenos en redes sociales!</p>
+              <ul className="flex flex-wrap gap-3">
+                {redesSociales.map(({ nombre, icono: Icono, url }) => (
+                  <li key={nombre}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={nombre}
+                      title={nombre}
+                      className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group hover:bg-accent transition-colors"
+                    >
+                      <Icono className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Right column - Form */}
