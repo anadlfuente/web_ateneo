@@ -28,7 +28,7 @@ const slides = [
   // },
   {
     id: 3,
-    title: "Descubre nuestra galería de imágenes",
+    title: "Explora nuestra galería de imágenes",
     subtitle: "Área Multimedia",
     description: "Un recorrido por la historia y la actividad del Ateneo Musical de Mieres y sus agrupaciones.",
     cta: "Visita nuestra galería",
