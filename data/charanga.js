@@ -24,7 +24,9 @@ export const charanga = {
     { src: "/charanga/charanga4.jpeg", alt: "Descripción de la foto 4" },
     { src: "/charanga/charanga5.jpeg", alt: "Descripción de la foto 5" },
     { src: "/charanga/charanga1.jpeg", alt: "Descripción de la foto 1" },
-    { src: "/charanga/charanga-video.mp4", tipo: "video", alt: "La charanga en una de sus fiestas" },
-
+    { src: "/charanga/charanga3_video.mp4", tipo: "video", alt: "La charanga en una de sus fiestas" },
+    { src: "/charanga/charanga4_video.mp4", tipo: "video", alt: "La charanga en una de sus fiestas" },
+    { src: "/charanga/charanga1_video.mp4", tipo: "video", alt: "La charanga en una de sus fiestas" },
+    { src: "/charanga/charanga2_video.mp4", tipo: "video", alt: "La charanga en una de sus fiestas" },
   ],
 }
