@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Instagram, Facebook, Youtube, Twitter } from "lucide-react"
 import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-cookies"
+import Image from "next/image"
 
 const footerLinks = {
   agrupaciones: [
@@ -104,9 +105,27 @@ export function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Colabora</h4>
+            <a
+              href="https://www.ayto-mieres.es"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ayuntamiento de Mieres"
+              className="inline-block opacity-70 hover:opacity-100 transition-opacity"
+            >
+              <Image
+                src="/logo-vector_ayuntamiento-de-mieres.webp"
+                alt="Ayuntamiento de Mieres"
+                width={160}
+                height={60}
+                className="h-12 w-auto"
+              />
+            </a>
+          </div>
         </div>
       </div>
-
+      
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
