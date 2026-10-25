@@ -7,6 +7,7 @@ export type Foto = {
   ancho: number | null
   alto: number | null
   autor: string | null
+  enlaceAutor: string | null
 }
 
 export type Evento = {

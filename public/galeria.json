@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-21T17:16:41.971Z",
+  "generado": "2026-10-25T17:23:27.487Z",
   "eventos": [
     {
       "id": "2026-10-03-vermu-solidario",
@@ -7,7 +7,8 @@
       "fecha": "2026-10-03",
       "anio": 2026,
       "agrupaciones": [
-        "Coral Cantares"
+        "Coral Cantares",
+        "Claxon Boys"
       ],
       "portada": "/galeria-section/2026-10-03-vermu-solidario/001.webp",
       "fotos": [
@@ -16,42 +17,48 @@
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2026-10-03-vermu-solidario/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2026-10-03-vermu-solidario/003.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2026-10-03-vermu-solidario/004.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1200,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2026-10-03-vermu-solidario/005.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2026-10-03-vermu-solidario/006.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1081,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     },
@@ -70,70 +77,80 @@
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/003.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/004.webp",
           "tipo": "imagen",
           "ancho": 1089,
           "alto": 1600,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/005.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/006.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/007.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/008.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/009.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1067,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         },
         {
           "src": "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/010.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1075,
-          "autor": "Ayuntamiento de Santa Cruz de la Zarza"
+          "autor": "Ayuntamiento de Santa Cruz de la Zarza",
+          "enlaceAutor": null
         }
       ]
     },
@@ -151,57 +168,205 @@
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
           "tipo": "imagen",
           "ancho": 1600,
-          "alto": 544,
-          "autor": "J. R. Viejo"
+          "alto": 1104,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
-          "alto": 1104,
-          "autor": "J. R. Viejo"
+          "alto": 544,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/003.webp",
           "tipo": "imagen",
           "ancho": 1200,
           "alto": 817,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/004.webp",
           "tipo": "imagen",
           "ancho": 1195,
           "alto": 1600,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/005.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1200,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/006.webp",
           "tipo": "imagen",
           "ancho": 1066,
           "alto": 1600,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/007.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1158,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/008.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 777,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        }
+      ]
+    },
+    {
+      "id": "2025-04-05-folixa-na-primavera-skanda",
+      "titulo": "Concierto con Skanda (Folixa na Primavera 2024)",
+      "fecha": "2024-04-05",
+      "anio": 2024,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/001.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/002.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/003.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/004.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/005.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/006.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/007.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/008.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/009.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/010.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/011.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/012.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/013.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/014.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/015.webp",
+          "tipo": "imagen",
+          "ancho": 1080,
+          "alto": 720,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        },
+        {
+          "src": "/galeria-section/2025-04-05-folixa-na-primavera-skanda/016.webp",
+          "tipo": "imagen",
+          "ancho": 720,
+          "alto": 1080,
+          "autor": "Felipe S.M.",
+          "enlaceAutor": "https://www.instagram.com/felipesm_foto"
         }
       ]
     },
@@ -220,35 +385,40 @@
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2023-06-18-antologia-zarzuela/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2023-06-18-antologia-zarzuela/003.webp",
           "tipo": "imagen",
           "ancho": 1066,
           "alto": 1600,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2023-06-18-antologia-zarzuela/004.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2023-06-18-antologia-zarzuela/005.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     },
@@ -267,35 +437,40 @@
           "tipo": "imagen",
           "ancho": 1308,
           "alto": 1600,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/003.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/004.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-06-26-ii-festival-bandas-mieres/005.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1141,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     },
@@ -314,28 +489,32 @@
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1200,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-04-09-folixa-na-primavera/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1108,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-04-09-folixa-na-primavera/003.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1030,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2022-04-09-folixa-na-primavera/004.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1100,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     },
@@ -354,49 +533,56 @@
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1063,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2019-12-14-homenaje-lorca/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1063,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2019-12-14-homenaje-lorca/003.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1063,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2019-12-14-homenaje-lorca/004.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1063,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2019-12-14-homenaje-lorca/005.webp",
           "tipo": "imagen",
           "ancho": 1063,
           "alto": 1600,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2019-12-14-homenaje-lorca/006.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1063,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2019-12-14-homenaje-lorca/007.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1063,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     },
@@ -415,28 +601,32 @@
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2018-11-17-santa-cecilia/002.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1066,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2018-11-17-santa-cecilia/003.webp",
           "tipo": "imagen",
           "ancho": 1279,
           "alto": 1600,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         },
         {
           "src": "/galeria-section/2018-11-17-santa-cecilia/004.webp",
           "tipo": "imagen",
           "ancho": 1600,
           "alto": 1095,
-          "autor": "J. R. Viejo"
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     }

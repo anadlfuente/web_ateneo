@@ -75,6 +75,12 @@ async function leerEvento(carpeta) {
   }
 
   const autores = info.autores && typeof info.autores === "object" ? info.autores : {};
+  // Enlace a la red social del autor principal (opcional). Solo se aceptan URLs http(s).
+  let enlaceAutor = null;
+  if (info.enlaceAutor) {
+    if (/^https?:\/\//.test(String(info.enlaceAutor))) enlaceAutor = String(info.enlaceAutor);
+    else avisos.push(`${carpeta}: el enlaceAutor "${info.enlaceAutor}" debe empezar por https://; se ignora.`);
+  }
   const archivos = (await fs.readdir(rutaCarpeta)).sort(ordenNatural);
   const fotos = [];
 
@@ -101,12 +107,15 @@ async function leerEvento(carpeta) {
     }
 
     const nombre = sinExtension(archivo);
+    const autor = autores[nombre] ?? info.autor ?? null;
     fotos.push({
       src: `${URL_BASE}/${encodeURIComponent(carpeta)}/${encodeURIComponent(archivo)}`,
       tipo: esVideo ? "video" : "imagen",
       ancho,
       alto,
-      autor: autores[nombre] ?? info.autor ?? null,
+      autor,
+      // El enlace solo se pone si la foto es del autor principal del evento
+      enlaceAutor: autor && autor === info.autor ? enlaceAutor : null,
     });
   }
 

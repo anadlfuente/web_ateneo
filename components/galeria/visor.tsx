@@ -133,9 +133,25 @@ export function Visor({ fotos, indice, onCambiar, onCerrar }: Props) {
       <div className="p-4 text-center text-sm" onClick={detener}>
         <p className="font-medium">{foto.evento.titulo}</p>
         <p className="text-white/70">
-          {[formatearFecha(foto.evento.fecha), foto.autor ? `Foto: ${foto.autor}` : ""]
-            .filter(Boolean)
-            .join(" · ")}
+          {formatearFecha(foto.evento.fecha)}
+          {foto.evento.fecha && foto.autor && " · "}
+          {foto.autor && (
+            <>
+              Foto:{" "}
+              {foto.enlaceAutor ? (
+                <a
+                  href={foto.enlaceAutor}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-white"
+                >
+                  {foto.autor}
+                </a>
+              ) : (
+                foto.autor
+              )}
+            </>
+          )}
         </p>
       </div>
     </div>

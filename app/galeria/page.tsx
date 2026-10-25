@@ -48,6 +48,31 @@ export default function GaleriaPage() {
       .catch(() => setEstado("error"))
   }, [])
 
+  // Mantiene el evento abierto sincronizado con la dirección (?evento=...).
+  // Se encarga del botón "atrás"/"adelante" del navegador y de los enlaces directos a un evento.
+  useEffect(() => {
+    if (estado !== "listo") return
+
+    function sincronizarConUrl() {
+      const id = new URLSearchParams(window.location.search).get("evento")
+      const evento = id ? eventos.find((e) => e.id === id) ?? null : null
+      setEventoAbierto(evento)
+      setIndiceVisor(null)
+      return evento
+    }
+
+    // Al entrar en la página: si la dirección trae un evento, se abre directamente
+    if (sincronizarConUrl()) subir()
+
+    function alNavegar() {
+      sincronizarConUrl()
+      subir()
+    }
+
+    window.addEventListener("popstate", alNavegar)
+    return () => window.removeEventListener("popstate", alNavegar)
+  }, [estado, eventos])
+
   const eventosFiltrados = useMemo(
     () => eventos.filter((e) => cumpleAnio(e, anio) && cumpleAgrupaciones(e, agrupaciones)),
     [eventos, anio, agrupaciones]
@@ -93,13 +118,22 @@ export default function GaleriaPage() {
   }
 
   function abrirEvento(evento: Evento) {
+    // Añade un paso al historial: "atrás" vuelve a la galería general
+    window.history.pushState({ evento: evento.id }, "", `?evento=${encodeURIComponent(evento.id)}`)
     setEventoAbierto(evento)
     subir()
   }
 
   function cerrarEvento() {
-    setEventoAbierto(null)
-    subir()
+    if (window.history.state?.evento) {
+      // Se entró al evento desde la galería: volver atrás deja el historial limpio
+      window.history.back()
+    } else {
+      // Se llegó con un enlace directo al evento: se quita el ?evento= sin salir de la página
+      window.history.replaceState(null, "", window.location.pathname)
+      setEventoAbierto(null)
+      subir()
+    }
   }
 
   function quitarFiltros() {
