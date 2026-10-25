@@ -40,6 +40,7 @@ $nombre  = trim($datos['nombre']  ?? '');
 $email   = trim($datos['email']   ?? '');
 $asunto  = trim($datos['asunto']  ?? '');
 $mensaje = trim($datos['mensaje'] ?? '');
+$asuntoOtro = trim($datos['asuntoOtro'] ?? ''); // asunto escrito a mano si se elige "Otro"
 $trampa  = trim($datos['web']     ?? ''); // campo oculto antispam
 
 // 4. ANTISPAM
@@ -55,19 +56,27 @@ if ($nombre === '' || $mensaje === '') {
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     responder(422, ['ok' => false, 'error' => 'El email no es válido.']);
 }
-if (mb_strlen($nombre) > 100 || mb_strlen($mensaje) > 5000) {
+if ($asunto === 'otro' && $asuntoOtro === '') {
+    responder(422, ['ok' => false, 'error' => 'Escribe el asunto del mensaje.']);
+}
+if (mb_strlen($nombre) > 100 || mb_strlen($mensaje) > 5000 || mb_strlen($asuntoOtro) > 150) {
     responder(422, ['ok' => false, 'error' => 'El texto es demasiado largo.']);
 }
 
 // Traducir el asunto elegido a un texto legible
 $asuntos = [
-    'unirse'     => 'Quiero unirme a una agrupación',
+    'banda'      => 'Quiero unirme a la banda',
+    'coral'      => 'Quiero unirme a la coral',
     'contratar'  => 'Contratar servicios',
     'patrocinio' => 'Información sobre patrocinio',
     'socio'      => 'Hacerme socio',
     'otro'       => 'Otro',
 ];
 $asuntoTexto = $asuntos[$asunto] ?? 'Mensaje de contacto';
+// Si eligió "Otro", se usa el asunto que haya escrito (sin saltos de línea)
+if ($asunto === 'otro') {
+    $asuntoTexto = str_replace(["\r", "\n"], ' ', $asuntoOtro);
+}
 
 // 6. ENVIAR EL CORREO
 $mail = new PHPMailer(true);

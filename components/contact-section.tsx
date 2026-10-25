@@ -19,8 +19,7 @@ const redesSociales = [
   { nombre: "X (Twitter)", icono: Twitter, url: "https://x.com/BandaMusMieres" },
 ]
 
-const formularioVacio = { nombre: "", email: "", asunto: "", mensaje: "", web: "" }
-
+const formularioVacio = { nombre: "", email: "", asunto: "", asuntoOtro: "", mensaje: "", web: "" }
 export function ContactSection() {
   const [form, setForm] = useState(formularioVacio)
   const [privacidad, setPrivacidad] = useState(false)
@@ -174,13 +173,27 @@ export function ContactSection() {
                   className="w-full px-4 py-3 rounded-md bg-white border border-border text-foreground focus:border-accent focus:outline-none"
                 >
                   <option value="">Selecciona un asunto</option>
-                  <option value="unirse">Quiero unirme a la banda</option>
-                  <option value="unirse">Quiero unirme a la coral</option>
+                  <option value="banda">Quiero unirme a la banda</option>
+                  <option value="coral">Quiero unirme a la coral</option>
                   <option value="contratar">Contratar servicios</option>
                   <option value="patrocinio">Información sobre patrocinio</option>
                   <option value="socio">Hacerme socio</option>
                   <option value="otro">Otro</option>
                 </select>
+
+                {/* Si elige "Otro", puede escribir su propio asunto */}
+                {form.asunto === "otro" && (
+                  <Input
+                    name="asuntoOtro"
+                    value={form.asuntoOtro}
+                    onChange={cambiar}
+                    placeholder="Escribe el asunto"
+                    required
+                    maxLength={150}
+                    autoFocus
+                    className="bg-white border-border focus:border-accent"
+                  />
+                )}
 
                 <textarea
                   name="mensaje"

@@ -17,8 +17,8 @@ import {RedesFlotante} from "@/components/redes-flotante"
 // Horario fijo de ensayos (cambia poco, así que sigue aquí).
 // Los ensayos puntuales (ensayo general, etc.) se meten como eventos de tipo "Ensayo".
 const ensayos: Ensayo[] = [
-  { agrupacion: "banda", dias: "Lunes y miércoles", hora: "20:00 – 22:00", icon: Music, href: "/banda" },
-  { agrupacion: "coral", dias: "Martes y jueves",   hora: "19:30 – 21:30", icon: Mic2,  href: "/coral" },
+  { agrupacion: "banda", dias: "Sábado", hora: "11:00 – 13:30", icon: Music, href: "/banda/historia" },
+  { agrupacion: "coral", dias: "Lunes",   hora: "20:00 – 21:30", icon: Mic2,  href: "/coral/historia" },
 ]
 
 const navButton = `
