@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-25T17:23:27.487Z",
+  "generado": "2026-10-25T17:58:01.189Z",
   "eventos": [
     {
       "id": "2026-10-03-vermu-solidario",
@@ -155,86 +155,10 @@
       ]
     },
     {
-      "id": "2024-04-21-folixa-na-primavera-13-reyes",
-      "titulo": "Estreno 13 reyes I (Folixa na Primavera 2024)",
-      "fecha": "2024-04-21",
-      "anio": 2024,
-      "agrupaciones": [
-        "Banda Sinfónica"
-      ],
-      "portada": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
-      "fotos": [
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
-          "tipo": "imagen",
-          "ancho": 1600,
-          "alto": 1104,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/002.webp",
-          "tipo": "imagen",
-          "ancho": 1600,
-          "alto": 544,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/003.webp",
-          "tipo": "imagen",
-          "ancho": 1200,
-          "alto": 817,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/004.webp",
-          "tipo": "imagen",
-          "ancho": 1195,
-          "alto": 1600,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/005.webp",
-          "tipo": "imagen",
-          "ancho": 1600,
-          "alto": 1200,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/006.webp",
-          "tipo": "imagen",
-          "ancho": 1066,
-          "alto": 1600,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/007.webp",
-          "tipo": "imagen",
-          "ancho": 1600,
-          "alto": 1158,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        },
-        {
-          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/008.webp",
-          "tipo": "imagen",
-          "ancho": 1600,
-          "alto": 777,
-          "autor": "J. R. Viejo",
-          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
-        }
-      ]
-    },
-    {
       "id": "2025-04-05-folixa-na-primavera-skanda",
-      "titulo": "Concierto con Skanda (Folixa na Primavera 2024)",
-      "fecha": "2024-04-05",
-      "anio": 2024,
+      "titulo": "Concierto con Skanda (Folixa na Primavera 2025)",
+      "fecha": "2025-04-05",
+      "anio": 2025,
       "agrupaciones": [
         "Banda Sinfónica"
       ],
@@ -367,6 +291,82 @@
           "alto": 1080,
           "autor": "Felipe S.M.",
           "enlaceAutor": "https://www.instagram.com/felipesm_foto"
+        }
+      ]
+    },
+    {
+      "id": "2024-04-21-folixa-na-primavera-13-reyes",
+      "titulo": "Estreno 13 reyes I (Folixa na Primavera 2024)",
+      "fecha": "2024-04-21",
+      "anio": 2024,
+      "agrupaciones": [
+        "Banda Sinfónica"
+      ],
+      "portada": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
+      "fotos": [
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/001.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1104,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/002.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 544,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/003.webp",
+          "tipo": "imagen",
+          "ancho": 1200,
+          "alto": 817,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/004.webp",
+          "tipo": "imagen",
+          "ancho": 1195,
+          "alto": 1600,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/005.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1200,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/006.webp",
+          "tipo": "imagen",
+          "ancho": 1066,
+          "alto": 1600,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/007.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 1158,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
+        },
+        {
+          "src": "/galeria-section/2024-04-21-folixa-na-primavera-13-reyes/008.webp",
+          "tipo": "imagen",
+          "ancho": 1600,
+          "alto": 777,
+          "autor": "J. R. Viejo",
+          "enlaceAutor": "https://www.instagram.com/oldpostfoto/"
         }
       ]
     },
