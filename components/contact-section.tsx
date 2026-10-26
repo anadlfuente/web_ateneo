@@ -69,8 +69,8 @@ export function ContactSection() {
               <User className="w-4 h-4 text-primary-blue" />
               <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Contacto</span>
             </div>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
-              Hablemos
+            <h2 className="mb-6 font-serif">
+            ¿Hablamos?
             </h2>
             <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
               Ya sea para unirte a la banda o la coral, contratar nuestros servicios
@@ -79,19 +79,19 @@ export function ContactSection() {
 
             {/* Contact info */}
             <div className="space-y-6 mb-10">
-              <a href="mailto:rrssateneomieres@gmail.com" className="flex items-center gap-4 group">
+              <a href="mailto:ateneomusicaldemieres@gmail.com" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
-                  <Mail className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                  <Mail className="w-5 h-5 text-accent group-hover:text-foreground transition-colors" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium text-foreground">rrssateneomieres@gmail.com</p>
+                  <p className="font-medium text-foreground">ateneomusicaldemieres@gmail.com</p>
                 </div>
               </a>
 
               <a href="tel:+34681188519" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
-                  <Phone className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                  <Phone className="w-5 h-5 text-accent group-hover:text-foreground transition-colors" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Teléfono</p>
@@ -106,7 +106,7 @@ export function ContactSection() {
                 className="flex items-center gap-4 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
-                  <MapPin className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                  <MapPin className="w-5 h-5 text-accent group-hover:text-foreground transition-colors" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Dirección</p>
@@ -117,7 +117,7 @@ export function ContactSection() {
 
             {/* Redes sociales */}
             <div>
-              <p className="text-xl text-black-foreground mb-4 font-bold">¡Síguenos en redes sociales!</p>
+              <p className="mb-4 text-lg font-bold text-foreground">¡Síguenos en redes sociales!</p>
               <ul className="flex flex-wrap gap-3">
                 {redesSociales.map(({ nombre, icono: Icono, url }) => (
                   <li key={nombre}>
@@ -127,9 +127,9 @@ export function ContactSection() {
                       rel="noopener noreferrer"
                       aria-label={nombre}
                       title={nombre}
-                      className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group hover:bg-accent transition-colors"
+                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 transition-colors hover:bg-accent"
                     >
-                      <Icono className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
+                      <Icono className="w-5 h-5 text-accent group-hover:text-foreground transition-colors" />
                     </a>
                   </li>
                 ))}
@@ -140,71 +140,89 @@ export function ContactSection() {
           {/* Right column - Form */}
           <div>
             <div className="bg-muted rounded-lg p-8 lg:p-10">
-              <h3 className="font-serif text-2xl text-foreground mb-6">
+              <h3 className="mb-6 font-serif">
                 Envíanos un mensaje
               </h3>
 
               <form onSubmit={enviar} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Input
-                    name="nombre"
-                    value={form.nombre}
-                    onChange={cambiar}
-                    placeholder="Nombre"
-                    required
-                    maxLength={100}
-                    className="bg-white border-border focus:border-accent"
-                  />
-                  <Input
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={cambiar}
-                    placeholder="Email"
-                    required
-                    className="bg-white border-border focus:border-accent"
-                  />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label htmlFor="contacto-nombre" className="grid gap-1 text-sm font-medium">
+                    Nombre *
+                    <Input
+                      id="contacto-nombre"
+                      name="nombre"
+                      value={form.nombre}
+                      onChange={cambiar}
+                      required
+                      maxLength={100}
+                      autoComplete="name"
+                      className="border-blue-border text-base focus:border-foreground"
+                    />
+                  </label>
+                  <label htmlFor="contacto-email" className="grid gap-1 text-sm font-medium">
+                    Correo electrónico *
+                    <Input
+                      id="contacto-email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={cambiar}
+                      required
+                      autoComplete="email"
+                      className="border-blue-border text-base focus:border-foreground"
+                    />
+                  </label>
                 </div>
 
-                <select
-                  name="asunto"
-                  value={form.asunto}
-                  onChange={cambiar}
-                  className="w-full px-4 py-3 rounded-md bg-white border border-border text-foreground focus:border-accent focus:outline-none"
-                >
-                  <option value="">Selecciona un asunto</option>
-                  <option value="banda">Quiero unirme a la banda</option>
-                  <option value="coral">Quiero unirme a la coral</option>
-                  <option value="contratar">Contratar servicios</option>
-                  <option value="patrocinio">Información sobre patrocinio</option>
-                  <option value="socio">Hacerme socio</option>
-                  <option value="otro">Otro</option>
-                </select>
+                <label htmlFor="contacto-asunto" className="grid gap-1 text-sm font-medium">
+                  Asunto
+                  <select
+                    id="contacto-asunto"
+                    name="asunto"
+                    value={form.asunto}
+                    onChange={cambiar}
+                    className="w-full rounded-md border-2 border-blue-border bg-background px-4 py-3 text-base text-foreground focus:border-foreground focus:outline-none"
+                  >
+                    <option value="">Selecciona un asunto</option>
+                    <option value="banda">Quiero unirme a la banda</option>
+                    <option value="coral">Quiero unirme a la coral</option>
+                    <option value="contratar">Contratar servicios</option>
+                    <option value="patrocinio">Información sobre patrocinio</option>
+                    <option value="socio">Hacerme socio</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </label>
 
                 {/* Si elige "Otro", puede escribir su propio asunto */}
                 {form.asunto === "otro" && (
-                  <Input
-                    name="asuntoOtro"
-                    value={form.asuntoOtro}
-                    onChange={cambiar}
-                    placeholder="Escribe el asunto"
-                    required
-                    maxLength={150}
-                    autoFocus
-                    className="bg-white border-border focus:border-accent"
-                  />
+                  <label htmlFor="contacto-asunto-otro" className="grid gap-1 text-sm font-medium">
+                    Especifica el asunto
+                    <Input
+                      id="contacto-asunto-otro"
+                      name="asuntoOtro"
+                      value={form.asuntoOtro}
+                      onChange={cambiar}
+                      required
+                      maxLength={150}
+                      autoFocus
+                      className="border-blue-border text-base focus:border-foreground"
+                    />
+                  </label>
                 )}
 
-                <textarea
-                  name="mensaje"
-                  value={form.mensaje}
-                  onChange={cambiar}
-                  rows={5}
-                  placeholder="Tu mensaje..."
-                  required
-                  maxLength={5000}
-                  className="w-full px-4 py-3 rounded-md bg-white border border-border text-foreground focus:border-accent focus:outline-none resize-none"
-                />
+                <label htmlFor="contacto-mensaje" className="grid gap-1 text-sm font-medium">
+                  Mensaje *
+                  <textarea
+                    id="contacto-mensaje"
+                    name="mensaje"
+                    value={form.mensaje}
+                    onChange={cambiar}
+                    rows={5}
+                    required
+                    maxLength={5000}
+                    className="w-full resize-none rounded-md border-2 border-blue-border bg-background px-4 py-3 text-base text-foreground focus:border-foreground focus:outline-none"
+                  />
+                </label>
 
                 {/* Campo trampa antispam: invisible para las personas, los robots lo rellenan */}
                 <input
@@ -225,11 +243,11 @@ export function ContactSection() {
                     checked={privacidad}
                     onChange={(e) => setPrivacidad(e.target.checked)}
                     required
-                    className="mt-1 h-4 w-4 accent-accent"
+                    className="mt-1 h-4 w-4 accent-foreground"
                   />
                   <span>
                     He leído y acepto la{" "}
-                    <a href="/legal/" target="_blank" className="text-accent underline hover:no-underline">
+                    <a href="/legal/" target="_blank" rel="noopener noreferrer" className="text-link">
                       política de privacidad
                     </a>
                     .
@@ -239,7 +257,7 @@ export function ContactSection() {
                 <Button
                   type="submit"
                   disabled={estado === "enviando"}
-                  className="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-6"
+                  className="cta-primary w-full"
                 >
                   {estado === "enviando" ? (
                     <>
@@ -256,13 +274,13 @@ export function ContactSection() {
 
                 {/* Mensajes de resultado */}
                 {estado === "enviado" && (
-                  <div className="flex items-start gap-3 p-4 rounded-md bg-green-50 text-green-800 text-sm" role="status">
+                  <div className="flex items-start gap-3 rounded-md border-2 border-blue-border p-4 text-sm text-foreground" role="status">
                     <CheckCircle2 className="w-5 h-5 shrink-0" />
                     <p>¡Gracias! Hemos recibido tu mensaje y te responderemos lo antes posible.</p>
                   </div>
                 )}
                 {estado === "error" && (
-                  <div className="flex items-start gap-3 p-4 rounded-md bg-red-50 text-red-800 text-sm" role="alert">
+                  <div className="flex items-start gap-3 rounded-md border-2 border-blue-border p-4 text-sm text-foreground" role="alert">
                     <AlertCircle className="w-5 h-5 shrink-0" />
                     <p>{mensajeError}</p>
                   </div>
