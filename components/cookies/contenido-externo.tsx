@@ -23,13 +23,13 @@ export function ContenidoExterno({ servicio, children }: { servicio: string; chi
       <div className="flex flex-wrap justify-center gap-3">
         <button
           onClick={() => guardar(true)}
-          className="px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent/90 transition-colors"
+          className="cta-primary"
         >
           Aceptar y ver
         </button>
         <button
           onClick={abrirConfiguracion}
-          className="px-5 py-2.5 rounded-lg border border-border text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
+          className="cta-secondary"
         >
           Configurar cookies
         </button>
