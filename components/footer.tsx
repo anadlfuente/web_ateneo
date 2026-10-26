@@ -1,142 +1,109 @@
-import Link from "next/link"
-import { Instagram, Facebook, Youtube, Twitter } from "lucide-react"
-import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-cookies"
 import Image from "next/image"
+import Link from "next/link"
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
+import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-cookies"
 
-const footerLinks = {
-  agrupaciones: [
-    { name: "Banda Sinfónica", href: "/banda/historia" },
-    { name: "Coral Cantares", href: "/coral/historia" },
-    { name: "Claxon Boys", href: "/claxon" },
-    { name: "Charanga", href: "/charanga" },
-  ],
-  informacion: [
-    { name: "Sobre Nosotros", href: "/historia" },
-    { name: "Patrocinadores", href: "/#patrocinadores" },
-    { name: "Noticias", href: "/noticias" },
-    { name: "Contacto", href: "/contacto" },
-    { name: "Hazte Socio", href: "/join" },
-  ],
-  legal: [
-    { name: "Aviso Legal", href: "/legal?section=legal" },
-    { name: "Privacidad", href: "/legal?section=privacy" },
-    { name: "Cookies", href: "/legal?section=cookies" },
-  ],
-}
+const groups = [
+  { name: "Banda Sinfónica", href: "/banda/historia" },
+  { name: "Coral Cantares", href: "/coral/historia" },
+  { name: "Claxon Boys", href: "/claxon" },
+  { name: "Charanga New Paentamala", href: "/charanga" },
+]
 
 const socialLinks = [
-  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/bandademieres/" },
-  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/Bandaateneomieres/" },
-  { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g" },
-  { name: "X", icon: Twitter, href: "https://x.com/BandaMusMieres" },
+  { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: Instagram },
+  { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: Facebook },
+  { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: Youtube },
+  { name: "X", href: "https://x.com/BandaMusMieres", Icon: Twitter },
 ]
+
+const linkClass = "text-link text-link-on-blue inline-flex min-h-11 items-center"
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-white">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
-          {/* Brand column */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <span className="font-serif text-2xl text-white">
-                Ateneo Musical de <span className="text-secondary"> Mieres</span>
-              </span>
-            </Link>
-            <p className="text-white/50 text-sm mb-8">
-              Dinamizando la vida musical mierense desde 2018
-            </p>
-            
-            {/* Social links */}
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
+    <footer className="bg-primary-blue text-foreground">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:px-8">
+        <section>
+          <h2 className="mb-3 font-serif text-xl">La asociación</h2>
+          <p className="mb-3 text-sm">Dinamizando la vida musical mierense desde 2018.</p>
+          <ul className="space-y-1 text-sm">
+            <li><Link href="/historia" className={linkClass}>Quiénes somos</Link></li>
+            <li><Link href="/transparencia" className={linkClass}>Transparencia</Link></li>
+            <li><Link href="/galeria" className={linkClass}>Galería</Link></li>
+          </ul>
+          <a
+            href="https://www.ayto-mieres.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ayuntamiento de Mieres (se abre en una pestaña nueva)"
+            className="mt-4 inline-flex min-h-11 items-center"
+          >
+            <Image
+              src="/logo-vector_ayuntamiento-de-mieres.webp"
+              alt="Ayuntamiento de Mieres"
+              width={160}
+              height={60}
+              className="h-12 w-auto"
+            />
+          </a>
+        </section>
+
+        <section>
+          <h2 className="mb-3 font-serif text-xl">Agrupaciones</h2>
+          <ul className="space-y-1 text-sm">
+            {groups.map((group) => (
+              <li key={group.name}><Link href={group.href} className={linkClass}>{group.name}</Link></li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="mb-3 font-serif text-xl">Participa</h2>
+          <ul className="space-y-1 text-sm">
+            <li><Link href="/join" className={linkClass}>Hazte socio</Link></li>
+            <li><Link href="/unete" className={linkClass}>Únete como músico</Link></li>
+            <li><Link href="/patrocinadores" className={linkClass}>Patrocina</Link></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="mb-3 font-serif text-xl">Contacto</h2>
+          <ul className="space-y-1 text-sm">
+            <li><a href="tel:+34681188519" className={linkClass}>+34 681 18 85 19</a></li>
+            <li><a href="mailto:ateneomusicaldemieres@gmail.com" className={linkClass}>ateneomusicaldemieres@gmail.com</a></li>
+            <li><Link href="/contacto" className={linkClass}>Escribirnos</Link></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="mb-3 font-serif text-xl">Redes sociales</h2>
+          <ul className="flex flex-wrap gap-2">
+            {socialLinks.map(({ name, href, Icon }) => (
+              <li key={name}>
                 <a
-                  key={social.name}
-                  href={social.href}
-                  className="text-white/50 hover:text-white transition-colors"
-                  aria-label={social.name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${name} del Ateneo (se abre en una pestaña nueva)`}
+                  className="flex min-h-11 min-w-11 items-center justify-center border-2 border-foreground hover:bg-foreground hover:text-primary-blue focus-visible:outline"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <Icon className="h-5 w-5" aria-hidden="true" />
                 </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Links columns */}
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Agrupaciones</h4>
-            <ul className="space-y-3">
-              {footerLinks.agrupaciones.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Información</h4>
-            <ul className="space-y-3">
-              {footerLinks.informacion.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <BotonConfigurarCookies className="text-sm text-white/70 hover:text-white transition-colors text-left" />
               </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Colabora</h4>
-            <a
-              href="https://www.ayto-mieres.es"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Ayuntamiento de Mieres"
-              className="inline-block opacity-70 hover:opacity-100 transition-opacity"
-            >
-              <Image
-                src="/logo-vector_ayuntamiento-de-mieres.webp"
-                alt="Ayuntamiento de Mieres"
-                width={160}
-                height={60}
-                className="h-12 w-auto"
-              />
-            </a>
-          </div>
-        </div>
+            ))}
+          </ul>
+        </section>
       </div>
-      
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
-            <p>
-              © {new Date().getFullYear()} Ateneo Musical de Mieres. Todos los derechos reservados.
-            </p>
-            <p>
-              Asturias, España
-            </p>
-          </div>
+
+      <div className="border-t-2 border-foreground">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>© {new Date().getFullYear()} Ateneo Musical de Mieres. Todos los derechos reservados.</p>
+          <nav aria-label="Avisos legales" className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/legal?section=legal" className={linkClass}>Aviso legal</Link>
+            <Link href="/legal?section=privacy" className={linkClass}>Privacidad</Link>
+            <Link href="/legal?section=cookies" className={linkClass}>Cookies</Link>
+            <BotonConfigurarCookies className={`${linkClass} text-left`} />
+          </nav>
         </div>
       </div>
     </footer>

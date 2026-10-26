@@ -1,259 +1,219 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { Menu, X, ChevronDown, Search } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { usePathname } from "next/navigation"
+import { ChevronDown, Facebook, Instagram, Menu, Twitter, X, Youtube } from "lucide-react"
 
 const navigation = [
-  {
-    name: "Sobre nosotros",
-    href: "/historia",
-    submenu: [
-      { name: "Historia", href: "/historia" },
-      { name: "Transparencia", href: "/transparencia" },
-    ],
-  },
   {
     name: "Agrupaciones",
     href: "/#agrupaciones",
     submenu: [
-      {
-        name: "Banda Sinfónica",
-        href: "/banda/historia",
-        submenu: [
-          { name: "Directores", href: "/banda/directores" },
-        ],
-      },
-      {
-        name: "Coral Cantares",
-        href: "/coral/historia",
-        submenu: [
-          { name: "Director", href: "/coral/director" },
-        ],
-      },
+      { name: "Banda Sinfónica", href: "/banda/historia", children: [{ name: "Directores", href: "/banda/directores" }] },
+      { name: "Coral Cantares", href: "/coral/historia", children: [{ name: "Director", href: "/coral/director" }] },
       { name: "Claxon Boys", href: "/claxon" },
       { name: "Charanga New Paentamala", href: "/charanga" },
+      { name: "Ver todas las agrupaciones", href: "/agrupaciones" },
     ],
   },
-  { name: "Noticias", href: "/noticias" },
-  { name: "Contacto", href: "/contacto" },
   { name: "Calendario", href: "/calendar" },
-  { name: "Galería", href: "/galeria" },
+  { name: "Noticias", href: "/noticias" },
+  {
+    name: "Sobre nosotros",
+    href: "/historia",
+    submenu: [
+      { name: "Quiénes somos / Historia", href: "/historia" },
+      { name: "Galería", href: "/galeria" },
+      { name: "Transparencia", href: "/transparencia" },
+    ],
+  },
+  { name: "Contacto", href: "/contacto" },
 ]
 
-export function Header() { // Componente React
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false) // Estado del menú móvil; setMobileMenuOpen lo cambia
+const socialLinks = [
+  { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: Instagram },
+  { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: Facebook },
+  { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: Youtube },
+  { name: "X", href: "https://x.com/BandaMusMieres", Icon: Twitter },
+]
+
+function currentPage(pathname: string, href: string) {
+  const path = href.split(/[?#]/)[0]
+  return path === pathname
+}
+
+export function Header() {
+  const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [scrolled, setScrolled] = useState(false)
 
-  useEffect(() => { // Se ejecuta cuando el componente aparece
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50) // Si se hace scroll más de 50 px, scrolled pasa a true y cambian los estilos
+  useEffect(() => {
+    if (!mobileMenuOpen && activeDropdown === null) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false)
+        setActiveDropdown(null)
+      }
     }
-    window.addEventListener("scroll", handleScroll) // Escucha el scroll constantemente
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("keydown", closeOnEscape)
+    return () => window.removeEventListener("keydown", closeOnEscape)
+  }, [mobileMenuOpen, activeDropdown])
 
-  // Con el menú móvil abierto, bloquea el scroll de la página
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
   }, [mobileMenuOpen])
 
-  return ( // Aquí empieza el JSX, la parte visual del componente
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-white border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
-      {/* Top bar */}
-      <div className={`border-b transition-all duration-500 ${scrolled ? "border-border" : "border-white/20"}`}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex items-center justify-between h-10 text-xs">
-            <div className={`flex items-center gap-6 ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
-              <a href="tel:+34681188519" className="hover:text-foreground transition-colors">
-                +34 681 18 85 19
-              </a>
-              <a href="mailto:ateneomusicaldemieres@gmail.com" className="hover:text-foreground transition-colors">
-                ateneomusicaldemieres@gmail.com
-              </a>
+  const renderNav = (mobile = false) => (
+    <ul className={mobile ? "space-y-1" : "flex items-center gap-5"}>
+      {navigation.map((item) => {
+        const isActive = currentPage(pathname, item.href)
+        const isOpen = activeDropdown === item.name
+        return (
+          <li key={item.name} className={mobile ? "border-b border-primary-blue/30" : "relative"}>
+            <div className={mobile ? "flex items-center" : "flex items-center gap-1"}>
+              <Link
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  setActiveDropdown(null)
+                }}
+                className={`nav-link ${mobile ? "flex-1 py-3 text-base" : "py-2 text-[0.9375rem]"} ${isActive ? "nav-link-active" : ""}`}
+              >
+                {item.name}
+              </Link>
+              {item.submenu && (
+                <button
+                  type="button"
+                  aria-label={`${isOpen ? "Cerrar" : "Abrir"} menú ${item.name}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`submenu-${mobile ? "mobile-" : ""}${item.name.replace(/\s+/g, "-").toLowerCase()}`}
+                  onClick={() => setActiveDropdown(isOpen ? null : item.name)}
+                  className="flex min-h-11 min-w-11 items-center justify-center text-foreground hover:bg-primary-blue/15 focus-visible:outline"
+                >
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                </button>
+              )}
             </div>
-            <div className="flex items-center gap-4">
-              <button className={`hover:opacity-70 transition-opacity ${scrolled ? "text-foreground" : "text-white"}`}>
-                <Search className="w-4 h-4" />
-              </button>
-            </div>
+            {item.submenu && isOpen && (
+              <ul
+                id={`submenu-${mobile ? "mobile-" : ""}${item.name.replace(/\s+/g, "-").toLowerCase()}`}
+                className={mobile
+                  ? "mb-3 ml-3 border-l-2 border-blue-border pl-3"
+                  : "absolute left-0 top-full z-50 mt-1 min-w-64 border-2 border-blue-border bg-background p-2 shadow-lg"}
+              >
+                {item.submenu.map((subItem) => (
+                  <li key={subItem.name}>
+                    <Link
+                      href={subItem.href}
+                      aria-current={currentPage(pathname, subItem.href) ? "page" : undefined}
+                      onClick={() => {
+                        setMobileMenuOpen(false)
+                        setActiveDropdown(null)
+                      }}
+                      className="nav-link block min-h-11 px-3 py-2 text-sm"
+                    >
+                      {subItem.name}
+                    </Link>
+                    {"children" in subItem && subItem.children?.map((child) => (
+                      <Link
+                        key={child.name}
+                        href={child.href}
+                        aria-current={currentPage(pathname, child.href) ? "page" : undefined}
+                        onClick={() => {
+                          setMobileMenuOpen(false)
+                          setActiveDropdown(null)
+                        }}
+                        className="nav-link ml-3 block min-h-11 border-l-2 border-blue-border px-3 py-2 text-sm"
+                      >
+                        {child.name}
+                      </Link>
+                    ))}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-blue-border bg-background text-foreground">
+      <div className="bg-primary-blue text-foreground">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2 text-xs sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <a href="tel:+34681188519" className="header-contact text-link text-link-on-blue">+34 681 18 85 19</a>
+            <a href="mailto:ateneomusicaldemieres@gmail.com" className="header-contact text-link text-link-on-blue">ateneomusicaldemieres@gmail.com</a>
           </div>
+          <nav aria-label="Redes sociales" className="flex items-center gap-3">
+            {socialLinks.map(({ name, href, Icon }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="flex min-h-8 min-w-8 items-center justify-center hover:bg-foreground/10 focus-visible:outline"
+              >
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
 
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24 lg:h-28">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-4 group">
-            {/* Icono */}
-            <img
-              src="/logo_ateneo.png"
-              alt="Ateneo Musical de Mieres"
-              className={`w-10 h-10 transition-transform duration-300 group-hover:rotate-6 ${
-                scrolled ? "opacity-100" : "opacity-90"
-              }`}
-            />
-            <span className={`font-serif text-2xl tracking-tight transition-colors ${
-              scrolled ? "text-foreground" : "text-white"
-            }`}>
-              Ateneo Musical de<span className="text-secondary"> Mieres</span>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex min-h-16 items-center justify-between gap-4 xl:min-h-20">
+          <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 items-center gap-3">
+            <Image src="/logo_ateneo.png" alt="" width={44} height={44} className="h-10 w-10 object-contain" priority />
+            <span className="font-serif text-lg leading-tight sm:text-xl">
+              Ateneo Musical de Mieres
             </span>
           </Link>
 
-          {/* Desktop Navigation (a partir de 1280 px) */}
-          <div className="hidden xl:flex xl:items-center xl:gap-8">
-            {navigation.map((item) => ( // Recorre el array de navegación
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => item.submenu && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  href={item.href}
-                  className={`whitespace-nowrap flex items-center gap-1 text-xs font-medium tracking-wide uppercase transition-colors underline-animation ${
-                    scrolled
-                      ? "text-foreground hover:text-secondary"
-                      : "text-white hover:text-white/70"
-                  }`}
-                >
-                  {item.name}
-                  {item.submenu && <ChevronDown className="w-3 h-3" />}
-                </Link>
+          <nav aria-label="Navegación principal" className="hidden xl:block">
+            {renderNav()}
+          </nav>
 
-                {item.submenu && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-0.5 w-64 bg-white border border-border shadow-xl animate-in fade-in slide-in-from-top-2">
-                    <div className="py-2">
-                      {item.submenu.map((subItem) => (
-                        <div key={subItem.name}>
-                          <Link
-                            href={subItem.href}
-                            className="block px-6 py-3 text-sm text-foreground hover:bg-muted hover:text-secondary transition-colors"
-                          >
-                            {subItem.name}
-                          </Link>
-
-                          {"submenu" in subItem && subItem.submenu && (
-                            <div className="pl-6 pb-2">
-                              {subItem.submenu.map((deepItem) => (
-                                <Link
-                                  key={deepItem.name}
-                                  href={deepItem.href}
-                                  className="block py-2 text-xs text-muted-foreground hover:text-secondary"
-                                >
-                                  {deepItem.name}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+          <div className="hidden items-center gap-2 xl:flex">
+            <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary">Contrátanos</Link>
+            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary">Hazte socio</Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden xl:flex items-center gap-6">
-            <Link href="/join">
-              <Button
-                className={`px-8 py-2 text-sm font-medium tracking-wide uppercase transition-all radius-md ${
-                  scrolled
-                    ? "bg-secondary text-white hover:bg-secondary/90"
-                    : "bg-white text-foreground hover:bg-white/90"
-                }`}
-              >
-                Hazte Socio
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile menu button (por debajo de 1280 px) */}
           <button
             type="button"
-            aria-label="Abrir menú"
-            className={`xl:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => {
+              setMobileMenuOpen(!mobileMenuOpen)
+              setActiveDropdown(null)
+            }}
+            className="flex min-h-11 min-w-11 items-center justify-center xl:hidden"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
-      </nav>
 
-      {/* Mobile menu */}
+        <div className="flex gap-2 pb-3 xl:hidden">
+          <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary flex-1">Contrátanos</Link>
+          <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary flex-1">Hazte socio</Link>
+        </div>
+      </div>
+
       {mobileMenuOpen && (
-        <div className="xl:hidden fixed top-0 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto">
-
-          {/* Cabecera del menú móvil */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-            <span className="font-serif text-lg">Menú</span>
-
-            <button aria-label="Cerrar menú" onClick={() => setMobileMenuOpen(false)}>
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Contenido con scroll */}
-          <div className="px-6 py-6 space-y-1">
-            {navigation.map((item) => (
-              <div key={item.name}>
-                <Link
-                  href={item.href}
-                  className="block py-4 text-lg font-medium text-foreground hover:text-secondary transition-colors border-b border-border"
-                  onClick={() => !item.submenu && setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-
-                {item.submenu && (
-                  <div className="pl-4 py-2 space-y-1">
-                    {item.submenu.map((subItem) => (
-                      <div key={subItem.name}>
-                        <Link
-                          href={subItem.href}
-                          className="block py-2 text-sm text-muted-foreground hover:text-secondary"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-
-                        {"submenu" in subItem && subItem.submenu && (
-                          <div className="pl-4 space-y-1">
-                            {subItem.submenu.map((deepItem) => (
-                              <Link
-                                key={deepItem.name}
-                                href={deepItem.href}
-                                className="block py-2 text-xs text-muted-foreground hover:text-secondary"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                {deepItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-
-            <Link href="/join" onClick={() => setMobileMenuOpen(false)} className="block">
-              <Button className="w-full mt-6 bg-secondary text-white hover:bg-secondary/90 text-sm font-medium tracking-wide uppercase">
-                Hazte Socio
-              </Button>
-            </Link>
-          </div>
+        <div
+          id="mobile-navigation"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-9rem)] overflow-y-auto border-t-2 border-blue-border bg-background px-4 py-4 shadow-xl xl:hidden"
+        >
+          <nav aria-label="Navegación principal móvil">{renderNav(true)}</nav>
         </div>
       )}
     </header>
