@@ -1,135 +1,85 @@
-"use client"
-
-import { ArrowRight, Music, Mic2, Guitar, PartyPopper } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
+import { ArrowRight, Guitar, Mic2, Music, PartyPopper } from "lucide-react"
 
 const groups = [
   {
-    id: "banda-sinfonica",
     name: "Banda Sinfónica",
-    description: "Más de 60 músicos interpretando desde clásicos hasta bandas sonoras contemporáneas.",
+    description: "Más de 60 músicos interpretan un repertorio que incluye clásicos y bandas sonoras.",
     image: "/banda/pasacalles.JPG",
     href: "/banda/historia",
-    color: "primary",
     members: "60+",
-    icon: Music,
+    Icon: Music,
   },
   {
-    id: "coral",
     name: "Coral Cantares",
-    description: "Un grupo de voces unidas por las ganas de cantar y disfrutar la  música, con especial cariño por nuestros cantares de chigre.",
+    description: "Voces unidas por la música y por nuestros cantares de chigre.",
     image: "/coral/coral_cantares.jpg",
     href: "/coral/historia",
-    color: "secondary",
     members: "20+",
-    icon: Mic2,
+    Icon: Mic2,
   },
   {
-    id: "claxon-boys",
     name: "Claxon Boys",
-    description: "Un grupo de amigos unidos por la música y las ganas de pasarlo bien: pop, rock y todo lo necesario para animar el ambiente.",
+    description: "Cuatro amigos unidos por la música y las ganas de disfrutar.",
     image: "/claxon/claxon1.jpg",
     href: "/claxon",
-    color: "accent",
     members: "4",
-    icon: Guitar,
+    Icon: Guitar,
   },
   {
-    id: "charanga",
     name: "Charanga New Paentamala",
-    description: "La fiesta asegurada en fiestas populares, bodas y todo lo que te propongas",
+    description: "La charanga del Ateneo para animar fiestas populares y celebraciones.",
     image: "/charanga/charanga2.jpeg",
     href: "/charanga",
-    color: "primary",
     members: "15+",
-    icon: PartyPopper,
+    Icon: PartyPopper,
   },
 ]
 
-const getColorClasses = (color: string) => {
-  switch(color) {
-    case "primary": return { bg: "bg-primary-blue", text: "text-primary-blue", border: "border-primary-blue", hover: "group-hover:bg-primary-blue" }
-    case "secondary": return { bg: "bg-accent-yellow", text: "text-accent-yellow", border: "border-accent-yellow", hover: "group-hover:bg-accent-yellow" }
-    case "accent": return { bg: "bg-accent-green", text: "text-accent-green", border: "border-accent-green", hover: "group-hover:bg-accent-green" }
-    default: return { bg: "bg-primary-blue", text: "text-primary-blue", border: "border-primary-blue", hover: "group-hover:bg-primary-blue" }
-  }
-}
-
-
 export function GroupsSection() {
   return (
-    <section id="agrupaciones" className="py-24 bg-white relative overflow-hidden z-10">
-      {/* Decorative background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 rounded-full mb-6">
-            <span className="w-2 h-2 bg-primary-blue rounded-full animate-pulse" />
-            <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Nuestras Agrupaciones</span>
-          </div>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4">
-            Mucho más que <span className="text-gradient-animated">una banda</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Diferentes agrupaciones, diferentes sonidos pero una misma pasión por la música.
+    <section id="agrupaciones" className="bg-primary-blue py-14 text-foreground sm:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 flex flex-col gap-3 sm:mb-10">
+          <p className="text-sm font-bold uppercase tracking-wider">Nuestras agrupaciones</p>
+          <h2 className="font-serif">Mucho más que una banda</h2>
+          <p className="max-w-prose">
+            Cuatro agrupaciones, cada una con su propia historia y sus músicos.
           </p>
         </div>
 
-        {/* Groups grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {groups.map((group) => {
-            const colors = getColorClasses(group.color)
-            const Icon = group.icon
-            
-            return (
-              <Link
-                key={group.id}
-                href={group.href}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-border hover:border-transparent transition-all duration-300 hover-card-vibrant"
-              >
-                {/* Image */}
-                <div className="relative overflow-hidden flex flex-col justify-end min-h-[20rem] md:min-h-0 md:aspect-[16/10]">
-                  <img 
-                    src={group.image} 
-                    alt={group.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent ${colors.hover}/20 transition-colors`} />
-                  
-                  {/* Icon badge */}
-                  <div className={`absolute top-4 left-4 z-10 w-12 h-12 ${colors.bg} rounded-xl flex items-center justify-center`}>
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  {/* Members badge */}
-                  <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
-                    <span className="text-sm font-bold text-foreground">{group.members} miembros</span>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="relative p-6 pt-20">
-                    <h3 className="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:text-secondary transition-colors">
-                      {group.name}
-                    </h3>
-                    <p className="text-white/80 text-sm mb-4 max-w-md line-clamp-2">
-                      {group.description}
-                    </p>
-                    <span className={`inline-flex items-center text-sm font-semibold tracking-wide uppercase ${colors.text} group-hover:text-white transition-colors`}>
-                      Conocer más
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+        <div className="grid gap-5 sm:grid-cols-2">
+          {groups.map(({ name, description, image, href, members, Icon }) => (
+            <article key={name} className="image-overlay group relative min-h-72 overflow-hidden rounded-lg border-2 border-foreground">
+              <Image
+                src={image}
+                alt={`Actuación de ${name}`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+                loading="lazy"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#01020a]/95 via-[#01020a]/55 to-transparent" />
+              <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-accent-green text-light" aria-hidden="true">
+                <Icon className="h-5 w-5" />
+              </div>
+              <p className="absolute right-4 top-4 rounded-full bg-light px-3 py-1 text-sm font-semibold text-foreground">
+                {members} miembros
+              </p>
+              <div className="absolute inset-x-0 bottom-0 p-5 text-light sm:p-6">
+                <h3 className="mb-2 font-serif">{name}</h3>
+                <p className="mb-3 max-w-prose text-sm leading-relaxed">{description}</p>
+                <Link href={href} className="text-link text-link-on-dark inline-flex min-h-11 items-center gap-2 font-semibold">
+                  Conocer más <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
+
+        <Link href="/agrupaciones" className="cta-secondary mt-6">Ver todas las agrupaciones</Link>
       </div>
     </section>
   )
 }
-
-
