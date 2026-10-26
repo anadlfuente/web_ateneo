@@ -4,7 +4,8 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ChevronDown, Facebook, Instagram, Mail, Menu, Twitter, X, Youtube } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
+import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6"
 
 const navigation = [
   {
@@ -33,10 +34,11 @@ const navigation = [
 ]
 
 const socialLinks = [
-  { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: Instagram },
-  { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: Facebook },
-  { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: Youtube },
-  { name: "X", href: "https://x.com/BandaMusMieres", Icon: Twitter },
+  { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: FaInstagram },
+  { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: FaFacebookF },
+  { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: FaYoutube },
+  { name: "X", href: "https://x.com/BandaMusMieres", Icon: FaXTwitter },
+  { name: "TikTok", href: "https://www.tiktok.com/@bandademieres", Icon: FaTiktok },
 ]
 
 function currentPage(pathname: string, href: string) {
@@ -75,7 +77,7 @@ export function Header() {
         const isOpen = activeDropdown === item.name
         return (
           <li key={item.name} className={mobile ? "border-b border-primary-blue/30" : "relative"}>
-            <div className={mobile ? "flex items-center" : "flex items-center gap-1"}>
+            <div className={mobile ? "flex items-center" : "flex items-center gap-0"}>
               <Link
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
@@ -94,7 +96,7 @@ export function Header() {
                   aria-expanded={isOpen}
                   aria-controls={`submenu-${mobile ? "mobile-" : ""}${item.name.replace(/\s+/g, "-").toLowerCase()}`}
                   onClick={() => setActiveDropdown(isOpen ? null : item.name)}
-                  className="flex min-h-11 min-w-11 items-center justify-center text-foreground hover:bg-primary-blue/15 focus-visible:outline"
+                  className={`flex min-h-11 items-center justify-center text-foreground hover:bg-primary-blue/15 focus-visible:outline ${mobile ? "min-w-11" : "min-w-6"}`}
                 >
                   <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                 </button>
@@ -145,42 +147,7 @@ export function Header() {
   )
 
   return (
-    <header className="site-header fixed top-0 z-50 border-b border-blue-border bg-background text-foreground">
-      <div className="bg-primary-blue text-foreground">
-        <div className="home-container flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-2 text-xs">
-          <div className="flex items-center gap-3">
-            <a href="tel:+34681188519" className="header-contact text-link text-link-on-blue">
-              <span className="hidden sm:inline">+34 681 18 85 19</span>
-              <span className="sm:hidden" aria-label="Llamar al Ateneo">+34 681 18 85 19</span>
-            </a>
-            <a
-              href="mailto:ateneomusicaldemieres@gmail.com"
-              aria-label="Enviar correo a ateneomusicaldemieres@gmail.com"
-              className="flex min-h-9 min-w-9 items-center justify-center text-foreground hover:bg-foreground/10 focus-visible:outline sm:hidden"
-            >
-              <Mail className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a href="mailto:ateneomusicaldemieres@gmail.com" className="header-contact text-link text-link-on-blue hidden sm:inline-flex">
-              ateneomusicaldemieres@gmail.com
-            </a>
-          </div>
-          <nav aria-label="Redes sociales" className="flex items-center gap-3">
-            {socialLinks.map(({ name, href, Icon }) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={name}
-                className="flex min-h-8 min-w-8 items-center justify-center hover:bg-foreground/10 focus-visible:outline"
-              >
-                <Icon className="h-4 w-4" aria-hidden="true" />
-              </a>
-            ))}
-          </nav>
-        </div>
-      </div>
-
+    <header className="site-header fixed top-0 z-50 text-foreground">
       <div className="home-container">
         <div className="flex min-h-16 items-center gap-2 xl:min-h-20 xl:justify-between">
           <button
@@ -198,24 +165,24 @@ export function Header() {
           </button>
 
           <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="mobile-brand flex min-w-0 shrink items-center gap-2 xl:gap-3">
-            <Image src="/logo_ateneo.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
+            <Image src="/logo_ateneo%20-%20sin%20texto.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
             <span className="hidden text-xs font-bold min-[24rem]:inline sm:hidden">Ateneo</span>
             <span className="hidden text-base font-semibold leading-tight sm:inline xl:text-lg">
               Ateneo Musical de Mieres
             </span>
           </Link>
 
-          <nav aria-label="Navegación principal" className="hidden xl:block">
+          <nav aria-label="Navegación principal" className="hidden xl:ml-12 xl:block">
             {renderNav()}
           </nav>
 
           <div className="ml-auto hidden items-center gap-2 xl:flex">
-            <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
             <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-1 xl:hidden">
-            <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
             <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
           </div>
         </div>
@@ -224,7 +191,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="mobile-nav-backdrop absolute inset-x-0 top-full z-40 h-[calc(100dvh-9rem)] bg-dark/40 xl:hidden"
+          className="mobile-nav-backdrop absolute inset-x-0 top-full z-40 h-[calc(100dvh-4rem)] bg-dark/40 xl:hidden"
         >
           <button
             type="button"
@@ -233,8 +200,22 @@ export function Header() {
             onClick={() => setMobileMenuOpen(false)}
             className="absolute inset-0 h-full w-full cursor-default"
           />
-          <div className="mobile-nav-drawer absolute inset-y-0 left-0 w-[min(88vw,22rem)] overflow-y-auto border-r border-blue-border bg-background px-5 py-6 shadow-xl">
+          <div className="mobile-nav-drawer absolute inset-y-0 left-0 w-[min(88vw,22rem)] overflow-y-auto border-r border-blue-border px-5 py-6">
             <nav aria-label="Navegación principal móvil">{renderNav(true)}</nav>
+            <nav aria-label="Redes sociales" className="mt-6 flex flex-wrap items-center gap-2 border-t border-blue-border pt-4">
+              {socialLinks.map(({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="footer-social-link flex h-11 w-11 items-center justify-center rounded-md focus-visible:outline"
+                >
+                  <Icon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
       )}

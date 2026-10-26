@@ -178,7 +178,7 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
                 <Link
                   key={n.slug}
                   href={`/noticias/${n.slug}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all"
+                  className="group bg-white rounded-2xl overflow-hidden transition-all"
                 >
                   <div className="overflow-hidden h-40">
                     <img

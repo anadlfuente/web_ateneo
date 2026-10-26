@@ -4,7 +4,7 @@ import { ContactSection } from "@/components/contact-section"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
 
-export default function JoinPage() {
+export default function ContactPage() {
   return (
     <main className="min-h-screen">
       <Header />

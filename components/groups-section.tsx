@@ -39,47 +39,47 @@ const groups = [
 
 export function GroupsSection() {
   return (
-    <section id="agrupaciones" className="home-section bg-primary-blue text-foreground">
+    <section id="agrupaciones" className="home-section bg-background text-foreground">
       <div className="home-container">
-        <div className="section-intro mb-8 flex flex-col items-center gap-3 text-center sm:mb-10">
-          <p className="section-eyebrow">Nuestras agrupaciones</p>
-          <h2 className="section-heading">Mucho más que una banda</h2>
+        <div className="section-intro mb-5 flex flex-col items-start gap-2 sm:mb-6">
+          <h2 className="section-heading">
+            Mucho más que una <span className="title-highlight">banda</span>
+          </h2>
           <p className="max-w-prose">
             Cuatro agrupaciones, cada una con su propia historia y sus músicos.
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {groups.map(({ name, description, image, href, members, Icon }) => (
-            <article key={name} className="image-overlay group relative min-h-72 overflow-hidden rounded-xl border border-foreground/70 shadow-sm">
-              <Image
-                src={image}
-                alt={`Actuación de ${name}`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
-                loading="lazy"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#01020a]/95 via-[#01020a]/55 to-transparent" />
-              <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent-green text-light" aria-hidden="true">
-                <Icon className="h-5 w-5" />
+            <article key={name} className="group-card group relative flex flex-col overflow-visible rounded-xl bg-background transition duration-200 hover:-translate-y-1">
+              <div className="relative aspect-[4/3]">
+                <div className="absolute inset-0 overflow-hidden rounded-t-xl">
+                  <Image
+                    src={image}
+                    alt={`Actuación de ${name}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    loading="lazy"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="absolute -left-3 -top-3 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-accent-green text-light shadow-md" aria-hidden="true">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <p className="group-member-count absolute right-3 top-3 z-10 rounded-full px-3 py-1 text-sm font-bold shadow-sm">
+                  {members} miembros
+                </p>
               </div>
-              <p className="absolute right-4 top-4 rounded-full bg-light px-3 py-1 text-sm font-semibold text-foreground">
-                {members} miembros
-              </p>
-              <div className="absolute inset-x-0 bottom-0 p-5 text-light sm:p-6">
+              <div className="flex flex-1 flex-col p-4">
                 <h3 className="mb-2 font-bold">{name}</h3>
-                <p className="mb-3 max-w-prose text-sm leading-relaxed">{description}</p>
-                <Link href={href} className="text-link text-link-on-dark inline-flex min-h-11 items-center gap-2 font-semibold">
-                  Conocer más <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <p className="mb-3 flex-1 text-sm leading-relaxed">{description}</p>
+                <Link href={href} className="text-link inline-flex min-h-11 items-center gap-2 font-semibold">
+                  Conocer la agrupación <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-6 text-center">
-          <Link href="/agrupaciones" className="cta-secondary rounded-md">Ver todas las agrupaciones</Link>
         </div>
       </div>
     </section>

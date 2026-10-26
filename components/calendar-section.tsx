@@ -69,7 +69,7 @@ export function CalendarSection() {
           <div className="grid lg:grid-cols-3 gap-6" aria-busy="true">
             <div className="lg:col-span-2 space-y-4">
               {Array.from({ length: N_PRINCIPALES }).map((_, i) => (
-                <div key={i} className="h-32 bg-white/70 rounded-2xl border border-border animate-pulse" />
+                <div key={i} className="h-32 bg-white/70 rounded-2xl animate-pulse" />
               ))}
             </div>
             <div className="h-80 bg-primary/20 rounded-2xl animate-pulse" />
@@ -78,7 +78,7 @@ export function CalendarSection() {
 
         {/* Error o sin eventos */}
         {(error || (eventos && eventos.length === 0)) && (
-          <div className="bg-white rounded-2xl border border-border p-10 text-center">
+          <div className="bg-white rounded-2xl p-10 text-center">
             <p className="font-serif text-2xl text-foreground mb-2">
               {error ? "No hemos podido cargar el calendario" : "Pronto anunciaremos nuevas fechas"}
             </p>
@@ -102,7 +102,7 @@ export function CalendarSection() {
                   <Link
                     key={evento.id}
                     href={`/evento?id=${evento.id}`}
-                    className="group flex md:h-40 bg-white rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all hover-card-vibrant"
+                    className="home-card-shadow group flex md:h-40 bg-white rounded-2xl overflow-hidden transition-all hover-card-vibrant"
                   >
                     {/* Date badge */}
                     <div className={`w-24 md:w-28 flex-shrink-0 ${agrupacion.badge} flex flex-col items-center justify-center py-6`}>

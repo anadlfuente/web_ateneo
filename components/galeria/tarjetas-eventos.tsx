@@ -13,7 +13,7 @@ export function TarjetasEventos({ eventos, onAbrir }: Props) {
           key={evento.id}
           type="button"
           onClick={() => onAbrir(evento)}
-          className="group overflow-hidden rounded-xl border bg-white text-left shadow-sm transition hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue"
+          className="group overflow-hidden rounded-xl bg-white text-left shadow-sm transition hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue"
         >
           <div className="aspect-[4/3] overflow-hidden bg-gray-100">
             {evento.portada && (

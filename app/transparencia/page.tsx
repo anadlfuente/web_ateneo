@@ -6,8 +6,6 @@ import { FileText, ArrowUpRight, Download, Scale } from "lucide-react"
 import { transparencia } from "@/data/transparencia"
 import { RedesFlotante } from "@/components/redes-flotante"
 
-const acentos = ["border-t-primary-blue", "border-t-accent-yellow", "border-t-accent-green"]
-
 export default function TransparenciaPage() {
   const memorias = [...transparencia.memorias].sort((a, b) => b.year - a.year)
 
@@ -56,10 +54,10 @@ export default function TransparenciaPage() {
 
           {/* Resto de la junta */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {transparencia.junta.map((miembro, i) => (
+            {transparencia.junta.map((miembro) => (
               <div
-                key={i}
-                className={`rounded-xl border border-border border-t-4 ${acentos[i % acentos.length]} bg-card px-6 py-6`}
+                key={miembro.nombre}
+                className="rounded-xl bg-card px-6 py-6"
               >
                 <p className="text-xs font-bold tracking-wider uppercase text-muted-foreground mb-2">
                   {miembro.cargo}

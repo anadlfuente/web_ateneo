@@ -54,7 +54,7 @@ export default function CharangaPage() {
           </div>
         </div>
         {/* Contratación */}
-        <div className="rounded-2xl bg-primary-blue/15 border border-primary-blue/40 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="rounded-2xl bg-primary-blue/15 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="max-w-2xl">
             <h3 className="text-2xl md:text-3xl font-serif mb-2">
               ¿Quieres llevar la charanga a tu evento?

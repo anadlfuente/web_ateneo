@@ -20,7 +20,7 @@ type Props = {
 export function RehearsalSection({ ensayos }: Props) {
   return (
     <div className="max-w-6xl mx-auto px-6">
-      <div className="rounded-3xl border border-border bg-muted/30 p-8 lg:p-12">
+      <div className="rounded-3xl bg-muted/30 p-8 lg:p-12">
         {/* Texto superior */}
         <div className="mb-8">
           <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-2">
@@ -42,8 +42,8 @@ export function RehearsalSection({ ensayos }: Props) {
                 <Link
                   href={ensayo.href}
                   className="
-                    group flex h-full gap-4 p-5 rounded-2xl bg-white border border-border
-                    hover:border-primary-blue/40 hover:shadow-md transition-all
+                    group flex h-full gap-4 p-5 rounded-2xl bg-white
+                    hover:shadow-md transition-all
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue
                   "
                 >

@@ -46,10 +46,11 @@ export function VideosSection() {
     <section id="videos" className="home-section bg-background text-foreground">
       <div className="home-container">
         {/* Cabecera */}
-        <div className="section-intro mb-10 flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
+        <div className="section-intro mb-6 flex flex-col items-start gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="section-eyebrow">Escúchanos</p>
-            <h2 className="section-heading">Nuestra música en vídeo</h2>
+            <h2 className="section-heading">
+              Nuestra música <span className="title-highlight">en vídeo</span>
+            </h2>
           </div>
           <a
             href={CANAL_YOUTUBE}
@@ -88,10 +89,10 @@ export function VideosSection() {
                     type="button"
                     onClick={() => setActual(v)}
                     aria-pressed={seleccionado}
-                    className={`group w-full flex gap-4 p-3 rounded-2xl text-left border transition-all ${
+                    className={`home-card-shadow group w-full flex gap-4 p-3 rounded-2xl text-left transition-all ${
                       seleccionado
-                        ? "border-primary-blue bg-primary-blue/10"
-                        : "border-blue-border bg-background hover:bg-primary-blue/10"
+                        ? "bg-primary-blue/10"
+                        : "bg-background hover:bg-primary-blue/10"
                     }`}
                   >
                     <div className="relative aspect-video w-32 flex-shrink-0 overflow-hidden rounded-lg bg-primary-blue/20">

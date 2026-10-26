@@ -1,0 +1,112 @@
+CONTEXTO
+Trabajas sobre el repositorio de la web del Ateneo Musical de Mieres (asociación musical de Mieres, Asturias, con 4 agrupaciones: Banda Sinfónica, Coral Cantares, Claxon Boys y Charanga New Paentamala). 
+Antes de modificar nada, inspecciona el proyecto: framework, sistema de estilos, rutas existentes y convenciones, y respétalos. Si algo de este documento no encaja con la arquitectura real, dímelo en vez de improvisar.
+
+OBJETIVO
+Eres un especialista CRO.
+Rediseñar la HOME y la CABECERA (y el pie, que son compartidos por todo el sitio). 
+La home debe ser una puerta de entrada: cada sección es un resumen breve que lleva a una página propia donde se contará todo con detalle (esas páginas se harán después/o existen ya). 
+Prioridades del cliente, por orden: 1) conseguir contrataciones (sobre todo de la banda), 2) captar socios, 3) más asistencia y visibilidad en Asturias, 4) atraer músicos, 5) patrocinadores. Además, el diseño debe ser más sobrio: tamaños de letra contenidos y una paleta ordenada, con el azul como color dominante.
+
+PRINCIPIO DE LA HOME
+- Cada bloque: titular, 1-2 líneas de texto, contenido visual mínimo y UN enlace claro a su página. Nada de textos largos ni formularios completos en la home.
+- Enlaces descriptivos ("Ver todas las agrupaciones", "Cómo hacerse socio"), nunca "Ver más" o "Aquí".
+- Rutas de destino (propuesta; si ya existe una ruta equivalente, REUTILÍZALA, por ejemplo la de la banda existente en /banda/historia): /contrata, /agrupaciones y la ficha de cada una, /calendario, /noticias, /socios, /unete, /patrocinadores, /sobre-nosotros, /galeria, /contacto.
+- NO construyas esas páginas ahora. Si una ruta no existe, enlaza a una página provisional sencilla ("Próximamente") o déjame el enlace listado como pendiente. Al final, dime qué enlaces apuntan a páginas inexistentes.
+
+REGLAS GENERALES
+- Conserva el contenido real existente (textos, fotos, vídeos, calendario, noticias, patrocinadores). No elimines nada sin avisarme.
+- NO inventes datos: cuotas, beneficios de socio, fechas, repertorios, formaciones o qué agrupación hace qué estilo. Donde falte un dato, muestra "por definir" de forma visible y discreta, y lístalo al final.
+- Mantén las tipografías actuales; solo cambia tamaños, pesos y espaciados.
+- No añadas modo oscuro ni dependencias nuevas salvo necesidad justificada.
+- Rama nueva a partir de feat/raquel y commits separados por tema (tokens, tipografía, cabecera y pie, hero, secciones, SEO).
+
+1. PALETA (variables globales; sustituye cualquier otro color suelto)
+- Azul #3399fe: color DOMINANTE. Debe ser el color más presente de la web: fondos de bloque, franja superior, pie, bordes, iconos y acentos. Aproximadamente la mitad de los bloques de la home tienen fondo azul.
+- Claro #F4F4F4: el único "blanco" (fondo base, cabecera y bloques alternos). No uses #fff.
+- Tinta #01020A: texto sobre azul, amarillo y fondos claros; overlays oscuros sobre fotos.
+- Amarillo #f6f61b: SOLO para el CTA principal. Nunca como texto ni adorno.
+- Verde #285943: ACENTO PEQUEÑO, nunca fondo de sección completa, franja, cabecera ni pie. Máximo en: la tarjeta "Hazte socio" dentro del bloque Participa, los iconos de las tarjetas de agrupaciones y etiquetas pequeñas ("Próximamente", "Por definir"). Debe ocupar muy poca superficie.
+- No uses otros azules, verdes, grises ni blanco puro. Si necesitas un tono secundario (texto atenuado, línea separadora), derívalo de estos cinco con opacidad o mezcla y compruébalo.
+
+Parejas obligatorias texto/fondo:
+- Fondo azul, amarillo o claro: texto #01020A.
+- Fondo verde u overlay oscuro (#01020A al 85-95%): texto #F4F4F4.
+- PROHIBIDO: #F4F4F4 sobre azul o amarillo; #01020A sobre verde; azul o amarillo como color de texto sobre fondo claro.
+- Enlaces de texto: color #01020A con subrayado de 2-3 px. En fondo claro, subrayado en azul; en fondo azul, subrayado en #01020A (el azul no se vería). Hover en fondo claro: fondo azul y texto #01020A.
+- Texto sobre fotos: siempre con degradado #01020A detrás y texto #F4F4F4.
+Contraste mínimo (WCAG AA): 4,5:1 texto normal; 3:1 texto grande (24 px, o 19 px en negrita), bordes de botones y campos. Mis cálculos son aproximados: verifica cada pareja con una herramienta (WebAIM o Lighthouse) e infórmame de las que no lleguen.
+
+Reparto de fondos de la home (alternar azul y claro; nunca dos bloques del mismo color seguidos):
+franja superior azul / cabecera clara / hero azul / "qué música" claro / agrupaciones azul / vídeo claro / participa azul / agenda y noticias claro / patrocinadores y redes azul / contacto claro / pie azul.
+
+2. TIPOGRAFÍA (rem y clamp; sin px fijos)
+- Texto de lectura: 16 px móvil, 17-18 px escritorio, interlineado 1,5-1,6; ancho máximo 60-75 caracteres.
+- Menú: 15-16 px. Botones: 16 px en negrita. Texto secundario: 14 px mínimo. Pie: 14-15 px.
+- H3: 20 px móvil, 22-24 px escritorio. H2: 26-28 px móvil, 32-36 px escritorio.
+- H1: 32-36 px móvil, 44-52 px escritorio, máximo 56 px. Interlineado de títulos 1,1-1,2.
+- Campos de formulario: mínimo 16 px.
+
+3. BOTONES
+- CTA principal ("Contrátanos", "Hazte socio" cuando sea la acción principal del bloque, "Pedir presupuesto"): fondo #f6f61b, texto #01020A, negrita, borde de 2 px #01020A en TODOS los fondos (el amarillo apenas se distingue del azul sin borde). Es el único estilo de CTA principal de la web.
+- Botón secundario: sin relleno, borde de 2 px y texto #01020A sobre azul, claro o amarillo; #F4F4F4 sobre verde u overlay oscuro.
+- Estados hover, focus-visible (anillo grueso, #01020A sobre claro o azul, #F4F4F4 sobre verde) y disabled en todos.
+- Quita el amarillo usado como adorno (icono de la Coral, etiquetas, resaltados).
+- Áreas táctiles de al menos 44 px.
+
+4. CABECERA, PIE Y REDES (compartidos por todo el sitio)
+Implementa cabecera y pie como componentes/plantilla únicos, porque se reutilizarán en las páginas de cada sección que se construirán después.
+
+4.1 CAMBIO DE LAS SECCIONES PRINCIPALES DEL MENÚ
+La navegación actual (de la home actual): Sobre nosotros (con desplegable), Agrupaciones (con desplegable), Noticias, Contacto, Calendario, Galería y el botón Hazte socio. Hay que reestructurarla para priorizar la contratación y los socios. Nueva navegación, en este orden:
+- Agrupaciones (desplegable con las 4: Banda Sinfónica, Coral Cantares, Claxon Boys, Charanga New Paentamala, más "Ver todas").
+- Calendario.
+- Noticias.
+- Sobre nosotros (con desplegable: Quiénes somos, Galería, y las subpáginas que ya existan hoy en ese desplegable; no elimines ninguna).
+- Contacto.
+- Botón "Contrátanos" (CTA principal, a /contrata): es NUEVO.
+- Botón "Hazte socio" (secundario, a /socios): se mantiene, pero deja de ser el botón principal.
+Cambios respecto a hoy: Galería deja de ser elemento de primer nivel y pasa dentro de Sobre nosotros; Contrátanos se añade; el orden se ajusta. Antes de aplicarlo, lista los elementos y subpáginas del menú actual (incluido el contenido real de los desplegables) y dime cualquier cosa que no encaje; no elimines enlaces existentes sin avisarme.
+- Cabecera fija, fondo #F4F4F4, texto #01020A, con indicador visible de la página actual (aria-current y estilo con subrayado azul). Menú móvil (hamburguesa) con "Contrátanos" y "Hazte socio" siempre visibles arriba, y desplegables accesibles por teclado.
+- Franja superior azul (texto #01020A): teléfono, correo e iconos de Instagram, Facebook, YouTube y X.
+- ELIMINA el botón flotante "Síguenos" y su menú desplegable. Las redes viven en la franja superior, en la banda de redes de la home y en el pie.
+- Pie con fondo azul y texto #01020A, en columnas: la asociación, agrupaciones, participa (socio, músicos, patrocinio), contacto y redes (con X), más avisos legales, privacidad y cookies. Texto mínimo de 14 px.
+
+5. ESTRUCTURA DE LA HOME (en este orden)
+a) HERO (fondo azul, texto #01020A). Dos columnas: texto a la izquierda y foto actual a la derecha en marco redondeado con borde de 2 px #01020A (no pongas texto encima de la foto). Un único H1 (propuesta a confirmar). Trabajar en otra cosa que no sea un carrousel. En caso de dejarlo funcionando, asegurar que el texto que esté siemppre sea el mencionadp + los CTAs principales. Importante que el alto del carrousel no sea excesivo para no opacar todo el aterrizaje del usuario: "Ateneo Musical de Mieres: música para tus conciertos, procesiones y fiestas". Párrafo breve y dos botones: "Contrátanos" (CTA principal, a /contrata) y "Hazte socio" (secundario, a /socios). Línea de datos reales: "Desde 2018" y "4 agrupaciones". Si el hero actual es un carrusel, sustitúyelo por este hero estático (los 4 H1 actuales se eliminan).
+
+b) QUÉ MÚSICA NECESITAS (fondo claro). H2 y lista de filas, una por tipo de actuación: concierto sinfónico y bandas sonoras; procesiones y actos solemnes; música asturiana y cantares de chigre; folk-rock, pop y rock; fiestas populares y bodas. Cada fila: nombre, una línea de descripción y "Formación: por definir" (la asignación a agrupaciones no está confirmada). Enlace final: "Pide presupuesto para tu evento" (CTA principal, a /contrata).
+
+c) AGRUPACIONES (fondo azul). H2 "Mucho más que una banda". 4 tarjetas con foto actual, overlay #01020A, nombre en H3, una frase, nº de miembros (60+, 20+, 4, 15+) y enlace "Conocer más" (texto #F4F4F4 con subrayado) a la ficha de cada una. Icono de cada agrupación con el verde como único toque de color. Enlace general "Ver todas las agrupaciones".
+
+d) VÍDEO (fondo claro). Un vídeo destacado y una lista de 3 más, con carga diferida del reproductor (portada y reproducción al pulsar) y modo de privacidad de YouTube. Etiqueta cada vídeo por agrupación y, si hay datos, por estilo. Enlace "Ver más vídeos en YouTube".
+
+e) PARTICIPA (fondo azul, texto #01020A). H2 breve y tres tarjetas:
+- Hazte socio (la protagonista): fondo verde #285943, texto #F4F4F4, 3 pasos cortos (solicitud, contacto, alta) y CTA principal amarillo con borde #01020A, a /socios. Cuota, beneficios y forma de pago: "por definir". Una línea indicando que el mecenazgo y las donaciones llegarán próximamente (sin formulario en la home). Es el único uso del verde como fondo de la home.
+- Únete como músico: tarjeta #F4F4F4; instrumentos o voces que se buscan "por definir"; enlace a /unete.
+- Patrocina: tarjeta #F4F4F4; una frase y enlace a /patrocinadores.
+
+f) AGENDA Y NOTICIAS (fondo claro). Dos columnas: próximos 3 eventos (datos del calendario actual) y últimas 3 noticias, en tarjetas con borde azul de 2 px. Enlaces "Ver calendario completo" y "Ver todas las noticias". Estado vacío visible si no hay eventos. No inventes eventos.
+
+g) PATROCINADORES Y REDES (fondo azul, texto #01020A). Logos de patrocinadores actuales sobre una banda #F4F4F4 para que se vean bien, con enlace "Ver patrocinadores". Debajo, banda "Síguenos" con botones de contorno #01020A a Instagram, Facebook, YouTube y X, y una frase indicando que cada agrupación tiene su propio perfil (se enlazarán en sus fichas).
+
+h) CONTACTO RÁPIDO (fondo claro). H2 "¿Hablamos?", correo y teléfono visibles y dos botones: "Pedir presupuesto" (CTA principal, a /contrata) y "Escribirnos" (secundario, a /contacto). SIN formulario en la home: el formulario completo irá en /contacto y /contrata.
+- Correo: el cliente quiere usar ateneomusicaldemieres@gmail.com. La web muestra también rrssateneomieres@gmail.com en algún sitio. Pregúntame cuál es el correcto y unifícalo en toda la web.
+
+Pie azul.
+
+6. SEO Y SEMÁNTICA
+- UN solo H1 en la home (el del hero); cada sección, un H2; tarjetas y filas, H3; sin saltos de nivel (revisa el pie, que parece saltar a H4). Verifica la estructura en el HTML renderizado.
+- Corrige erratas: "Unete" por "Únete"; "Redes Sociales" por "Redes sociales".
+- Mantén o mejora title y meta description de la home. Alt descriptivo en fotos informativas, vacío en las decorativas.
+- Datos estructurados (opcional, solo con datos reales del sitio): Organization, con nombre, URL, teléfono, correo y redes. No añadas nada que no esté en la web.
+- Revisa la noticia "estrena página web": aparece con fecha 10 de noviembre de 2026, posterior a hoy. Avísame, no la cambies.
+
+7. RENDIMIENTO, ACCESIBILIDAD Y RESPONSIVE
+- Imágenes optimizadas (tamaño adecuado, formato moderno si el framework lo permite) y carga diferida salvo la del hero.
+- Navegación completa por teclado (incluidos los desplegables del menú), enlace "saltar al contenido", orden de tabulación lógico, etiquetas visibles en cualquier campo.
+- Respeta prefers-reduced-motion. Sin animaciones automáticas innecesarias.
+- Prueba en 360, 768 y 1280 px; sin scroll horizontal.
+
+ENTREGA
+Al terminar, dime: 1) archivos modificados; 2) el menú antes y después, con los enlaces y subpáginas de cada desplegable; 3) parejas de contraste revisadas y ratios obtenidos; 4) puntuaciones de Lighthouse (accesibilidad, SEO y rendimiento) antes y después; 5) enlaces que apuntan a páginas inexistentes; 6) textos o datos "por definir" pendientes del cliente; 7) todo lo que no hayas podido hacer o en lo que hayas dudado.

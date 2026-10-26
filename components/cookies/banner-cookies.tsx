@@ -34,7 +34,7 @@ export function BannerCookies() {
       aria-labelledby="cookies-titulo"
       className="fixed inset-x-0 bottom-0 z-[100] p-4 md:p-6 pointer-events-none"
     >
-      <div className="pointer-events-auto max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl border border-border p-6 md:p-8">
+      <div className="pointer-events-auto max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-8">
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex items-center gap-3">
             <Cookie className="w-5 h-5 text-accent flex-shrink-0" />

@@ -43,7 +43,7 @@ export function NewsSection() {
           {/* Noticia destacada */}
           <Link
             href={`/noticias/${destacada.slug}`}
-            className="group relative flex flex-col justify-end min-h-[22rem] lg:min-h-0 lg:aspect-[4/3] rounded-2xl overflow-hidden hover-card-vibrant"
+            className="home-card-shadow group relative flex flex-col justify-end min-h-[22rem] lg:min-h-0 lg:aspect-[4/3] rounded-2xl overflow-hidden hover-card-vibrant"
           >
             <img
               src={destacada.imagen}
@@ -84,7 +84,7 @@ export function NewsSection() {
                 <Link
                   key={item.slug}
                   href={`/noticias/${item.slug}`}
-                  className="group flex bg-white rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all hover-card-vibrant"
+                  className="home-card-shadow group flex bg-white rounded-2xl overflow-hidden transition-all hover-card-vibrant"
                 >
                   <div className="w-32 md:w-40 flex-shrink-0 relative overflow-hidden">
                     <img

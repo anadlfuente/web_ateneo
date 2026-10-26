@@ -14,14 +14,13 @@ interface PageHeroProps {
   centrado?: boolean
 }
 
-// Alto del header (si no está definido en globals.css, se usa 6rem)
-// + espacio extra para que el contenido "respire".
-const ESPACIO_SUPERIOR = "calc(var(--header-h, 6rem) + 3.5rem)"
+// Reserva el espacio del header y un margen breve para el título.
+const ESPACIO_SUPERIOR = "calc(var(--header-h, 6rem) + 1.5rem)"
 
 export function PageHero({ imagen, alt = "", altoMinimo = "min-h-[50vh]", posicion = "center", centrado = false, children }: PageHeroProps) {
   return (
     <section
-      className={`relative w-full ${altoMinimo} flex flex-col ${
+      className={`page-hero relative w-full ${altoMinimo} flex flex-col ${
         centrado ? "justify-center text-center" : "justify-end"
       }`}
     >
@@ -36,7 +35,7 @@ export function PageHero({ imagen, alt = "", altoMinimo = "min-h-[50vh]", posici
 
       {/* Contenido: reserva arriba el alto del header + aire */}
       <div
-        className="relative z-10 w-full max-w-5xl mx-auto px-6 pb-12 md:pb-16"
+        className="relative z-10 w-full max-w-5xl mx-auto px-6 pb-8 md:pb-10"
         style={{ paddingTop: ESPACIO_SUPERIOR }}
       >
         {children}

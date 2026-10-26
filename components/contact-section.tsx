@@ -1,11 +1,11 @@
 "use client"
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useEffect, useState, type ChangeEvent, type FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   Mail, Phone, MapPin, Send, User, CheckCircle2, AlertCircle, Loader2,
-  Instagram, Facebook, Youtube, Twitter,
+  Instagram, Facebook, Youtube, Twitter, Music2,
 } from "lucide-react"
 
 // En local usa la dirección de .env.development.local; en el hosting, /api/contacto.php
@@ -17,14 +17,24 @@ const redesSociales = [
   { nombre: "Facebook", icono: Facebook, url: "https://www.facebook.com/Bandaateneomieres/" },
   { nombre: "YouTube", icono: Youtube, url: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g" },
   { nombre: "X (Twitter)", icono: Twitter, url: "https://x.com/BandaMusMieres" },
+  { nombre: "TikTok", icono: Music2, url: "https://www.tiktok.com/@bandademieres" },
 ]
 
-const formularioVacio = { nombre: "", email: "", asunto: "", asuntoOtro: "", mensaje: "", web: "" }
-export function ContactSection() {
-  const [form, setForm] = useState(formularioVacio)
+const formularioVacio = (asunto = "") => ({ nombre: "", email: "", asunto, asuntoOtro: "", mensaje: "", web: "" })
+export function ContactSection({ defaultSubject = "" }: { defaultSubject?: string }) {
+  const [subjectOnEntry, setSubjectOnEntry] = useState(defaultSubject)
+  const [form, setForm] = useState(() => formularioVacio(defaultSubject))
   const [privacidad, setPrivacidad] = useState(false)
   const [estado, setEstado] = useState<"inicial" | "enviando" | "enviado" | "error">("inicial")
   const [mensajeError, setMensajeError] = useState("")
+
+  useEffect(() => {
+    const requestedSubject = new URLSearchParams(window.location.search).get("asunto")
+    if (requestedSubject === "patrocinio" || requestedSubject === "contratar") {
+      setSubjectOnEntry(requestedSubject)
+      setForm((currentForm) => ({ ...currentForm, asunto: requestedSubject }))
+    }
+  }, [])
 
   // Guarda lo que se escribe en cada campo
   function cambiar(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
@@ -47,7 +57,7 @@ export function ContactSection() {
 
       if (respuesta.ok && datos?.ok) {
         setEstado("enviado")
-        setForm(formularioVacio)
+        setForm(formularioVacio(subjectOnEntry))
         setPrivacidad(false)
       } else {
         setEstado("error")

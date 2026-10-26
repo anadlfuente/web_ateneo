@@ -190,7 +190,7 @@ export default function CalendarPage() {
 
         {/* Calendario en cuadrícula (tablet y ordenador) */}
         <div className={`hidden md:block transition-opacity ${cargando ? "opacity-50" : ""}`} aria-busy={cargando}>
-          <div className="bg-muted/30 border rounded-3xl p-6 shadow-sm">
+          <div className="bg-muted/30 rounded-3xl p-6 shadow-sm">
             <div className="grid grid-cols-7 text-center font-semibold text-sm mb-2">
               {["L", "M", "X", "J", "V", "S", "D"].map((d) => <div key={d}>{d}</div>)}
             </div>
@@ -207,10 +207,9 @@ export default function CalendarPage() {
                   <div
                     key={index}
                     className={`
-                      min-h-27.5 rounded-2xl border p-3 shadow-sm
+                      min-h-27.5 rounded-2xl p-3 shadow-sm
                       hover:shadow-md hover:-translate-y-1 transition-all duration-200
-                      ${isWeekend ? "bg-primary-blue/5" : "bg-white"}
-                      ${esHoy ? "border-primary-blue ring-2 ring-primary-blue/30" : "border-border/50"}
+                      ${esHoy ? "bg-primary-blue/10" : isWeekend ? "bg-primary-blue/5" : "bg-white"}
                     `}
                   >
                     <div className={`text-sm font-bold ${esHoy ? "text-primary-blue" : ""}`}>{day}</div>

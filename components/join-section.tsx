@@ -101,7 +101,7 @@ export function JoinSection() {
           </div>
 
           {/* Right column - Form */}
-          <div className="rounded-lg border-2 border-primary-blue bg-background p-5 sm:p-8 lg:p-10">
+          <div className="rounded-lg bg-background p-5 sm:p-8 lg:p-10">
             {estado === "enviado" ? (
               <div className="text-center py-12" role="status">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react"
 
 const heroSlides = [
-  { src: "/banda/Marco.JPG", alt: "Músicos del Ateneo Musical de Mieres" },
+  { src: "/galeria-section/2018-11-17-santa-cecilia/002.webp", alt: "Celebración de Santa Cecilia el 17 de noviembre de 2018" },
   { src: "/banda/foto_family.JPG", alt: "Agrupaciones del Ateneo Musical de Mieres" },
   { src: "/banda/pasacalles.JPG", alt: "La Banda Sinfónica del Ateneo en un pasacalles" },
   {
@@ -46,7 +46,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="hero-banner relative isolate min-h-[38rem] overflow-hidden text-light sm:min-h-[42rem] lg:min-h-[44rem]">
+    <section className="hero-banner relative isolate min-h-[33rem] overflow-hidden text-light sm:min-h-[42rem] lg:min-h-[44rem]">
       <div
         role="region"
         aria-roledescription="carrusel"
@@ -93,7 +93,7 @@ export function HeroSection() {
             type="button"
             onClick={() => setPaused((value) => !value)}
             aria-label={paused ? "Reanudar carrusel de fotografías" : "Pausar carrusel de fotografías"}
-            className="hero-carousel-pause absolute z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/70 bg-dark/85 text-light backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
+            className="hero-carousel-pause pointer-events-auto absolute z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
           >
             {paused
               ? <Play className="h-4 w-4" aria-hidden="true" />
@@ -104,7 +104,7 @@ export function HeroSection() {
           type="button"
           onClick={showPrevious}
           aria-label="Fotografía anterior"
-          className="hero-carousel-control hero-carousel-control-previous absolute left-0 top-1/2 z-20 flex min-h-14 min-w-14 -translate-y-1/2 items-center justify-center rounded-r-full border border-light/70 bg-dark/85 text-light backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
+          className="hero-carousel-control hero-carousel-control-previous pointer-events-auto absolute bottom-5 left-4 z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
         >
           <ChevronLeft className="h-5 w-5" aria-hidden="true" />
         </button>
@@ -112,33 +112,44 @@ export function HeroSection() {
           type="button"
           onClick={showNext}
           aria-label="Fotografía siguiente"
-          className="hero-carousel-control hero-carousel-control-next absolute right-0 top-1/2 z-20 flex min-h-14 min-w-14 -translate-y-1/2 items-center justify-center rounded-l-full border border-light/70 bg-dark/85 text-light backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
+          className="hero-carousel-control hero-carousel-control-next pointer-events-auto absolute bottom-5 right-4 z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
         >
           <ChevronRight className="h-5 w-5" aria-hidden="true" />
         </button>
       </div>
 
-      <div className="home-container relative flex min-h-[38rem] flex-col justify-center pb-24 pt-52 sm:min-h-[42rem] sm:pb-28 sm:pt-48 lg:min-h-[44rem] lg:pt-44">
-        <div className="max-w-3xl text-center lg:text-left">
-          <p className="mb-4 text-sm font-bold uppercase tracking-wider">Ateneo Musical de Mieres</p>
-          <h1 className="mb-5 font-serif">
-            Ateneo Musical de Mieres: música para tus conciertos, procesiones y fiestas
+      <div className="hero-foreground pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[min(42vw,34rem)] md:block" aria-hidden="true">
+        <Image
+          src="/banda/marco-fondo.png"
+          alt=""
+          fill
+          loading="lazy"
+          sizes="(max-width: 767px) 0px, 34rem"
+          className="object-contain object-bottom drop-shadow-[0_1rem_1.5rem_rgb(1_2_10_/_55%)]"
+        />
+      </div>
+
+      <div className="home-container pointer-events-none relative z-20 flex min-h-[33rem] flex-col justify-center pb-16 pt-36 sm:min-h-[42rem] sm:pb-28 sm:pt-48 lg:min-h-[44rem] lg:pt-44">
+        <div className="hero-copy pointer-events-auto w-[84%] max-w-3xl text-left md:w-[54%] lg:w-[56%]">
+          <h1 className="hero-title mb-5">
+            <span className="hero-title-brand">Ateneo Musical de Mieres</span>
+            <span className="hero-title-message">Música para tus conciertos, procesiones y fiestas</span>
           </h1>
           <p className="mb-7 max-w-prose text-base sm:text-lg">
-            Una asociación musical de Mieres con cuatro agrupaciones y propuestas para acompañar tus eventos.
+            Una asociación musical de Mieres con <strong>cuatro agrupaciones</strong> y propuestas para acompañar tus eventos.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-            <Link href="/contrata" className="cta-primary">Contrátanos</Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/contacto?asunto=contratar" className="cta-primary">Contrátanos</Link>
             <Link href="/join" className="cta-secondary cta-secondary-on-dark">Hazte socio</Link>
           </div>
-          <ul className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-semibold lg:justify-start" aria-label="Datos de la asociación">
-            <li>Desde 2018</li>
-            <li>4 agrupaciones</li>
+          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm" aria-label="Datos de la asociación">
+            <li><strong>Desde 2018</strong></li>
+            <li><strong>4 agrupaciones</strong></li>
           </ul>
         </div>
       </div>
 
-      <p className="home-container absolute inset-x-0 bottom-0 z-10 pb-5 text-sm font-semibold" aria-hidden="true">
+      <p className="hero-slide-count absolute bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full border border-light/70 bg-dark/75 px-3 py-1 text-sm font-semibold text-light shadow-md backdrop-blur-sm" aria-live="polite">
         {currentSlide + 1} / {heroSlides.length}
       </p>
     </section>

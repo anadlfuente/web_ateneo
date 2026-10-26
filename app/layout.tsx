@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Lato } from 'next/font/google'
+import { DM_Serif_Display, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ConsentimientoProvider } from "@/components/cookies/consentimiento-provider"
@@ -9,6 +9,12 @@ const lato = Lato({
   weight: ['400', '700'],
   subsets: ["latin"],
   variable: '--font-lato',
+})
+
+const dmSerifDisplay = DM_Serif_Display({
+  weight: '400',
+  subsets: ["latin"],
+  variable: '--font-dm-serif-display',
 })
 
 export const metadata: Metadata = {
@@ -43,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${lato.variable} bg-background`} data-scroll-behavior="smooth">
+    <html lang="es" className={`${lato.variable} ${dmSerifDisplay.variable} bg-background`} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
         <ConsentimientoProvider>
           {children}

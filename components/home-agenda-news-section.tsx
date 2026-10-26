@@ -27,12 +27,13 @@ export function HomeAgendaNewsSection() {
   return (
     <section className="home-section bg-background text-foreground">
       <div className="home-container">
-        <div className="section-intro mb-8 text-center">
-          <p className="section-eyebrow">Agenda y actualidad</p>
-          <h2 className="section-heading">Agenda y noticias</h2>
+        <div className="section-intro mb-5">
+          <h2 className="section-heading">
+            Agenda y <span className="title-highlight">noticias</span>
+          </h2>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
           <div>
             <p className="mb-4 font-semibold">Próximos eventos</p>
             {eventos === null && !error && (

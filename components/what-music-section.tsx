@@ -27,9 +27,11 @@ export function WhatMusicSection() {
   return (
     <section className="home-section bg-background text-foreground">
       <div className="home-container">
-        <div className="section-intro mb-8 text-center">
+        <div className="section-intro mb-5">
           <p className="section-eyebrow">Servicios musicales</p>
-          <h2 className="section-heading">¿Qué música necesitas?</h2>
+          <h2 className="section-heading">
+            ¿Qué <span className="title-highlight">música</span> necesitas?
+          </h2>
         </div>
 
         <div className="border-y border-blue-border">
@@ -37,7 +39,7 @@ export function WhatMusicSection() {
             <article key={performance.name} className="grid gap-2 border-b border-blue-border/60 py-5 last:border-b-0 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6">
               <div>
                 <h3 className="mb-1 font-semibold">{performance.name}</h3>
-                <p className="mx-auto max-w-prose text-sm">{performance.description}</p>
+                <p className="max-w-prose text-sm">{performance.description}</p>
               </div>
               <p className="text-sm">
                 <span className="inline-block rounded-full bg-accent-green px-3 py-1 font-semibold text-light">Formación: por definir</span>
@@ -46,8 +48,8 @@ export function WhatMusicSection() {
           ))}
         </div>
 
-        <div className="mt-6 text-center">
-          <Link href="/contrata" className="cta-primary">Pide presupuesto para tu evento</Link>
+        <div className="mt-4 text-left">
+          <Link href="/contacto?asunto=contratar" className="cta-secondary">Pide presupuesto para tu evento</Link>
         </div>
       </div>
     </section>
