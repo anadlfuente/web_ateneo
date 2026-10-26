@@ -185,7 +185,7 @@ h3 {
   background: linear-gradient(
     90deg,
     color-mix(in srgb, var(--dark) 92%, transparent) 0%,
-    color-mix(in srgb, var(--dark) 88%, transparent) 46%,
+    color-mix(in srgb, var(--dark) 88%, transparent) 80%,
     color-mix(in srgb, var(--dark) 58%, transparent) 100%
   );
 }
@@ -195,7 +195,7 @@ h3 {
     background: linear-gradient(
       90deg,
       color-mix(in srgb, var(--dark) 90%, transparent),
-      color-mix(in srgb, var(--dark) 74%, transparent)
+      color-mix(in srgb, var(--dark) 86%, transparent)
     );
   }
 }
@@ -255,6 +255,14 @@ h3 {
   font-weight: 700;
   text-align: center;
   transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.header-cta {
+  min-height: 2.75rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .cta-primary:hover:not(:disabled) {
@@ -357,6 +365,29 @@ h3 {
   background: rgb(51 153 254 / 14%);
 }
 
+.hero-carousel-pause {
+  top: 8rem;
+  right: 1rem;
+}
+
+.hero-carousel-control-previous {
+  transform: translate(-20%, -50%);
+}
+
+.hero-carousel-control-next {
+  transform: translate(20%, -50%);
+}
+
+.hero-carousel-control-previous:hover,
+.hero-carousel-control-previous:focus-visible {
+  transform: translate(0, -50%);
+}
+
+.hero-carousel-control-next:hover,
+.hero-carousel-control-next:focus-visible {
+  transform: translate(0, -50%);
+}
+
 .skip-link {
   position: fixed;
   left: 1rem;
@@ -393,5 +424,10 @@ h3 {
 @media (min-width: 768px) {
   :root {
     --header-h: 6rem;
+  }
+
+  .hero-carousel-pause {
+    top: 8.5rem;
+    right: 1.5rem;
   }
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ChevronDown, Facebook, Instagram, Menu, Twitter, X, Youtube } from "lucide-react"
+import { ChevronDown, Facebook, Instagram, Mail, Menu, Twitter, X, Youtube } from "lucide-react"
 
 const navigation = [
   {
@@ -148,9 +148,21 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-blue-border bg-background text-foreground">
       <div className="bg-primary-blue text-foreground">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2 text-xs sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <a href="tel:+34681188519" className="header-contact text-link text-link-on-blue">+34 681 18 85 19</a>
-            <a href="mailto:ateneomusicaldemieres@gmail.com" className="header-contact text-link text-link-on-blue">ateneomusicaldemieres@gmail.com</a>
+          <div className="flex items-center gap-3">
+            <a href="tel:+34681188519" className="header-contact text-link text-link-on-blue">
+              <span className="hidden sm:inline">+34 681 18 85 19</span>
+              <span className="sm:hidden" aria-label="Llamar al Ateneo">+34 681 18 85 19</span>
+            </a>
+            <a
+              href="mailto:ateneomusicaldemieres@gmail.com"
+              aria-label="Enviar correo a ateneomusicaldemieres@gmail.com"
+              className="flex min-h-9 min-w-9 items-center justify-center text-foreground hover:bg-foreground/10 focus-visible:outline sm:hidden"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a href="mailto:ateneomusicaldemieres@gmail.com" className="header-contact text-link text-link-on-blue hidden sm:inline-flex">
+              ateneomusicaldemieres@gmail.com
+            </a>
           </div>
           <nav aria-label="Redes sociales" className="flex items-center gap-3">
             {socialLinks.map(({ name, href, Icon }) => (
@@ -169,24 +181,8 @@ export function Header() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-16 items-center justify-between gap-4 xl:min-h-20">
-          <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 items-center gap-3">
-            <Image src="/logo_ateneo.png" alt="" width={44} height={44} className="h-10 w-10 object-contain" priority />
-            <span className="font-serif text-lg leading-tight sm:text-xl">
-              Ateneo Musical de Mieres
-            </span>
-          </Link>
-
-          <nav aria-label="Navegación principal" className="hidden xl:block">
-            {renderNav()}
-          </nav>
-
-          <div className="hidden items-center gap-2 xl:flex">
-            <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary">Contrátanos</Link>
-            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary">Hazte socio</Link>
-          </div>
-
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+        <div className="flex min-h-16 items-center gap-2 xl:min-h-20 xl:justify-between">
           <button
             type="button"
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -196,15 +192,31 @@ export function Header() {
               setMobileMenuOpen(!mobileMenuOpen)
               setActiveDropdown(null)
             }}
-            className="flex min-h-11 min-w-11 items-center justify-center xl:hidden"
+            className="flex min-h-10 min-w-10 shrink-0 items-center justify-center xl:hidden"
           >
             {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
-        </div>
 
-        <div className="flex gap-2 pb-3 xl:hidden">
-          <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary flex-1">Contrátanos</Link>
-          <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary flex-1">Hazte socio</Link>
+          <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 shrink items-center gap-2 xl:gap-3">
+            <Image src="/logo_ateneo.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
+            <span className="hidden font-serif text-lg leading-tight sm:inline xl:text-xl">
+              Ateneo Musical de Mieres
+            </span>
+          </Link>
+
+          <nav aria-label="Navegación principal" className="hidden xl:block">
+            {renderNav()}
+          </nav>
+
+          <div className="ml-auto hidden items-center gap-2 xl:flex">
+            <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
+          </div>
+
+          <div className="ml-auto flex shrink-0 items-center gap-1.5 xl:hidden">
+            <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
+          </div>
         </div>
       </div>
 

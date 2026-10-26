@@ -78,6 +78,34 @@ export function HeroSection() {
         ))}
 
         <div className="hero-banner-shade absolute inset-0" aria-hidden="true" />
+        {!reduceMotion && (
+          <button
+            type="button"
+            onClick={() => setPaused((value) => !value)}
+            aria-label={paused ? "Reanudar carrusel de fotografías" : "Pausar carrusel de fotografías"}
+            className="hero-carousel-pause absolute z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/70 bg-dark/85 text-light backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
+          >
+            {paused
+              ? <Play className="h-4 w-4" aria-hidden="true" />
+              : <Pause className="h-4 w-4" aria-hidden="true" />}
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={showPrevious}
+          aria-label="Fotografía anterior"
+          className="hero-carousel-control hero-carousel-control-previous absolute left-0 top-1/2 z-20 flex min-h-14 min-w-14 -translate-y-1/2 items-center justify-center rounded-r-full border border-light/70 bg-dark/85 text-light backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
+        >
+          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          onClick={showNext}
+          aria-label="Fotografía siguiente"
+          className="hero-carousel-control hero-carousel-control-next absolute right-0 top-1/2 z-20 flex min-h-14 min-w-14 -translate-y-1/2 items-center justify-center rounded-l-full border border-light/70 bg-dark/85 text-light backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
+        >
+          <ChevronRight className="h-5 w-5" aria-hidden="true" />
+        </button>
       </div>
 
       <div className="relative mx-auto flex min-h-[38rem] max-w-7xl flex-col justify-center px-4 pb-24 pt-52 sm:min-h-[42rem] sm:px-6 sm:pb-28 sm:pt-48 lg:min-h-[44rem] lg:px-8 lg:pt-44">
@@ -100,39 +128,9 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 pb-4 sm:px-6 lg:px-8">
-        <p className="text-sm font-semibold" aria-hidden="true">{currentSlide + 1} / {heroSlides.length}</p>
-        <div className="flex items-center gap-2 rounded-lg bg-dark/90 p-1">
-          {!reduceMotion && (
-            <button
-              type="button"
-              onClick={() => setPaused((value) => !value)}
-              aria-label={paused ? "Reanudar carrusel de fotografías" : "Pausar carrusel de fotografías"}
-              className="flex min-h-11 min-w-11 items-center justify-center border-2 border-light text-light hover:bg-light hover:text-dark"
-            >
-              {paused
-                ? <Play className="h-4 w-4" aria-hidden="true" />
-                : <Pause className="h-4 w-4" aria-hidden="true" />}
-            </button>
-          )}
-          <button
-            type="button"
-            onClick={showPrevious}
-            aria-label="Fotografía anterior"
-            className="flex min-h-11 min-w-11 items-center justify-center border-2 border-light text-light hover:bg-light hover:text-dark"
-          >
-            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            onClick={showNext}
-            aria-label="Fotografía siguiente"
-            className="flex min-h-11 min-w-11 items-center justify-center border-2 border-light text-light hover:bg-light hover:text-dark"
-          >
-            <ChevronRight className="h-5 w-5" aria-hidden="true" />
-          </button>
-        </div>
-      </div>
+      <p className="absolute inset-x-0 bottom-0 z-10 mx-auto max-w-7xl px-4 pb-5 text-sm font-semibold sm:px-6 lg:px-8" aria-hidden="true">
+        {currentSlide + 1} / {heroSlides.length}
+      </p>
     </section>
   )
 }
