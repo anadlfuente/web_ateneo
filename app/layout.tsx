@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Barlow, Forum, Lato } from 'next/font/google'
+import { Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ConsentimientoProvider } from "@/components/cookies/consentimiento-provider"
@@ -9,18 +9,6 @@ const lato = Lato({
   weight: ['400', '700'],
   subsets: ["latin"],
   variable: '--font-lato',
-})
-
-const forum = Forum({
-  weight: '400',
-  subsets: ["latin"],
-  variable: '--font-forum',
-})
-
-const barlow = Barlow({
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  variable: '--font-barlow',
 })
 
 export const metadata: Metadata = {
@@ -55,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${lato.variable} ${forum.variable} ${barlow.variable} bg-background`} data-scroll-behavior="smooth">
+    <html lang="es" className={`${lato.variable} bg-background`} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
         <ConsentimientoProvider>
           {children}
