@@ -9,9 +9,10 @@ const heroSlides = [
   { src: "/banda/Marco.JPG", alt: "Músicos del Ateneo Musical de Mieres" },
   { src: "/banda/foto_family.JPG", alt: "Agrupaciones del Ateneo Musical de Mieres" },
   { src: "/banda/pasacalles.JPG", alt: "La Banda Sinfónica del Ateneo en un pasacalles" },
-  { src: "/coral/coral_cantares.jpg", alt: "Coral Cantares del Ateneo Musical de Mieres" },
-  { src: "/claxon/claxon1.jpg", alt: "Claxon Boys del Ateneo Musical de Mieres" },
-  { src: "/charanga/charanga2.jpeg", alt: "Charanga New Paentamala del Ateneo Musical de Mieres" },
+  {
+    src: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
+    alt: "Instrumentos musicales en un escenario de concierto",
+  },
 ]
 
 export function HeroSection() {
@@ -66,14 +67,23 @@ export function HeroSection() {
               index === currentSlide ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover"
-            />
+            {slide.src.startsWith("https://") ? (
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                priority={index === 0}
+                sizes="(max-width: 76rem) 100vw, 76rem"
+                className="object-cover"
+              />
+            )}
           </div>
         ))}
 
@@ -108,8 +118,8 @@ export function HeroSection() {
         </button>
       </div>
 
-      <div className="relative mx-auto flex min-h-[38rem] max-w-7xl flex-col justify-center px-4 pb-24 pt-52 sm:min-h-[42rem] sm:px-6 sm:pb-28 sm:pt-48 lg:min-h-[44rem] lg:px-8 lg:pt-44">
-        <div className="max-w-3xl">
+      <div className="home-container relative flex min-h-[38rem] flex-col justify-center pb-24 pt-52 sm:min-h-[42rem] sm:pb-28 sm:pt-48 lg:min-h-[44rem] lg:pt-44">
+        <div className="max-w-3xl text-center lg:text-left">
           <p className="mb-4 text-sm font-bold uppercase tracking-wider">Ateneo Musical de Mieres</p>
           <h1 className="mb-5 font-serif">
             Ateneo Musical de Mieres: música para tus conciertos, procesiones y fiestas
@@ -117,18 +127,18 @@ export function HeroSection() {
           <p className="mb-7 max-w-prose text-base sm:text-lg">
             Una asociación musical de Mieres con cuatro agrupaciones y propuestas para acompañar tus eventos.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
             <Link href="/contrata" className="cta-primary">Contrátanos</Link>
             <Link href="/join" className="cta-secondary cta-secondary-on-dark">Hazte socio</Link>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm font-semibold" aria-label="Datos de la asociación">
+          <ul className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-semibold lg:justify-start" aria-label="Datos de la asociación">
             <li>Desde 2018</li>
             <li>4 agrupaciones</li>
           </ul>
         </div>
       </div>
 
-      <p className="absolute inset-x-0 bottom-0 z-10 mx-auto max-w-7xl px-4 pb-5 text-sm font-semibold sm:px-6 lg:px-8" aria-hidden="true">
+      <p className="home-container absolute inset-x-0 bottom-0 z-10 pb-5 text-sm font-semibold" aria-hidden="true">
         {currentSlide + 1} / {heroSlides.length}
       </p>
     </section>

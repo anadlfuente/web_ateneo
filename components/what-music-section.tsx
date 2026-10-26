@@ -25,28 +25,30 @@ const performances = [
 
 export function WhatMusicSection() {
   return (
-    <section className="bg-background py-14 text-foreground sm:py-16">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <p className="mb-2 text-sm font-bold uppercase tracking-wider">Servicios musicales</p>
-          <h2 className="font-serif">¿Qué música necesitas?</h2>
+    <section className="home-section bg-background text-foreground">
+      <div className="home-container">
+        <div className="section-intro mb-8 text-center">
+          <p className="section-eyebrow">Servicios musicales</p>
+          <h2 className="section-heading">¿Qué música necesitas?</h2>
         </div>
 
-        <div className="divide-y-2 divide-blue-border/60 border-y-2 border-blue-border">
+        <div className="border-y border-blue-border">
           {performances.map((performance) => (
-            <article key={performance.name} className="grid gap-2 py-5 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6">
+            <article key={performance.name} className="grid gap-2 border-b border-blue-border/60 py-5 last:border-b-0 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6">
               <div>
                 <h3 className="mb-1 font-semibold">{performance.name}</h3>
-                <p className="max-w-prose text-sm">{performance.description}</p>
+                <p className="mx-auto max-w-prose text-sm">{performance.description}</p>
               </div>
               <p className="text-sm">
-                <span className="rounded bg-accent-green px-2 py-1 font-semibold text-light">Formación: por definir</span>
+                <span className="inline-block rounded-full bg-accent-green px-3 py-1 font-semibold text-light">Formación: por definir</span>
               </p>
             </article>
           ))}
         </div>
 
-        <Link href="/contrata" className="cta-primary mt-6">Pide presupuesto para tu evento</Link>
+        <div className="mt-6 text-center">
+          <Link href="/contrata" className="cta-primary">Pide presupuesto para tu evento</Link>
+        </div>
       </div>
     </section>
   )

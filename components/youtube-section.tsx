@@ -43,13 +43,13 @@ export function VideosSection() {
     v.miniatura ?? (puedeCargarYoutube ? `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg` : null)
 
   return (
-    <section id="videos" className="bg-background py-14 text-foreground sm:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="videos" className="home-section bg-background text-foreground">
+      <div className="home-container">
         {/* Cabecera */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
+        <div className="section-intro mb-10 flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
           <div>
-            <p className="mb-2 text-sm font-bold uppercase tracking-wider">Escúchanos</p>
-            <h2 className="font-serif">Nuestra música en vídeo</h2>
+            <p className="section-eyebrow">Escúchanos</p>
+            <h2 className="section-heading">Nuestra música en vídeo</h2>
           </div>
           <a
             href={CANAL_YOUTUBE}
@@ -73,7 +73,7 @@ export function VideosSection() {
                 {actual.agrupacion}
                 {actual.fecha && <span className="font-normal"> · {actual.fecha}</span>}
               </p>
-              <h3 className="mt-1 font-serif">{actual.titulo}</h3>
+              <h3 className="mt-1 font-semibold">{actual.titulo}</h3>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ export function VideosSection() {
                     aria-pressed={seleccionado}
                     className={`group w-full flex gap-4 p-3 rounded-2xl text-left border transition-all ${
                       seleccionado
-                        ? "border-blue-border bg-primary-blue/10"
+                        ? "border-primary-blue bg-primary-blue/10"
                         : "border-blue-border bg-background hover:bg-primary-blue/10"
                     }`}
                   >
@@ -118,7 +118,7 @@ export function VideosSection() {
                     </div>
                     <div className="flex flex-col justify-center min-w-0">
                       <span className="text-sm font-bold">{v.agrupacion}</span>
-                      <h3 className="line-clamp-2 font-serif text-base leading-snug text-foreground">
+                      <h3 className="line-clamp-2 text-base font-semibold leading-snug text-foreground">
                         {v.titulo}
                       </h3>
                       {v.fecha && <span className="text-xs text-muted-foreground mt-1">{v.fecha}</span>}

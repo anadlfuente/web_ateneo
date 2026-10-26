@@ -59,7 +59,7 @@
   --color-accent: var(--accent);
   --color-primary-blue: var(--primary-blue);
   --color-blue-border: var(--blue-border);
-  --color-accent-yellow: var(--primary-blue);
+  --color-accent-yellow: var(--accent-yellow);
   --color-accent-green: var(--accent-green);
   --color-light: var(--light);
   --color-dark: var(--dark);
@@ -172,6 +172,33 @@ html {
 
 body {
   overflow-x: clip;
+  background: var(--light);
+}
+
+.site-frame {
+  width: min(100%, 76rem);
+  min-height: 100vh;
+  margin-inline: auto;
+  background: var(--light);
+}
+
+.site-header {
+  left: 50%;
+  width: min(100%, 76rem);
+  transform: translateX(-50%);
+}
+
+.home-container {
+  width: min(calc(100% - 2rem), 72rem);
+  margin-inline: auto;
+}
+
+.home-section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.section-intro {
+  text-align: center;
 }
 
 h1 {
@@ -198,9 +225,9 @@ h3 {
 .hero-banner-shade {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--dark) 92%, transparent) 0%,
-    color-mix(in srgb, var(--dark) 88%, transparent) 80%,
-    color-mix(in srgb, var(--dark) 58%, transparent) 100%
+    color-mix(in srgb, var(--dark) 82%, transparent) 0%,
+    color-mix(in srgb, var(--dark) 82%, transparent) 58%,
+    color-mix(in srgb, var(--dark) 45%, transparent) 100%
   );
 }
 
@@ -208,8 +235,8 @@ h3 {
   .hero-banner-shade {
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--dark) 90%, transparent),
-      color-mix(in srgb, var(--dark) 86%, transparent)
+      color-mix(in srgb, var(--dark) 84%, transparent),
+      color-mix(in srgb, var(--dark) 80%, transparent)
     );
   }
 }
@@ -268,15 +295,17 @@ h3 {
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
+  border-radius: 0.4rem;
   transition: box-shadow 160ms ease, transform 160ms ease;
 }
 
 .header-cta {
   min-height: 2.75rem;
-  padding: 0.45rem 0.7rem;
-  font-size: 0.875rem;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.8125rem;
   letter-spacing: 0;
   white-space: nowrap;
+  border-radius: 0.375rem;
 }
 
 .cta-primary:hover:not(:disabled) {
@@ -308,6 +337,7 @@ h3 {
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
+  border-radius: 0.4rem;
   transition: background-color 160ms ease, color 160ms ease;
 }
 
@@ -379,6 +409,66 @@ h3 {
   background: rgb(51 153 254 / 14%);
 }
 
+.mobile-nav-backdrop {
+  animation: mobile-backdrop-in 180ms ease-out both;
+}
+
+.mobile-nav-drawer {
+  animation: mobile-drawer-in 240ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+@keyframes mobile-backdrop-in {
+  from { background-color: transparent; }
+  to { background-color: color-mix(in srgb, var(--dark) 38%, transparent); }
+}
+
+@keyframes mobile-drawer-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.home-card {
+  border: 1px solid var(--blue-border);
+  border-radius: 0.75rem;
+  background: var(--light);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.home-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--dark) 8%, transparent);
+}
+
+.home-card-link:hover {
+  background: color-mix(in srgb, var(--primary-blue) 8%, var(--light));
+}
+
+.sponsor-logo {
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.sponsor-logo:hover {
+  transform: translateY(-0.2rem) scale(1.02);
+  background: var(--light);
+  box-shadow: 0 0.4rem 1rem color-mix(in srgb, var(--dark) 10%, transparent);
+}
+
+.section-eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin-bottom: 0;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
 .hero-carousel-pause {
   top: 8rem;
   right: 1rem;
@@ -433,11 +523,31 @@ h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .mobile-nav-backdrop,
+  .mobile-nav-drawer,
+  .sponsor-logo {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 @media (min-width: 768px) {
   :root {
     --header-h: 6rem;
+  }
+
+  @media (max-width: 24rem) {
+    .home-container {
+      width: calc(100% - 1.25rem);
+    }
+
+    .header-cta {
+      min-height: 2.5rem;
+      padding-inline: 0.4rem;
+      font-size: 0.75rem;
+    }
   }
 
   .hero-carousel-pause {

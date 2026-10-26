@@ -3,14 +3,14 @@ import { Mail, Phone } from "lucide-react"
 
 export function ContactQuickSection() {
   return (
-    <section id="contacto" className="bg-background py-14 text-foreground sm:py-16">
-      <div className="mx-auto flex max-w-5xl flex-col gap-7 px-4 sm:px-6 lg:px-8">
+    <section id="contacto" className="home-section bg-background text-foreground">
+      <div className="home-container flex flex-col items-center gap-7 text-center">
         <div>
-          <p className="mb-2 text-sm font-bold uppercase tracking-wider">Contacto</p>
-          <h2 className="font-serif">¿Hablamos?</h2>
+          <p className="section-eyebrow">Contacto</p>
+          <h2 className="section-heading">¿Hablamos?</h2>
         </div>
 
-        <div className="flex flex-wrap gap-x-8 gap-y-3">
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
           <a href="mailto:ateneomusicaldemieres@gmail.com" className="text-link inline-flex min-h-11 items-center gap-2">
             <Mail className="h-5 w-5" aria-hidden="true" />
             ateneomusicaldemieres@gmail.com
@@ -21,7 +21,7 @@ export function ContactQuickSection() {
           </a>
         </div>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap justify-center gap-3">
           <Link href="/contrata" className="cta-primary">Pedir presupuesto</Link>
           <Link href="/contacto" className="cta-secondary">Escribirnos</Link>
         </div>

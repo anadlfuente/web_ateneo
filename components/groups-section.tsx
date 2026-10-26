@@ -39,11 +39,11 @@ const groups = [
 
 export function GroupsSection() {
   return (
-    <section id="agrupaciones" className="bg-primary-blue py-14 text-foreground sm:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-col gap-3 sm:mb-10">
-          <p className="text-sm font-bold uppercase tracking-wider">Nuestras agrupaciones</p>
-          <h2 className="font-serif">Mucho más que una banda</h2>
+    <section id="agrupaciones" className="home-section bg-primary-blue text-foreground">
+      <div className="home-container">
+        <div className="section-intro mb-8 flex flex-col items-center gap-3 text-center sm:mb-10">
+          <p className="section-eyebrow">Nuestras agrupaciones</p>
+          <h2 className="section-heading">Mucho más que una banda</h2>
           <p className="max-w-prose">
             Cuatro agrupaciones, cada una con su propia historia y sus músicos.
           </p>
@@ -51,7 +51,7 @@ export function GroupsSection() {
 
         <div className="grid gap-5 sm:grid-cols-2">
           {groups.map(({ name, description, image, href, members, Icon }) => (
-            <article key={name} className="image-overlay group relative min-h-72 overflow-hidden rounded-lg border-2 border-foreground">
+            <article key={name} className="image-overlay group relative min-h-72 overflow-hidden rounded-xl border border-foreground/70 shadow-sm">
               <Image
                 src={image}
                 alt={`Actuación de ${name}`}
@@ -61,14 +61,14 @@ export function GroupsSection() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#01020a]/95 via-[#01020a]/55 to-transparent" />
-              <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-accent-green text-light" aria-hidden="true">
+              <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent-green text-light" aria-hidden="true">
                 <Icon className="h-5 w-5" />
               </div>
               <p className="absolute right-4 top-4 rounded-full bg-light px-3 py-1 text-sm font-semibold text-foreground">
                 {members} miembros
               </p>
               <div className="absolute inset-x-0 bottom-0 p-5 text-light sm:p-6">
-                <h3 className="mb-2 font-serif">{name}</h3>
+                <h3 className="mb-2 font-bold">{name}</h3>
                 <p className="mb-3 max-w-prose text-sm leading-relaxed">{description}</p>
                 <Link href={href} className="text-link text-link-on-dark inline-flex min-h-11 items-center gap-2 font-semibold">
                   Conocer más <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -78,7 +78,9 @@ export function GroupsSection() {
           ))}
         </div>
 
-        <Link href="/agrupaciones" className="cta-secondary mt-6">Ver todas las agrupaciones</Link>
+        <div className="mt-6 text-center">
+          <Link href="/agrupaciones" className="cta-secondary rounded-md">Ver todas las agrupaciones</Link>
+        </div>
       </div>
     </section>
   )

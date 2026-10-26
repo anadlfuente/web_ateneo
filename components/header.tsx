@@ -145,9 +145,9 @@ export function Header() {
   )
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-blue-border bg-background text-foreground">
+    <header className="site-header fixed top-0 z-50 border-b border-blue-border bg-background text-foreground">
       <div className="bg-primary-blue text-foreground">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2 text-xs sm:px-6 lg:px-8">
+        <div className="home-container flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-2 text-xs">
           <div className="flex items-center gap-3">
             <a href="tel:+34681188519" className="header-contact text-link text-link-on-blue">
               <span className="hidden sm:inline">+34 681 18 85 19</span>
@@ -181,7 +181,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
+      <div className="home-container">
         <div className="flex min-h-16 items-center gap-2 xl:min-h-20 xl:justify-between">
           <button
             type="button"
@@ -192,14 +192,15 @@ export function Header() {
               setMobileMenuOpen(!mobileMenuOpen)
               setActiveDropdown(null)
             }}
-            className="flex min-h-10 min-w-10 shrink-0 items-center justify-center xl:hidden"
+            className="flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md hover:bg-primary-blue/10 xl:hidden"
           >
             {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
 
           <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 shrink items-center gap-2 xl:gap-3">
             <Image src="/logo_ateneo.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
-            <span className="hidden font-serif text-lg leading-tight sm:inline xl:text-xl">
+            <span className="hidden text-xs font-bold min-[24rem]:inline sm:hidden">Ateneo</span>
+            <span className="hidden text-base font-semibold leading-tight sm:inline xl:text-lg">
               Ateneo Musical de Mieres
             </span>
           </Link>
@@ -213,7 +214,7 @@ export function Header() {
             <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
           </div>
 
-          <div className="ml-auto flex shrink-0 items-center gap-1.5 xl:hidden">
+          <div className="ml-auto flex shrink-0 items-center gap-1 xl:hidden">
             <Link href="/contrata" aria-current={currentPage(pathname, "/contrata") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
             <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
           </div>
@@ -223,9 +224,18 @@ export function Header() {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="absolute inset-x-0 top-full max-h-[calc(100dvh-9rem)] overflow-y-auto border-t-2 border-blue-border bg-background px-4 py-4 shadow-xl xl:hidden"
+          className="mobile-nav-backdrop absolute inset-x-0 top-full z-40 h-[calc(100dvh-9rem)] bg-dark/40 xl:hidden"
         >
-          <nav aria-label="Navegación principal móvil">{renderNav(true)}</nav>
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            tabIndex={-1}
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute inset-0 h-full w-full cursor-default"
+          />
+          <div className="mobile-nav-drawer absolute inset-y-0 left-0 w-[min(88vw,22rem)] overflow-y-auto border-r border-blue-border bg-background px-5 py-6 shadow-xl">
+            <nav aria-label="Navegación principal móvil">{renderNav(true)}</nav>
+          </div>
         </div>
       )}
     </header>

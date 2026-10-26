@@ -22,9 +22,9 @@ const linkClass = "text-link text-link-on-blue inline-flex min-h-11 items-center
 export function Footer() {
   return (
     <footer className="bg-primary-blue text-foreground">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:px-8">
+      <div className="home-container grid gap-x-8 gap-y-7 py-9 sm:grid-cols-2 lg:grid-cols-5">
         <section>
-          <h2 className="mb-3 font-serif text-xl">La asociación</h2>
+          <h2 className="mb-3 text-base font-bold">La asociación</h2>
           <p className="mb-3 text-sm">Dinamizando la vida musical mierense desde 2018.</p>
           <ul className="space-y-1 text-sm">
             <li><Link href="/historia" className={linkClass}>Quiénes somos</Link></li>
@@ -49,7 +49,7 @@ export function Footer() {
         </section>
 
         <section>
-          <h2 className="mb-3 font-serif text-xl">Agrupaciones</h2>
+          <h2 className="mb-3 text-base font-bold">Agrupaciones</h2>
           <ul className="space-y-1 text-sm">
             {groups.map((group) => (
               <li key={group.name}><Link href={group.href} className={linkClass}>{group.name}</Link></li>
@@ -58,7 +58,7 @@ export function Footer() {
         </section>
 
         <section>
-          <h2 className="mb-3 font-serif text-xl">Participa</h2>
+          <h2 className="mb-3 text-base font-bold">Participa</h2>
           <ul className="space-y-1 text-sm">
             <li><Link href="/join" className={linkClass}>Hazte socio</Link></li>
             <li><Link href="/unete" className={linkClass}>Únete como músico</Link></li>
@@ -67,7 +67,7 @@ export function Footer() {
         </section>
 
         <section>
-          <h2 className="mb-3 font-serif text-xl">Contacto</h2>
+          <h2 className="mb-3 text-base font-bold">Contacto</h2>
           <ul className="space-y-1 text-sm">
             <li><a href="tel:+34681188519" className={linkClass}>+34 681 18 85 19</a></li>
             <li><a href="mailto:ateneomusicaldemieres@gmail.com" className={linkClass}>ateneomusicaldemieres@gmail.com</a></li>
@@ -76,7 +76,7 @@ export function Footer() {
         </section>
 
         <section>
-          <h2 className="mb-3 font-serif text-xl">Redes sociales</h2>
+          <h2 className="mb-3 text-base font-bold">Redes sociales</h2>
           <ul className="flex flex-wrap gap-2">
             {socialLinks.map(({ name, href, Icon }) => (
               <li key={name}>
@@ -85,7 +85,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${name} del Ateneo (se abre en una pestaña nueva)`}
-                  className="flex min-h-11 min-w-11 items-center justify-center border-2 border-foreground hover:bg-foreground hover:text-primary-blue focus-visible:outline"
+                  className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-foreground hover:bg-foreground hover:text-primary-blue focus-visible:outline"
                 >
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </a>
@@ -95,8 +95,8 @@ export function Footer() {
         </section>
       </div>
 
-      <div className="border-t-2 border-foreground">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div className="border-t border-foreground/50">
+        <div className="home-container flex flex-col gap-3 py-5 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Ateneo Musical de Mieres. Todos los derechos reservados.</p>
           <nav aria-label="Avisos legales" className="flex flex-wrap gap-x-4 gap-y-1">
             <Link href="/legal?section=legal" className={linkClass}>Aviso legal</Link>

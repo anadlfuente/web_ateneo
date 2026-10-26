@@ -11,20 +11,20 @@ import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <>
+    <div className="site-frame">
       <Header />
       <a href="#contenido" className="skip-link">Saltar al contenido</a>
       <main id="contenido" className="min-h-screen">
         <HeroSection />
+        <SponsorsSection />
         <WhatMusicSection />
         <GroupsSection />
         <VideosSection />
         <ParticipateSection />
         <HomeAgendaNewsSection />
-        <SponsorsSection />
         <ContactQuickSection />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
