@@ -1,19 +1,26 @@
 import type { Metadata } from 'next'
-import { Inter, DM_Serif_Display } from 'next/font/google'
+import { Barlow, Forum, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ConsentimientoProvider } from "@/components/cookies/consentimiento-provider"
 import { BannerCookies } from "@/components/cookies/banner-cookies"
 
-const inter = Inter({ 
+const lato = Lato({
+  weight: ['400', '700'],
   subsets: ["latin"],
-  variable: '--font-inter'
+  variable: '--font-lato',
 })
 
-const dmSerif = DM_Serif_Display({ 
+const forum = Forum({
   weight: '400',
   subsets: ["latin"],
-  variable: '--font-dm-serif'
+  variable: '--font-forum',
+})
+
+const barlow = Barlow({
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  variable: '--font-barlow',
 })
 
 export const metadata: Metadata = {
@@ -48,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${dmSerif.variable} bg-background`} data-scroll-behavior="smooth">
+    <html lang="es" className={`${lato.variable} ${forum.variable} ${barlow.variable} bg-background`} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
         <ConsentimientoProvider>
           {children}
