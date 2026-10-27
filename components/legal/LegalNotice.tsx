@@ -17,8 +17,8 @@ export function LegalNotice() {
           <li><strong className="text-foreground">Domicilio:</strong> Lugar Avellanedo 37N. 33618, Mieres (Asturias). España.</li>
           <li>
             <strong className="text-foreground">Correo electrónico:</strong>{" "}
-            <a href="mailto:ateneomusicalmieres@gmail.com" className="font-medium text-foreground underline underline-offset-2 hover:text-primary">
-              ateneomusicalmieres@gmail.com
+            <a href="mailto:ateneomusicaldemieres@gmail.com" className="font-medium text-foreground underline underline-offset-2 hover:text-primary">
+              ateneomusicaldemieres@gmail.com
             </a>
           </li>
           <li><strong className="text-foreground">Teléfono:</strong> 681188519</li>

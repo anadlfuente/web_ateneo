@@ -29,8 +29,8 @@ export function PrivacyPolicy() {
           </li>
           <li>
             <strong className={labelStyle}>Correo electrónico:</strong>{" "}
-            <a href="mailto:ateneomusicalmieres@gmail.com" className={linkStyle}>
-              ateneomusicalmieres@gmail.com
+            <a href="mailto:ateneomusicaldemieres@gmail.com" className={linkStyle}>
+              ateneomusicaldemieres@gmail.com
             </a>
           </li>
         </ul>
@@ -203,8 +203,8 @@ export function PrivacyPolicy() {
         </ul>
         <p>
           Para ejercerlos, puede escribir a{" "}
-          <a href="mailto:ateneomusicalmieres@gmail.com" className={linkStyle}>
-            ateneomusicalmieres@gmail.com
+          <a href="mailto:ateneomusicaldemieres@gmail.com" className={linkStyle}>
+            ateneomusicaldemieres@gmail.com
           </a>{" "}
           o enviar un escrito a la dirección postal indicada, indicando el derecho que desea ejercer
           y adjuntando una copia de un documento que acredite su identidad.

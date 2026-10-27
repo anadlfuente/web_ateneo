@@ -312,8 +312,8 @@ export function CookiesPolicy() {
         <h3 className={titleStyle}>10. Contacto</h3>
         <p>
           Si tiene dudas sobre el uso de cookies en este sitio web, puede escribir a{" "}
-          <a href="mailto:ateneomusicalmieres@gmail.com" className={linkStyle}>
-            ateneomusicalmieres@gmail.com
+          <a href="mailto:ateneomusicaldemieres@gmail.com" className={linkStyle}>
+            ateneomusicaldemieres@gmail.com
           </a>
           . Para más información sobre el tratamiento de sus datos personales, consulte la{" "}
           <strong className={labelStyle}>Política de Privacidad</strong>.

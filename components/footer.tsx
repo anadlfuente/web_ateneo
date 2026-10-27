@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Mail, MapPin, Phone } from "lucide-react"
 import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6"
 import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-cookies"
 
@@ -64,6 +63,8 @@ export function Footer() {
             <li><Link href="/historia" className={linkClass}>Sobre nosotros</Link></li>
             <li><Link href="/#patrocinadores" className={linkClass}>Patrocinadores</Link></li>
             <li><Link href="/noticias" className={linkClass}>Noticias</Link></li>
+            <li><Link href="/contacto?asunto=contratar" className={linkClass}>Contrátanos</Link></li>
+            <li><Link href="/calendar" className={linkClass}>Calendario</Link></li>
             <li><Link href="/contacto" className={linkClass}>Contacto</Link></li>
             <li><Link href="/join" className={linkClass}>Hazte socio</Link></li>
           </ul>
@@ -98,34 +99,6 @@ export function Footer() {
           </a>
         </section>
       </div>
-
-      <section className="footer-contact">
-        <div className="home-container grid gap-4 py-5 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
-          <div>
-            <h2 className="footer-contact-heading">¿Hablamos?</h2>
-            <p className="text-sm">Estamos aquí para ayudarte.</p>
-          </div>
-          <address className="grid gap-x-6 gap-y-3 text-sm not-italic md:grid-cols-2 md:gap-y-2 lg:grid-cols-3">
-            <a href="mailto:ateneomusicaldemieres@gmail.com" className="footer-contact-link">
-              <Mail className="h-5 w-5 shrink-0" aria-hidden="true" />
-              ateneomusicaldemieres@gmail.com
-            </a>
-            <a href="tel:+34681188519" className="footer-contact-link">
-              <Phone className="h-5 w-5 shrink-0" aria-hidden="true" />
-              +34 681 18 85 19
-            </a>
-            <a
-              href="https://www.google.com/maps/place/Ateneo+Musical+de+Mieres/@43.251465,-5.7737534,566m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd36f7d4f0f7e245:0x6780eb25dfba4437!8m2!3d43.251465!4d-5.7737534!16s%2Fg%2F11f9x52syn?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-contact-link"
-            >
-              <MapPin className="h-5 w-5 shrink-0" aria-hidden="true" />
-              Pl. del Mercado, 33600 Mieres, Asturias
-            </a>
-          </address>
-        </div>
-      </section>
 
       <div className="footer-bottom">
         <div className="home-container flex flex-col gap-2 py-3 text-xs sm:flex-row sm:items-center sm:justify-between">

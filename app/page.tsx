@@ -7,6 +7,7 @@ import { WhatMusicSection } from "@/components/what-music-section"
 import { ParticipateSection } from "@/components/participate-section"
 import { HomeAgendaNewsSection } from "@/components/home-agenda-news-section"
 import { SponsorsSection } from "@/components/sponsors-section"
+import { ContactQuickSection } from "@/components/contact-quick-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         <ParticipateSection />
         <HomeAgendaNewsSection />
         <SponsorsSection />
+        <ContactQuickSection />
       </main>
       <Footer />
     </div>

@@ -247,10 +247,6 @@ body {
   background: var(--light);
 }
 
-.footer-contact > .home-container {
-  padding-block: clamp(1.5rem, 3vw, 2.25rem);
-}
-
 .footer-contact-heading {
   margin-bottom: 0.25rem;
   color: var(--dark);
