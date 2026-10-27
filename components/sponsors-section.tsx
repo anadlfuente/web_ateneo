@@ -22,7 +22,11 @@ export function SponsorsSection() {
           <div className="max-w-2xl">
             <h2 className="sponsor-heading">Patrocinadores</h2>
             <p className="mt-1 text-sm">
-              El respaldo de estas entidades refleja la confianza en el trabajo del Ateneo.
+              Gracias a quienes ya apoyáis este maravilloso proyecto. ¿Te gustaría impulsar la cultura y la música en Mieres?{" "}
+              <Link href="/contacto?asunto=patrocinio" className="text-link font-semibold">
+                Súmate como patrocinador
+              </Link>{" "}
+              y ayúdanos a seguir creciendo.
             </p>
           </div>
           <Link href="/contacto?asunto=patrocinio" className="cta-secondary sponsor-cta">

@@ -188,12 +188,7 @@ body {
 .site-footer {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--dark) 90%, transparent) 0%,
-    color-mix(in srgb, var(--dark) 86%, transparent) 58%,
-    color-mix(in srgb, var(--dark) 70%, transparent) 100%
-  ), var(--primary-blue);
+  background: #171717;
 }
 
 .site-footer h2 {
@@ -207,7 +202,7 @@ body {
 
 .footer-heading {
   margin-bottom: 0.65rem;
-  color: color-mix(in srgb, var(--light) 82%, var(--primary-blue));
+  color: color-mix(in srgb, var(--light) 82%, #171717);
   font-size: 0.8rem !important;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -234,25 +229,30 @@ body {
 }
 
 .footer-social-link {
-  border: 1px solid color-mix(in srgb, var(--primary-blue) 65%, var(--light));
-  background: color-mix(in srgb, var(--primary-blue) 22%, var(--dark));
+  border: 1px solid color-mix(in srgb, var(--light) 24%, transparent);
+  background: transparent;
   color: var(--light);
   transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
 }
 
 .footer-social-link:hover {
   border-color: var(--light);
-  background: color-mix(in srgb, var(--primary-blue) 40%, var(--dark));
+  background: color-mix(in srgb, var(--light) 12%, transparent);
   color: var(--light);
 }
 
 .footer-contact {
-  border-block: 1px solid color-mix(in srgb, var(--light) 24%, transparent);
-  background: color-mix(in srgb, var(--primary-blue) 76%, var(--dark));
+  border-block: 1px solid color-mix(in srgb, var(--primary-blue) 42%, transparent);
+  background: color-mix(in srgb, var(--primary-blue) 12%, #171717);
+}
+
+.footer-contact > .home-container {
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .footer-contact-heading {
   margin-bottom: 0.25rem;
+  color: var(--primary-blue);
   font-size: 1.375rem !important;
   font-weight: 700;
   line-height: 1.2;
@@ -264,7 +264,7 @@ body {
   min-height: 2.75rem;
   align-items: center;
   gap: 0.65rem;
-  color: color-mix(in srgb, var(--light) 88%, var(--primary-blue));
+  color: color-mix(in srgb, var(--light) 88%, #171717);
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, var(--light) 42%, transparent);
   text-underline-offset: 0.2em;
@@ -272,7 +272,7 @@ body {
 }
 
 .footer-contact-link > svg {
-  color: color-mix(in srgb, var(--primary-blue) 48%, var(--light));
+  color: var(--primary-blue);
 }
 
 .footer-contact-link:hover {
@@ -290,7 +290,7 @@ body {
 }
 
 .footer-link {
-  color: color-mix(in srgb, var(--light) 88%, var(--primary-blue));
+  color: color-mix(in srgb, var(--light) 88%, #171717);
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, var(--light) 75%, transparent);
   text-decoration-thickness: 1px;
@@ -312,7 +312,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 2px solid var(--light);
-  border-radius: 0.4rem;
+  border-radius: 999px;
   padding: 0.65rem 1.1rem;
   color: var(--light);
   font-size: 1rem;
@@ -321,7 +321,7 @@ body {
 
 .footer-cta-secondary:hover {
   background: var(--light);
-  color: color-mix(in srgb, var(--primary-blue) 65%, var(--dark));
+  color: #171717;
 }
 
 .site-header {
@@ -343,6 +343,10 @@ body {
 
 .home-section {
   padding-block: clamp(0.875rem, 1.8vw, 1.5rem);
+}
+
+main#contenido .home-section {
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
 }
 
 main:not(#contenido) section:not(.page-hero),
@@ -435,11 +439,6 @@ main:not(#contenido) > div[class*="py-"] {
 
 .hero-foreground {
   right: max(1rem, calc((100vw - 72rem) / 2 + 1rem));
-}
-
-.hero-slide-count {
-  min-width: 4rem;
-  text-align: center;
 }
 
 h1 {
@@ -536,14 +535,13 @@ h3 {
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
-  border-radius: 0.2rem;
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--dark) 28%, transparent);
-  transition: background-color 160ms ease, box-shadow 160ms ease;
+  border-radius: 999px;
+  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .cta-primary:hover:not(:disabled) {
   background: var(--accent-yellow);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--dark) 36%, transparent);
+  transform: translateY(-1px);
 }
 
 .cta-primary:disabled,
@@ -570,7 +568,7 @@ h3 {
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
-  border-radius: 0.4rem;
+  border-radius: 999px;
   transition: background-color 160ms ease, color 160ms ease;
 }
 
@@ -605,7 +603,7 @@ h3 {
   min-height: 2.75rem;
   padding: 0.65rem 1.1rem;
   border-width: 1px;
-  border-radius: 0.2rem;
+  border-radius: 999px;
   font-size: 1rem;
   letter-spacing: 0;
   white-space: nowrap;
@@ -796,10 +794,6 @@ h3 {
 @media (max-width: 24rem) {
   .home-container {
     width: calc(100% - 1.25rem);
-  }
-
-  .mobile-brand {
-    display: none;
   }
 
   .site-header .min-h-11.min-w-11 {

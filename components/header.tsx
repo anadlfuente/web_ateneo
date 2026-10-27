@@ -164,10 +164,9 @@ export function Header() {
             {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
 
-          <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="mobile-brand flex min-w-0 shrink items-center gap-2 xl:gap-3">
+          <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 shrink items-center gap-2 xl:gap-3">
             <Image src="/logo_ateneo%20-%20sin%20texto.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
-            <span className="hidden text-xs font-bold min-[24rem]:inline sm:hidden">Ateneo</span>
-            <span className="hidden text-base font-semibold leading-tight sm:inline xl:text-lg">
+            <span className="hidden text-base font-semibold leading-tight xl:inline xl:text-lg">
               Ateneo Musical de Mieres
             </span>
           </Link>
@@ -183,7 +182,6 @@ export function Header() {
 
           <div className="ml-auto flex shrink-0 items-center gap-1 xl:hidden">
             <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
-            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
           </div>
         </div>
       </div>

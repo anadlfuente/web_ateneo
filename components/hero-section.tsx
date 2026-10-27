@@ -149,9 +149,22 @@ export function HeroSection() {
         </div>
       </div>
 
-      <p className="hero-slide-count absolute bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full border border-light/70 bg-dark/75 px-3 py-1 text-sm font-semibold text-light shadow-md backdrop-blur-sm" aria-live="polite">
-        {currentSlide + 1} / {heroSlides.length}
-      </p>
+      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2" role="group" aria-label="Seleccionar fotografía">
+        {heroSlides.map((slide, index) => (
+          <button
+            key={slide.src}
+            type="button"
+            onClick={() => setCurrentSlide(index)}
+            aria-label={`Mostrar fotografía ${index + 1} de ${heroSlides.length}`}
+            aria-current={index === currentSlide ? "true" : undefined}
+            className={`h-2.5 rounded-full transition-all ${
+              index === currentSlide
+                ? "w-6 bg-accent-yellow"
+                : "w-2.5 bg-light/70 hover:bg-light"
+            }`}
+          />
+        ))}
+      </div>
     </section>
   )
 }
