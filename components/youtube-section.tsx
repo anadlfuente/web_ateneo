@@ -28,7 +28,7 @@ const videos: Video[] = [
   { id: "pwpK8ZQyvNo", titulo: "Star Wars (Antroxu 2026)", agrupacion: "Banda Sinfónica", fecha: "2026" },
   { id: "fuh-PHW75zs", titulo: "SKANDA (Folixa na Primavera 2025)", agrupacion: "Banda Sinfónica", fecha: "2025" },
   { id: "QEBpcIM9A1o", titulo: "Pasodoble Ateneo Musical de Mieres", agrupacion: "Banda Sinfónica", fecha: "2023" },
-  { id: "KzxI5TT36v8", titulo: "At Kitty O´Shea´s (Festival de Bandas Villa de Mieres)", agrupacion: "Banda Sinfónica", fecha: "2023" },
+  { id: "KzxI5TT36v8", titulo: "At Kitty O’Shea’s (Festival de Bandas Villa de Mieres)", agrupacion: "Banda Sinfónica", fecha: "2023" },
 ]
 
 export function VideosSection() {
@@ -119,7 +119,7 @@ export function VideosSection() {
                     </div>
                     <div className="flex flex-col justify-center min-w-0">
                       <span className="text-sm font-bold">{v.agrupacion}</span>
-                      <h3 className="line-clamp-2 text-base font-semibold leading-snug text-foreground">
+                      <h3 className="line-clamp-3 text-base font-semibold leading-snug text-foreground">
                         {v.titulo}
                       </h3>
                       {v.fecha && <span className="text-xs text-muted-foreground mt-1">{v.fecha}</span>}
