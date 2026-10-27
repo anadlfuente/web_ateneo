@@ -415,7 +415,6 @@ main:not(#contenido) > div[class*="py-"] {
 .hero-banner {
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  border-bottom: 0.25rem solid var(--primary-blue);
 }
 
 .hero-title {
@@ -467,9 +466,9 @@ h3 {
 .hero-banner-shade {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--dark) 90%, transparent) 0%,
-    color-mix(in srgb, var(--dark) 87%, transparent) 55%,
-    color-mix(in srgb, var(--dark) 80%, transparent) 100%
+    color-mix(in srgb, var(--dark) 78%, transparent) 0%,
+    color-mix(in srgb, var(--dark) 55%, transparent) 55%,
+    color-mix(in srgb, var(--dark) 20%, transparent) 100%
   );
 }
 
@@ -477,9 +476,9 @@ h3 {
   .hero-banner-shade {
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--dark) 90%, transparent) 0%,
-      color-mix(in srgb, var(--dark) 87%, transparent) 45%,
-      color-mix(in srgb, var(--dark) 82%, transparent) 100%
+      color-mix(in srgb, var(--dark) 78%, transparent) 0%,
+      color-mix(in srgb, var(--dark) 58%, transparent) 45%,
+      color-mix(in srgb, var(--dark) 30%, transparent) 100%
     );
   }
 }
