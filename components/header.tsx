@@ -176,12 +176,12 @@ export function Header() {
           </nav>
 
           <div className="ml-auto hidden items-center gap-2 xl:flex">
-            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
-            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} className="cta-secondary header-cta">Hazte socio</Link>
+            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} data-cta="contratanos" data-cta-location="cabecera" className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} data-cta="hazte-socio" data-cta-location="cabecera" className="cta-secondary header-cta">Hazte socio</Link>
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-1 xl:hidden">
-            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} data-cta="contratanos" data-cta-location="cabecera" className="cta-primary header-cta">Contrátanos</Link>
           </div>
         </div>
       </div>
@@ -203,6 +203,8 @@ export function Header() {
             <Link
               href="/join"
               aria-current={currentPage(pathname, "/join") ? "page" : undefined}
+              data-cta="hazte-socio"
+              data-cta-location="cabecera"
               onClick={() => setMobileMenuOpen(false)}
               className="cta-secondary mt-4 w-full"
             >

@@ -8,7 +8,7 @@ export function BudgetBandSection() {
           <h2 className="section-heading">¿Quieres esta música en tu evento?</h2>
           <p className="mt-2">Contacta con el Ateneo para solicitar un presupuesto.</p>
         </div>
-        <Link href="/contacto?asunto=contratar" className="cta-primary">
+        <Link href="/contacto?asunto=contratar" data-cta="pedir-presupuesto" data-cta-location="banda-presupuesto" className="cta-primary">
           Pedir presupuesto
         </Link>
       </div>

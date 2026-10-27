@@ -30,8 +30,8 @@ export function ContactQuickSection() {
             </a>
           </address>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/contacto?asunto=contratar" className="cta-primary">Pedir presupuesto</Link>
-            <a href="mailto:ateneomusicaldemieres@gmail.com" className="cta-secondary">Escribirnos</a>
+            <Link href="/contacto?asunto=contratar" data-cta="pedir-presupuesto" data-cta-location="contacto" className="cta-primary">Pedir presupuesto</Link>
+            <a href="mailto:ateneomusicaldemieres@gmail.com" data-cta="escribirnos" data-cta-location="contacto" className="cta-secondary">Escribirnos</a>
           </div>
         </div>
       </div>

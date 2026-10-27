@@ -24,7 +24,7 @@ export function ParticipateSection() {
               y proyectos compartidos.
             </p>
             <p className="mb-4 text-sm leading-relaxed">Rellena la solicitud y te contactamos por correo.</p>
-            <Link href="/join" className="cta-primary">Quiero hacerme socio</Link>
+            <Link href="/join" data-cta="hazte-socio" data-cta-location="participacion" className="cta-primary">Quiero hacerme socio</Link>
           </article>
 
           <article className="home-card flex flex-col items-start p-5 sm:p-6">

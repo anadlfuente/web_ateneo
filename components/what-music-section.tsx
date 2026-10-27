@@ -46,7 +46,7 @@ export function WhatMusicSection() {
         </div>
 
         <div className="mt-4 text-left">
-          <Link href="/contacto?asunto=contratar" className="cta-primary">Pedir presupuesto</Link>
+          <Link href="/contacto?asunto=contratar" data-cta="pedir-presupuesto" data-cta-location="tipos-musicales" className="cta-primary">Pedir presupuesto</Link>
         </div>
       </div>
     </section>

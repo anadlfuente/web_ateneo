@@ -144,8 +144,8 @@ export function HeroSection() {
             Una asociación musical de Mieres con <strong>cuatro agrupaciones</strong> y propuestas para acompañar tus eventos.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/contacto?asunto=contratar" className="cta-primary">Contrátanos</Link>
-            <Link href="/join" className="cta-secondary cta-secondary-on-dark">Hazte socio</Link>
+            <Link href="/contacto?asunto=contratar" data-cta="contratanos" data-cta-location="hero" className="cta-primary">Contrátanos</Link>
+            <Link href="/join" data-cta="hazte-socio" data-cta-location="hero" className="cta-secondary cta-secondary-on-dark">Hazte socio</Link>
           </div>
           <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm" aria-label="Datos de la asociación">
             <li><strong>Desde 2018</strong></li>

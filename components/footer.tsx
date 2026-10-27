@@ -63,10 +63,10 @@ export function Footer() {
             <li><Link href="/historia" className={linkClass}>Sobre nosotros</Link></li>
             <li><Link href="/#patrocinadores" className={linkClass}>Patrocinadores</Link></li>
             <li><Link href="/noticias" className={linkClass}>Noticias</Link></li>
-            <li><Link href="/contacto?asunto=contratar" className={linkClass}>Contrátanos</Link></li>
+            <li><Link href="/contacto?asunto=contratar" data-cta="contratanos" data-cta-location="pie" className={linkClass}>Contrátanos</Link></li>
             <li><Link href="/calendar" className={linkClass}>Calendario</Link></li>
             <li><Link href="/contacto" className={linkClass}>Contacto</Link></li>
-            <li><Link href="/join" className={linkClass}>Hazte socio</Link></li>
+            <li><Link href="/join" data-cta="hazte-socio" data-cta-location="pie" className={linkClass}>Hazte socio</Link></li>
           </ul>
         </section>
 
