@@ -9,6 +9,7 @@
 //   se usa la imagen propia (`miniatura`) o un fondo neutro.
 
 import { useState } from "react"
+import Link from "next/link"
 import { ArrowRight, Play, Youtube } from "lucide-react"
 import { VideoYoutube } from "@/components/cookies/video-youtube"
 import { useConsentimiento } from "@/components/cookies/consentimiento-provider"
@@ -43,7 +44,7 @@ export function VideosSection() {
     v.miniatura ?? (puedeCargarYoutube ? `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg` : null)
 
   return (
-    <section id="videos" className="home-section bg-background text-foreground">
+    <section id="videos" className="home-section home-section-blue text-foreground">
       <div className="home-container">
         {/* Cabecera */}
         <div className="section-intro mb-6 flex flex-col items-start gap-3 md:flex-row md:items-end md:justify-between">
@@ -129,6 +130,21 @@ export function VideosSection() {
               )
             })}
           </ul>
+        </div>
+
+        <div className="mt-8 flex flex-col items-start gap-4 border-t border-primary-blue/60 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="section-heading">¿Quieres esta música en tu evento?</h2>
+            <p className="mt-2">Contacta con el Ateneo para solicitar un presupuesto.</p>
+          </div>
+          <Link
+            href="/contacto?asunto=contratar"
+            data-cta="pedir-presupuesto"
+            data-cta-location="videos"
+            className="cta-primary"
+          >
+            Pedir presupuesto
+          </Link>
         </div>
       </div>
     </section>

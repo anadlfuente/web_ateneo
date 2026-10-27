@@ -30,7 +30,7 @@ export function HomeAgendaNewsSection() {
   }, [])
 
   return (
-    <section className="home-section bg-background text-foreground">
+    <section className="home-section home-section-blue text-foreground">
       <div className="home-container">
         <div className="section-intro mb-5">
           <h2 className="section-heading">

@@ -22,7 +22,7 @@ const linkClass = "footer-link flex min-h-8 items-center"
 
 export function Footer() {
   return (
-    <footer className="site-footer text-foreground">
+    <footer className="site-footer text-light">
       <div className="home-container grid gap-x-6 gap-y-7 py-7 sm:gap-x-8 sm:gap-y-6 sm:py-8 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr_0.9fr]">
         <section>
           <h2 className="footer-brand-title mb-3">

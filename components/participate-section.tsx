@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react"
 
 export function ParticipateSection() {
   return (
-    <section className="home-section home-section-blue text-foreground">
+    <section className="home-section bg-background text-foreground">
       <div className="home-container">
         <div className="section-intro mb-5">
           <h2 className="section-heading">

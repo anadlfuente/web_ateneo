@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react"
 
 export function ContactQuickSection() {
   return (
-    <section id="contacto" className="home-section footer-contact bg-background text-foreground">
+    <section id="contacto" className="home-section home-section-blue footer-contact text-foreground">
       <div className="home-container grid gap-4 md:grid-cols-[auto_1fr] md:items-center md:gap-8">
         <div>
           <h2 className="footer-contact-heading">¿Hablamos?</h2>
