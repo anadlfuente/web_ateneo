@@ -7,6 +7,11 @@ import { ArrowRight } from "lucide-react"
 import { aISO, fechaLarga, obtenerEventos, TIPOS_PUBLICOS, type Evento } from "@/lib/eventos"
 import { formatearFecha, getNoticias } from "@/lib/noticias"
 
+function resumenPorPalabras(resumen: string) {
+  const palabras = resumen.trim().split(/\s+/)
+  return palabras.length > 18 ? `${palabras.slice(0, 18).join(" ")}…` : resumen
+}
+
 export function HomeAgendaNewsSection() {
   const [eventos, setEventos] = useState<Evento[] | null>(null)
   const [error, setError] = useState(false)
@@ -85,7 +90,7 @@ export function HomeAgendaNewsSection() {
                       <div>
                         <p className="mb-1 text-sm">{formatearFecha(noticia.fecha)}</p>
                         <h3 className="mb-1 font-semibold">{noticia.titulo}</h3>
-                        <p className="line-clamp-2 text-sm">{noticia.resumen}</p>
+                        <p className="text-sm">{resumenPorPalabras(noticia.resumen)}</p>
                       </div>
                     </Link>
                   </li>
