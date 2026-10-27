@@ -36,27 +36,29 @@ export function SponsorsSection() {
         <div
           role="region"
           aria-label="Logotipos de los patrocinadores actuales"
-          className="grid grid-cols-2 gap-2 sm:grid-cols-5"
+          className="rounded-xl bg-background p-3 sm:p-4"
         >
-          {sponsors.map((sponsor) => (
-            <a
-              key={sponsor.name}
-              href={sponsor.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sponsor-logo flex min-h-14 items-center justify-center rounded-md bg-background p-2 focus-visible:outline sm:min-h-16"
-              aria-label={`Sitio de ${sponsor.name} (se abre en una pestaña nueva)`}
-            >
-              <Image
-                src={sponsor.logo}
-                alt={sponsor.name}
-                width={140}
-                height={80}
-                sizes="(max-width: 640px) 40vw, 140px"
-                className="max-h-10 w-auto object-contain"
-              />
-            </a>
-          ))}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+            {sponsors.map((sponsor) => (
+              <a
+                key={sponsor.name}
+                href={sponsor.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sponsor-logo flex min-h-20 items-center justify-center rounded-md p-3 focus-visible:outline"
+                aria-label={`Sitio de ${sponsor.name} (se abre en una pestaña nueva)`}
+              >
+                <Image
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  width={140}
+                  height={80}
+                  sizes="(max-width: 640px) 40vw, (max-width: 1280px) 20vw, 11rem"
+                  className="h-14 w-full max-w-[11rem] object-contain"
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
