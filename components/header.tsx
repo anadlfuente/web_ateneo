@@ -73,7 +73,7 @@ export function Header() {
   const renderNav = (mobile = false) => (
     <ul className={mobile ? "space-y-1" : "flex items-center gap-5"}>
       {navigation.map((item) => {
-        const isActive = currentPage(pathname, item.href)
+        const isActive = item.href === "/#agrupaciones" ? false : currentPage(pathname, item.href)
         const isOpen = activeDropdown === item.name
         return (
           <li key={item.name} className={mobile ? "border-b border-primary-blue/30" : "relative"}>
