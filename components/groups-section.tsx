@@ -74,7 +74,7 @@ export function GroupsSection() {
               <div className="flex flex-1 flex-col p-4">
                 <h3 className="mb-2 font-bold">{name}</h3>
                 <p className="mb-3 flex-1 text-sm leading-relaxed">{description}</p>
-                <Link href={href} className="text-link inline-flex min-h-11 items-center gap-2 font-semibold">
+                <Link href={href} aria-label={`Conocer ${name}`} className="text-link inline-flex min-h-11 items-center gap-2 font-semibold">
                   Conocer la agrupación <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
