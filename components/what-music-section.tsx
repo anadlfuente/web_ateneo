@@ -30,7 +30,7 @@ export function WhatMusicSection() {
         <div className="section-intro mb-5">
           <p className="section-eyebrow">Servicios musicales</p>
           <h2 className="section-heading">
-            ¿Qué <span className="title-highlight">música</span> necesitas?
+            ¿Qué música necesitas para tu evento?
           </h2>
         </div>
 
@@ -41,15 +41,12 @@ export function WhatMusicSection() {
                 <h3 className="mb-1 font-semibold">{performance.name}</h3>
                 <p className="max-w-prose text-sm">{performance.description}</p>
               </div>
-              <p className="text-sm">
-                <span className="inline-block rounded-full bg-accent-green px-3 py-1 font-semibold text-light">Formación: por definir</span>
-              </p>
             </article>
           ))}
         </div>
 
         <div className="mt-4 text-left">
-          <Link href="/contacto?asunto=contratar" className="cta-secondary">Pide presupuesto para tu evento</Link>
+          <Link href="/contacto?asunto=contratar" className="cta-primary">Pedir presupuesto</Link>
         </div>
       </div>
     </section>
