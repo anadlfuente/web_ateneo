@@ -166,7 +166,7 @@ export function Header() {
 
           <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 shrink items-center gap-2 xl:gap-3">
             <Image src="/logo_ateneo%20-%20sin%20texto.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
-            <span className="hidden text-base font-semibold leading-tight xl:inline xl:text-lg">
+            <span className="min-w-0 max-w-[8rem] text-xs font-semibold leading-tight sm:max-w-none sm:text-sm xl:text-lg">
               Ateneo Musical de Mieres
             </span>
           </Link>
@@ -200,6 +200,14 @@ export function Header() {
           />
           <div className="mobile-nav-drawer absolute inset-y-0 left-0 w-[min(88vw,22rem)] overflow-y-auto border-r border-blue-border px-5 py-6">
             <nav aria-label="Navegación principal móvil">{renderNav(true)}</nav>
+            <Link
+              href="/join"
+              aria-current={currentPage(pathname, "/join") ? "page" : undefined}
+              onClick={() => setMobileMenuOpen(false)}
+              className="cta-secondary mt-4 w-full"
+            >
+              Hazte socio
+            </Link>
             <nav aria-label="Redes sociales" className="mt-6 flex flex-wrap items-center gap-2 border-t border-blue-border pt-4">
               {socialLinks.map(({ name, href, Icon }) => (
                 <a

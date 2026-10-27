@@ -618,6 +618,14 @@ h3 {
   transform: none;
 }
 
+@media (max-width: 79.99rem) {
+  .header-cta {
+    min-height: 2.5rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
 .text-link {
   color: var(--dark);
   text-decoration: underline;
