@@ -171,7 +171,7 @@ export function HeroSection() {
               aria-hidden="true"
               className={`block h-2.5 rounded-full transition-all ${
                 index === currentSlide
-                  ? "w-6 bg-accent-yellow"
+                  ? "w-6 bg-primary-blue"
                   : "w-2.5 bg-light/70 hover:bg-light"
               }`}
             />

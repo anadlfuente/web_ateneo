@@ -16,7 +16,7 @@ const sponsors = [
 
 export function SponsorsSection() {
   return (
-    <section id="patrocinadores" className="home-section sponsors-strip bg-background text-foreground">
+    <section id="patrocinadores" className="home-section home-section-blue sponsors-strip text-foreground">
       <div className="home-container">
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-2xl">

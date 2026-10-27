@@ -39,7 +39,7 @@ const groups = [
 
 export function GroupsSection() {
   return (
-    <section id="agrupaciones" className="home-section bg-background text-foreground">
+    <section id="agrupaciones" className="home-section home-section-blue text-foreground">
       <div className="home-container">
         <div className="section-intro mb-5 flex flex-col items-start gap-2 sm:mb-6">
           <h2 className="section-heading">
