@@ -17,21 +17,22 @@ export function ParticipateSection() {
 
         <div className="grid gap-5 lg:grid-cols-3">
           <article className="home-card flex flex-col items-start p-5 sm:p-6">
-            <h3 className="mb-2 font-bold">Que la música cuente contigo</h3>
-            <p className="mb-5 flex-1 text-sm leading-relaxed">
+            <h3 className="mb-1 font-bold">Hazte socio</h3>
+            <p className="mb-3 text-sm font-semibold">Que la música cuente contigo</p>
+            <p className="mb-3 text-sm leading-relaxed">
               Hazte <strong>socio</strong> y forma parte de una asociación que llena Mieres de <strong>música</strong>, encuentros
               y proyectos compartidos.
             </p>
+            <p className="mb-4 text-sm leading-relaxed">Rellena la solicitud y te contactamos por correo.</p>
             <Link href="/join" className="cta-primary">Quiero hacerme socio</Link>
           </article>
 
           <article className="home-card flex flex-col items-start p-5 sm:p-6">
-            <h3 className="mb-2 font-bold">Tu instrumento tiene sitio</h3>
+            <h3 className="mb-1 font-bold">Toca con nosotros</h3>
+            <p className="mb-3 text-sm font-semibold">Tu instrumento tiene sitio</p>
             <p className="mb-5 flex-1 text-sm leading-relaxed">
-              Buscamos músicos de <strong>viento madera, viento metal y percusión</strong>, además de{" "}
-              <strong>nuevas voces</strong>. También hay espacio para quienes disfrutan del{" "}
-              <strong>folk, el pop y el rock</strong>. Cuéntanos qué tocas y encontraremos contigo
-              la agrupación que mejor encaje.
+              Buscamos músicos de viento madera, viento metal y percusión, además de nuevas voces. También hay espacio para
+              quienes disfrutan del folk, el pop y el rock. Cuéntanos qué tocas y encontraremos contigo la agrupación que mejor encaje.
             </p>
             <Link href="/contacto" className="text-link inline-flex min-h-11 items-center gap-2 font-semibold">
               Cuéntanos qué tocas <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -39,7 +40,8 @@ export function ParticipateSection() {
           </article>
 
           <article className="home-card flex flex-col items-start p-5 sm:p-6">
-            <h3 className="mb-2 font-bold">Impulsa la próxima nota</h3>
+            <h3 className="mb-1 font-bold">Patrocina</h3>
+            <p className="mb-3 text-sm font-semibold">Impulsa la próxima nota</p>
             <p className="mb-5 flex-1 text-sm leading-relaxed">
               <strong>Montepío, Fergu Bus y Espacio Cultural 1910</strong> ya acompañan este
               proyecto. Súmate como patrocinador y ayúdanos a llevar la música más lejos.
