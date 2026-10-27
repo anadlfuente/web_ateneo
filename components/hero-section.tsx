@@ -6,12 +6,13 @@ import { useEffect, useState } from "react"
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react"
 
 const heroSlides = [
-  { src: "/galeria-section/2018-11-17-santa-cecilia/002.webp", alt: "Celebración de Santa Cecilia el 17 de noviembre de 2018" },
-  { src: "/banda/foto_family.JPG", alt: "Agrupaciones del Ateneo Musical de Mieres" },
-  { src: "/banda/pasacalles.JPG", alt: "La Banda Sinfónica del Ateneo en un pasacalles" },
+  { src: "/galeria-section/2018-11-17-santa-cecilia/002.webp", alt: "Celebración de Santa Cecilia el 17 de noviembre de 2018", position: "72% center" },
+  { src: "/banda/foto_family.JPG", alt: "Agrupaciones del Ateneo Musical de Mieres", position: "86% center" },
+  { src: "/banda/pasacalles.JPG", alt: "La Banda Sinfónica del Ateneo en un pasacalles", position: "78% center" },
   {
     src: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
-    alt: "Instrumentos musicales en un escenario de concierto",
+    alt: "Partitura de música clásica",
+    position: "75% center",
   },
 ]
 
@@ -38,10 +39,12 @@ export function HeroSection() {
   }, [paused, reduceMotion, interacting])
 
   const showPrevious = () => {
+    setPaused(true)
     setCurrentSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length)
   }
 
   const showNext = () => {
+    setPaused(true)
     setCurrentSlide((current) => (current + 1) % heroSlides.length)
   }
 
@@ -49,7 +52,7 @@ export function HeroSection() {
     <section className="hero-banner relative isolate min-h-[33rem] overflow-hidden text-light sm:min-h-[42rem] lg:min-h-[44rem]">
       <div
         role="region"
-        aria-roledescription="carrusel"
+        aria-roledescription="carousel"
         aria-label="Fotografías del Ateneo Musical de Mieres"
         onMouseEnter={() => setInteracting(true)}
         onMouseLeave={() => setInteracting(false)}
@@ -72,6 +75,7 @@ export function HeroSection() {
                 src={slide.src}
                 alt={slide.alt}
                 className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: slide.position }}
                 loading="lazy"
               />
             ) : (
@@ -82,6 +86,7 @@ export function HeroSection() {
                 priority={index === 0}
                 sizes="(max-width: 76rem) 100vw, 76rem"
                 className="object-cover"
+                style={{ objectPosition: slide.position }}
               />
             )}
           </div>
@@ -103,7 +108,7 @@ export function HeroSection() {
         <button
           type="button"
           onClick={showPrevious}
-          aria-label="Fotografía anterior"
+          aria-label="Foto anterior"
           className="hero-carousel-control hero-carousel-control-previous pointer-events-auto absolute bottom-5 left-4 z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
         >
           <ChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -111,7 +116,7 @@ export function HeroSection() {
         <button
           type="button"
           onClick={showNext}
-          aria-label="Fotografía siguiente"
+          aria-label="Foto siguiente"
           className="hero-carousel-control hero-carousel-control-next pointer-events-auto absolute bottom-5 right-4 z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
         >
           <ChevronRight className="h-5 w-5" aria-hidden="true" />
@@ -130,7 +135,7 @@ export function HeroSection() {
       </div>
 
       <div className="home-container pointer-events-none relative z-20 flex min-h-[33rem] flex-col justify-center pb-16 pt-36 sm:min-h-[42rem] sm:pb-28 sm:pt-48 lg:min-h-[44rem] lg:pt-44">
-        <div className="hero-copy pointer-events-auto w-[84%] max-w-3xl text-left md:w-[54%] lg:w-[56%]">
+        <div className="hero-copy pointer-events-auto w-[72%] max-w-3xl text-left md:w-[54%] lg:w-[56%]">
           <h1 className="hero-title mb-5">
             <span className="hero-title-brand">Ateneo Musical de Mieres</span>
             <span className="hero-title-message">Música para tus conciertos, procesiones y fiestas</span>
@@ -154,15 +159,23 @@ export function HeroSection() {
           <button
             key={slide.src}
             type="button"
-            onClick={() => setCurrentSlide(index)}
-            aria-label={`Mostrar fotografía ${index + 1} de ${heroSlides.length}`}
+            onClick={() => {
+              setPaused(true)
+              setCurrentSlide(index)
+            }}
+            aria-label={`Ir a la foto ${index + 1} de ${heroSlides.length}`}
             aria-current={index === currentSlide ? "true" : undefined}
-            className={`h-2.5 rounded-full transition-all ${
-              index === currentSlide
-                ? "w-6 bg-accent-yellow"
-                : "w-2.5 bg-light/70 hover:bg-light"
-            }`}
-          />
+            className="flex h-11 w-11 items-center justify-center"
+          >
+            <span
+              aria-hidden="true"
+              className={`block h-2.5 rounded-full transition-all ${
+                index === currentSlide
+                  ? "w-6 bg-accent-yellow"
+                  : "w-2.5 bg-light/70 hover:bg-light"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </section>

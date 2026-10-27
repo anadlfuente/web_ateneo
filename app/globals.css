@@ -465,9 +465,9 @@ h3 {
 .hero-banner-shade {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--dark) 74%, transparent) 0%,
-    color-mix(in srgb, var(--dark) 70%, transparent) 58%,
-    color-mix(in srgb, var(--dark) 35%, transparent) 100%
+    color-mix(in srgb, var(--dark) 90%, transparent) 0%,
+    color-mix(in srgb, var(--dark) 87%, transparent) 55%,
+    color-mix(in srgb, var(--dark) 80%, transparent) 100%
   );
 }
 
@@ -475,8 +475,9 @@ h3 {
   .hero-banner-shade {
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--dark) 76%, transparent),
-      color-mix(in srgb, var(--dark) 70%, transparent)
+      color-mix(in srgb, var(--dark) 90%, transparent) 0%,
+      color-mix(in srgb, var(--dark) 87%, transparent) 45%,
+      color-mix(in srgb, var(--dark) 82%, transparent) 100%
     );
   }
 }
