@@ -91,7 +91,7 @@ export default function CalendarPage() {
   // Eventos que se muestran según los filtros
   const visibles = useMemo(
     () => eventos.filter((e) =>
-      (!filtro || e.agrupacion === filtro) && (verEnsayos || e.tipo !== "ensayo")
+      (!filtro || e.agrupaciones.includes(filtro)) && (verEnsayos || e.tipo !== "ensayo")
     ),
     [eventos, filtro, verEnsayos]
   )
@@ -218,8 +218,22 @@ export default function CalendarPage() {
                     {dayEvents.map((event) => (
                       <div
                         key={event.id}
-                        className={`text-xs mt-2 px-2 py-1 rounded border ${infoAgrupacion(event.agrupacion).chip} relative group`}
+                        className={`text-xs mt-2 px-2 py-1 rounded border relative group ${
+                          event.agrupaciones.length > 1 ? "bg-white border-border" : infoAgrupacion(event.agrupacion).chip
+                        }`}
                       >
+                        {/* Si hay varias agrupaciones, un punto de color por cada una */}
+                        {event.agrupaciones.length > 1 && (
+                          <div className="flex items-center gap-1 mb-1">
+                            {event.agrupaciones.map((a) => (
+                              <span
+                                key={a}
+                                title={infoAgrupacion(a).nombre}
+                                className={`w-2.5 h-2.5 rounded-full ${AGRUPACIONES[a].punto}`}
+                              />
+                            ))}
+                          </div>
+                        )}
                         {/* Título: abre la página del evento */}
                         <Link href={`/evento?id=${event.id}`} className="block font-semibold leading-tight hover:underline">
                           {event.tipo === "ensayo" && <span className="font-normal opacity-70">Ensayo · </span>}

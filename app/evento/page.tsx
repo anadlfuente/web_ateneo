@@ -111,9 +111,14 @@ function DetalleEvento() {
         {/* Información */}
         <div className={cartel ? "" : "max-w-3xl"}>
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${agrupacion.badge}`}>
-              {agrupacion.nombre}
-            </span>
+            {evento.agrupaciones.map((a) => (
+              <span
+                key={a}
+                className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${infoAgrupacion(a).badge}`}
+              >
+                {infoAgrupacion(a).nombre}
+              </span>
+            ))}
             <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-muted text-muted-foreground">
               {TIPOS[evento.tipo] ?? evento.tipo}
             </span>

@@ -17,6 +17,7 @@ export interface Evento {
   imagen: string | null        // cartel
   enlace_entradas: string | null
   destacado: boolean
+  agrupaciones: AgrupacionId[]
 }
 
 // Nombre y colores de cada agrupación.
