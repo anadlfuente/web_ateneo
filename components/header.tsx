@@ -107,7 +107,7 @@ export function Header() {
                 id={`submenu-${mobile ? "mobile-" : ""}${item.name.replace(/\s+/g, "-").toLowerCase()}`}
                 className={mobile
                   ? "mb-3 ml-3 border-l-2 border-blue-border pl-3"
-                  : "absolute left-0 top-full z-50 mt-1 min-w-64 border-2 border-blue-border bg-background p-2 shadow-lg"}
+                  : "absolute left-0 top-full z-50 mt-1 min-w-64  bg-background p-2 shadow-2xl"}
               >
                 {item.submenu.map((subItem) => (
                   <li key={subItem.name}>
