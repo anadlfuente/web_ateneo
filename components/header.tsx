@@ -166,7 +166,7 @@ export function Header() {
 
           <Link href="/" aria-label="Ateneo Musical de Mieres, inicio" aria-current={currentPage(pathname, "/") ? "page" : undefined} className="flex min-w-0 shrink items-center gap-2 xl:gap-3">
             <Image src="/logo_ateneo%20-%20sin%20texto.png" alt="" width={44} height={44} className="h-9 w-9 shrink-0 object-contain xl:h-10 xl:w-10" priority />
-            <span className="min-w-0 max-w-[8rem] text-xs font-semibold leading-tight sm:max-w-none sm:text-sm xl:text-lg">
+            <span className="min-w-0 max-w-[8rem] font-[family-name:var(--font-dm-serif-display)] text-sm font-normal leading-tight sm:max-w-none sm:text-sm xl:text-lg">
               Ateneo Musical de Mieres
             </span>
           </Link>
@@ -176,12 +176,12 @@ export function Header() {
           </nav>
 
           <div className="ml-auto hidden items-center gap-2 xl:flex">
-            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} data-cta="contratanos" data-cta-location="cabecera" className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} data-cta="contratanos" data-cta-location="cabecera" className="cta-primary header-cta">Contáctanos</Link>
             <Link href="/join" aria-current={currentPage(pathname, "/join") ? "page" : undefined} data-cta="hazte-socio" data-cta-location="cabecera" className="cta-secondary header-cta">Hazte socio</Link>
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-1 xl:hidden">
-            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} data-cta="contratanos" data-cta-location="cabecera" className="cta-primary header-cta">Contrátanos</Link>
+            <Link href="/contacto?asunto=contratar" aria-current={currentPage(pathname, "/contacto") ? "page" : undefined} data-cta="contratanos" data-cta-location="cabecera" className="cta-primary header-cta">Contáctanos</Link>
           </div>
         </div>
       </div>

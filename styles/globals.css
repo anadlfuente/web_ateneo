@@ -131,3 +131,24 @@ html {
 section[id] {
   scroll-margin-top: calc(var(--header-h, 6rem) + 1rem);
 }
+
+.brand-mieres {
+  padding-inline: 0.05em;
+  background-image: linear-gradient(var(--primary-blue), var(--primary-blue));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.3em;
+  transition: background-size 0.25s ease, background-position 0.25s ease;
+}
+
+a:hover .brand-mieres,
+a:focus-visible .brand-mieres {
+  background-position: 0 92%;
+  background-size: 100% 0.5em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mieres {
+    transition: none;
+  }
+}
