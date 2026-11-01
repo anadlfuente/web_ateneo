@@ -792,19 +792,6 @@ main#contenido .home-card-shadow {
   line-height: 1.15;
 }
 
-.hero-carousel-pause {
-  top: 5rem;
-  right: max(1rem, calc((100vw - 72rem) / 2));
-}
-
-.hero-carousel-control-previous {
-  left: max(1rem, calc((100vw - 72rem) / 2));
-}
-
-.hero-carousel-control-next {
-  right: max(1rem, calc((100vw - 72rem) / 2));
-}
-
 .skip-link {
   position: fixed;
   left: 1rem;

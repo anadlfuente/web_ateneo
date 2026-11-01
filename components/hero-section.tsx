@@ -1,126 +1,28 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react"
 
-const heroSlides = [
-  { src: "/galeria-section/2018-11-17-santa-cecilia/002.webp", alt: "Celebración de Santa Cecilia el 17 de noviembre de 2018", position: "72% center" },
-  { src: "/banda/foto_family.JPG", alt: "Agrupaciones del Ateneo Musical de Mieres", position: "86% center" },
-  { src: "/banda/pasacalles.JPG", alt: "La Banda Sinfónica del Ateneo en un pasacalles", position: "78% center" },
-  {
-    src: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=1920&q=80",
-    alt: "Partitura de música clásica",
-    position: "75% center",
-  },
-]
+// Foto de fondo de la portada
+const fotoHero = {
+  src: "/galeria-section/2018-11-17-santa-cecilia/002.webp",
+  alt: "Celebración de Santa Cecilia el 17 de noviembre de 2018",
+  position: "72% center",
+}
 
 export function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const [reduceMotion, setReduceMotion] = useState(false)
-  const [interacting, setInteracting] = useState(false)
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const updatePreference = () => setReduceMotion(mediaQuery.matches)
-    updatePreference()
-    mediaQuery.addEventListener("change", updatePreference)
-    return () => mediaQuery.removeEventListener("change", updatePreference)
-  }, [])
-
-  useEffect(() => {
-    if (paused || reduceMotion || interacting) return
-    const timer = window.setInterval(() => {
-      setCurrentSlide((current) => (current + 1) % heroSlides.length)
-    }, 6000)
-    return () => window.clearInterval(timer)
-  }, [paused, reduceMotion, interacting])
-
-  const showPrevious = () => {
-    setPaused(true)
-    setCurrentSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length)
-  }
-
-  const showNext = () => {
-    setPaused(true)
-    setCurrentSlide((current) => (current + 1) % heroSlides.length)
-  }
-
   return (
     <section className="hero-banner relative isolate min-h-[33rem] overflow-hidden text-light sm:min-h-[42rem] lg:min-h-[44rem]">
-      <div
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Fotografías del Ateneo Musical de Mieres"
-        onMouseEnter={() => setInteracting(true)}
-        onMouseLeave={() => setInteracting(false)}
-        onFocus={() => setInteracting(true)}
-        onBlur={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setInteracting(false)
-        }}
-        className="absolute inset-0"
-      >
-        {heroSlides.map((slide, index) => (
-          <div
-            key={slide.src}
-            aria-hidden={index !== currentSlide}
-            className={`absolute inset-0 transition-opacity duration-700 motion-reduce:transition-none ${
-              index === currentSlide ? "opacity-100" : "pointer-events-none opacity-0"
-            }`}
-          >
-            {slide.src.startsWith("https://") ? (
-              <img
-                src={slide.src}
-                alt={slide.alt}
-                className="absolute inset-0 h-full w-full object-cover"
-                style={{ objectPosition: slide.position }}
-                loading="lazy"
-              />
-            ) : (
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                fill
-                priority={index === 0}
-                sizes="(max-width: 76rem) 100vw, 76rem"
-                className="object-cover"
-                style={{ objectPosition: slide.position }}
-              />
-            )}
-          </div>
-        ))}
-
+      {/* Foto de fondo */}
+      <div className="absolute inset-0">
+        <Image
+          src={fotoHero.src}
+          alt={fotoHero.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: fotoHero.position }}
+        />
         <div className="hero-banner-shade absolute inset-0" aria-hidden="true" />
-        {!reduceMotion && (
-          <button
-            type="button"
-            onClick={() => setPaused((value) => !value)}
-            aria-label={paused ? "Reanudar carrusel de fotografías" : "Pausar carrusel de fotografías"}
-            className="hero-carousel-pause pointer-events-auto absolute z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
-          >
-            {paused
-              ? <Play className="h-4 w-4" aria-hidden="true" />
-              : <Pause className="h-4 w-4" aria-hidden="true" />}
-          </button>
-        )}
-        <button
-          type="button"
-          onClick={showPrevious}
-          aria-label="Foto anterior"
-          className="hero-carousel-control hero-carousel-control-previous pointer-events-auto absolute bottom-5 left-4 z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
-        >
-          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          onClick={showNext}
-          aria-label="Foto siguiente"
-          className="hero-carousel-control hero-carousel-control-next pointer-events-auto absolute bottom-5 right-4 z-20 flex min-h-11 min-w-11 items-center justify-center rounded-full border border-light/80 bg-dark/75 text-light shadow-md backdrop-blur-sm transition-colors hover:bg-light hover:text-dark"
-        >
-          <ChevronRight className="h-5 w-5" aria-hidden="true" />
-        </button>
       </div>
 
       <div className="hero-foreground pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[min(42vw,34rem)] md:block" aria-hidden="true">
@@ -152,31 +54,6 @@ export function HeroSection() {
             <li><strong>4 agrupaciones</strong></li>
           </ul>
         </div>
-      </div>
-
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2" role="group" aria-label="Seleccionar fotografía">
-        {heroSlides.map((slide, index) => (
-          <button
-            key={slide.src}
-            type="button"
-            onClick={() => {
-              setPaused(true)
-              setCurrentSlide(index)
-            }}
-            aria-label={`Ir a la foto ${index + 1} de ${heroSlides.length}`}
-            aria-current={index === currentSlide ? "true" : undefined}
-            className="flex h-11 w-11 items-center justify-center"
-          >
-            <span
-              aria-hidden="true"
-              className={`block h-2.5 rounded-full transition-all ${
-                index === currentSlide
-                  ? "w-6 bg-primary-blue"
-                  : "w-2.5 bg-light/70 hover:bg-light"
-              }`}
-            />
-          </button>
-        ))}
       </div>
     </section>
   )
