@@ -12,11 +12,11 @@ const navigation = [
     name: "Agrupaciones",
     href: "/#agrupaciones",
     submenu: [
-      { name: "Banda Sinfónica", href: "/banda/historia", children: [{ name: "Directores", href: "/banda/directores" }] },
-      { name: "Coral Cantares", href: "/coral/historia", children: [{ name: "Director", href: "/coral/director" }] },
+      { name: "Banda Sinfónica", href: "/banda/historia" },
+      { name: "Coral Cantares", href: "/coral/historia" },
       { name: "Claxon Boys", href: "/claxon" },
       { name: "Charanga New Paentamala", href: "/charanga" },
-      { name: "Ver todas las agrupaciones", href: "/agrupaciones" },
+      // { name: "Ver todas las agrupaciones", href: "/agrupaciones" },
     ],
   },
   { name: "Calendario", href: "/calendar" },
@@ -122,20 +122,7 @@ export function Header() {
                     >
                       {subItem.name}
                     </Link>
-                    {"children" in subItem && subItem.children?.map((child) => (
-                      <Link
-                        key={child.name}
-                        href={child.href}
-                        aria-current={currentPage(pathname, child.href) ? "page" : undefined}
-                        onClick={() => {
-                          setMobileMenuOpen(false)
-                          setActiveDropdown(null)
-                        }}
-                        className="nav-link ml-3 block min-h-11 border-l-2 border-blue-border px-3 py-2 text-sm"
-                      >
-                        {child.name}
-                      </Link>
-                    ))}
+                    
                   </li>
                 ))}
               </ul>
