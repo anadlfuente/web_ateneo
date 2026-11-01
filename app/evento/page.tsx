@@ -15,6 +15,7 @@ import {
 } from "@/lib/eventos"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { Dialog, DialogContent, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 function DetalleEvento() {
   const id = Number(useSearchParams().get("id"))
@@ -80,6 +81,10 @@ function DetalleEvento() {
   const yaPasado = evento.fecha < aISO(new Date())
 
   return (
+    <>
+      {/* Migas de pan */}
+      <MigasDePan items={[{ nombre: "Calendario", href: "/calendar" }, { nombre: evento.titulo }]} />
+
     <article className="max-w-5xl mx-auto px-6 py-16 md:py-20">
       <Link
         href="/calendar"
@@ -251,6 +256,7 @@ function DetalleEvento() {
         </div>
       </div>
     </article>
+    </>
   )
 }
 

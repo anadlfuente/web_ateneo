@@ -13,6 +13,7 @@ import {
   AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, imagenEvento, aISO, fechaLarga, urlMaps,
 } from "@/lib/eventos"
 import {RedesFlotante} from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 // Horario fijo de ensayos (cambia poco, así que sigue aquí).
 // Los ensayos puntuales (ensayo general, etc.) se meten como eventos de tipo "Ensayo".
@@ -204,6 +205,9 @@ export default function CalendarPage() {
         <p className="text-white text-5xl md:text-7xl font-serif">Calendario</p>
       </PageHero>
 
+      {/* Migas de pan */}
+      <MigasDePan items={[{ nombre: "Calendario" }]} />
+      
       {/* Contenido */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <h2 className="text-4xl font-serif mb-10">¡No te pierdas ninguno de nuestros conciertos!</h2>
