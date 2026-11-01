@@ -1,40 +1,26 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+// Banda Sinfónica · Directores.
+// El banner, las pestañas y la llamada final están en app/banda/layout.tsx.
+
+import type { Metadata } from "next"
 import BloqueHistoria from "@/components/text-design"
 import { directores } from "@/data/directores-banda"
-import { PageHero } from "@/components/page-hero"
-import { RedesFlotante } from "@/components/redes-flotante"
-import { MigasDePan } from "@/components/migas-de-pan"
+import { fondoSeccion } from "@/lib/fondos"
 
-export default function DirectoresPage() {
+export const metadata: Metadata = {
+  title: "Directores · Banda Sinfónica",
+  description: "Directores de la Banda Sinfónica del Ateneo Musical de Mieres.",
+}
+
+export default function BandaDirectoresPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
-
-      {/* Banner */}
-      <PageHero
-        imagen={directores.banner.imagen}
-        posicion={directores.banner.posicion}
-        altoMinimo="min-h-[40vh]"
-        centrado
-      >
-        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
-          {directores.banner.titulo}
-        </h1>
-      </PageHero>
-
-      {/* Migas de pan */}
-      <MigasDePan items={[{ nombre: "Banda Sinfónica", href: "/banda/historia" }, { nombre: "Directores" }]} />
-      
-      {/* Contenido */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-24">
-        {directores.bloques.map((bloque, i) => (
-          <BloqueHistoria key={bloque.titulo} {...bloque} invertido={i % 2 === 1} />
-        ))}
-      </section>
-      <RedesFlotante />
-
-      <Footer />
-    </main>
+    <>
+      {directores.bloques.map((bloque, i) => (
+        <section key={bloque.titulo} className={fondoSeccion(i)}>
+          <div className="home-container">
+            <BloqueHistoria {...bloque} invertido={i % 2 === 1} />
+          </div>
+        </section>
+      ))}
+    </>
   )
 }
