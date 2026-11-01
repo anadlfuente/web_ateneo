@@ -7,13 +7,14 @@ import { PageHero } from "@/components/page-hero"
 import { Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, Calendar, CalendarPlus, Clock, MapPin, Ticket, Navigation } from "lucide-react"
+import { ArrowLeft, Calendar, CalendarPlus, Clock, MapPin, Ticket, Navigation, X } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
   type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS, imagenEvento, urlGoogleCalendar,
 } from "@/lib/eventos"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog"
 
 function DetalleEvento() {
   const id = Number(useSearchParams().get("id"))
@@ -90,16 +91,41 @@ function DetalleEvento() {
       <div className={`grid gap-10 md:gap-14 ${imagen ? "md:grid-cols-[2fr_3fr]" : ""}`}>
         {/* Cartel, o foto de la agrupación si no hay cartel */}
         {cartel ? (
-          <a href={cartel} target="_blank" rel="noopener" className="block group">
-            <img
-              src={cartel}
-              alt={`Cartel de ${evento.titulo}`}
-              className="w-full rounded-2xl shadow-xl border border-border group-hover:shadow-2xl transition-shadow"
-            />
-            <span className="block text-center text-xs text-muted-foreground mt-2">
-              Ver cartel a tamaño completo
-            </span>
-          </a>
+          <Dialog>
+            {/* Al pulsar el cartel se abre en grande encima de la página */}
+            <DialogTrigger asChild>
+              <button type="button" className="block w-full group cursor-zoom-in">
+                <img
+                  src={cartel}
+                  alt={`Cartel de ${evento.titulo}`}
+                  className="w-full rounded-2xl shadow-xl border border-border group-hover:shadow-2xl transition-shadow"
+                />
+                <span className="block text-center text-xs text-muted-foreground mt-2">
+                  Ver cartel a tamaño completo
+                </span>
+              </button>
+            </DialogTrigger>
+
+            <DialogContent
+              showCloseButton={false}
+              aria-describedby={undefined}
+              className="p-0 border-0 bg-transparent shadow-none w-auto max-w-[95vw] sm:max-w-[95vw]"
+            >
+              {/* Título invisible: lo lee el lector de pantalla al abrir */}
+              <DialogTitle className="sr-only">Cartel de {evento.titulo}</DialogTitle>
+              <img
+                src={cartel}
+                alt={`Cartel de ${evento.titulo}`}
+                className="max-h-[90vh] max-w-[95vw] w-auto h-auto rounded-xl"
+              />
+              <DialogClose
+                aria-label="Cerrar"
+                className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center rounded-full bg-white text-foreground shadow-lg hover:bg-primary-blue hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" aria-hidden="true" />
+              </DialogClose>
+            </DialogContent>
+          </Dialog>
         ) : imagen ? (
           <img
             src={imagen}

@@ -124,7 +124,6 @@ export default function CalendarPage() {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(false)
   const [filtro, setFiltro] = useState<AgrupacionId | null>(null)
-  const [verEnsayos, setVerEnsayos] = useState(true)
   // Día en el que se ha hecho clic ("2026-11-21"); null = ninguno todavía
   const [seleccionado, setSeleccionado] = useState<string | null>(null)
 
@@ -160,12 +159,10 @@ export default function CalendarPage() {
     return () => { cancelado = true }
   }, [claveMes, year, month, daysInMonth])
 
-  // Eventos que se muestran según los filtros
+  // Eventos que se muestran según el filtro de agrupación
   const visibles = useMemo(
-    () => eventos.filter((e) =>
-      (!filtro || e.agrupacion === filtro) && (verEnsayos || e.tipo !== "ensayo")
-    ),
-    [eventos, filtro, verEnsayos]
+    () => eventos.filter((e) => !filtro || e.agrupacion === filtro),
+    [eventos, filtro]
   )
 
   // Solo se muestran los filtros de agrupaciones que tienen algo este mes
@@ -233,14 +230,6 @@ export default function CalendarPage() {
               {AGRUPACIONES[a].nombre}
             </button>
           ))}
-          <label className="ml-auto flex items-center gap-2 text-sm text-muted-foreground cursor-pointer">
-            <input
-              type="checkbox"
-              checked={verEnsayos}
-              onChange={(e) => setVerEnsayos(e.target.checked)}
-            />
-            Mostrar ensayos
-          </label>
         </div>
 
         {error && (
