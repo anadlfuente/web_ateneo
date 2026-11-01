@@ -23,8 +23,8 @@ const linkClass = "footer-link flex min-h-8 items-center"
 export function Footer() {
   return (
     <footer className="site-footer text-light">
-      <div className="home-container grid gap-x-6 gap-y-7 py-7 sm:gap-x-8 sm:gap-y-6 sm:py-8 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr_0.9fr]">
-        <section>
+      <div className="home-container grid grid-cols-2 gap-x-6 gap-y-6 py-6 sm:gap-x-8 sm:py-8 lg:grid-cols-[1.35fr_1fr_1fr_1fr_0.9fr]">
+        <section className="col-span-2 lg:col-span-1">
           <h2 className="footer-brand-title mb-3">
             Ateneo Musical de <span>Mieres</span>
           </h2>
@@ -63,7 +63,6 @@ export function Footer() {
             <li><Link href="/historia" className={linkClass}>Sobre nosotros</Link></li>
             <li><Link href="/#patrocinadores" className={linkClass}>Patrocinadores</Link></li>
             <li><Link href="/noticias" className={linkClass}>Noticias</Link></li>
-            <li><Link href="/contacto?asunto=contratar" data-cta="contratanos" data-cta-location="pie" className={linkClass}>Contrátanos</Link></li>
             <li><Link href="/calendar" className={linkClass}>Calendario</Link></li>
             <li><Link href="/contacto" className={linkClass}>Contacto</Link></li>
             <li><Link href="/join" data-cta="hazte-socio" data-cta-location="pie" className={linkClass}>Hazte socio</Link></li>
@@ -101,7 +100,7 @@ export function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <div className="home-container flex flex-col gap-2 py-3 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="home-container flex flex-col gap-1 py-3 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Ateneo Musical de Mieres. Todos los derechos reservados.</p>
           <p>Asturias, España</p>
         </div>

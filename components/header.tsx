@@ -25,7 +25,7 @@ const navigation = [
     name: "Sobre nosotros",
     href: "/historia",
     submenu: [
-      { name: "Quiénes somos / Historia", href: "/historia" },
+      { name: "Quiénes somos", href: "/historia" },
       { name: "Galería", href: "/galeria" },
       { name: "Transparencia", href: "/transparencia" },
     ],
