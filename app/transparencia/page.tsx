@@ -15,14 +15,8 @@ export default function TransparenciaPage() {
       <Header />
 
       {/* Banner */}
-      <PageHero
-        imagen="/banner_2.png"
-        altoMinimo="min-h-[40vh]"
-        centrado
-      >
-        <h1 className="text-white text-4xl md:text-7xl font-serif leading-tight">
-          Transparencia
-        </h1>
+      <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
+        <h1 className="text-white">Transparencia</h1>
       </PageHero>
 
       {/* Migas de pan */}

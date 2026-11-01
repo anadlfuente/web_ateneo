@@ -11,13 +11,9 @@ export default function ContactPage() {
       <Header />
 
       {/* Banner */}
-      <PageHero
-        imagen="/banner_2.png"
-        altoMinimo="min-h-[40vh]"
-      >
-        <h1 className="text-white text-5xl md:text-7xl font-serif leading-tight">
-          Contacto
-        </h1>
+      {/* Banner */}
+      <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
+        <h1 className="text-white">Contacto</h1>
       </PageHero>
 
             {/* Migas de pan */}

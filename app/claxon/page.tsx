@@ -21,14 +21,8 @@ export default function ClaxonPage() {
       <Header />
 
       {/* Banner */}
-      <PageHero
-        imagen={claxon.banner.imagen}
-        altoMinimo="min-h-[40vh]"
-        centrado
-      >
-        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
-          {claxon.banner.titulo}
-        </h1>
+      <PageHero imagen={claxon.banner.imagen} altoMinimo="min-h-[40vh]">
+        <h1 className="text-white">Claxon Boys</h1>
       </PageHero>
 
       {/* Migas de pan */}

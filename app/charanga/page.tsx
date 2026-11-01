@@ -22,16 +22,9 @@ export default function CharangaPage() {
       <Header />
 
       {/* Banner */}
-      <PageHero
-        imagen={charanga.banner.imagen}
-        altoMinimo="min-h-[40vh]"
-        centrado
-      >
-        <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
-          {charanga.banner.titulo}
-        </h1>
+      <PageHero imagen={charanga.banner.imagen} altoMinimo="min-h-[40vh]">
+        <h1 className="text-white">Charanga New Paentamala</h1>
       </PageHero>
-
       {/* Migas de pan */}
             <MigasDePan items={[{ nombre: "Charanga New Paentamala" }]} />
 

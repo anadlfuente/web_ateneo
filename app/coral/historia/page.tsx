@@ -54,14 +54,8 @@ export default function CoralPage() {
       <Header />
 
       {/* Banner */}
-      <PageHero
-        imagen="/coral/coral_cantares.jpg"
-        altoMinimo="min-h-[40vh]"
-        centrado
-      >
-        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
-          Coral Cantares
-        </h1>
+      <PageHero imagen="/coral/coral_cantares.jpg" altoMinimo="min-h-[40vh]">
+        <h1 className="text-white">Coral Cantares</h1>
       </PageHero>
 
       {/* Migas de pan */}

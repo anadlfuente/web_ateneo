@@ -158,7 +158,7 @@ export default function GaleriaPage() {
 
       {/* Banner */}
       <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
-        <p className="font-serif text-5xl text-white md:text-7xl">Galería de Imágenes</p>
+        <h1 className="text-white">Galería de Imágenes</h1>
       </PageHero>
 
       {/* Migas de pan */}
