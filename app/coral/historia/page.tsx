@@ -6,6 +6,10 @@ import type { Metadata } from "next"
 import { PageHero } from "@/components/page-hero"
 import { MigasDePan } from "@/components/migas-de-pan"
 
+// Alterna fondo claro y azul suave para separar visualmente los bloques.
+const fondoSeccion = (i: number) =>
+  i % 2 === 0 ? "home-section home-section-blue" : "home-section"
+
 export const metadata: Metadata = {
   title: "Coral Cantares",
 }
