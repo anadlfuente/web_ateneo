@@ -3,12 +3,13 @@
 //   <MigasDePan items={[{ nombre: "Banda Sinfónica", href: "/banda/historia" }, { nombre: "Directores" }]} />
 // - "Inicio" se añade solo, no hace falta ponerlo.
 // - El último elemento es la página actual: no lleva enlace (no hace falta poner href).
-
+// - En vez de href se puede poner onClick (un botón), para volver atrás sin recargar.
 import Link from "next/link"
 
 interface Miga {
   nombre: string
   href?: string
+  onClick?: () => void   // para volver atrás sin cambiar de página (p. ej. en la galería)
 }
 
 interface MigasDePanProps {
@@ -26,10 +27,14 @@ export function MigasDePan({ items }: MigasDePanProps) {
           return (
             <li key={i} className="flex items-center gap-2">
               {i > 0 && <span aria-hidden="true">/</span>}
-              {esUltima || !miga.href ? (
+              {esUltima || (!miga.href && !miga.onClick) ? (
                 <span aria-current={esUltima ? "page" : undefined}>{miga.nombre}</span>
+              ) : miga.onClick ? (
+                <button type="button" onClick={miga.onClick} className="text-link">
+                  {miga.nombre}
+                </button>
               ) : (
-                <Link href={miga.href} className="text-link">
+                <Link href={miga.href!} className="text-link">
                   {miga.nombre}
                 </Link>
               )}
