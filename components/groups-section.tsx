@@ -5,7 +5,7 @@ import { ArrowRight} from "lucide-react"
 const groups = [
   {
     name: "Banda Sinfónica",
-    description: "Más de 60 músicos interpretan un repertorio que incluye clásicos y bandas sonoras.",
+    description: "Más de 60 músicos interpretan un repertorio que incluye desde clásicos hasta bandas sonoras, pasando por todo tipo de música.",
     image: "/banda/pasacalles.JPG",
     href: "/banda/historia",
     members: "60+"

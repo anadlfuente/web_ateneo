@@ -138,10 +138,10 @@ export function HeroSection() {
         <div className="hero-copy pointer-events-auto w-[72%] max-w-3xl text-left md:w-[54%] lg:w-[56%]">
           <h1 className="hero-title mb-5">
             <span className="hero-title-brand">Ateneo Musical de Mieres</span>
-            <span className="hero-title-message">Música para tus conciertos, procesiones y fiestas</span>
+            <span className="hero-title-message">Un punto de encuentro para la música</span>
           </h1>
           <p className="mb-7 max-w-prose text-base sm:text-lg">
-            Una asociación musical de Mieres con <strong>cuatro agrupaciones</strong> y propuestas para acompañar tus eventos.
+            Una asociación musical de Mieres que reúne a <strong>cuatro agrupaciones</strong>, abierta a colaborar con otras formaciones y acompañar con su música fiestas y celebraciones.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/contacto?asunto=contratar" data-cta="contratanos" data-cta-location="hero" className="cta-primary">Contacta con nosotros</Link>

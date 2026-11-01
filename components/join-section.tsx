@@ -65,7 +65,7 @@ export function JoinSection() {
             </h2>
             <p className="max-w-prose leading-relaxed">
               Conviértete en socio del Ateneo Musical de Mieres y apoya su actividad.
-              Cuota, beneficios y forma de pago: por definir.
+              Con solo <strong>20 € al año</strong>, tu apoyo marca la diferencia para que el Ateneo siga creciendo.
             </p>
 
             {/* Benefits list */}
