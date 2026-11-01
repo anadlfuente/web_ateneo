@@ -3,6 +3,8 @@ import { Footer } from "@/components/footer"
 import Organigram  from "@/components/organigram-section"
 import { RedesFlotante } from "@/components/redes-flotante"
 import type { Metadata } from "next"
+import { PageHero } from "@/components/page-hero"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export const metadata: Metadata = {
   title: "Coral Cantares",
@@ -52,19 +54,19 @@ export default function CoralPage() {
       <Header />
 
       {/* Banner */}
-      <section className="relative h-[60vh] w-full">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/banner.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
+      <PageHero
+        imagen="/coral/coral_cantares.jpg"
+        altoMinimo="min-h-[40vh]"
+        centrado
+      >
+        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
+          Coral Cantares
+        </h1>
+      </PageHero>
 
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h1 className="text-white text-5xl md:text-7xl font-serif">
-            Coral Cantares
-          </h1>
-        </div>
-      </section>
+      {/* Migas de pan */}
+            <MigasDePan items={[{ nombre: "Coral Cantares" }]} />
+      
       {/* Contenido */}
       <section className="max-w-6xl mx-auto px-6 py-24 space-y-32">
 

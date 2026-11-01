@@ -7,6 +7,7 @@ import BloqueHistoria from "@/components/text-design"
 import TextoRico from "@/components/text-bold"
 import { banda } from "@/data/banda.js"
 import { PageHero } from "@/components/page-hero"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export const metadata: Metadata = {
   title: "Banda Sinfónica",
@@ -44,17 +45,7 @@ export default function BandaPage() {
         </PageHero>
 
         {/* Migas de pan */}
-        <nav aria-label="Migas de pan" className="home-container pt-6">
-          <ol className="flex flex-wrap items-center gap-2 text-sm">
-            <li>
-              <Link href="/" className="text-link">
-                Inicio
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page">Banda Sinfónica</li>
-          </ol>
-        </nav>
+        <MigasDePan items={[{ nombre: "Banda Sinfónica" }]} />
 
         {/* Introducción + contratación */}
         <section className="home-section">

@@ -4,6 +4,7 @@ import BloqueHistoria from "@/components/text-design"
 import { directores } from "@/data/directores-banda"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export default function DirectoresPage() {
   return (
@@ -22,6 +23,9 @@ export default function DirectoresPage() {
         </h1>
       </PageHero>
 
+      {/* Migas de pan */}
+      <MigasDePan items={[{ nombre: "Banda Sinfónica", href: "/banda/historia" }, { nombre: "Directores" }]} />
+      
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-24">
         {directores.bloques.map((bloque, i) => (

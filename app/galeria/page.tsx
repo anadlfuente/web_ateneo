@@ -18,6 +18,7 @@ import {
   type Evento,
   type FotoConEvento,
 } from "@/components/galeria/tipos"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 // De dónde se lee el listado. Cuando exista el PHP, cambiar por "/api/galeria.php"
 const URL_LISTADO = "/galeria.json"
@@ -158,6 +159,9 @@ export default function GaleriaPage() {
       <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
         <p className="font-serif text-5xl text-white md:text-7xl">Galería de Imágenes</p>
       </PageHero>
+
+      {/* Migas de pan */}
+          <MigasDePan items={[{ nombre: "Galería" }]} />
 
       <main className="mx-auto max-w-6xl px-4 py-10">
         <div ref={inicioRef} className="scroll-mt-28" />

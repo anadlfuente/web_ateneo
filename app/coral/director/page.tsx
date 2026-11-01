@@ -4,6 +4,7 @@ import BloqueHistoria from "@/components/text-design"
 import { coralDirector } from "@/data/director-coral"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export default function CoralDirectorPage() {
   return (
@@ -24,6 +25,9 @@ export default function CoralDirectorPage() {
           {coralDirector.banner.subtitulo}
         </p>
       </PageHero>
+
+      {/* Migas de pan */}
+            <MigasDePan items={[{ nombre: "Coral Cantares", href: "/coral/historia" }, { nombre: "Director" }]} />
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-24">

@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import { JoinSection } from "@/components/join-section"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export default function JoinPage() {
   return (
@@ -18,6 +19,10 @@ export default function JoinPage() {
           Hazte Socio
         </h1>
       </PageHero>
+
+      {/* Migas de pan */}
+          <MigasDePan items={[{ nombre: "Hazte socio" }]} />
+
         <main>
             <JoinSection />
         </main>

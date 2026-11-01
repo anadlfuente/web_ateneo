@@ -9,6 +9,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export const metadata: Metadata = {
   title: "Claxon Boys",
@@ -29,6 +30,9 @@ export default function ClaxonPage() {
           {claxon.banner.titulo}
         </h1>
       </PageHero>
+
+      {/* Migas de pan */}
+            <MigasDePan items={[{ nombre: "Claxon Boys" }]} />
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-12">

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { FileText, ArrowUpRight, Download, Scale } from "lucide-react"
 import { transparencia } from "@/data/transparencia"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export default function TransparenciaPage() {
   const memorias = [...transparencia.memorias].sort((a, b) => b.year - a.year)
@@ -23,6 +24,9 @@ export default function TransparenciaPage() {
           Transparencia
         </h1>
       </PageHero>
+
+      {/* Migas de pan */}
+          <MigasDePan items={[{ nombre: "Transparencia" }]} />
 
       {/* Contenido */}
       <section className="max-w-6xl mx-auto px-6 py-16 md:py-24 space-y-20 md:space-y-28">

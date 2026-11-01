@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react"
 import { RedesFlotante } from "@/components/redes-flotante"
 import Image from "next/image"
 import type { Metadata } from "next"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 export const metadata: Metadata = {
   title: "Charanga New Paentamala",
@@ -30,6 +31,9 @@ export default function CharangaPage() {
           {charanga.banner.titulo}
         </h1>
       </PageHero>
+
+      {/* Migas de pan */}
+            <MigasDePan items={[{ nombre: "Charanga New Paentamala" }]} />
 
       {/* Contenido */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-12">

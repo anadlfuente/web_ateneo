@@ -16,6 +16,7 @@ import {
   BANNER_NOTICIAS,
 } from "@/lib/noticias"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 // Necesario para exportar la web como estática: genera una página por noticia
 export function generateStaticParams() {
@@ -62,6 +63,9 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
           {formatearFecha(noticia.fecha)}
         </time>
       </PageHero>
+
+      {/* Migas de pan */}
+          <MigasDePan items={[{ nombre: "Noticias", href: "/noticias" }, { nombre: noticia.titulo }]} />
 
       {/* Cuerpo */}
       <article className="bg-white py-16">

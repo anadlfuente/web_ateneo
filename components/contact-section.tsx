@@ -75,10 +75,6 @@ export function ContactSection({ defaultSubject = "" }: { defaultSubject?: strin
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left column - Info */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 rounded-full mb-6">
-              <User className="w-4 h-4 text-primary-blue" />
-              <span className="text-primary-blue text-sm font-semibold tracking-wider uppercase">Contacto</span>
-            </div>
             <h2 className="mb-6 font-serif">
             ¿Hablamos?
             </h2>

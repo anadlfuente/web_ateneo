@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
 import { getNoticias, formatearFecha, BANNER_NOTICIAS, type Categoria } from "@/lib/noticias"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 const POR_PAGINA = 6
 
@@ -42,6 +43,9 @@ export default function NoticiasPage() {
       <PageHero imagen={BANNER_NOTICIAS} altoMinimo="min-h-[40vh]">
         <h1 className="text-white text-5xl md:text-7xl font-serif">Últimas noticias</h1>
       </PageHero>
+
+      {/* Migas de pan */}
+          <MigasDePan items={[{ nombre: "Noticias" }]} />
 
       <div className="bg-white pt-16 pb-20">
         <div className="max-w-5xl mx-auto px-6">

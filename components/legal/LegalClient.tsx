@@ -11,6 +11,7 @@ import { LegalNotice } from "@/components/legal/LegalNotice"
 import { PrivacyPolicy } from "@/components/legal/PrivacyPolicy"
 import { CookiesPolicy } from "@/components/legal/CookiesPolicy"
 import { RedesFlotante } from "@/components/redes-flotante"
+import { MigasDePan } from "@/components/migas-de-pan"
 
 function AccordionItem({ title, isOpen, onClick, children }: any) {
   return (
@@ -67,6 +68,10 @@ export default function LegalClient() {
               Reglamento
             </h1>
           </PageHero>
+
+          {/* Migas de pan */}
+              <MigasDePan items={[{ nombre: "Reglamento" }]} />
+
           <section className="relative w-full">
             <div className="max-w-4xl mx-auto py-20 px-6">
             
