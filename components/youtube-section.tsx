@@ -119,10 +119,10 @@ export function VideosSection() {
                       </div>
                     </div>
                     <div className="flex flex-col justify-center min-w-0">
-                      <span className="text-sm font-bold">{v.agrupacion}</span>
-                      <h3 className="line-clamp-3 text-base font-semibold leading-snug text-foreground">
+                      <span className="text-xs font-bold">{v.agrupacion}</span>
+                      <span className="line-clamp-3 text-sm font-semibold leading-snug text-foreground">
                         {v.titulo}
-                      </h3>
+                      </span>
                       {v.fecha && <span className="text-xs text-muted-foreground mt-1">{v.fecha}</span>}
                     </div>
                   </button>
@@ -134,8 +134,8 @@ export function VideosSection() {
 
         <div className="mt-8 flex flex-col items-start gap-4 border-t border-primary-blue/60 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="section-heading">¿Quieres esta música en tu evento?</h2>
-            <p className="mt-2">Contacta con el Ateneo para solicitar un presupuesto.</p>
+            <h2 className="section-heading">¿Te gusta lo que escuchas?</h2>
+            <p className="mt-2">Si estás pensando en música para unas fiestas, un concierto o un proyecto compartido, el Ateneo estará encantado de <strong>conocer tu propuesta.</strong></p>
           </div>
           <Link
             href="/contacto?asunto=contratar"
@@ -143,7 +143,7 @@ export function VideosSection() {
             data-cta-location="videos"
             className="cta-primary"
           >
-            Pedir presupuesto
+            Escríbenos
           </Link>
         </div>
       </div>
