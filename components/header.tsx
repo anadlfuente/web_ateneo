@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ChevronDown, Menu, X } from "lucide-react"
-import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6"
+//import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6"
 
 const navigation = [
   {
@@ -33,13 +33,13 @@ const navigation = [
   { name: "Contacto", href: "/contacto" },
 ]
 
-const socialLinks = [
+/* const socialLinks = [
   { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: FaInstagram },
   { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: FaFacebookF },
   { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: FaYoutube },
   { name: "X", href: "https://x.com/BandaMusMieres", Icon: FaXTwitter },
   { name: "TikTok", href: "https://www.tiktok.com/@bandademieres", Icon: FaTiktok },
-]
+] */
 
 function currentPage(pathname: string, href: string) {
   const path = href.split(/[?#]/)[0]
@@ -210,7 +210,7 @@ export function Header() {
             >
               Hazte socio
             </Link>
-            <nav aria-label="Redes sociales" className="mt-6 flex flex-wrap items-center gap-2 border-t border-blue-border pt-4">
+            {/* <nav aria-label="Redes sociales" className="mt-6 flex flex-wrap items-center gap-2 border-t border-blue-border pt-4">
               {socialLinks.map(({ name, href, Icon }) => (
                 <a
                   key={name}
@@ -223,7 +223,7 @@ export function Header() {
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </a>
               ))}
-            </nav>
+            </nav> */}
           </div>
         </div>
       )}

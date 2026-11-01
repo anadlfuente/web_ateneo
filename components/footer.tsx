@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6"
+//import { FaFacebookF, FaInstagram, FaTiktok, FaXTwitter, FaYoutube } from "react-icons/fa6"
 import { BotonConfigurarCookies } from "@/components/cookies/boton-configurar-cookies"
 
 const groups = [
@@ -10,13 +10,13 @@ const groups = [
   { name: "Charanga New Paentamala", href: "/charanga" },
 ]
 
-const socialLinks = [
-  { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: FaInstagram },
-  { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: FaFacebookF },
-  { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: FaYoutube },
-  { name: "X", href: "https://x.com/BandaMusMieres", Icon: FaXTwitter },
-  { name: "TikTok", href: "https://www.tiktok.com/@bandademieres", Icon: FaTiktok },
-]
+// const socialLinks = [
+//   { name: "Instagram", href: "https://www.instagram.com/bandademieres/", Icon: FaInstagram },
+//   { name: "Facebook", href: "https://www.facebook.com/Bandaateneomieres/", Icon: FaFacebookF },
+//   { name: "YouTube", href: "https://www.youtube.com/channel/UCurQwXp65WecwlLX-keRS0g", Icon: FaYoutube },
+//   { name: "X", href: "https://x.com/BandaMusMieres", Icon: FaXTwitter },
+//   { name: "TikTok", href: "https://www.tiktok.com/@bandademieres", Icon: FaTiktok },
+// ]
 
 const linkClass = "footer-link flex min-h-8 items-center"
 
@@ -31,7 +31,7 @@ export function Footer() {
           <p className="mb-4 max-w-52 text-sm">
             Dinamizando la vida musical mierense desde 2018.
           </p>
-          <ul className="flex gap-2">
+    {/*       <ul className="flex gap-2">
             {socialLinks.map(({ name, href, Icon }) => (
               <li key={name}>
                 <a
@@ -45,7 +45,7 @@ export function Footer() {
                 </a>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </section>
 
         <section>
