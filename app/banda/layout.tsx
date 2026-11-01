@@ -49,7 +49,7 @@ export default function BandaLayout({ children }: { children: ReactNode }) {
                 <p>Cuéntanos qué necesitas y te respondemos por correo.</p>
               </div>
               <Link href={HREF_CONTRATAR} className="cta-primary shrink-0">
-                Contratar a la Banda Sinfónica
+                Contacta con la Banda Sinfónica
               </Link>
             </div>
           </div>

@@ -1,42 +1,26 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+// Coral Cantares · Director.
+// El banner, las pestañas y la llamada final están en app/coral/layout.tsx.
+
+import type { Metadata } from "next"
 import BloqueHistoria from "@/components/text-design"
 import { coralDirector } from "@/data/director-coral"
-import { PageHero } from "@/components/page-hero"
-import { RedesFlotante } from "@/components/redes-flotante"
-import { MigasDePan } from "@/components/migas-de-pan"
+import { fondoSeccion } from "@/lib/fondos"
+
+export const metadata: Metadata = {
+  title: "Director · Coral Cantares",
+  description: "Director de la Coral Cantares del Ateneo Musical de Mieres.",
+}
 
 export default function CoralDirectorPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
-
-      {/* Banner */}
-      <PageHero
-        imagen={coralDirector.banner.imagen}
-        posicion={coralDirector.banner.posicion}
-        altoMinimo="min-h-[40vh]"
-        centrado
-      >
-        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif leading-tight">
-          {coralDirector.banner.titulo}
-        </h1>
-        <p className="text-white/90 text-lg md:text-xl lg:text-2xl font-serif mt-4">
-          {coralDirector.banner.subtitulo}
-        </p>
-      </PageHero>
-
-      {/* Migas de pan */}
-            <MigasDePan items={[{ nombre: "Coral Cantares", href: "/coral/historia" }, { nombre: "Director" }]} />
-
-      {/* Contenido */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-16 space-y-24">
-        {coralDirector.bloques.map((bloque, i) => (
-          <BloqueHistoria key={bloque.titulo} {...bloque} invertido={i % 2 === 1} />
-        ))}
-      </section>
-      <RedesFlotante agrupacion="coral"/>
-      <Footer />
-    </main>
+    <>
+      {coralDirector.bloques.map((bloque, i) => (
+        <section key={bloque.titulo} className={fondoSeccion(i)}>
+          <div className="home-container">
+            <BloqueHistoria {...bloque} invertido={i % 2 === 1} />
+          </div>
+        </section>
+      ))}
+    </>
   )
 }
