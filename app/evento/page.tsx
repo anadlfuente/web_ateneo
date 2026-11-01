@@ -7,11 +7,11 @@ import { PageHero } from "@/components/page-hero"
 import { Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, Calendar, Clock, MapPin, Ticket, Navigation } from "lucide-react"
+import { ArrowLeft, Calendar, CalendarPlus, Clock, MapPin, Ticket, Navigation } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
-  type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS, imagenEvento,
+  type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS, imagenEvento, urlGoogleCalendar,
 } from "@/lib/eventos"
 import { RedesFlotante } from "@/components/redes-flotante"
 
@@ -177,6 +177,17 @@ function DetalleEvento() {
                 </div>
               </div>
             )}
+
+            {/* Entrada libre (solo si no hay enlace de entradas) */}
+            {!evento.enlace_entradas && evento.tipo !== "ensayo" && (
+              <div className="flex items-start gap-3">
+                <Ticket className="w-5 h-5 mt-0.5 text-primary-blue flex-shrink-0" aria-hidden="true" />
+                <div>
+                  <dt className="sr-only">Entrada</dt>
+                  <dd>Entrada libre hasta completar aforo</dd>
+                </div>
+              </div>
+            )}
           </dl>
 
           {/* Descripción */}
@@ -188,16 +199,28 @@ function DetalleEvento() {
             </div>
           )}
 
-          {/* Entradas (solo si hay enlace y el evento no ha pasado) */}
-          {evento.enlace_entradas && !yaPasado && (
-            <a
-              href={evento.enlace_entradas}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-blue text-white font-semibold hover:bg-primary-blue/90 transition-colors"
-            >
-              <Ticket className="w-5 h-5" /> Comprar entradas
-            </a>
+          {/* Botones: entradas y añadir al calendario (solo si el evento no ha pasado) */}
+          {!yaPasado && (
+            <div className="flex flex-col items-start gap-3">
+              {evento.enlace_entradas && (
+                <a
+                  href={evento.enlace_entradas}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-blue text-white font-semibold hover:bg-primary-blue/90 transition-colors"
+                >
+                  <Ticket className="w-5 h-5" aria-hidden="true" /> Comprar entradas
+                </a>
+              )}
+              <a
+                href={urlGoogleCalendar(evento)}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-foreground/20 text-sm font-medium hover:bg-primary-blue hover:border-primary-blue hover:text-black transition-colors"
+              >
+                <CalendarPlus className="w-4 h-4" aria-hidden="true" /> Añadir a Google Calendar
+              </a>
+            </div>
           )}
         </div>
       </div>

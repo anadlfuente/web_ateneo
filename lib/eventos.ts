@@ -167,3 +167,39 @@ export function urlMaps(ev: Evento) {
   if (!ev.lugar) return null
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.lugar + ", Mieres")}`
 }
+
+// Duración que se supone a un evento con hora (Google Calendar necesita una hora de fin)
+const DURACION_HORAS = 2
+
+// Enlace que abre Google Calendar con el evento ya relleno.
+// Sin hora → evento de día completo. Con hora → dura DURACION_HORAS.
+export function urlGoogleCalendar(ev: Evento) {
+  const [a, m, d] = ev.fecha.split("-").map(Number)
+  const dos = (n: number) => String(n).padStart(2, "0")
+  // Fecha → "20261121" o "20261121T200000"
+  const compacta = (f: Date, conHora: boolean) =>
+    `${f.getFullYear()}${dos(f.getMonth() + 1)}${dos(f.getDate())}` +
+    (conHora ? `T${dos(f.getHours())}${dos(f.getMinutes())}00` : "")
+
+  let dates: string
+  if (ev.hora) {
+    const [h, min] = ev.hora.split(":").map(Number)
+    const inicio = new Date(a, m - 1, d, h, min)
+    const fin = new Date(inicio.getTime() + DURACION_HORAS * 60 * 60 * 1000)
+    dates = `${compacta(inicio, true)}/${compacta(fin, true)}`
+  } else {
+    dates = `${compacta(new Date(a, m - 1, d), false)}/${compacta(new Date(a, m - 1, d + 1), false)}`
+  }
+
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: ev.titulo,
+    dates,
+    ctz: "Europe/Madrid",
+  })
+  if (ev.lugar) params.set("location", `${ev.lugar}, Mieres`)
+  if (typeof window !== "undefined") {
+    params.set("details", `Más información: ${window.location.origin}/evento?id=${ev.id}`)
+  }
+  return `https://calendar.google.com/calendar/render?${params}`
+}

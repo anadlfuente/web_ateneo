@@ -378,8 +378,9 @@ h1, h2, h3 {
 }
 
 .page-hero h1 {
+  font-family: var(--font-dm-serif-display), serif;
   font-size: clamp(2rem, 4vw, 3.25rem) !important;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.15;
   text-align: left;
 }
