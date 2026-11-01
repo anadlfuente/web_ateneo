@@ -1,16 +1,16 @@
 "use client"
 
-import { EventosMes } from "@/components/eventos-mes"
 import { PageHero } from "@/components/page-hero"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight, Music, Mic2, MapPin, Clock } from "lucide-react"
+import { Music, Mic2, MapPin, Clock, Calendar, Ticket } from "lucide-react"
+import { MiniCalendario } from "@/components/mini-calendario"
 import { RehearsalSection, type Ensayo } from "@/components/rehearsal-schedule"
 import {
   type Evento, type AgrupacionId,
-  AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, aISO, fechaLarga, urlMaps,
+  AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, imagenEvento, aISO, fechaLarga, urlMaps,
 } from "@/lib/eventos"
 import {RedesFlotante} from "@/components/redes-flotante"
 
@@ -20,11 +20,6 @@ const ensayos: Ensayo[] = [
   { agrupacion: "banda", dias: "Sábado", hora: "11:00 – 13:30", icon: Music, href: "/banda/historia" },
   { agrupacion: "coral", dias: "Lunes",   hora: "20:00 – 21:30", icon: Mic2,  href: "/coral/historia" },
 ]
-
-const navButton = `
-  w-10 h-10 flex items-center justify-center rounded-full border border-border bg-white
-  hover:bg-primary-blue hover:text-white transition-all duration-200 shadow-sm
-`
 
 // Lugar del evento como enlace a Google Maps (o texto, si no hay lugar)
 function LugarMaps({ evento, className = "" }: { evento: Evento; className?: string }) {
@@ -44,6 +39,81 @@ function LugarMaps({ evento, className = "" }: { evento: Evento; className?: str
   )
 }
 
+// Ficha de un evento: cartel completo a la izquierda e información a la derecha
+function TarjetaEvento({ evento }: { evento: Evento }) {
+  const info = infoAgrupacion(evento.agrupacion)
+  const yaPasado = evento.fecha < aISO(new Date())
+  const fecha = fechaLarga(evento.fecha)
+
+  return (
+    <article className="flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden shadow-sm border border-border">
+      {/* Cartel pegado al borde de la ficha. El enlace se oculta al lector de pantalla
+          y al tabulador porque el título ya lleva al mismo sitio */}
+      <Link
+        href={`/evento?id=${evento.id}`}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="block shrink-0 sm:w-48 bg-muted"
+      >
+        <img src={imagenEvento(evento)} alt="" loading="lazy" className="block w-full h-full object-cover" />
+      </Link>
+
+      <div className="min-w-0 flex-grow">
+        <div className="p-5">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${info.badge}`}>
+              {info.nombre}
+            </span>
+            <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-muted text-muted-foreground">
+              {TIPOS[evento.tipo] ?? evento.tipo}
+            </span>
+            {yaPasado && (
+              <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-foreground/10">
+                Ya celebrado
+              </span>
+            )}
+          </div>
+
+          <h4 className="font-serif text-2xl leading-tight mb-3">
+            <Link href={`/evento?id=${evento.id}`} className="hover:text-primary-blue transition-colors">
+              {evento.titulo}
+            </Link>
+          </h4>
+
+          <ul className="space-y-1 text-sm text-muted-foreground mb-3">
+            <li className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-primary-blue shrink-0" aria-hidden="true" />
+              <span className="first-letter:uppercase">{fecha}</span>
+            </li>
+            {evento.hora && (
+              <li className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-primary-blue shrink-0" aria-hidden="true" />
+                {evento.hora}h
+              </li>
+            )}
+            {evento.lugar && (
+              <li>
+                <LugarMaps evento={evento} />
+              </li>
+            )}
+          </ul>
+          {evento.enlace_entradas && !yaPasado && (
+            <a
+              href={evento.enlace_entradas}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-blue text-white text-sm font-semibold hover:bg-primary-blue/90 transition-colors"
+            >
+              <Ticket className="w-4 h-4" aria-hidden="true" />
+              Entradas
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  )
+}
+
 export default function CalendarPage() {
   // Mes que se está viendo (empieza en el mes actual)
   const [currentDate, setCurrentDate] = useState(() => {
@@ -55,6 +125,8 @@ export default function CalendarPage() {
   const [error, setError] = useState(false)
   const [filtro, setFiltro] = useState<AgrupacionId | null>(null)
   const [verEnsayos, setVerEnsayos] = useState(true)
+  // Día en el que se ha hecho clic ("2026-11-21"); null = ninguno todavía
+  const [seleccionado, setSeleccionado] = useState<string | null>(null)
 
   // Guarda los meses ya cargados para no pedirlos otra vez al volver
   const cache = useRef(new Map<string, Evento[]>())
@@ -102,26 +174,29 @@ export default function CalendarPage() {
     [eventos]
   )
 
-  const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1))
-  const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1))
-  const goToday = () => {
-    const hoy = new Date()
-    setCurrentDate(new Date(hoy.getFullYear(), hoy.getMonth(), 1))
-  }
-
-  const dateStr = (day: number) =>
-    `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
   const hoyISO = aISO(new Date())
 
-  // Cuadrícula del mes empezando en lunes
-  const startOffset = (new Date(year, month, 1).getDay() + 6) % 7
-  const calendarDays = Array.from({ length: startOffset + daysInMonth }, (_, i) => {
-    const dayNumber = i - startOffset + 1
-    return dayNumber > 0 ? dayNumber : null
-  })
+  // Sin día elegido se ven todos los eventos del mes; con día, solo los de ese día
+  const lista = seleccionado ? visibles.filter((e) => e.fecha === seleccionado) : visibles
+  const tituloLista = seleccionado
+    ? `Eventos del ${fechaLarga(seleccionado)}`
+    : `Eventos de ${currentDate.toLocaleString("es-ES", { month: "long" })} ${year}`
 
-  const monthName = currentDate.toLocaleString("es-ES", { month: "long" })
-  const formattedDate = monthName.charAt(0).toUpperCase() + monthName.slice(1) + " " + year
+  // Clic en un día: lo selecciona; clic otra vez en el mismo día: vuelve al mes entero
+  const elegirDia = (fecha: string) => setSeleccionado(seleccionado === fecha ? null : fecha)
+
+  // Al cambiar de mes se olvida el día seleccionado
+  const irAMes = (fecha: Date) => {
+    setCurrentDate(fecha)
+    setSeleccionado(null)
+  }
+  const nextMonth = () => irAMes(new Date(year, month + 1, 1))
+  const prevMonth = () => irAMes(new Date(year, month - 1, 1))
+  const goToday = () => {
+    const hoy = new Date()
+    irAMes(new Date(hoy.getFullYear(), hoy.getMonth(), 1))
+    setSeleccionado(hoyISO)
+  }
 
   return (
     <main className="min-h-screen">
@@ -168,108 +243,55 @@ export default function CalendarPage() {
           </label>
         </div>
 
-        {/* Navegación de meses */}
-        <div className="flex items-center justify-between mb-6">
-          <button onClick={prevMonth} className={navButton} aria-label="Mes anterior">
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <div className="flex flex-col items-center">
-            <h2 className="text-xl font-serif capitalize" aria-live="polite">{formattedDate}</h2>
-            <button onClick={goToday} className="text-xs text-primary-blue hover:underline">Ir a hoy</button>
-          </div>
-          <button onClick={nextMonth} className={navButton} aria-label="Mes siguiente">
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-
         {error && (
           <p className="mb-6 p-4 rounded-2xl bg-red-50 text-red-700 text-sm">
             No hemos podido cargar los eventos. Inténtalo de nuevo en unos minutos.
           </p>
         )}
 
-        {/* Calendario en cuadrícula (tablet y ordenador) */}
-        <div className={`hidden md:block transition-opacity ${cargando ? "opacity-50" : ""}`} aria-busy={cargando}>
-          <div className="bg-muted/30 rounded-3xl p-6 shadow-sm">
-            <div className="grid grid-cols-7 text-center font-semibold text-sm mb-2">
-              {["L", "M", "X", "J", "V", "S", "D"].map((d) => <div key={d}>{d}</div>)}
+        {/* Calendario pequeño a la izquierda + eventos del día a la derecha */}
+        <div className="grid md:grid-cols-[18rem_1fr] lg:grid-cols-[20rem_1fr] gap-8 lg:gap-12 items-start">
+  <div className="w-full max-w-xs mx-auto md:mx-0 md:sticky md:top-28">
+            <MiniCalendario
+              year={year}
+              month={month}
+              eventos={visibles}
+              seleccionado={seleccionado}
+              onSeleccionar={elegirDia}
+              onPrev={prevMonth}
+              onNext={nextMonth}
+              onHoy={goToday}
+              cargando={cargando}
+            />
+          </div>
+
+                    <div aria-live="polite">
+            <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+              <h3 className="font-serif text-2xl md:text-3xl">{tituloLista}</h3>
+              {seleccionado && (
+                <button onClick={() => setSeleccionado(null)} className="text-sm text-primary-blue hover:underline">
+                  Ver todo el mes
+                </button>
+              )}
             </div>
-            <div className="grid grid-cols-7 gap-2">
-              {calendarDays.map((day, index) => {
-                if (!day) return <div key={index} className="min-h-22.5" />
 
-                const columna = index % 7
-                const isWeekend = columna >= 5
-                const esHoy = dateStr(day) === hoyISO
-                const dayEvents = visibles.filter((e) => e.fecha === dateStr(day))
-
-                return (
-                  <div
-                    key={index}
-                    className={`
-                      min-h-27.5 rounded-2xl p-3 shadow-sm
-                      hover:shadow-md hover:-translate-y-1 transition-all duration-200
-                      ${esHoy ? "bg-primary-blue/10" : isWeekend ? "bg-primary-blue/5" : "bg-white"}
-                    `}
-                  >
-                    <div className={`text-sm font-bold ${esHoy ? "text-primary-blue" : ""}`}>{day}</div>
-
-                    {dayEvents.map((event) => (
-                      <div
-                        key={event.id}
-                        className={`text-xs mt-2 px-2 py-1 rounded border ${infoAgrupacion(event.agrupacion).chip} relative group`}
-                      >
-                        {/* Título: abre la página del evento */}
-                        <Link href={`/evento?id=${event.id}`} className="block font-semibold leading-tight hover:underline">
-                          {event.tipo === "ensayo" && <span className="font-normal opacity-70">Ensayo · </span>}
-                          {event.titulo}
-                        </Link>
-
-                        {/* Lugar: abre Google Maps */}
-                        <LugarMaps evento={event} className="text-[10px] opacity-70 mt-0.5" />
-
-                        {event.hora && (
-                          <div className="text-[10px] opacity-70 flex items-center gap-1">
-                            <Clock className="w-3 h-3 shrink-0" />
-                            {event.hora}
-                          </div>
-                        )}
-
-                        {/* Cartel al pasar el ratón. En sábado y domingo
-                            se abre hacia la izquierda para no salirse de la pantalla */}
-                        {event.imagen && (
-                          <div
-                            className={`
-                              absolute top-0 ${columna >= 5 ? "right-full mr-3" : "left-full ml-3"}
-                              hidden group-hover:block z-50 w-36 rounded-xl overflow-hidden shadow-2xl border bg-white
-                              pointer-events-none
-                            `}
-                          >
-                            <img src={event.imagen} alt="" className="w-full h-auto object-cover" />
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )
-              })}
-            </div>
+            {lista.length > 0 ? (
+              <ul className="space-y-4">
+                {lista.map((ev) => (
+                  <li key={ev.id}><TarjetaEvento evento={ev} /></li>
+                ))}
+              </ul>
+            ) : (
+              !cargando && !error && (
+                <p className="text-muted-foreground">
+                  {seleccionado
+                    ? "No hay eventos este día."
+                    : `No hay eventos este mes${filtro ? ` para ${AGRUPACIONES[filtro].nombre}` : ""}.`}
+                </p>
+              )
+            )}
           </div>
         </div>
-
-         {/* Eventos del mes en zigzag (en el móvil sustituye a la cuadrícula) */}
-        <div className={cargando ? "opacity-50" : ""}>
-          <EventosMes
-            eventos={visibles.filter((e) => e.tipo !== "ensayo")}
-            titulo={`Eventos de ${monthName} ${year}`}
-          />
-        </div>
-
-        {!cargando && !error && visibles.length === 0 && (
-          <p className="text-center text-muted-foreground mt-6">
-            No hay eventos este mes{filtro ? ` para ${AGRUPACIONES[filtro].nombre}` : ""}.
-          </p>
-        )}
       </section>
 
       <section className="mb-20">
