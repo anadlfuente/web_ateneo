@@ -108,7 +108,7 @@ export function JoinSection() {
                   <CheckCircle2 className="w-8 h-8 text-accent" />
                 </div>
                 <h3 className="mb-3 font-serif">Gracias por tu interés</h3>
-                <p className="text-muted-foreground">Nos pondremos en contacto contigo muy pronto.</p>
+                <p className="text-center text-muted-foreground">Nos pondremos en contacto contigo muy pronto.</p>
               </div>
             ) : (
               <>
@@ -205,7 +205,6 @@ export function JoinSection() {
                         >
                           política de privacidad
                         </Link>{" "}
-                        y el tratamiento de datos personales.
                       </span>
                   </label>
 

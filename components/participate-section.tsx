@@ -29,10 +29,10 @@ export function ParticipateSection() {
 
           <article className="home-card flex flex-col items-start p-5 sm:p-6">
             <h3 className="mb-1 font-bold">Toca con nosotros</h3>
-            <p className="mb-3 text-sm font-semibold">Tu instrumento tiene sitio</p>
+            <p className="mb-3 text-sm font-semibold">Tu instrumento o tu voz tienen sitio</p>
             <p className="mb-5 flex-1 text-sm leading-relaxed">
-              Buscamos músicos de viento madera, viento metal y percusión, además de nuevas voces. También hay espacio para
-              quienes disfrutan del folk, el pop y el rock. Cuéntanos qué tocas y encontraremos contigo la agrupación que mejor encaje.
+              Tanto si tocas algún instrumento de viento o percusión como si te gusta cantar, 
+              en la Banda Sinfónica o en la Coral Cantares puede haber un sitio para ti.
             </p>
             <Link href="/contacto" className="text-link inline-flex min-h-11 items-center gap-2 font-semibold">
               Cuéntanos qué tocas <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -20,7 +20,6 @@ export default function Home() {
         <ParticipateSection />
         <HomeAgendaNewsSection />
         <SponsorsSection />
-        <ContactQuickSection />
       </main>
       <Footer />
     </div>
