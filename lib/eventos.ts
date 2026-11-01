@@ -70,6 +70,16 @@ export const AGRUPACIONES: Record<AgrupacionId, {
   },
 }
 
+// Logo pequeño de cada agrupación (agenda de la portada)
+export const LOGOS_AGRUPACION: Record<AgrupacionId, string> = {
+  banda: "/logos/logo_ateneo-no-bg.png",
+  coral: "/logos/coral_cantares_logo-no-bg.png",
+  charanga: "/logos/charanga_new_paentamala-no-bg.png",
+  claxon: "/logos/claxon_boys_logo-no-bg.png",
+  camara: "/logos/logo_ateneo-no-bg.png",
+  ateneo: "/logos/logo_ateneo-no-bg.png",
+}
+
 export const TIPOS: Record<TipoId, string> = {
   concierto: "Concierto",
   actuacion: "Actuación",

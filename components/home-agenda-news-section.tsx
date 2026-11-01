@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { aISO, fechaLarga, obtenerEventos, TIPOS_PUBLICOS, type Evento } from "@/lib/eventos"
+import { aISO, fechaLarga, infoAgrupacion, LOGOS_AGRUPACION, obtenerEventos, TIPOS_PUBLICOS, type Evento } from "@/lib/eventos"
 import { formatearFecha, getNoticias } from "@/lib/noticias"
 
 function resumenPorPalabras(resumen: string) {
@@ -12,6 +12,9 @@ function resumenPorPalabras(resumen: string) {
   return palabras.length > 18 ? `${palabras.slice(0, 18).join(" ")}…` : resumen
 }
 
+function capitalizar(texto: string) {
+  return texto.charAt(0).toUpperCase() + texto.slice(1)
+}
 export function HomeAgendaNewsSection() {
   const [eventos, setEventos] = useState<Evento[] | null>(null)
   const [error, setError] = useState(false)
@@ -56,10 +59,20 @@ export function HomeAgendaNewsSection() {
               <ul className="space-y-3">
                 {eventos.map((evento) => (
                   <li key={evento.id}>
-                    <Link href={`/evento?id=${evento.id}`} className="home-card home-card-link block p-4">
-                      <p className="mb-1 text-sm font-semibold">{fechaLarga(evento.fecha)}{evento.hora ? ` · ${evento.hora} h` : ""}</p>
-                      <h3 className="mb-1 font-semibold">{evento.titulo}</h3>
-                      {evento.lugar && <p className="text-sm">{evento.lugar}</p>}
+                    <Link href={`/evento?id=${evento.id}`} className="home-card home-card-link flex items-center justify-between gap-4 p-4">
+                      <div className="min-w-0">
+                        <p className="mb-1 text-sm font-semibold">{capitalizar(fechaLarga(evento.fecha))}{evento.hora ? ` · ${evento.hora} h` : ""}</p>
+                        <h3 className="mb-1 font-semibold">{evento.titulo}</h3>
+                        {evento.lugar && <p className="text-sm">{evento.lugar}</p>}
+                      </div>
+                      <Image
+                        src={LOGOS_AGRUPACION[evento.agrupacion] ?? LOGOS_AGRUPACION.ateneo}
+                        alt={infoAgrupacion(evento.agrupacion).nombre}
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        className="h-16 w-16 shrink-0 object-contain sm:h-20 sm:w-20"
+                      />
                     </Link>
                   </li>
                 ))}
