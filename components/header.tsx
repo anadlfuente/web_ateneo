@@ -218,7 +218,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="footer-social-link flex h-11 w-11 items-center justify-center rounded-md focus-visible:outline"
+                  className="header-social-link flex h-11 w-11 items-center justify-center rounded-md focus-visible:outline"
                 >
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </a>
