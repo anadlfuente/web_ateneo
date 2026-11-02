@@ -7,6 +7,7 @@ import {
   Mail, Phone, MapPin, Send, User, CheckCircle2, AlertCircle, Loader2,
   Instagram, Facebook, Youtube, Twitter, Music2,
 } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 
 // En local usa la dirección de .env.development.local; en el hosting, /api/contacto.php
 const URL_CONTACTO = process.env.NEXT_PUBLIC_CONTACT_URL || "/api/contacto.php"
@@ -21,12 +22,28 @@ const redesSociales = [
 ]
 
 const formularioVacio = (asunto = "") => ({ nombre: "", email: "", asunto, asuntoOtro: "", mensaje: "", web: "" })
+
+// Asuntos que se pueden dejar elegidos desde un enlace (/contacto?asunto=...).
+// Tienen que coincidir con los value de las <option> del desplegable.
+const ASUNTOS_DESDE_ENLACE = ["banda", "coral", "contratar", "patrocinio", "socio"]
+
 export function ContactSection({ defaultSubject = "" }: { defaultSubject?: string }) {
   const [subjectOnEntry, setSubjectOnEntry] = useState(defaultSubject)
   const [form, setForm] = useState(() => formularioVacio(defaultSubject))
   const [privacidad, setPrivacidad] = useState(false)
   const [estado, setEstado] = useState<"inicial" | "enviando" | "enviado" | "error">("inicial")
   const [mensajeError, setMensajeError] = useState("")
+
+  // Asunto que viene en el enlace (/contacto?asunto=banda)
+  const asuntoEnlace = useSearchParams().get("asunto")
+
+  useEffect(() => {
+    if (asuntoEnlace && ASUNTOS_DESDE_ENLACE.includes(asuntoEnlace)) {
+      setSubjectOnEntry(asuntoEnlace)
+      setForm((currentForm) => ({ ...currentForm, asunto: asuntoEnlace }))
+    }
+  }, [asuntoEnlace])
+
 
   useEffect(() => {
     const requestedSubject = new URLSearchParams(window.location.search).get("asunto")
