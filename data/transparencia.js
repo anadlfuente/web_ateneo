@@ -1,6 +1,6 @@
 export const transparencia = {
   intro:
-    "En el Ateneo Musical de Mieres queremos que socios, músicos y vecinos conozcan cómo funciona la asociación. En esta sección encontrarás quiénes forman la junta directiva y las memorias anuales con la actividad realizada en cada temporada.",
+    "El Ateneo Musical de Mieres quiere que socios, músicos y vecinos conozcan cómo funciona la asociación. Aquí se puede consultar quién forma la junta directiva, los estatutos y las memorias anuales con la actividad de cada temporada.",
   presidencia: {
     cargo: "Presidencia",
     nombre: "Pablo Álvarez Fernández",
@@ -23,7 +23,10 @@ export const transparencia = {
   },
 
   memorias: [
-    { year: 2025, archivo: "/memorias/memoria-2025.pdf" },
-    { year: 2024, archivo: "/memorias/memoria-2024.pdf" },
+    { year: 2025, archivo: "/documentos/2025-memoria.pdf" },
+    { year: 2024, archivo: "/documentos/2024-memoria.pdf" },
+    { year: 2023, archivo: "/documentos/2023-memoria.pdf" },
+    { year: 2022, archivo: "/documentos/2022-memoria.pdf" },
+    { year: 2021, archivo: "/documentos/2021-memoria.pdf" },
   ],
 }
