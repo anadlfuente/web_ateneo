@@ -4,7 +4,7 @@
 // debajo del número aparece un puntito por cada color de agrupación.
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { type Evento, infoAgrupacion, aISO } from "@/lib/eventos"
+import { type Evento, agrupacionesEvento, fondoPelota, aISO } from "@/lib/eventos"
 
 type Props = {
   year: number
@@ -30,12 +30,13 @@ export function MiniCalendario({
   const dateStr = (day: number) =>
     `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
 
-  // Colores de los puntitos de un día (sin repetir: banda y charanga comparten azul)
+  // Una pelota por evento del día. Si participan varias agrupaciones, la pelota
+  // se divide en sus colores. Las pelotas iguales del mismo día no se repiten.
   const puntosDelDia = (fecha: string) => {
-    const colores = eventos
+    const fondos = eventos
       .filter((e) => e.fecha === fecha)
-      .map((e) => infoAgrupacion(e.agrupacion).punto)
-    return [...new Set(colores)]
+      .map((e) => fondoPelota(agrupacionesEvento(e)))
+    return [...new Set(fondos)]
   }
 
   const monthName = new Date(year, month, 1).toLocaleString("es-ES", { month: "long" })
@@ -91,9 +92,13 @@ export function MiniCalendario({
             >
               <span className="leading-none">{day}</span>
               {/* Puntitos (si no hay eventos, se deja el hueco para que no "salten" los números) */}
-              <span className="flex gap-0.5 mt-1 h-1.5">
-                {puntos.map((color) => (
-                  <span key={color} className={`w-1.5 h-1.5 rounded-full ${color} ${activo ? "ring-1 ring-white" : ""}`} />
+              <span className="flex gap-0.5 mt-1 h-2">
+                {puntos.map((fondo) => (
+                  <span
+                    key={fondo}
+                    className={`w-2 h-2 rounded-full ring-1 ${activo ? "ring-white" : "ring-black/20"}`}
+                    style={{ background: fondo }}
+                  />
                 ))}
               </span>
             </button>

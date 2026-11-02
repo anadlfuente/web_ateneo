@@ -35,7 +35,7 @@ if ($esFecha($_GET['hasta'] ?? null)) {
 }
 
 if (isset($_GET['agrupacion']) && array_key_exists($_GET['agrupacion'], AGRUPACIONES)) {
-    $where[] = 'agrupacion = :agrupacion';
+    $where[] = 'FIND_IN_SET(:agrupacion, agrupacion)';
     $params[':agrupacion'] = $_GET['agrupacion'];
 }
 

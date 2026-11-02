@@ -7,7 +7,7 @@ export type TipoId = "concierto" | "actuacion" | "ensayo" | "actividad"
 export interface Evento {
   id: number
   titulo: string
-  agrupacion: AgrupacionId
+  agrupacion: string
   tipo: TipoId
   fecha: string                // "2026-11-21"
   hora: string | null          // "20:00"
@@ -144,6 +144,36 @@ export function infoAgrupacion(id: string) {
   return AGRUPACIONES[id as AgrupacionId] ?? AGRUPACIONES.ateneo
 }
 
+// Agrupaciones de un evento: "banda,coral" → ["banda", "coral"]
+// Si no hay ninguna válida, se considera un evento del Ateneo.
+export function agrupacionesEvento(ev: Evento): AgrupacionId[] {
+  const ids = (ev.agrupacion ?? "")
+    .split(",")
+    .map((a) => a.trim())
+    .filter((a): a is AgrupacionId => a in AGRUPACIONES)
+  return ids.length ? ids : ["ateneo"]
+}
+
+// Color de cada agrupación en la pelota del calendario pequeño
+const COLOR_PELOTA: Record<AgrupacionId, string> = {
+  banda: "var(--primary-blue)",
+  coral: "var(--accent-yellow)",
+  claxon: "var(--accent-green)",
+  charanga: "var(--primary-blue)",
+  camara: "var(--accent-green)",
+  ateneo: "var(--primary-blue)",
+}
+
+// Fondo de la pelota: un solo color, o la pelota dividida en partes iguales
+// (2 agrupaciones → mitades, 3 → tercios...)
+export function fondoPelota(ids: AgrupacionId[]) {
+  const colores = ids.map((id) => COLOR_PELOTA[id])
+  if (colores.length === 1) return colores[0]
+  const parte = 100 / colores.length
+  const tramos = colores.map((c, i) => `${c} ${i * parte}% ${(i + 1) * parte}%`)
+  return `conic-gradient(${tramos.join(", ")})`
+}
+
 // Corrige rutas mal escritas: "public/poster/x.jpg" o "poster/x.jpg" → "/poster/x.jpg"
 // Las direcciones completas (https://...) se dejan tal cual.
 export function rutaImagen(ruta: string | null | undefined): string | null {
@@ -157,7 +187,7 @@ export function rutaImagen(ruta: string | null | undefined): string | null {
 
 // Imagen del evento, o la de su agrupación si no tiene cartel
 export function imagenEvento(ev: Evento) {
-  return rutaImagen(ev.imagen) ?? rutaImagen(infoAgrupacion(ev.agrupacion).imagen) ?? ""
+  return rutaImagen(ev.imagen) ?? rutaImagen(AGRUPACIONES[agrupacionesEvento(ev)[0]].imagen) ?? ""
 }
 
 // Enlace a Google Maps: el que se haya pegado en el panel,

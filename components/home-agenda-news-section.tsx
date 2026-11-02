@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { aISO, fechaLarga, infoAgrupacion, LOGOS_AGRUPACION, obtenerEventos, TIPOS_PUBLICOS, type Evento } from "@/lib/eventos"
+import { aISO, fechaLarga, infoAgrupacion, agrupacionesEvento, LOGOS_AGRUPACION, obtenerEventos, TIPOS_PUBLICOS, type Evento } from "@/lib/eventos"
 import { formatearFecha, getNoticias } from "@/lib/noticias"
 
 function resumenPorPalabras(resumen: string) {
@@ -18,7 +18,7 @@ function capitalizar(texto: string) {
 export function HomeAgendaNewsSection() {
   const [eventos, setEventos] = useState<Evento[] | null>(null)
   const [error, setError] = useState(false)
-  const noticias = getNoticias().slice(0, 3)
+  const noticias = getNoticias().slice(0, 4)
 
   useEffect(() => {
     obtenerEventos({ limite: 20, tipos: TIPOS_PUBLICOS })
@@ -27,7 +27,7 @@ export function HomeAgendaNewsSection() {
         setEventos(items
           .filter((evento) => evento.fecha >= hoy)
           .sort((a, b) => a.fecha.localeCompare(b.fecha))
-          .slice(0, 3))
+          .slice(0, 4))
       })
       .catch(() => setError(true))
   }, [])
@@ -66,8 +66,8 @@ export function HomeAgendaNewsSection() {
                         {evento.lugar && <p className="text-sm">{evento.lugar}</p>}
                       </div>
                       <Image
-                        src={LOGOS_AGRUPACION[evento.agrupacion] ?? LOGOS_AGRUPACION.ateneo}
-                        alt={infoAgrupacion(evento.agrupacion).nombre}
+                        src={LOGOS_AGRUPACION[agrupacionesEvento(evento)[0]]}
+                        alt={agrupacionesEvento(evento).map((a) => infoAgrupacion(a).nombre).join(", ")}
                         width={80}
                         height={80}
                         loading="lazy"

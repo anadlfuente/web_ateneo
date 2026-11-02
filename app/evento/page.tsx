@@ -11,7 +11,7 @@ import { ArrowLeft, Calendar, CalendarPlus, Clock, MapPin, Ticket, Navigation, X
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
-  type Evento, obtenerEventos, infoAgrupacion, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS, imagenEvento, urlGoogleCalendar,
+  type Evento, obtenerEventos, infoAgrupacion, agrupacionesEvento, fechaLarga, aISO, urlMaps, rutaImagen, TIPOS, imagenEvento, urlGoogleCalendar,
 } from "@/lib/eventos"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { Dialog, DialogContent, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog"
@@ -74,7 +74,7 @@ function DetalleEvento() {
     )
   }
 
-  const agrupacion = infoAgrupacion(evento.agrupacion)
+  const agrupaciones = agrupacionesEvento(evento).map(infoAgrupacion)
   const cartel = rutaImagen(evento.imagen)
   const imagen = imagenEvento(evento)
   const mapa = urlMaps(evento)
@@ -134,7 +134,7 @@ function DetalleEvento() {
         ) : imagen ? (
           <img
             src={imagen}
-            alt={agrupacion.nombre}
+            alt={agrupaciones.map((a) => a.nombre).join(", ")}
             className="w-full rounded-2xl shadow-xl border border-border"
           />
         ) : null}
@@ -142,9 +142,11 @@ function DetalleEvento() {
         {/* Información */}
         <div className={cartel ? "" : "max-w-3xl"}>
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${agrupacion.badge}`}>
-              {agrupacion.nombre}
-            </span>
+            {agrupaciones.map((info) => (
+              <span key={info.nombre} className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${info.badge}`}>
+                {info.nombre}
+              </span>
+            ))}
             <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-muted text-muted-foreground">
               {TIPOS[evento.tipo] ?? evento.tipo}
             </span>

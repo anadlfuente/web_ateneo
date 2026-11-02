@@ -10,7 +10,7 @@ import { MiniCalendario } from "@/components/mini-calendario"
 import { RehearsalSection, type Ensayo } from "@/components/rehearsal-schedule"
 import {
   type Evento, type AgrupacionId,
-  AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, imagenEvento, aISO, fechaLarga, urlMaps,
+  AGRUPACIONES, TIPOS, obtenerEventos, infoAgrupacion, agrupacionesEvento, imagenEvento, aISO, fechaLarga, urlMaps,
 } from "@/lib/eventos"
 import {RedesFlotante} from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
@@ -42,7 +42,7 @@ function LugarMaps({ evento, className = "" }: { evento: Evento; className?: str
 
 // Ficha de un evento: cartel completo a la izquierda e información a la derecha
 function TarjetaEvento({ evento }: { evento: Evento }) {
-  const info = infoAgrupacion(evento.agrupacion)
+  const agrupaciones = agrupacionesEvento(evento).map(infoAgrupacion)
   const yaPasado = evento.fecha < aISO(new Date())
   const fecha = fechaLarga(evento.fecha)
 
@@ -62,9 +62,11 @@ function TarjetaEvento({ evento }: { evento: Evento }) {
       <div className="min-w-0 flex-grow">
         <div className="p-5">
           <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${info.badge}`}>
-              {info.nombre}
-            </span>
+            {agrupaciones.map((info) => (
+              <span key={info.nombre} className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${info.badge}`}>
+                {info.nombre}
+              </span>
+            ))}
             <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-muted text-muted-foreground">
               {TIPOS[evento.tipo] ?? evento.tipo}
             </span>
@@ -162,13 +164,13 @@ export default function CalendarPage() {
 
   // Eventos que se muestran según el filtro de agrupación
   const visibles = useMemo(
-    () => eventos.filter((e) => !filtro || e.agrupacion === filtro),
+    () => eventos.filter((e) => !filtro || agrupacionesEvento(e).includes(filtro)),
     [eventos, filtro]
   )
 
   // Solo se muestran los filtros de agrupaciones que tienen algo este mes
   const agrupacionesDelMes = useMemo(
-    () => (Object.keys(AGRUPACIONES) as AgrupacionId[]).filter((a) => eventos.some((e) => e.agrupacion === a)),
+    () => (Object.keys(AGRUPACIONES) as AgrupacionId[]).filter((a) => eventos.some((e) => agrupacionesEvento(e).includes(a))),
     [eventos]
   )
 
