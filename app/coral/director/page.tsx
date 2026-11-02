@@ -15,7 +15,7 @@ export default function CoralDirectorPage() {
   return (
     <>
       {coralDirector.bloques.map((bloque, i) => (
-        <section key={bloque.titulo} className={fondoSeccion(i + 1)}>
+        <section key={bloque.titulo} className={`${fondoSeccion(i + 1)} ${i === 0 ? "pt-10!" : ""}`}>
           <div className="home-container">
             <BloqueHistoria {...bloque} invertido={i % 2 === 1} />
           </div>

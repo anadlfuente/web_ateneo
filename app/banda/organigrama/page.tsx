@@ -12,9 +12,13 @@ export const metadata: Metadata = {
 
 export default function BandaOrganigramaPage() {
   return (
-    <section className="home-section">
+    <section className="home-section pt-10!">
       <div className="home-container">
-        <Organigram titulo="Organigrama" secciones={banda.organigrama} />
+        <Organigram
+          titulo="Músicos de la Banda Sinfónica"
+          descripcion="Pulsa en cada instrumento para ver quién lo toca."
+          secciones={banda.organigrama}
+        />
       </div>
     </section>
   )
