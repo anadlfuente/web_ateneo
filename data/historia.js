@@ -31,7 +31,7 @@ export const historia = {
     {
       titulo: "Los primeros años en el Recinto Ferial",
       flotante:true,
-      imagen: "/historia/antigua-sala.webp", // ← foto de la antigua sala de ensayos con vosotros tocando
+      imagen: "/historia/recinto-ferial.jpeg", // ← foto de la antigua sala de ensayos con vosotros tocando
       alt: "Ensayo del Ateneo Musical de Mieres en el salón de actos del Recinto Ferial",
       parrafos: [
         "El Ateneo Musical de Mieres comenzó su andadura con sede en el **Recinto Ferial de Mieres**, aprovechando su salón de actos tanto para los ensayos como para la organización de conciertos y encuentros musicales.",
@@ -83,7 +83,7 @@ export const historia = {
     {
       titulo: "Un proyecto en constante crecimiento",
       flotante:true,
-      imagen: "/foto_family.JPG",
+      imagen: "/banner-principal-ordenador.png",
       alt: "Foto de familia de los integrantes del Ateneo Musical de Mieres",
       parrafos: [
         "Desde su fundación en 2018, el Ateneo Musical de Mieres ha experimentado un crecimiento constante, tanto en número de integrantes como de actividades organizadas. Conciertos, pasacalles, festivales, colaboraciones con otras asociaciones, actuaciones solidarias y participación en eventos culturales forman parte de una programación que continúa ampliándose año tras año.",
