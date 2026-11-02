@@ -501,9 +501,9 @@ h3 {
 .hero-banner-shade {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--dark) 78%, transparent) 0%,
-    color-mix(in srgb, var(--dark) 55%, transparent) 80%,
-    color-mix(in srgb, var(--dark) 20%, transparent) 100%
+    color-mix(in srgb, var(--dark) 85%, transparent) 0%,
+    color-mix(in srgb, var(--dark) 72%, transparent) 60%,
+    color-mix(in srgb, var(--dark) 45%, transparent) 100%
   );
 }
 

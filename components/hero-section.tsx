@@ -1,30 +1,29 @@
 import Image from "next/image"
 import Link from "next/link"
 
-// Foto de fondo de la portada
+// Collage de fondo de la portada: uno para ordenador y otro para móvil
 const fotoHero = {
-  src: "/galeria-section/2018-11-17-santa-cecilia/002.webp",
-  alt: "Celebración de Santa Cecilia el 17 de noviembre de 2018",
-  position: "72% center",
+  ordenador: "/banner-principal-ordenador.png",   // 2400 × 1000
+  movil: "/banner-principal-movil.png",           // 1080 × 1350
 }
 
 export function HeroSection() {
   return (
     <section className="hero-banner relative isolate min-h-[33rem] overflow-hidden text-light sm:min-h-[42rem] lg:min-h-[44rem]">
-      {/* Foto de fondo */}
+      {/* Foto de fondo: collage de ordenador o de móvil, con el oscurecido encima */}
       <div className="absolute inset-0">
-        <Image
-          src={fotoHero.src}
-          alt={fotoHero.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: fotoHero.position }}
-        />
-        <div className="hero-banner-shade absolute inset-0" aria-hidden="true" />
+        <picture>
+          {/* A partir de 768 px se usa el collage de ordenador; por debajo, el de móvil */}
+          <source media="(min-width: 768px)" srcSet={fotoHero.ordenador} />
+          <img
+            src={fotoHero.movil}
+            alt=""
+            fetchPriority="high"
+            className="absolute inset-0 z-0 h-full w-full object-cover"
+          />
+        </picture>
+        <div className="hero-banner-shade absolute inset-0 z-[1]" aria-hidden="true" />
       </div>
-
       <div className="hero-foreground pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-[min(42vw,34rem)] md:block" aria-hidden="true">
         <Image
           src="/banda/marco-fondo.png"

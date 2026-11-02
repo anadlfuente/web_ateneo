@@ -6,7 +6,7 @@ export const claxon = {
 
   titulo: "Música para cantar, bailar y recordar",
   logo: {
-  imagen: "/claxon/claxon-logo.png",
+  imagen: "/logos/claxon_boys_logo-no-bg.png",
   alt: "Logo de los Claxon Boys",
   },
 
