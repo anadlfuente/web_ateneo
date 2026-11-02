@@ -203,8 +203,8 @@ export function CookiesPolicy() {
           .
         </p>
         <p>
-          Los contenidos de terceros a los que se acceda desde este sitio web, como redes sociales o
-          plataformas de vídeo, se rigen por sus propias políticas de cookies.
+          Los contenidos de terceros a los que se acceda desde este sitio web, como redes sociales,
+          plataformas de vídeo o servicios de calendario (por ejemplo, Google Calendar), se rigen por sus propias políticas de cookies.
         </p>
       </section>
 
