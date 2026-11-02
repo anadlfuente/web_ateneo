@@ -82,7 +82,7 @@ export function Footer() {
         <section>
           <h2 className="footer-heading">Colabora</h2>
           <a
-            href="https://www.ayto-mieres.es"
+            href="https://www.mieres.es"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Ayuntamiento de Mieres (se abre en una pestaña nueva)"
