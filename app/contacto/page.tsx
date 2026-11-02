@@ -4,6 +4,7 @@ import { ContactSection } from "@/components/contact-section"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
+import { Suspense } from "react"
 
 export default function ContactPage() {
   return (
@@ -19,9 +20,9 @@ export default function ContactPage() {
             {/* Migas de pan */}
                   <MigasDePan items={[{ nombre: "Contacto" }]} />
 
-        <main>
-            <ContactSection />
-        </main>
+        <Suspense fallback={null}>
+          <ContactSection />
+        </Suspense>
       <RedesFlotante />
       <Footer />
     </main>

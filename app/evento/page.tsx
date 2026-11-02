@@ -267,7 +267,7 @@ export default function EventoPage() {
 
       {/* Banner */}
       <PageHero imagen="/banner_2.png" altoMinimo="min-h-[40vh]">
-        <p className="text-white text-5xl md:text-7xl font-serif">Calendario</p>
+        <h1 className="text-white">Calendario</h1>
       </PageHero>
 
       {/* Suspense es necesario para que la página se pueda exportar como estática */}
