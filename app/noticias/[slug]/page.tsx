@@ -17,6 +17,7 @@ import {
 } from "@/lib/noticias"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
+import { CompartirNoticia } from "@/components/compartir-noticia"
 
 // Necesario para exportar la web como estática: genera una página por noticia
 export function generateStaticParams() {
@@ -169,6 +170,8 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
               ))}
             </div>
           )}
+
+          <CompartirNoticia titulo={noticia.titulo} imagen={noticia.imagen}  />
         </div>
       </article>
 

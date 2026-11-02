@@ -121,20 +121,20 @@ const noticias: NoticiaDatos[] = [
     slug: "reportaje-la-nueva-espana",
     titulo: "Una bicefalia que suena bien: el Ateneo Musical de Mieres, con dos directores al frente, busca mayor proyección nacional",
     resumen:
-      "El periódico regional dedica un reportaje para dar a conocer las dos nuevas caras que estarán al frente de su banda sinfónica",
+      "El periódico regional dedica un reportaje a los dos nuevos directores que estarán al frente de la Banda Sinfónica del Ateneo.",
     fecha: "2025-11-21",
     categoria: "Prensa",
     imagen: "/banda/julian-y-marcos.jpg",
     // Sin `imagen`: en las tarjetas saldrá la imagen por defecto con el logo
-    agrupaciones: ["banda-sinfonica", "coral-cantares"],
+    agrupaciones: ["banda-sinfonica"],
     fuente: {
       medio: "La Nueva España",
       url: "https://www.lne.es/cuencas/2025/11/21/bicefalia-suena-ateneo-musical-mieres-123925362.html",   // ← poner aquí el enlace real al artículo
       fecha: "2025-11-21",
     },
     contenido: [
-      "Resumen redactado por el Ateneo, con sus propias palabras.",
-      "Segundo párrafo con los datos principales del reportaje.",
+      "La Nueva España dedica un reportaje a la nueva etapa de la Banda Sinfónica del Ateneo Musical de Mieres, que pasa a contar con dos directores al frente.",
+      "El artículo presenta a ambos directores y recoge el objetivo con el que el Ateneo afronta esta etapa: dar a la banda una mayor proyección a nivel nacional. El reportaje completo puede leerse en la web del periódico.",
     ],
   },
 ]
