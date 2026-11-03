@@ -41,7 +41,7 @@ export const directores = {
         "Además, ha participado en una amplia variedad de actividades artísticas, que van desde la música de cámara hasta la música escenificada. Ha grabado dos discos con la Big Band de Gijón y otros con diferentes grupos, como La Bandina.",
         "También ha desarrollado una importante labor pedagógica, realizando conciertos didácticos en los ciclos «¡Música, Maestro!» del Ayuntamiento de Gijón y con diversos grupos de cámara, con el objetivo de dar a conocer los instrumentos de viento metal en general y el trombón en particular. Asimismo, ha participado como profesor de trombón en los cursos de verano de la Fundación Magistralia.",
         "Ha sido director de la Banda de Música de Mieres, la Banda de Música de Candás y la Banda de Música de Cangas del Narcea.",
-        "Desde 1998 es profesor en el Conservatorio Municipal Profesional «Julián Orbón» de Avilés.",
+        "Actualmente es profesor en el Conservatorio Municipal Profesional «Julián Orbón» de Avilés.",
       ],
     },
   ],
