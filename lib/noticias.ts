@@ -55,7 +55,13 @@ export interface EnlaceContenido {
   texto: string  // texto del botón
 }
 
-export type BloqueContenido = string | ImagenContenido | EnlaceContenido
+/** Una cita destacada, más grande que el texto, como en los periódicos. */
+export interface CitaContenido {
+  cita: string     // la frase destacada (sin comillas, se ponen solas)
+  autor?: string   // opcional: quién lo dice ("Julián, director de la banda")
+}
+
+export type BloqueContenido = string | ImagenContenido | EnlaceContenido | CitaContenido
 
 // ── Cómo se escribe una noticia ──────────────────────────────
 
@@ -64,10 +70,12 @@ interface NoticiaDatos {
   titulo: string
   resumen: string               // 1-2 frases, se usa en tarjetas, listados y buscadores
   fecha: string                 // formato "AAAA-MM-DD"
+  autor?: string                // opcional: quién firma la noticia. Sale junto a la fecha.
   categoria: Categoria
   imagen?: string               // foto de la noticia (opcional). Sale en las tarjetas y flotando en el detalle.
                                 // Si no se pone, en las tarjetas aparece IMAGEN_POR_DEFECTO.
   imagenLado?: "izquierda" | "derecha" // lado de la foto en el detalle (por defecto, derecha)
+    pieImagen?: string            // opcional: pie de foto pequeño debajo de la foto principal
   contenido: BloqueContenido[]  // párrafos, fotos y enlaces, en el orden en que se muestran
   destacada?: boolean           // si es true, aparece grande en la portada
   agrupaciones?: Agrupacion[]   // formaciones relacionadas (puede haber varias o ninguna)
@@ -86,16 +94,18 @@ const noticias: NoticiaDatos[] = [
     slug: "estrenamos-web-2026",
     titulo: "El Ateneo Musical de Mieres estrena página web",
     resumen:
-      "El Ateneo Musical de Mieres presenta su nueva web, un espacio para conocer su historia, sus agrupaciones y toda su actividad musical.",
+      "¡El Ateneo Musical de Mieres estrena página web!",
     fecha: "2026-11-10",
+    autor: "Gerardo Rodríguez Suárez",
     categoria: "Noticias",
     imagen: "/banda/Marco.JPG",
     destacada: true,
     agrupaciones: [],
     contenido: [
-      "El Ateneo Musical de Mieres estrena su página web oficial, un nuevo punto de encuentro para músicos, socios, familias y para todas las personas que siguen la vida musical de Mieres. La web nace con la intención de acercar la asociación al público y de reunir en un solo lugar su trayectoria y su actividad.",
-      "En ella se puede recorrer la historia del Ateneo desde sus orígenes con la Banda Sinfónica, y conocer las agrupaciones que han ido creciendo a su alrededor: la Coral Cantares, la Charanga New Paentamala y los Claxon Boys. Además, la web incluye el calendario de conciertos y actividades, una sección de noticias, una galería de fotografías y la posibilidad de contactar y hacerse socio.",
-      "Con este estreno, el Ateneo da un paso más para compartir su música y su historia con Mieres y con todo aquel que quiera acercarse. La web se irá actualizando con nuevos contenidos, fotos y próximas citas.",
+      "El Ateneo Musical de Mieres da un nuevo paso en su compromiso con la cultura y la música con el lanzamiento de su nueva página web.",
+      "Este espacio digital nace con el objetivo de acercar nuestra actividad a todos los públicos, compartir nuestras novedades, conciertos y proyectos, y dar a conocer el trabajo de las agrupaciones que forman parte de nuestra asociación. Además, la web abre una vía de contacto directo con la asociación y ofrece la posibilidad de hacerse socio, para que quien lo desee pueda formar parte de su historia y acompañarla en sus próximos pasos. ",
+      "Desde nuestra fundación en 2018, seguimos creciendo gracias al esfuerzo y la ilusión de nuestros músicos, socios y colaboradores.",
+      {cita: "¡Os invitamos a descubrir nuestra nueva web y a seguir formando parte de esta gran familia musical!"}
     ],
   },
   {
@@ -126,6 +136,7 @@ const noticias: NoticiaDatos[] = [
     categoria: "Prensa",
     imagen: "/banda/julian-y-marcos.jpg",
     // Sin `imagen`: en las tarjetas saldrá la imagen por defecto con el logo
+    pieImagen: "Julián y Marcos, directores de la Banda Sinfónica. Foto: J.R. Viejo",
     agrupaciones: ["banda-sinfonica"],
     fuente: {
       medio: "La Nueva España",
@@ -134,7 +145,7 @@ const noticias: NoticiaDatos[] = [
     },
     contenido: [
       "La Nueva España dedica un reportaje a la nueva etapa de la Banda Sinfónica del Ateneo Musical de Mieres, que pasa a contar con dos directores al frente.",
-      "El artículo presenta a ambos directores y recoge el objetivo con el que el Ateneo afronta esta etapa: dar a la banda una mayor proyección a nivel nacional. El reportaje completo puede leerse en la web del periódico.",
+      "El artículo presenta a ambos directores y recoge el objetivo con el que el Ateneo afronta esta etapa: dar a la banda una mayor proyección a nivel nacional. El reportaje completo puede leerse en la web de La Nueva España",
     ],
   },
 ]

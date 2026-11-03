@@ -108,13 +108,13 @@ export const banda = {
     },
 
     {
-      titulo: "Villafranca de los Caballeros",
+      titulo: "Gira por tierras toledanas",
       flotante: true,
-      imagen: "/historia/villafranca.jpg", // ← añade esta foto
+      imagen: "/galeria-section/2026-05-01-santa-cruz-de-la-zarza/001.webp", // ← añade esta foto
       alt: "La Banda Sinfónica del Ateneo Musical de Mieres en Villafranca de los Caballeros",
       parrafos: [
-        "En 2026, la banda volvió a salir de Asturias para participar en un encuentro musical en **Villafranca de los Caballeros** (Toledo).",
-        "Este viaje reafirmó el compromiso del Ateneo Musical con los intercambios culturales y permitió seguir estrechando relaciones con otras bandas españolas, compartiendo repertorio, experiencias y formas de entender la música de banda.",
+        "En 2026, la banda volvió a salir de Asturias para una pequeña gira por tierras toledanas. El 1 de mayo actuó en **Santa Cruz de la Zarza** y, al día siguiente, participó en un encuentro musical en **Villafranca de los Caballeros**: dos conciertos en dos días que llevaron la música del Ateneo a nuevos públicos.",
+        "Este viaje reafirmó el compromiso del Ateneo Musical con los intercambios culturales y permitió seguir estrechando lazos con otras bandas españolas, compartiendo repertorio, experiencias y formas de entender la música de banda.",
       ],
     },
     {
@@ -133,7 +133,7 @@ export const banda = {
 
   organigrama: [
     { nombre: "Clarinetes", miembros: ["Nacho Fernández López (Concertino)", "Aaron Mompó López", "Alicia Martínez Gutiérrez", "Alma Suárez","Carlos Álvarez Vázquez","Carlos García Rodríguez","Corona Morató Cecchini","Daniela Boto López","Graciela Pozo","Héctor Gil Ortiz","Iñaki de Barutell García","Pablo García González","Pablo Laviana","Paula García Valles","Pilar Sierra García","Sergio Moro Cueva","Soraya Álvarez Ferreras","Gerardo Rodríguez Suárez"] },
-    { nombre: "Flautas", miembros: ["Alba Díaz de Anda", "Alba Fernández Antomil", "Ana de la Fuente","Carmen","Chus Fernández","Miriam González Rodríguez","Mónica","Nora Fariz Muñoz","Pablo Paniagua Álvarez","Simón Garnacho Escayo"] },
+    { nombre: "Flautas", miembros: ["Alba Díaz de Anda", "Alba Fernández Antomil", "Ana de la Fuente","Carmen","Chus Fernández","Miriam González Rodríguez","Mónica Prieto Alonso","Nora Fariz Muñoz","Pablo Paniagua Álvarez","Simón Garnacho Escayo"] },
     { nombre: "Oboes", miembros: ["Clara Suárez Díaz", "Lucia del Casar Cabal"] },
     { nombre: "Saxofones", miembros: ["Ismael Fernández Arboleya","Jesús Martínez Barrial","José María Castillo Rojo","Lola Villa Suárez","Marta Carro Amigo","Pablo Jiménez Nogales","Siria González","Carmen Loriente Medina","Juanjo Ceñal Moral","Pablo Rodríguez"] },
     { nombre: "Trompas", miembros: ["Beatriz Martínez Pardo", "Juan Cecchini Neketan","Yelitza J Piniella Grillet"] },

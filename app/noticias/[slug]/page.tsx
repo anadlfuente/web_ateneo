@@ -60,9 +60,15 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
           <span className="text-sm font-bold uppercase tracking-wider">{noticia.categoria}</span>
         </div>
         <h1 className="font-serif text-4xl md:text-6xl text-white leading-tight mb-3 max-w-4xl">{noticia.titulo}</h1>
-        <time dateTime={noticia.fecha} className="text-white/70 text-sm">
-          {formatearFecha(noticia.fecha)}
-        </time>
+        <p className="text-white/70 text-sm">
+          {noticia.autor && (
+            <>
+              Por <span className="font-semibold text-white">{noticia.autor}</span>
+              <span aria-hidden="true"> · </span>
+            </>
+          )}
+          <time dateTime={noticia.fecha}>{formatearFecha(noticia.fecha)}</time>
+        </p>
       </PageHero>
 
       {/* Migas de pan */}
@@ -89,6 +95,11 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
                   alt={noticia.titulo}
                   className="w-full rounded-2xl object-cover"
                 />
+                {noticia.pieImagen && (
+                  <figcaption className="mt-2 text-xs text-muted-foreground">
+                    {noticia.pieImagen}
+                  </figcaption>
+                )}
               </figure>
             )}
 
@@ -115,6 +126,25 @@ export default async function NoticiaPage({ params }: { params: Promise<{ slug: 
                       {bloque.pie && (
                         <figcaption className="mt-3 text-center text-sm text-muted-foreground">
                           {bloque.pie}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )
+                }
+                // Cita destacada
+                if ("cita" in bloque) {
+                  return (
+                    <figure key={i} className="!my-10 flow-root border-l-4 border-accent-green pl-6 md:pl-8">
+                      <blockquote className="text-2xl md:text-3xl leading-snug font-semibold text-foreground">
+                        <p>
+                          <span aria-hidden="true" className="text-accent-green">“</span>
+                          {bloque.cita}
+                          <span aria-hidden="true" className="text-accent-green">”</span>
+                        </p>
+                      </blockquote>
+                      {bloque.autor && (
+                        <figcaption className="mt-3 text-sm uppercase tracking-wider text-muted-foreground">
+                          — {bloque.autor}
                         </figcaption>
                       )}
                     </figure>
