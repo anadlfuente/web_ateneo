@@ -51,30 +51,24 @@ export default function CharangaPage() {
           </div>
         </div>
         {/* Contratación */}
-        <div className="rounded-2xl bg-primary-blue/15 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="max-w-2xl">
-            <h3 className="text-2xl md:text-3xl font-serif mb-2">
+        <div className="flex flex-col gap-6 rounded-2xl bg-primary-blue/15 p-6 md:flex-row md:items-center md:justify-between md:p-10">
+          <div className="max-w-[60ch]">
+            <h2 className="mb-2">
               ¿Quieres llevar la charanga a tu evento?
-            </h3>
-            <p className="text-base md:text-lg text-muted-foreground">
+            </h2>
+            <p>
               Ponemos música y ambiente en fiestas, celebraciones y todo tipo de eventos.
               Escríbenos por instagram y cuéntanos qué tienes en mente, nosotros te ayudamos.
             </p>
           </div>
-
           <a
             href="https://ig.me/m/charanganewpaentamala"
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0"
+            className="cta-primary shrink-0"
           >
-            <Button
-              size="lg"
-              className="w-full md:w-auto px-8 py-6 text-white font-semibold tracking-wide group bg-primary-blue hover:bg-primary-blue/90"
-            >
-              Contacta con nosotros
-              <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            Contacta con nosotros
+            <span className="sr-only"> (se abre Instagram en una pestaña nueva)</span>
           </a>
         </div>
         <Carrusel fotos={charanga.fotos} />

@@ -49,22 +49,29 @@ export default function ClaxonPage() {
               </p>
             ))}
           </div>
-
-          <div className="clear-both flex justify-center pt-8">
-            <Link href="/#contacto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="px-6 py-5 text-base font-semibold group border-primary-blue text-primary-blue bg-transparent hover:bg-primary-blue hover:text-white"
-              >
-                Contactar
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </div>
         </div>
 
         <Carrusel fotos={claxon.fotos} />
+      </section>
+
+      {/* Llamada a la acción final */}
+      <section className="home-section" aria-labelledby="contratar-final">
+        <div className="home-container">
+          <div className="flex flex-col gap-6 rounded-2xl bg-primary-blue/15 p-6 md:flex-row md:items-center md:justify-between md:p-10">
+            <div className="max-w-[60ch]">
+              <h2 id="contratar-final" className="mb-2">
+                ¿Quieres contar con los Claxon Boys en tu evento?
+              </h2>
+              <p>Cuéntanos qué necesitas y te respondemos por correo.</p>
+            </div>
+            <Link
+              href="/contacto?asunto=contratar&agrupacion=claxon#formulario"
+              className="cta-primary shrink-0"
+            >
+              Contacta con los Claxon Boys
+            </Link>
+          </div>
+        </div>
       </section>
 
       <Footer />
