@@ -17,6 +17,7 @@ node_modules
 # Backend PHP
 api/vendor/
 api/config.php
+config.php
 
 # Web estática generada
 out/

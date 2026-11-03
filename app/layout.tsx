@@ -25,22 +25,12 @@ export const metadata: Metadata = {
   description: 'Ateneo Musical de Mieres: Banda Sinfónica, Coral Cantares, Claxon Boys y Charanga New Paentamala. Música para conciertos, procesiones y fiestas en Asturias. Fundada en 2018.',
   //generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/logo_ateneo.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/logo_ateneo.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/logo_ateneo.png',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/logo_ateneo.png',
-  },
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      ],
+      apple: '/apple-icon.png',
+    },
 }
 
 export default function RootLayout({

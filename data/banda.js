@@ -133,7 +133,7 @@ export const banda = {
 
   organigrama: [
     { nombre: "Clarinetes", miembros: ["Nacho Fernández López (Concertino)", "Aaron Mompó López", "Alicia Martínez Gutiérrez", "Alma Suárez","Carlos Álvarez Vázquez","Carlos García Rodríguez","Corona Morató Cecchini","Daniela Boto López","Graciela Pozo","Héctor Gil Ortiz","Iñaki de Barutell García","Pablo García González","Pablo Laviana","Paula García Valles","Pilar Sierra García","Sergio Moro Cueva","Soraya Álvarez Ferreras","Gerardo Rodríguez Suárez"] },
-    { nombre: "Flautas", miembros: ["Alba Díaz de Anda", "Alba Fernández Antomil", "Ana de la Fuente","Carmen","Chus Fernández","Miriam González Rodríguez","Mónica Prieto Alonso","Nora Fariz Muñoz","Pablo Paniagua Álvarez","Simón Garnacho Escayo"] },
+    { nombre: "Flautas", miembros: ["Alba Díaz de Anda", "Alba Fernández Antomil", "Ana de la Fuente","Carmen Lázaro Alonso","Chus Fernández","Miriam González Rodríguez","Mónica Prieto Alonso","Nora Fariz Muñoz","Pablo Paniagua Álvarez","Simón Garnacho Escayo"] },
     { nombre: "Oboes", miembros: ["Clara Suárez Díaz", "Lucia del Casar Cabal"] },
     { nombre: "Saxofones", miembros: ["Ismael Fernández Arboleya","Jesús Martínez Barrial","José María Castillo Rojo","Lola Villa Suárez","Marta Carro Amigo","Pablo Jiménez Nogales","Siria González","Carmen Loriente Medina","Juanjo Ceñal Moral","Pablo Rodríguez"] },
     { nombre: "Trompas", miembros: ["Beatriz Martínez Pardo", "Juan Cecchini Neketan","Yelitza J Piniella Grillet"] },
