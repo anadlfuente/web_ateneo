@@ -37,7 +37,7 @@ export const banda = {
       alt: "Bandera del Ateneo Musical de Mieres",
       parrafos: [
         "La **Banda Sinfónica** no solo fue la primera agrupación del Ateneo Musical de Mieres, sino también el motor que impulsó el nacimiento del resto de proyectos de la asociación.",
-        "Con el paso de los años fueron incorporándose nuevas formaciones como la **Coral Cantares**, la **New Charanga Paentamala**, **Claxon Boys** y distintos grupos de cámara, compartiendo músicos, recursos e incluso proyectos artísticos.",
+        "Con el paso de los años fueron incorporándose nuevas formaciones como la **Coral Cantares**, la **Charanga New Paentamala**, **Claxon Boys** y distintos grupos de cámara, compartiendo músicos, recursos e incluso proyectos artísticos.",
         "Este modelo de colaboración ha permitido crear un auténtico **ecosistema musical**, en el que numerosos intérpretes participan simultáneamente en varias agrupaciones.",
       ],
     },
