@@ -135,7 +135,7 @@ export const banda = {
     { nombre: "Clarinetes", miembros: ["Nacho Fernández López (Concertino)", "Aaron Mompó López", "Alicia Martínez Gutiérrez", "Alma Suárez","Carlos Álvarez Vázquez","Carlos García Rodríguez","Corona Morató Cecchini","Daniela Boto López","Graciela Pozo","Héctor Gil Ortiz","Iñaki de Barutell García","Pablo García González","Pablo Laviana","Paula García Valles","Pilar Sierra García","Sergio Moro Cueva","Soraya Álvarez Ferreras","Gerardo Rodríguez Suárez"] },
     { nombre: "Flautas", miembros: ["Alba Díaz de Anda", "Alba Fernández Antomil", "Ana de la Fuente","Carmen Lázaro Alonso","Chus Fernández","Miriam González Rodríguez","Mónica Prieto Alonso","Nora Fariz Muñoz","Pablo Paniagua Álvarez","Simón Garnacho Escayo"] },
     { nombre: "Oboes", miembros: ["Clara Suárez Díaz", "Lucia del Casar Cabal"] },
-    { nombre: "Saxofones", miembros: ["Ismael Fernández Arboleya","Jesús Martínez Barrial","José María Castillo Rojo","Lola Villa Suárez","Marta Carro Amigo","Pablo Jiménez Nogales","Siria González","Carmen Loriente Medina","Juanjo Ceñal Moral","Pablo Rodríguez"] },
+    { nombre: "Saxofones", miembros: ["Ismael Fernández Arboleya","Jesús Martínez Barrial","José María Castillo Rojo","Lola Villa Suárez","Marta Carro Amigo","Noe Mayo López","Pablo Jiménez Nogales","Siria González","Carmen Loriente Medina","Juanjo Ceñal Moral","Pablo Rodríguez"] },
     { nombre: "Trompas", miembros: ["Beatriz Martínez Pardo", "Juan Cecchini Neketan","Yelitza J Piniella Grillet"] },
     { nombre: "Trompetas", miembros: ["Diego García Jiménez", "Juan Neira","Laura López Quesada","Mara Moreno Ramos","Marcos Soto Díaz","Mateo Velasco Fernández","Pelayo Herrero Antolín"] },
     { nombre: "Trombones", miembros: ["Marcos Malnero", "Mateo Valdés","Pedro T."] },
@@ -143,6 +143,6 @@ export const banda = {
     { nombre: "Bombardinos y Tubas", miembros: ["Alicia Gutiérrez Rico","Anna J Piniella Grillet", "Pedro Blanco Rodríguez","Boniel Llaneza Carrio","Julián Oliver López"] },
     { nombre: "Violonchelos y Contrabajo", miembros: ["David García Cueto", "Valeria Pérez","Marco Pérez"] },
     { nombre: "Percusión", miembros: ["Clara Sampietro Rafel", "Jose Ramón Vidal","Jaime Montaño Domínguez","Sergio Costa Pesquera","Miriam Casanova Benavent"] },
-    { nombre: "Piano", miembros: ["Hugo Álvarez Llanero"] },
+    { nombre: "Piano", miembros: ["Hugo Álvarez Lanero"] },
   ],
 }
