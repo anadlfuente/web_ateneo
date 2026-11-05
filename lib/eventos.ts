@@ -48,7 +48,7 @@ export const AGRUPACIONES: Record<AgrupacionId, {
     imagen: "/claxon/claxon_boys.jpg",
   },
   charanga: {
-    nombre: "New Charanga Paentamala",
+    nombre: "Charanga New Paentamala",
     badge: "bg-primary-blue text-white",
     chip: "bg-primary-blue/10 text-primary-blue-700 border-primary-blue",
     punto: "bg-primary-blue",
