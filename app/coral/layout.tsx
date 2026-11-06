@@ -26,7 +26,7 @@ export default function CoralLayout({ children }: { children: ReactNode }) {
       <Header />
 
       <main id="contenido">
-        <PageHero imagen="/coral/coral-jovellanos.jpeg" altoMinimo="min-h-[60vh]">
+        <PageHero imagen="/coral/coral-jovellanos.jpeg" altoMinimo="min-h-[60vh]" posicion="50% 10%">
           <h1 className="text-white">Coral Cantares</h1>
         </PageHero>
 

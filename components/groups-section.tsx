@@ -13,9 +13,9 @@ const groups = [
   {
     name: "Coral Cantares",
     description: "Voces unidas por la música y por nuestros cantares de chigre.",
-    image: "/coral/coral_cantares.jpg",
+    image: "/coral/coral-jovellanos.jpeg",
     href: "/coral/historia",
-    members: "20+"
+    members: "15+"
   },
   {
     name: "Claxon Boys",
