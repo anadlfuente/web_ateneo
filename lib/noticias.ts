@@ -95,7 +95,7 @@ const noticias: NoticiaDatos[] = [
     titulo: "El Ateneo Musical de Mieres estrena página web",
     resumen:
       "¡El Ateneo Musical de Mieres estrena página web!",
-    fecha: "2026-11-10",
+    fecha: "2026-11-05",
     autor: "Gerardo Rodríguez Suárez",
     categoria: "Noticias",
     imagen: "/banda/Marco.JPG",
