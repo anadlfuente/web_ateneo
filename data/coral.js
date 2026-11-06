@@ -52,7 +52,7 @@ export const coral = {
       altura: "380px",
       alt: "Cartel de Cantares de Chigre 2024",
       parrafos: [
-        "Además de su repertorio a cuatro voces, la coral participa desde 2023, año en que comenzó la actividad, en **Cantares de Chigre**. Se trata de una iniciativa propia, registrada en Mieres por Pumarada Gascona, S.L., que organizan integrantes de la coral y del Ateneo y que cuenta con el apoyo del **Ayuntamiento de Mieres** a través de la Concejalía de Hostelería y Comercio.",
+        "Además de su repertorio a cuatro voces, la coral participa desde 2023, año en que comenzó la actividad, en Cantares de Chigre. Esta iniciativa la promueve el Ayuntamiento de Mieres a través de la Concejalía de Hostelería y Comercio, y la organizan integrantes de la propia coral y del Ateneo.",
       ],
     },
   ],
