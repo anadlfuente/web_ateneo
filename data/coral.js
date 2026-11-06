@@ -13,7 +13,7 @@ export const coral = {
 
   introduccion: [
     "La **Coral Cantares** nace en 2022 bajo el paraguas del **Ateneo Musical de Mieres**, como un grupo de cantantes aficionados con ganas de compartir su gusto por la música coral. En pocos años se ha hecho un hueco propio en la vida cultural de Mieres.",
-    "Sus primeros pasos estuvieron dirigidos por **Elena Miguélez Civera**, y en la actualidad la dirección corre a cargo de **Miguel Quintana**. La coral trabaja un repertorio a cuatro voces (sopranos, altos, tenores y bajos) y ensaya en la sala pequeña del **Espacio Cultural 19-10**, sede del Ateneo.",
+    "Sus primeros pasos estuvieron dirigidos por **Elena Miguélez Civera**, y en la actualidad la dirección corre a cargo de **Miguel Quintana**. La coral trabaja un repertorio a cuatro voces (sopranos, altos, tenores y bajos) y ensaya en la sala pequeña del **Espacio Cultural 1910**, sede del Ateneo.",
   ],
 
     bloques: [
