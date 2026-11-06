@@ -2,7 +2,8 @@
 // El banner, las pestañas y la llamada final están en app/coral/layout.tsx.
 
 import type { Metadata } from "next"
-import { EnConstruccion } from "@/components/en-construccion"
+import Organigram from "@/components/organigram-section"
+import { coral } from "@/data/coral.js"
 
 export const metadata: Metadata = {
   title: "Organigrama · Coral Cantares",
@@ -10,5 +11,16 @@ export const metadata: Metadata = {
 }
 
 export default function CoralOrganigramaPage() {
-  return <EnConstruccion texto="Pronto podrás conocer aquí a las voces que forman la Coral Cantares." />
+  return (
+    <section className="home-section pt-10!">
+      <div className="home-container">
+        <Organigram
+          titulo="Voces de la Coral Cantares"
+          descripcion="Pulsa en cada cuerda para ver quién la forma."
+          secciones={coral.organigrama}
+          unidad="voces"
+        />
+      </div>
+    </section>
+  )
 }

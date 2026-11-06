@@ -11,9 +11,10 @@ type Props = {
   titulo?: string
   descripcion?: string
   secciones: Section[]
+  unidad?: string
 }
 
-export default function Organigram({ titulo, descripcion, secciones }: Props) {
+export default function Organigram({ titulo, descripcion, secciones, unidad = "músicos" }: Props) {
   return (
     <div className="text-center">
       {titulo && (
@@ -35,8 +36,8 @@ export default function Organigram({ titulo, descripcion, secciones }: Props) {
 
               <span className="rounded-full bg-primary-blue px-2.5 text-sm font-extrabold text-foreground">
                 {sec.miembros.length}
-                <span className="sr-only"> músicos</span>
-              </span>
+                <span className="sr-only"> {unidad}</span>
+                </span>
 
               <ChevronDown
                 className="h-4 w-4 text-foreground transition-transform group-open:rotate-180"
