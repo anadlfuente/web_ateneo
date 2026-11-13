@@ -2,8 +2,7 @@
 // El banner, las pestañas y la llamada final están en app/banda/layout.tsx.
 
 import type { Metadata } from "next"
-import Organigram from "@/components/organigram-section"
-import { banda } from "@/data/banda.js"
+import OrganigramaDB from "@/components/organigrama-db"
 
 export const metadata: Metadata = {
   title: "Organigrama · Banda Sinfónica",
@@ -14,10 +13,10 @@ export default function BandaOrganigramaPage() {
   return (
     <section className="home-section pt-10!">
       <div className="home-container">
-        <Organigram
+        <OrganigramaDB
+          agrupacion="banda"
           titulo="Músicos de la Banda Sinfónica"
           descripcion="Pulsa en cada instrumento para ver quién lo toca."
-          secciones={banda.organigrama}
         />
       </div>
     </section>
