@@ -1,10 +1,11 @@
 // ─────────────────────────────────────────────────────────────
-// FUENTE ÚNICA DE NOTICIAS
-// Para publicar una noticia nueva, solo hay que añadir un objeto
-// a la lista `noticias`. La portada, el listado, la página de
-// detalle y las secciones de cada agrupación se actualizan solos.
+// NOTICIAS
+// Las noticias están en la base de datos y se gestionan desde el
+// panel de administración. Este archivo las pide a api/noticias.php
+// y guarda lo común: categorías, agrupaciones, imágenes y estilos.
 // ─────────────────────────────────────────────────────────────
 
+import { useEffect, useState } from "react"
 import { Trophy, Ticket, FileText, Newspaper, Music, type LucideIcon } from "lucide-react"
 
 // ── Imágenes generales ───────────────────────────────────────
@@ -31,7 +32,7 @@ export const agrupaciones = {
 
 export type Agrupacion = keyof typeof agrupaciones
 
-// ── Fuente externa (noticias basadas en prensa) ──────────────
+// ── Fuentes (noticias basadas en prensa) ─────────────────────
 
 export interface Fuente {
   medio: string   // "La Nueva España"
@@ -39,146 +40,119 @@ export interface Fuente {
   fecha?: string  // fecha del artículo original, "AAAA-MM-DD" (opcional)
 }
 
-// ── Bloques que se pueden poner dentro de `contenido` ────────
-// Además de párrafos de texto (strings), se pueden intercalar:
+// ── Bloques del cuerpo de la noticia ─────────────────────────
+// Cada bloque lleva un `tipo` que dice cómo se pinta.
 
-/** Una foto dentro del cuerpo de la noticia (a ancho completo). */
-export interface ImagenContenido {
-  src: string    // ruta de la foto, preferiblemente en /public/noticias/...
-  alt: string    // descripción breve de la foto (accesibilidad y buscadores)
-  pie?: string   // texto opcional debajo de la foto
-}
+export type BloqueContenido =
+  | { tipo: "parrafo"; texto: string }
+  | { tipo: "subtitulo"; texto: string }
+  | { tipo: "imagen"; src: string; alt: string; pie?: string }
+  | { tipo: "cita"; texto: string; autor?: string }
+  | { tipo: "enlace"; url: string; texto: string }
 
-/** Un enlace destacado (botón) dentro del cuerpo de la noticia. */
-export interface EnlaceContenido {
-  url: string    // dirección a la que lleva
-  texto: string  // texto del botón
-}
+// ── Cómo llegan las noticias del PHP ─────────────────────────
 
-/** Una cita destacada, más grande que el texto, como en los periódicos. */
-export interface CitaContenido {
-  cita: string     // la frase destacada (sin comillas, se ponen solas)
-  autor?: string   // opcional: quién lo dice ("Julián, director de la banda")
-}
-
-export type BloqueContenido = string | ImagenContenido | EnlaceContenido | CitaContenido
-
-// ── Cómo se escribe una noticia ──────────────────────────────
-
-interface NoticiaDatos {
-  slug: string                  // identificador para la URL: /noticias/<slug> (sin tildes ni espacios)
+/** Lo que llega en el listado (sin el cuerpo). */
+interface NoticiaResumenDatos {
+  slug: string
   titulo: string
-  resumen: string               // 1-2 frases, se usa en tarjetas, listados y buscadores
-  fecha: string                 // formato "AAAA-MM-DD"
-  autor?: string                // opcional: quién firma la noticia. Sale junto a la fecha.
+  resumen: string
+  fecha: string                 // "AAAA-MM-DD"
+  autor: string | null
   categoria: Categoria
-  imagen?: string               // foto de la noticia (opcional). Sale en las tarjetas y flotando en el detalle.
-                                // Si no se pone, en las tarjetas aparece IMAGEN_POR_DEFECTO.
-  imagenLado?: "izquierda" | "derecha" // lado de la foto en el detalle (por defecto, derecha)
-    pieImagen?: string            // opcional: pie de foto pequeño debajo de la foto principal
-  contenido: BloqueContenido[]  // párrafos, fotos y enlaces, en el orden en que se muestran
-  destacada?: boolean           // si es true, aparece grande en la portada
-  agrupaciones?: Agrupacion[]   // formaciones relacionadas (puede haber varias o ninguna)
-  fuente?: Fuente               // solo si la noticia resume un artículo de prensa
+  imagen: string | null
+  imagenAlt: string | null      // descripción de la foto principal
+  destacada: boolean
+  agrupaciones: Agrupacion[]
+  fuentes: Fuente[]             // referencias de prensa (puede estar vacía)
 }
 
-// ── Cómo la reciben las páginas (con la imagen ya resuelta) ──
+/** Lo que llega al pedir una noticia concreta. */
+interface NoticiaDatos extends NoticiaResumenDatos {
+  imagenLado: "izquierda" | "derecha"
+  pieImagen: string | null
+  contenido: BloqueContenido[]
+}
 
-export interface Noticia extends Omit<NoticiaDatos, "imagen"> {
+// ── Cómo las reciben las páginas (con la imagen ya resuelta) ──
+
+type ConImagen<T> = Omit<T, "imagen"> & {
   imagen: string              // siempre tiene valor: la propia o la de por defecto
-  tieneImagenPropia: boolean  // true si se añadió una foto en la noticia
+  tieneImagenPropia: boolean  // true si la noticia tiene foto propia
 }
 
-const noticias: NoticiaDatos[] = [
-  {
-    slug: "estrenamos-web-2026",
-    titulo: "El Ateneo Musical de Mieres estrena página web",
-    resumen:
-      "¡El Ateneo Musical de Mieres estrena página web!",
-    fecha: "2026-11-05",
-    autor: "Gerardo Rodríguez Suárez",
-    categoria: "Noticias",
-    imagen: "/banda/Marco.JPG",
-    destacada: true,
-    agrupaciones: [],
-    contenido: [
-      "El Ateneo Musical de Mieres da un nuevo paso en su compromiso con la cultura y la música con el lanzamiento de su nueva página web.",
-      "Este espacio digital nace con el objetivo de acercar nuestra actividad a todos los públicos, compartir nuestras novedades, conciertos y proyectos, y dar a conocer el trabajo de las agrupaciones que forman parte de nuestra asociación. Además, la web abre una vía de contacto directo con la asociación y ofrece la posibilidad de hacerse socio, para que quien lo desee pueda formar parte de su historia y acompañarla en sus próximos pasos. ",
-      "Desde nuestra fundación en 2018, seguimos creciendo gracias al esfuerzo y la ilusión de nuestros músicos, socios y colaboradores.",
-      {cita: "¡Os invitamos a descubrir nuestra nueva web y a seguir formando parte de esta gran familia musical!"}
-    ],
-  },
-  {
-    slug: "loteria-de-navidad-2026",
-    titulo: "Lotería de Navidad 2026",
-    resumen:
-      "💙🎄¡YA ESTÁ AQUÍ LA LOTERÍA DE NAVIDAD DEL ATENEO! 🎄💙",
-    fecha: "2026-11-01",
-    categoria: "Noticias",
-    imagen: "/noticias/cartel-loteria-2026.jpeg",
-    contenido: [
-      "Las participaciones pueden conseguirse en los establecimientos colaboradores de Mieres o a través de cualquiera de los músicos del Ateneo. 🙌",
-      "Cada participación cuesta 5 €: 4 € se juegan y 1 € es un donativo destinado a apoyar económicamente a la asociación y sus proyectos. ✨",
-      "¿Cuál es el punto de venta más cercano? 📍 En el mapa pueden consultarse todos los establecimientos.",
-      {
-        url: "https://maps.google.com/",   // ← poner aquí el enlace real al mapa
-        texto: "Ver puntos de venta en el mapa",
-      },
-      "Gracias por apoyar al Ateneo y ayudar a que siga haciendo música. 🎶 ¡Que nadie se quede sin la suya!",
-    ],
-  },
-  {
-    slug: "reportaje-la-nueva-espana",
-    titulo: "Una bicefalia que suena bien: el Ateneo Musical de Mieres, con dos directores al frente, busca mayor proyección nacional",
-    resumen:
-      "El periódico regional dedica un reportaje a los dos nuevos directores que estarán al frente de la Banda Sinfónica del Ateneo.",
-    fecha: "2025-11-21",
-    categoria: "Prensa",
-    imagen: "/banda/julian-y-marcos.jpg",
-    // Sin `imagen`: en las tarjetas saldrá la imagen por defecto con el logo
-    pieImagen: "Julián y Marcos, directores de la Banda Sinfónica. Foto: J.R. Viejo",
-    agrupaciones: ["banda-sinfonica"],
-    fuente: {
-      medio: "La Nueva España",
-      url: "https://www.lne.es/cuencas/2025/11/21/bicefalia-suena-ateneo-musical-mieres-123925362.html",   // ← poner aquí el enlace real al artículo
-      fecha: "2025-11-21",
-    },
-    contenido: [
-      "La Nueva España dedica un reportaje a la nueva etapa de la Banda Sinfónica del Ateneo Musical de Mieres, que pasa a contar con dos directores al frente.",
-      "El artículo presenta a ambos directores y recoge el objetivo con el que el Ateneo afronta esta etapa: dar a la banda una mayor proyección a nivel nacional. El reportaje completo puede leerse en la web de La Nueva España",
-    ],
-  },
-]
-
-// ── Funciones de acceso ──────────────────────────────────────
+export type NoticiaResumen = ConImagen<NoticiaResumenDatos>
+export type Noticia = ConImagen<NoticiaDatos>
 
 /** Rellena la imagen por defecto si la noticia no tiene foto propia. */
-function completar(n: NoticiaDatos): Noticia {
-  return {
-    ...n,
-    imagen: n.imagen ?? IMAGEN_POR_DEFECTO,
-    tieneImagenPropia: Boolean(n.imagen),
-  }
+function completar<T extends { imagen: string | null }>(n: T): ConImagen<T> {
+  return { ...n, imagen: n.imagen ?? IMAGEN_POR_DEFECTO, tieneImagenPropia: Boolean(n.imagen) }
 }
 
-/** Todas las noticias, de la más reciente a la más antigua. */
-export function getNoticias(): Noticia[] {
-  return noticias.map(completar).sort((a, b) => b.fecha.localeCompare(a.fecha))
+// ── Pedir las noticias al PHP ────────────────────────────────
+
+// Dirección del PHP. En local se pone en .env.local; en el hosting es "/api"
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "/api"
+
+/** Noticias publicadas, de la más reciente a la más antigua (sin el cuerpo). */
+export async function obtenerNoticias(params: { agrupacion?: Agrupacion; limite?: number } = {}): Promise<NoticiaResumen[]> {
+  const query = new URLSearchParams()
+  if (params.agrupacion) query.set("agrupacion", params.agrupacion)
+  if (params.limite) query.set("limite", String(params.limite))
+
+  const res = await fetch(`${API_URL}/noticias.php?${query}`)
+  if (!res.ok) throw new Error("No se pudieron cargar las noticias")
+  const datos: NoticiaResumenDatos[] = await res.json()
+  return datos.map(completar)
 }
 
-/** Una noticia concreta por su slug (o undefined si no existe). */
-export function getNoticia(slug: string): Noticia | undefined {
-  const n = noticias.find((n) => n.slug === slug)
-  return n ? completar(n) : undefined
+/** Una noticia completa por su slug, o null si no existe o no está publicada. */
+export async function obtenerNoticia(slug: string): Promise<Noticia | null> {
+  const res = await fetch(`${API_URL}/noticias.php?slug=${encodeURIComponent(slug)}`)
+  if (res.status === 404) return null
+  if (!res.ok) throw new Error("No se pudo cargar la noticia")
+  const datos: NoticiaDatos = await res.json()
+  return completar(datos)
 }
 
 /**
- * Noticias de una agrupación, de la más reciente a la más antigua.
- * `limite` es opcional: getNoticiasPorAgrupacion("coral-cantares", 3) → las 3 últimas.
+ * Dirección de la página de una noticia.
+ * En el hosting: /noticias/<slug>/ (la atiende el PHP del paso 5).
+ * En local con `next dev` esa ruta no existe, así que se usa /noticias/ver/?slug=<slug>.
  */
-export function getNoticiasPorAgrupacion(agrupacion: Agrupacion, limite?: number): Noticia[] {
-  const filtradas = getNoticias().filter((n) => n.agrupaciones?.includes(agrupacion))
-  return limite ? filtradas.slice(0, limite) : filtradas
+export function urlNoticia(slug: string): string {
+  return process.env.NODE_ENV === "development"
+    ? `/noticias/ver/?slug=${encodeURIComponent(slug)}`
+    : `/noticias/${slug}/`
+}
+
+// ── Para usar en los componentes ─────────────────────────────
+
+/**
+ * Carga las noticias al abrir la página.
+ * `noticias` es null mientras carga; `error` es true si el PHP falla.
+ * Ejemplo: const { noticias, error } = useNoticias({ limite: 4 })
+ */
+export function useNoticias(params: { agrupacion?: Agrupacion; limite?: number } = {}) {
+  const { agrupacion, limite } = params
+  const [noticias, setNoticias] = useState<NoticiaResumen[] | null>(null)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    let cancelado = false
+    obtenerNoticias({ agrupacion, limite })
+      .then((datos) => {
+        if (!cancelado) setNoticias(datos)
+      })
+      .catch(() => {
+        if (!cancelado) setError(true)
+      })
+    return () => {
+      cancelado = true
+    }
+  }, [agrupacion, limite])
+
+  return { noticias, error }
 }
 
 /** Convierte "2026-02-10" en "10 de febrero de 2026" sin desfases de zona horaria. */

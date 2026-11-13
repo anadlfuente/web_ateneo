@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { aISO, fechaLarga, infoAgrupacion, agrupacionesEvento, LOGOS_AGRUPACION, obtenerEventos, TIPOS_PUBLICOS, type Evento } from "@/lib/eventos"
-import { formatearFecha, getNoticias } from "@/lib/noticias"
+import { formatearFecha, useNoticias, urlNoticia } from "@/lib/noticias"
 
 function resumenPorPalabras(resumen: string) {
   const palabras = resumen.trim().split(/\s+/)
@@ -18,7 +18,7 @@ function capitalizar(texto: string) {
 export function HomeAgendaNewsSection() {
   const [eventos, setEventos] = useState<Evento[] | null>(null)
   const [error, setError] = useState(false)
-  const noticias = getNoticias().slice(0, 4)
+  const { noticias, error: errorNoticias } = useNoticias({ limite: 4 })
 
   useEffect(() => {
     obtenerEventos({ limite: 20, tipos: TIPOS_PUBLICOS })
@@ -83,17 +83,28 @@ export function HomeAgendaNewsSection() {
             </Link>
           </div>
 
-          <div>
+                    <div>
             <p className="mb-4 font-semibold">Últimas noticias</p>
-            {noticias.length > 0 ? (
+            {noticias === null && !errorNoticias && (
+              <p role="status" aria-live="polite">Cargando noticias…</p>
+            )}
+            {errorNoticias && (
+              <p role="alert" className="home-card p-4">
+                No se han podido cargar las noticias. Inténtalo de nuevo más tarde.
+              </p>
+            )}
+            {noticias?.length === 0 && (
+              <p className="home-card p-4">No hay noticias publicadas.</p>
+            )}
+            {noticias && noticias.length > 0 && (
               <ul className="space-y-3">
                 {noticias.map((noticia) => (
                   <li key={noticia.slug}>
-                    <Link href={`/noticias/${noticia.slug}`} className="home-card home-card-link grid grid-cols-[5.5rem_1fr] gap-3 p-3 sm:grid-cols-[7rem_1fr]">
+                    <a href={urlNoticia(noticia.slug)} className="home-card home-card-link grid grid-cols-[5.5rem_1fr] gap-3 p-3 sm:grid-cols-[7rem_1fr]">
                       <div className="relative aspect-square overflow-hidden">
                         <Image
                           src={noticia.imagen}
-                          alt={noticia.tieneImagenPropia ? `Imagen de la noticia: ${noticia.titulo}` : ""}
+                          alt={noticia.tieneImagenPropia ? (noticia.imagenAlt || `Imagen de la noticia: ${noticia.titulo}`) : ""}
                           fill
                           sizes="112px"
                           loading="lazy"
@@ -105,12 +116,10 @@ export function HomeAgendaNewsSection() {
                         <h3 className="mb-1 font-semibold">{noticia.titulo}</h3>
                         <p className="text-sm">{resumenPorPalabras(noticia.resumen)}</p>
                       </div>
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p className="home-card p-4">No hay noticias publicadas.</p>
             )}
             <Link href="/noticias" className="text-link mt-4 inline-flex min-h-11 items-center gap-2 font-semibold">
               Ver todas las noticias <ArrowRight className="h-4 w-4" aria-hidden="true" />

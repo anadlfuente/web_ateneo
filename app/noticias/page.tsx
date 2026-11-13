@@ -3,19 +3,19 @@
 // Listado completo de noticias con paginación y filtro por categoría.
 
 import { useState } from "react"
-import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
-import { getNoticias, formatearFecha, BANNER_NOTICIAS, type Categoria } from "@/lib/noticias"
+import { useNoticias, urlNoticia, formatearFecha, BANNER_NOTICIAS, type Categoria } from "@/lib/noticias"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
 
 const POR_PAGINA = 6
 
 export default function NoticiasPage() {
-  const todas = getNoticias()
+  const { noticias, error } = useNoticias()
+  const todas = noticias ?? []
   const categorias = Array.from(new Set(todas.map((n) => n.categoria)))
 
   const [categoria, setCategoria] = useState<Categoria | "Todas">("Todas")
@@ -68,8 +68,8 @@ export default function NoticiasPage() {
           <div className="space-y-10">
             {actuales.map((item) => (
               <article key={item.slug} className="group border-b border-border pb-10">
-                <Link
-                  href={`/noticias/${item.slug}`}
+                <a
+                  href={urlNoticia(item.slug)}
                   className="grid md:grid-cols-[2fr_3fr] gap-6 md:gap-10 items-center"
                 >
                   {/* Foto con su proporción real (sin recortes), con un límite de altura */}
@@ -77,7 +77,7 @@ export default function NoticiasPage() {
                       <div className="overflow-hidden rounded-2xl">
                         <img
                           src={item.imagen}
-                          alt={item.titulo}
+                          alt={item.imagenAlt || item.titulo}
                           loading="lazy"
                           className="block w-auto h-auto max-w-full max-h-[20rem] group-hover:scale-105 transition-transform duration-500"
                         />
@@ -90,10 +90,10 @@ export default function NoticiasPage() {
                       <span>{item.categoria}</span>
                       <span>•</span>
                       <time dateTime={item.fecha}>{formatearFecha(item.fecha)}</time>
-                      {item.fuente && (
+                       {item.fuentes.length > 0 && (
                         <>
                           <span>•</span>
-                          <span>{item.fuente.medio}</span>
+                          <span>{item.fuentes.map((f) => f.medio).join(", ")}</span>
                         </>
                       )}
                     </div>
@@ -108,11 +108,19 @@ export default function NoticiasPage() {
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
-                </Link>
+                </a>
               </article>
             ))}
 
-            {actuales.length === 0 && (
+            {noticias === null && !error && (
+              <p role="status" aria-live="polite" className="text-center text-muted-foreground">Cargando noticias…</p>
+            )}
+            {error && (
+              <p role="alert" className="text-center text-muted-foreground">
+                No se han podido cargar las noticias. Inténtalo de nuevo más tarde.
+              </p>
+            )}
+            {noticias && actuales.length === 0 && (
               <p className="text-center text-muted-foreground">No hay noticias en esta categoría.</p>
             )}
           </div>

@@ -1,0 +1,12 @@
+# ── Web del Ateneo Musical de Mieres ──
+
+Options -Indexes
+RewriteEngine On
+
+# Noticias: /noticias/<slug>/ la atiende el PHP que escribe el contenido para buscadores.
+# /noticias/ver/ es la página real y no se toca.
+RewriteCond %{REQUEST_URI} !^/noticias/ver/
+RewriteRule ^noticias/([a-z0-9-]+)/?$ api/noticia-pagina.php?slug=$1 [L,QSA]
+
+# Mapa del sitio generado desde la base de datos
+RewriteRule ^sitemap\.xml$ api/sitemap.php [L]

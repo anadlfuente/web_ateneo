@@ -10,6 +10,8 @@ return [
 
     'cors_origins' => ['http://localhost:3000'],
 
+    // Dirección de la web (para enlaces completos en el mapa del sitio y al compartir)
+    'site_url' => 'http://localhost:8000',
     'admin_user'          => 'ateneo',
     'admin_password_hash' => '',
 
