@@ -4,13 +4,24 @@
 function config(): array {
     static $config = null;
     if ($config === null) {
-        $config = file_exists(__DIR__ . '/eventos-config.php')
-            ? require __DIR__ . '/eventos-config.php'
-            : require __DIR__ . '/eventos-config.local.php';
+        // Se usa el primero que exista:
+        // 1. Fuera de la carpeta pública, junto al config.php del correo (hosting)
+        // 2. Dentro de api/ (donde estaba antes en el hosting)
+        // 3. El de local
+        $opciones = [
+            __DIR__ . '/../../config/eventos-config.php',
+            __DIR__ . '/eventos-config.php',
+            __DIR__ . '/eventos-config.local.php',
+        ];
+        foreach ($opciones as $ruta) {
+            if (file_exists($ruta)) {
+                $config = require $ruta;
+                break;
+            }
+        }
     }
     return $config;
 }
-
 function db(): PDO {
     static $pdo = null;
     if ($pdo === null) {
