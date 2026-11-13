@@ -108,8 +108,7 @@ foreach ($contenido as $bloque) {
             $cuerpo .= '<p>' . e($bloque['texto'] ?? '') . '</p>';
             break;
         case 'subtitulo':
-            $cuerpo .= '<h2 class="text-2xl font-bold">' . e($bloque['texto'] ?? '') . '</h2>';
-            break;
+            $cuerpo .= '<h2 class="text-xl font-bold">' . e($bloque['texto'] ?? '') . '</h2>';            break;
         case 'cita':
             $cuerpo .= '<blockquote><p>' . e($bloque['texto'] ?? '') . '</p>'
                      . (!empty($bloque['autor']) ? '<footer>— ' . e($bloque['autor']) . '</footer>' : '')

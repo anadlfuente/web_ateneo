@@ -87,9 +87,10 @@
   --color-red-400: color-mix(in srgb, var(--light) 60%, var(--dark));
   --color-red-500: color-mix(in srgb, var(--light) 50%, var(--dark));
   --color-red-600: color-mix(in srgb, var(--light) 40%, var(--dark));
-  --color-red-700: color-mix(in srgb, var(--light) 30%, var(--dark));
+  --color-error: color-mix(in srgb, var(--light) 30%, var(--dark));
   --color-red-800: color-mix(in srgb, var(--light) 20%, var(--dark));
   --color-red-900: color-mix(in srgb, var(--light) 10%, var(--dark));
+  --color-error: #b3261e;
   --color-green-50: color-mix(in srgb, var(--light) 96%, var(--dark));
   --color-green-100: color-mix(in srgb, var(--light) 90%, var(--dark));
   --color-green-200: color-mix(in srgb, var(--light) 80%, var(--dark));

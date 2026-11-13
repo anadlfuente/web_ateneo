@@ -9,6 +9,7 @@ import { Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react"
+import { NoticiaCuerpo } from "@/components/noticia-cuerpo"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
@@ -18,7 +19,6 @@ import {
   urlNoticia,
   formatearFecha,
   estiloCategoria,
-  agrupaciones,
   BANNER_NOTICIAS,
   type Noticia,
 } from "@/lib/noticias"
@@ -94,10 +94,6 @@ function DetalleNoticia() {
 
   const Icono = estiloCategoria[noticia.categoria].icono
 
-  // Lado de la foto flotante (por defecto, derecha)
-  const claseLado =
-    noticia.imagenLado === "izquierda" ? "md:float-left md:mr-8" : "md:float-right md:ml-8"
-
   // Otras noticias recientes para el final de la página
   const relacionadas = (recientes ?? []).filter((n) => n.slug !== noticia.slug).slice(0, 3)
 
@@ -135,138 +131,7 @@ function DetalleNoticia() {
             Volver a noticias
           </Link>
 
-          {/* flow-root: hace que todo lo que va después empiece debajo de la foto flotante */}
-          <div className="flow-root">
-            {/* Foto de la noticia flotando a un lado (solo si tiene una propia) */}
-            {noticia.tieneImagenPropia && (
-              <figure className={`mb-6 md:w-[45%] ${claseLado}`}>
-                <img
-                  src={noticia.imagen}
-                  alt={noticia.imagenAlt || noticia.titulo}
-                  className="w-full rounded-2xl object-cover"
-                />
-                {noticia.pieImagen && (
-                  <figcaption className="mt-2 text-xs text-muted-foreground">
-                    {noticia.pieImagen}
-                  </figcaption>
-                )}
-              </figure>
-            )}
-
-            <p className="text-xl text-foreground/80 leading-relaxed mb-8 font-serif">{noticia.resumen}</p>
-
-            {/* Bloques del cuerpo, en el orden en que están en `contenido` */}
-            <div className="space-y-6 text-base leading-relaxed text-foreground">
-              {noticia.contenido.map((bloque, i) => {
-                switch (bloque.tipo) {
-                  case "parrafo":
-                    return <p key={i}>{bloque.texto}</p>
-
-                  case "subtitulo":
-                    return (
-                      <h2 key={i} className="!mt-10 text-2xl md:text-3xl font-bold text-foreground">
-                        {bloque.texto}
-                      </h2>
-                    )
-
-                  // Foto a ancho completo (clear-both: siempre debajo de la foto flotante)
-                  case "imagen":
-                    return (
-                      <figure key={i} className="!my-10 clear-both">
-                        <img
-                          src={bloque.src}
-                          alt={bloque.alt}
-                          loading="lazy"
-                          className="w-full rounded-2xl object-cover"
-                        />
-                        {bloque.pie && (
-                          <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-                            {bloque.pie}
-                          </figcaption>
-                        )}
-                      </figure>
-                    )
-
-                  // Cita destacada
-                  case "cita":
-                    return (
-                      <figure key={i} className="!my-10 flow-root border-l-4 border-accent-green pl-6 md:pl-8">
-                        <blockquote className="text-2xl md:text-3xl leading-snug font-semibold text-foreground">
-                          <p>
-                            <span aria-hidden="true" className="text-accent-green">“</span>
-                            {bloque.texto}
-                            <span aria-hidden="true" className="text-accent-green">”</span>
-                          </p>
-                        </blockquote>
-                        {bloque.autor && (
-                          <figcaption className="mt-3 text-sm uppercase tracking-wider text-muted-foreground">
-                            — {bloque.autor}
-                          </figcaption>
-                        )}
-                      </figure>
-                    )
-
-                  // Enlace destacado (botón)
-                  case "enlace":
-                    return (
-                      <p key={i}>
-                        <a
-                          href={bloque.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-accent text-white text-base font-semibold hover:bg-accent/90 transition-colors"
-                        >
-                          {bloque.texto}
-                          <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                        </a>
-                      </p>
-                    )
-
-                  default:
-                    return null
-                }
-              })}
-            </div>
-          </div>
-
-          {/* Fuentes de prensa: solo aparecen si la noticia tiene alguna */}
-          {noticia.fuentes.length > 0 && (
-            <div className="mt-12 border-t border-border pt-6 text-sm">
-              <p className="font-semibold mb-2">{noticia.fuentes.length === 1 ? "Fuente" : "Fuentes"}</p>
-              <ul className="space-y-1">
-                {noticia.fuentes.map((f) => (
-                  <li key={f.url}>
-                    {f.medio}
-                    {f.fecha && ` (${formatearFecha(f.fecha)})`}
-                    {" – "}
-                    <a
-                      href={f.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-semibold text-accent hover:text-accent/80"
-                    >
-                      Leer noticia completa<span className="sr-only"> en {f.medio}</span>
-                      <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Agrupaciones relacionadas */}
-          {noticia.agrupaciones.length > 0 && (
-            <div className="mt-8 flex flex-wrap gap-2">
-              {noticia.agrupaciones.map((a) => (
-                <span
-                  key={a}
-                  className="px-3 py-1 rounded-full border border-border text-xs font-semibold uppercase tracking-wider text-muted-foreground"
-                >
-                  {agrupaciones[a]?.nombre ?? a}
-                </span>
-              ))}
-            </div>
-          )}
+                    <NoticiaCuerpo {...noticia} imagen={noticia.tieneImagenPropia ? noticia.imagen : null} />
 
           <CompartirNoticia titulo={noticia.titulo} imagen={noticia.imagen} />
         </div>

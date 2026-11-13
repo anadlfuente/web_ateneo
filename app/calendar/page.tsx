@@ -239,7 +239,7 @@ export default function CalendarPage() {
         </div>
 
         {error && (
-          <p className="mb-6 p-4 rounded-2xl bg-red-50 text-red-700 text-sm">
+          <p className="mb-6 p-4 rounded-2xl bg-red-50 text-error text-sm">
             No hemos podido cargar los eventos. Inténtalo de nuevo en unos minutos.
           </p>
         )}

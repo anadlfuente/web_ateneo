@@ -86,13 +86,21 @@ export type Noticia = ConImagen<NoticiaDatos>
 
 /** Rellena la imagen por defecto si la noticia no tiene foto propia. */
 function completar<T extends { imagen: string | null }>(n: T): ConImagen<T> {
-  return { ...n, imagen: n.imagen ?? IMAGEN_POR_DEFECTO, tieneImagenPropia: Boolean(n.imagen) }
-}
+  return { ...n, imagen: n.imagen ? urlArchivo(n.imagen) : IMAGEN_POR_DEFECTO, tieneImagenPropia: Boolean(n.imagen) }}
 
 // ── Pedir las noticias al PHP ────────────────────────────────
 
 // Dirección del PHP. En local se pone en .env.local; en el hosting es "/api"
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "/api"
+
+// Las fotos subidas desde el panel están en /uploads/ del servidor PHP.
+// En el hosting es la misma web; en local están en localhost:8000, no en localhost:3000.
+const ORIGEN_PHP = /^https?:\/\//.test(API_URL) ? new URL(API_URL).origin : ""
+
+/** Dirección de una foto, que funciona igual en local y en el hosting. */
+export function urlArchivo(ruta: string): string {
+  return ruta.startsWith("/uploads/") ? ORIGEN_PHP + ruta : ruta
+}
 
 /** Noticias publicadas, de la más reciente a la más antigua (sin el cuerpo). */
 export async function obtenerNoticias(params: { agrupacion?: Agrupacion; limite?: number } = {}): Promise<NoticiaResumen[]> {

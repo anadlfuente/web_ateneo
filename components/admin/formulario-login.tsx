@@ -72,13 +72,13 @@ export function FormularioLogin({ alEntrar }: { alEntrar: () => void }) {
         </div>
 
         {error && (
-          <p role="alert" className="text-sm font-semibold text-red-700">{error}</p>
+          <p role="alert" className="text-sm font-semibold text-error">{error}</p>
         )}
 
         <button
           type="submit"
           disabled={enviando}
-          className="w-full min-h-11 rounded-lg bg-accent px-4 font-semibold text-white hover:bg-accent/90 disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="w-full min-h-11 rounded-lg bg-primary-blue px-4 font-semibold text-foreground hover:bg-primary-blue/85 disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           {enviando ? "Entrando…" : "Entrar"}
         </button>
