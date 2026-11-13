@@ -54,7 +54,11 @@ function DetalleNoticia() {
         }
         setNoticia(datos)
         setEstado("ok")
-        document.title = `${datos.titulo} | Ateneo Musical de Mieres`
+                document.title = `${datos.titulo} | Ateneo Musical de Mieres`
+        // Al cargar, Next vuelve a poner la descripción general de la web: se cambia por la de la noticia
+        document
+          .querySelectorAll('meta[name="description"]')
+          .forEach((m) => m.setAttribute("content", datos.resumen))
       })
       .catch(() => setEstado("error"))
   }, [param])
