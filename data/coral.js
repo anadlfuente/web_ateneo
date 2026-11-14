@@ -57,10 +57,4 @@ export const coral = {
     },
   ],
 
-  organigrama: [
-    { nombre: "Sopranos", miembros: ["Marinel Olavarrieta", "Yolanda Peña", "Inmaculada Fueyo", "Yolanda Díaz", "Elena Álvarez García"] },
-    { nombre: "Altos", miembros: ["Diana González", "Rosa Fernández", "Susana Gracia Fernández", "Inés Fernández", "Sofía Gutiérrez"] },
-    { nombre: "Tenores", miembros: ["Iván Díaz Calvo", "José María Martínez Guardo", "Ricardo Fuertes", "Chema Castillo"] },
-    { nombre: "Bajos", miembros: ["Manuel Rodríguez Alonso", "Juaco Yagüe"] },
-  ],
 }

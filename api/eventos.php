@@ -71,7 +71,7 @@ try {
         return $e;
     }, $stmt->fetchAll());
 
-    header('Cache-Control: public, max-age=300');
+    header('Cache-Control: public, max-age=60');
     echo json_encode($eventos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 } catch (Throwable $e) {
     http_response_code(500);

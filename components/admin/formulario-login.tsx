@@ -3,6 +3,7 @@
 // Pantalla de acceso al panel.
 
 import { useState, type FormEvent } from "react"
+import { Eye, EyeOff } from "lucide-react"
 import { iniciarSesion, ErrorAdmin } from "@/lib/admin"
 
 const claseCampo =
@@ -14,6 +15,7 @@ export function FormularioLogin({ alEntrar }: { alEntrar: () => void }) {
   const [contrasena, setContrasena] = useState("")
   const [error, setError] = useState("")
   const [enviando, setEnviando] = useState(false)
+  const [verContrasena, setVerContrasena] = useState(false)
 
   async function enviar(e: FormEvent) {
     e.preventDefault()
@@ -58,17 +60,27 @@ export function FormularioLogin({ alEntrar }: { alEntrar: () => void }) {
 
         <div>
           <label htmlFor="contrasena" className="mb-1 block font-semibold">Contraseña</label>
-          <input
-            id="contrasena"
-            name="contrasena"
-            type="password"
-            autoComplete="current-password"
-            value={contrasena}
-            onChange={(e) => setContrasena(e.target.value)}
-            aria-invalid={Boolean(error) || undefined}
-            className={claseCampo}
-            required
-          />
+           <div className="relative">
+            <input
+              id="contrasena"
+              name="contrasena"
+              type={verContrasena ? "text" : "password"}
+              autoComplete="current-password"
+              value={contrasena}
+              onChange={(e) => setContrasena(e.target.value)}
+              aria-invalid={Boolean(error) || undefined}
+              className={`${claseCampo} pr-12`}
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setVerContrasena((v) => !v)}
+              aria-label={verContrasena ? "Ocultar contraseña" : "Mostrar contraseña"}
+              aria-controls="contrasena"
+              className="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-lg text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"            >
+              {verContrasena ? <EyeOff className="h-5 w-5" aria-hidden="true" /> : <Eye className="h-5 w-5" aria-hidden="true" />}
+            </button>
+          </div>
         </div>
 
         {error && (

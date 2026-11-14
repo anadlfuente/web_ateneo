@@ -16,6 +16,9 @@ exigirMetodo('POST');
 exigirSesion();
 exigirCsrf();
 
+// Carpeta de destino: fotos de noticias o carteles de eventos
+$destino = in_array($_POST['destino'] ?? '', ['noticias', 'eventos'], true) ? $_POST['destino'] : 'noticias';
+
 if (!function_exists('imagecreatetruecolor')) {
     responder(500, ['error' => 'El servidor no puede procesar fotos (falta la extensión GD de PHP).']);
 }
@@ -89,7 +92,7 @@ imagedestroy($origen);
 // ── 5. Guardarla ──
 $raizUploads = __DIR__ . '/../../uploads';
 $sub         = date('Y') . '/' . date('m');
-$carpeta     = "$raizUploads/noticias/$sub";
+$carpeta     = "$raizUploads/$destino/$sub";
 
 if (!is_dir($carpeta) && !mkdir($carpeta, 0755, true)) {
     responder(500, ['error' => 'No se ha podido guardar la foto.']);
@@ -118,7 +121,7 @@ if (!$ok) {
 }
 
 responder(200, [
-    'ruta'  => "/uploads/noticias/$sub/$nombre",
+    'ruta'  => "/uploads/$destino/$sub/$nombre",
     'ancho' => $nuevoAncho,
     'alto'  => $nuevoAlto,
 ]);

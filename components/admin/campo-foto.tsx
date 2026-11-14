@@ -17,9 +17,10 @@ type Props = {
   ruta: string                          // "" si todavía no hay foto
   alCambiar: (ruta: string) => void
   error?: string
+  destino?: "noticias" | "eventos"      // carpeta donde se guarda
 }
 
-export function CampoFoto({ id, etiqueta, ruta, alCambiar, error }: Props) {
+export function CampoFoto({ id, etiqueta, ruta, alCambiar, error, destino = "noticias" }: Props) {
   const [subiendo, setSubiendo] = useState(false)
   const [fallo, setFallo] = useState("")
 
@@ -34,7 +35,7 @@ export function CampoFoto({ id, etiqueta, ruta, alCambiar, error }: Props) {
     setSubiendo(true)
     setFallo("")
     try {
-      const r = await subirImagenAdmin(archivo)
+      const r = await subirImagenAdmin(archivo, destino)
       alCambiar(r.ruta)
     } catch (err) {
       if (err instanceof ErrorAdmin && err.estado === 401) {

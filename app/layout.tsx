@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { DM_Serif_Display, Lato } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ConsentimientoProvider } from "@/components/cookies/consentimiento-provider"
 import { BannerCookies } from "@/components/cookies/banner-cookies"
@@ -45,7 +44,6 @@ export default function RootLayout({
           {children}
           <BannerCookies />
         </ConsentimientoProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

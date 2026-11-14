@@ -46,10 +46,16 @@ export async function peticionAdmin<T>(
 }
 
 /** Envía un archivo al PHP del panel (para las fotos). */
-export async function enviarArchivoAdmin<T>(ruta: string, campo: string, archivo: File): Promise<T> {
+export async function enviarArchivoAdmin<T>(
+  ruta: string,
+  campo: string,
+  archivo: File,
+  extra: Record<string, string> = {},
+): Promise<T> {
   const datos = new FormData()
   datos.append(campo, archivo)
-
+  Object.entries(extra).forEach(([clave, valor]) => datos.append(clave, valor))
+  
   let res: Response
   try {
     res = await fetch(`${API_URL}/admin/${ruta}`, {

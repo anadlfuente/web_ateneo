@@ -1,4 +1,4 @@
-# El código común del panel solo lo usa el propio PHP
-<Files "_sesion.php">
+# Los archivos que empiezan por guion bajo son código común: solo los usa el propio PHP
+<FilesMatch "^_">
   Require all denied
-</Files>
+</FilesMatch>

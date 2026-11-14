@@ -1,6 +1,8 @@
 // Datos y utilidades de eventos, compartidos por la portada,
 // la página del calendario y la página de cada evento.
 
+import { urlArchivo } from "@/lib/noticias"
+
 export type AgrupacionId = "banda" | "coral" | "charanga" | "claxon" | "camara" | "ateneo"
 export type TipoId = "concierto" | "actuacion" | "ensayo" | "actividad"
 
@@ -182,7 +184,7 @@ export function rutaImagen(ruta: string | null | undefined): string | null {
   if (/^https?:\/\//.test(r)) return r
   r = r.replace(/^\/?public\//, "/")
   if (!r.startsWith("/")) r = "/" + r
-  return r
+  return urlArchivo(r)   // los carteles subidos desde el panel, en local, están en el servidor PHP
 }
 
 // Imagen del evento, o la de su agrupación si no tiene cartel

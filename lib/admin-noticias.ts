@@ -61,6 +61,9 @@ export async function borrarNoticiaAdmin(id: number): Promise<void> {
   await peticionAdmin("noticias.php", { metodo: "POST", datos: { accion: "borrar", id } })
 }
 
-export async function subirImagenAdmin(archivo: File): Promise<{ ruta: string; ancho: number; alto: number }> {
-  return enviarArchivoAdmin("subir-imagen.php", "imagen", archivo)
+export async function subirImagenAdmin(
+  archivo: File,
+  destino: "noticias" | "eventos" = "noticias",
+): Promise<{ ruta: string; ancho: number; alto: number }> {
+  return enviarArchivoAdmin("subir-imagen.php", "imagen", archivo, { destino })
 }
