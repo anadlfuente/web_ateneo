@@ -23,5 +23,6 @@ config.php
 out/
 
 # Calendario: contraseña del hosting e imágenes subidas
+api/eventos-config_hostinger.php
 api/eventos-config.php
 uploads/
