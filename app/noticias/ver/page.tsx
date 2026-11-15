@@ -133,8 +133,7 @@ function DetalleNoticia() {
 
                     <NoticiaCuerpo {...noticia} imagen={noticia.tieneImagenPropia ? noticia.imagen : null} />
 
-          <CompartirNoticia titulo={noticia.titulo} imagen={noticia.imagen} />
-        </div>
+          <CompartirNoticia titulo={noticia.titulo} imagen={noticia.imagen} fecha={formatearFecha(noticia.fecha)} />        </div>
       </article>
 
       {/* Otras noticias */}

@@ -7,13 +7,15 @@
 import { useEffect, useState } from "react"
 import { Check, Link2, Mail } from "lucide-react"
 import { FaFacebookF, FaTelegram, FaWhatsapp, FaXTwitter, FaInstagram } from "react-icons/fa6"
+import { generarStory } from "@/lib/story-noticia"
 
 type Props = {
   titulo: string
-  imagen?: string     // foto de la noticia, para compartirla en Instagram desde el móvil
+  imagen?: string     // foto de la noticia, para la imagen de Instagram Historias
+  fecha?: string      // fecha ya escrita, p. ej. "23 de agosto de 2024"
 }
 
-export function CompartirNoticia({ titulo, imagen }: Props) {
+export function CompartirNoticia({ titulo, imagen, fecha }: Props) {
   const [url, setUrl] = useState("")
   const [copiado, setCopiado] = useState(false)
 
@@ -22,20 +24,22 @@ export function CompartirNoticia({ titulo, imagen }: Props) {
   // Imagen preparada para el menú de compartir del móvil (Instagram Historias).
   // Se prepara al cargar la página porque el móvil exige compartir justo al pulsar.
   const [archivo, setArchivo] = useState<File | null>(null)
+  const [avisoStory, setAvisoStory] = useState("")
   useEffect(() => {
-    if (!imagen || typeof navigator.canShare !== "function") return
-    fetch(imagen)
-      .then((res) => res.blob())
+    if (typeof navigator.canShare !== "function") return
+    generarStory({ titulo, fecha, imagen })
       .then((blob) => {
-        const extension = blob.type.split("/")[1] || "jpg"
-        const f = new File([blob], `noticia-ateneo.${extension}`, { type: blob.type })
+        const f = new File([blob], "story-ateneo.png", { type: "image/png" })
         if (navigator.canShare({ files: [f] })) setArchivo(f)
       })
       .catch(() => {})
-  }, [imagen])
+  }, [titulo, fecha, imagen])
 
   const compartirImagen = async () => {
     if (!archivo) return
+    // Se copia el enlace para pegarlo en el sticker «Enlace» de Instagram
+    navigator.clipboard?.writeText(url).catch(() => {})
+    setAvisoStory("Enlace copiado: en Instagram, añade el sticker «Enlace» y pégalo")
     try {
       // title vacío: si no, Instagram solo ofrece Reels y no Historias
       await navigator.share({ files: [archivo], title: "" })
@@ -103,8 +107,7 @@ export function CompartirNoticia({ titulo, imagen }: Props) {
             <button
               type="button"
               onClick={compartirImagen}
-              aria-label="Compartir la imagen de la noticia en Instagram u otras aplicaciones"
-              className={claseBoton}
+              aria-label="Compartir la noticia en Instagram Historias (también copia el enlace)"              className={claseBoton}
             >
               <FaInstagram className="w-4 h-4" aria-hidden="true" />
             </button>
@@ -127,7 +130,7 @@ export function CompartirNoticia({ titulo, imagen }: Props) {
 
       {/* Aviso para todos (también lo lee el lector de pantalla) */}
       <span role="status" className="text-sm text-muted-foreground">
-        {copiado ? "Enlace copiado" : ""}
+        {copiado ? "Enlace copiado" : avisoStory}
       </span>
     </div>
   )
