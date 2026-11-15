@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react"
 
 type Section = {
   nombre: string
-  miembros: string[]
+  miembros: { nombre: string; cargo?: string | null }[]
 }
 
 type Props = {
@@ -48,7 +48,17 @@ export default function Organigram({ titulo, descripcion, secciones, unidad = "m
             {/* Nombres sobre blanco */}
             <ul className="space-y-1 bg-white px-4 py-3 text-left text-foreground/80">
               {sec.miembros.map((m) => (
-                <li key={m}>{m}</li>
+                <li key={m.nombre} className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span>{m.nombre}</span>
+                  {m.cargo && (
+                    <>
+                      <span className="sr-only">, </span>
+                      <span className="rounded-full bg-accent-green/15 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-accent-green">
+                        {m.cargo}
+                      </span>
+                    </>
+                  )}
+                </li>
               ))}
             </ul>
           </details>

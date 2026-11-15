@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react"
 import Organigram from "@/components/organigram-section"
-import { obtenerOrganigrama, nombreConCargo } from "@/lib/organigrama"
+import { obtenerOrganigrama, type Musico } from "@/lib/organigrama"
 
 type Props = {
   agrupacion: "banda" | "coral"
@@ -13,7 +13,7 @@ type Props = {
   unidad?: string
 }
 
-type Seccion = { nombre: string; miembros: string[] }
+type Seccion = { nombre: string; miembros: Musico[] }
 
 export default function OrganigramaDB({ agrupacion, titulo, descripcion, unidad }: Props) {
   const [secciones, setSecciones] = useState<Seccion[] | null>(null)
@@ -24,7 +24,7 @@ export default function OrganigramaDB({ agrupacion, titulo, descripcion, unidad 
     obtenerOrganigrama(agrupacion)
       .then((datos) => {
         if (cancelado) return
-        setSecciones(datos.map((s) => ({ nombre: s.nombre, miembros: s.miembros.map(nombreConCargo) })))
+        setSecciones(datos)
       })
       .catch(() => {
         if (!cancelado) setError(true)
