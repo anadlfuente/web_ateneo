@@ -35,8 +35,8 @@ export default function BandaHistoriaPage() {
               ¿Tocas un instrumento?
             </h2>
             <p className="mb-5">
-              La Banda Sinfónica está abierta a nuevos músicos. Si te apetece formar parte de ella,
-              puedes escribir a través del formulario de contacto.
+              La Banda Sinfónica está abierta a nuevos músicos, en función de las necesidades de cada sección. 
+              Si te apetece formar parte de ella, puedes escribir a través del formulario de contacto indicando tu instrumento.
             </p>
             <Link href={HREF_UNIRSE} className="cta-primary w-full">
               Quiero unirme a la banda
