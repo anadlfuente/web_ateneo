@@ -105,7 +105,8 @@ $cuerpo .= '<div class="space-y-6"><p class="text-xl">' . e($n['resumen']) . '</
 foreach ($contenido as $bloque) {
     switch ($bloque['tipo'] ?? '') {
         case 'parrafo':
-            $cuerpo .= '<p>' . e($bloque['texto'] ?? '') . '</p>';
+            // Lo que va entre **dos asteriscos** sale en negrita
+            $cuerpo .= '<p>' . preg_replace('/\*\*(.+?)\*\*/u', '<strong>$1</strong>', e($bloque['texto'] ?? '')) . '</p>';
             break;
         case 'subtitulo':
             $cuerpo .= '<h2 class="text-xl font-bold">' . e($bloque['texto'] ?? '') . '</h2>';            break;

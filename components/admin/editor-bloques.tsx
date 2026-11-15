@@ -94,7 +94,12 @@ export function EditorBloques({ bloques, alCambiar, errores, alAnunciar }: Props
 
                 <div className="space-y-3">
                   {b.tipo === "parrafo" && (
-                    <Campo id={`${id}-campo`} etiqueta="Texto" error={error}>
+                    <Campo
+                      id={`${id}-campo`}
+                      etiqueta="Texto"
+                      ayuda="Para poner algo en negrita, escríbelo entre dos asteriscos: **así**."
+                      error={error}
+                    >
                       {(p) => (
                         <textarea {...p} rows={5} className={claseCampo} value={b.texto} onChange={(e) => cambiar(i, { texto: e.target.value })} />
                       )}

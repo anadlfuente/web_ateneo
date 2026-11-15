@@ -10,6 +10,7 @@ import {
   type BloqueContenido,
   type Fuente,
 } from "@/lib/noticias"
+import TextoRico from "@/components/text-bold"
 
 type Props = {
   titulo: string
@@ -46,8 +47,13 @@ export function NoticiaCuerpo({
         <div className="space-y-6 text-base leading-relaxed text-foreground">
           {contenido.map((bloque, i) => {
             switch (bloque.tipo) {
+              // Lo que va entre **dos asteriscos** sale en negrita
               case "parrafo":
-                return <p key={i}>{bloque.texto}</p>
+                return (
+                  <p key={i}>
+                    <TextoRico texto={bloque.texto} />
+                  </p>
+                )
 
               case "subtitulo":
                 return (
