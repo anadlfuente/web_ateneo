@@ -12,8 +12,10 @@ import type { Metadata } from "next"
 import { MigasDePan } from "@/components/migas-de-pan"
 
 export const metadata: Metadata = {
-  title: "Claxon Boys",
-}
+  title: 'Claxon Boys | Ateneo Musical de Mieres',
+  description: 'Claxon Boys, formación de Mieres del Ateneo Musical con música popular de los 60 a los 2000: rumba, pasodoble, cumbia y música asturiana para fiestas.',
+  alternates: { canonical: '/claxon/' },
+};
 
 export default function ClaxonPage() {
   return (

@@ -7,9 +7,10 @@ import { coralDirector } from "@/data/director-coral"
 import { fondoSeccion } from "@/lib/fondos"
 
 export const metadata: Metadata = {
-  title: "Director · Coral Cantares",
-  description: "Director de la Coral Cantares del Ateneo Musical de Mieres.",
-}
+  title: 'Director · Coral Cantares | Ateneo Musical de Mieres',
+  description: 'Miguel Quintana Aspra, director de la Coral Cantares del Ateneo Musical de Mieres: formación como violinista y trayectoria musical en Asturias.',
+  alternates: { canonical: '/coral/director/' },
+};
 
 export default function CoralDirectorPage() {
   return (

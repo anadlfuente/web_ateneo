@@ -5,6 +5,13 @@ import { ArrowUpRight, Download, Scale } from "lucide-react"
 import { transparencia } from "@/data/transparencia"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Transparencia | Ateneo Musical de Mieres',
+  description: 'Junta directiva, estatutos y memorias anuales del Ateneo Musical de Mieres: información sobre el funcionamiento de la asociación para socios y vecinos.',
+  alternates: { canonical: '/transparencia/' },
+};
 
 export default function TransparenciaPage() {
   const memorias = [...transparencia.memorias].sort((a, b) => b.year - a.year)

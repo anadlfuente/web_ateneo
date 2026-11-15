@@ -5,9 +5,10 @@ import type { Metadata } from "next"
 import OrganigramaDB from "@/components/organigrama-db"
 
 export const metadata: Metadata = {
-  title: "Organigrama · Banda Sinfónica",
-  description: "Organigrama de la Banda Sinfónica del Ateneo Musical de Mieres.",
-}
+  title: 'Organigrama · Banda Sinfónica | Ateneo Musical de Mieres',
+  description: 'Músicos de la Banda Sinfónica del Ateneo Musical de Mieres organizados por secciones instrumentales. Ensayos los sábados por la mañana en Mieres.',
+  alternates: { canonical: '/banda/organigrama/' },
+};
 
 export default function BandaOrganigramaPage() {
   return (

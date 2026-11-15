@@ -9,9 +9,10 @@ import { fondoSeccion } from "@/lib/fondos"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Coral Cantares",
-  description: "Historia de la Coral Cantares del Ateneo Musical de Mieres.",
-}
+  title: 'Coral Cantares | Ateneo Musical de Mieres',
+  description: 'Historia de la Coral Cantares, coro a cuatro voces del Ateneo Musical de Mieres nacido en 2022 y dirigido por Miguel Quintana. Ensayos los lunes.',
+  alternates: { canonical: '/coral/historia/' },
+};
 
 const HREF_UNIRSE = "/contacto?asunto=coral#contacto"
 

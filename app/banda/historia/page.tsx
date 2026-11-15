@@ -9,9 +9,10 @@ import { fondoSeccion } from "@/lib/fondos"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Banda Sinfónica",
-  description: "Historia de la Banda Sinfónica del Ateneo Musical de Mieres.",
-}
+  title: 'Banda Sinfónica | Ateneo Musical de Mieres',
+  description: 'Historia de la Banda Sinfónica del Ateneo Musical de Mieres, banda de música nacida en 2018 con más de 60 músicos. Conciertos, ensayos y cómo unirse.',
+  alternates: { canonical: '/banda/historia/' },
+};
 
 const HREF_UNIRSE = "/contacto?asunto=banda#contacto"
 

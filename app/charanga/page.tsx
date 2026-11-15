@@ -13,8 +13,10 @@ import type { Metadata } from "next"
 import { MigasDePan } from "@/components/migas-de-pan"
 
 export const metadata: Metadata = {
-  title: "Charanga New Paentamala",
-}
+  title: 'Charanga New Paentamala | Ateneo Musical de Mieres',
+  description: 'Charanga New Paentamala: charanga de Mieres nacida en 2023 para recuperar la antigua Paentamala, con músicos del Ateneo. Música para fiestas y calle.',
+  alternates: { canonical: '/charanga/' },
+};
 
 export default function CharangaPage() {
   return (

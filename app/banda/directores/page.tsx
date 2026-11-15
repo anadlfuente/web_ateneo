@@ -7,9 +7,10 @@ import { directores } from "@/data/directores-banda"
 import { fondoSeccion } from "@/lib/fondos"
 
 export const metadata: Metadata = {
-  title: "Directores · Banda Sinfónica",
-  description: "Directores de la Banda Sinfónica del Ateneo Musical de Mieres.",
-}
+  title: 'Directores · Banda Sinfónica | Ateneo Musical de Mieres',
+  description: 'Trayectoria de Julián Oliver López, director de la Banda Sinfónica del Ateneo Musical de Mieres, y de quienes han dirigido la banda desde 2018.',
+  alternates: { canonical: '/banda/directores/' },
+};
 
 export default function BandaDirectoresPage() {
   return (

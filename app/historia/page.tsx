@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import TextoRico from "@/components/text-bold"
@@ -6,6 +7,12 @@ import { historia } from "@/data/historia"
 import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
+
+export const metadata: Metadata = {
+  title: 'Historia | Ateneo Musical de Mieres',
+  description: 'Historia del Ateneo Musical de Mieres, asociación fundada en 2018 con la Banda Sinfónica y que hoy reúne cuatro agrupaciones musicales en Mieres.',
+  alternates: { canonical: '/historia/' },
+};
 
  // Alterna fondo claro y azul suave para separar visualmente los bloques.
 const fondoSeccion = (i: number) =>

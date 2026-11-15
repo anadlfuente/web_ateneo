@@ -5,9 +5,10 @@ import type { Metadata } from "next"
 import OrganigramaDB from "@/components/organigrama-db"
 
 export const metadata: Metadata = {
-  title: "Organigrama · Coral Cantares",
-  description: "Organigrama de la Coral Cantares del Ateneo Musical de Mieres.",
-}
+  title: 'Organigrama · Coral Cantares | Ateneo Musical de Mieres',
+  description: 'Voces de la Coral Cantares del Ateneo Musical de Mieres repartidas por cuerdas. Coro aficionado a cuatro voces con ensayos los lunes a las 20:00.',
+  alternates: { canonical: '/coral/organigrama/' },
+};
 
 export default function CoralOrganigramaPage() {
   return (

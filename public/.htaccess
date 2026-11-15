@@ -3,6 +3,10 @@
 Options -Indexes
 RewriteEngine On
 
+# Quien entre por www. va a la dirección sin www (una sola dirección por página, mejor para Google)
+RewriteCond %{HTTP_HOST} ^www\.ateneomusicalmieres\.es$ [NC]
+RewriteRule ^(.*)$ https://ateneomusicalmieres.es/$1 [L,R=301]
+
 # Noticias: /noticias/<slug>/ la atiende el PHP que escribe el contenido para buscadores.
 # /noticias/ver/ es la página real y no se toca.
 RewriteCond %{REQUEST_URI} !^/noticias/ver/

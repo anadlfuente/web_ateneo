@@ -5,6 +5,13 @@ import { PageHero } from "@/components/page-hero"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
 import { Suspense } from "react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Contacto | Ateneo Musical de Mieres',
+  description: 'Contacta con el Ateneo Musical de Mieres para colaboraciones con otras bandas, propuestas para fiestas y eventos o para unirte a una de sus agrupaciones.',
+  alternates: { canonical: '/contacto/' },
+};
 
 export default function ContactPage() {
   return (

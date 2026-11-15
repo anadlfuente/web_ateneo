@@ -30,6 +30,7 @@ export const metadata: Metadata = {
       ],
       apple: '/apple-icon.png',
     },
+  metadataBase: new URL('https://ateneomusicalmieres.es'),
 }
 
 export default function RootLayout({
@@ -40,6 +41,37 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${lato.variable} ${dmSerifDisplay.variable} bg-background`} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Ateneo Musical de Mieres",
+              "url": "https://ateneomusicalmieres.es/",
+              "logo": "https://ateneomusicalmieres.es/icon-192.png",
+              "foundingDate": "2018",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mieres",
+                "addressRegion": "Asturias",
+                "addressCountry": "ES"
+              },
+              "subOrganization": [
+                { "@type": "MusicGroup", "name": "Banda Sinfónica del Ateneo Musical de Mieres", "url": "https://ateneomusicalmieres.es/banda/historia/" },
+                { "@type": "MusicGroup", "name": "Coral Cantares", "url": "https://ateneomusicalmieres.es/coral/historia/" },
+                { "@type": "MusicGroup", "name": "Charanga New Paentamala", "url": "https://ateneomusicalmieres.es/charanga/" },
+                { "@type": "MusicGroup", "name": "Claxon Boys", "url": "https://ateneomusicalmieres.es/claxon/" }
+              ],
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q142010590",
+                "https://www.instagram.com/bandademieres/",
+                "https://www.facebook.com/Bandaateneomieres/",
+                "https://www.youtube.com/@BandaMusicaMieres",
+              ]
+            })
+          }}
+        />
         <ConsentimientoProvider>
           {children}
           <BannerCookies />
