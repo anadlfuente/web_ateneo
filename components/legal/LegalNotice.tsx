@@ -9,7 +9,7 @@ export function LegalNotice() {
           Este sitio web (en adelante, «el sitio web») es titularidad del Ateneo Musical de Mieres, 
           asociación de carácter cultural. En cumplimiento de lo establecido en la Ley 34/2002, de 11 de julio, 
           de Servicios de la Sociedad de la Información y el Comercio Electrónico (LSSICE), se informa a todos 
-          los usuarios es titularidad de:
+          los usuarios de que el sitio web es titularidad de:
         </p>
         <ul className="list-disc space-y-1 pl-6">
           <li><strong className="text-foreground">Titular:</strong> ATENEO MUSICAL DE MIERES</li>

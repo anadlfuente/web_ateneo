@@ -6,6 +6,9 @@
 // y la guarda en uploads/noticias/AAAA/MM/ con un nombre al azar.
 // Devuelve la ruta para guardarla en la noticia.
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 require __DIR__ . '/_sesion.php';
 
 const MAX_MB   = 15;     // peso máximo de la foto original
@@ -77,16 +80,16 @@ $nuevoAncho = max(1, (int)round($ancho * $escala));
 $nuevoAlto  = max(1, (int)round($alto * $escala));
 
 $webp    = function_exists('imagewebp');
-$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+$lienzo = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 if ($webp) {
     // WebP admite transparencia (por si es un PNG con fondo transparente)
-    imagealphablending($destino, false);
-    imagesavealpha($destino, true);
-    imagefill($destino, 0, 0, imagecolorallocatealpha($destino, 0, 0, 0, 127));
+    imagealphablending($lienzo, false);
+    imagesavealpha($lienzo, true);
+    imagefill($lienzo, 0, 0, imagecolorallocatealpha($lienzo, 0, 0, 0, 127));
 } else {
-    imagefill($destino, 0, 0, imagecolorallocate($destino, 255, 255, 255));
+    imagefill($lienzo, 0, 0, imagecolorallocate($lienzo, 255, 255, 255));
 }
-imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+imagecopyresampled($lienzo, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 imagedestroy($origen);
 
 // ── 5. Guardarla ──
@@ -112,9 +115,9 @@ REGLAS;
 
 $nombre = bin2hex(random_bytes(8)) . ($webp ? '.webp' : '.jpg');
 $ok = $webp
-    ? imagewebp($destino, "$carpeta/$nombre", CALIDAD)
-    : imagejpeg($destino, "$carpeta/$nombre", CALIDAD);
-imagedestroy($destino);
+    ? imagewebp($lienzo, "$carpeta/$nombre", CALIDAD)
+    : imagejpeg($lienzo, "$carpeta/$nombre", CALIDAD);
+imagedestroy($lienzo);
 
 if (!$ok) {
     responder(500, ['error' => 'No se ha podido guardar la foto.']);

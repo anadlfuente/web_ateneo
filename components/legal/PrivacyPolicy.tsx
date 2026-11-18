@@ -160,7 +160,10 @@ export function PrivacyPolicy() {
         </p>
         <ul className="list-disc space-y-1 pl-6">
           <li>
-            <strong className={labelStyle}>Alojamiento web y correo electrónico:</strong> DonDominio
+            <strong className={labelStyle}>Alojamiento web:</strong> Hostinger International Ltd. (Larnaca, Chipre, Unión Europea).
+          </li>
+                    <li>
+            <strong className={labelStyle}>Correo electrónico:</strong> Google LLC (Gmail).
           </li>
           <li>
             <strong className={labelStyle}>Analítica web:</strong> Google LLC (Google Analytics).{" "}
