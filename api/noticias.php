@@ -77,6 +77,18 @@ try {
         $where[] = 'FIND_IN_SET(:agrupacion, agrupaciones)';
         $params[':agrupacion'] = $_GET['agrupacion'];
     }
+    
+    //   noticias.php?buscar=lorient → solo las que contienen esa palabra
+    // Buscador: busca la palabra en el título, el resumen, el texto de la noticia y los periódicos
+    $buscar = trim((string)($_GET['buscar'] ?? ''));
+    if (mb_strlen($buscar) >= 2) {
+        $parecido = '%' . addcslashes(mb_substr($buscar, 0, 100), '%_\\') . '%';
+        $where[] = '(titulo LIKE :b1 OR resumen LIKE :b2 OR contenido LIKE :b3 OR fuentes LIKE :b4)';
+        $params[':b1'] = $parecido;
+        $params[':b2'] = $parecido;
+        $params[':b3'] = $parecido;
+        $params[':b4'] = $parecido;
+    }
 
     $limite = min(max((int)($_GET['limite'] ?? 200), 1), 500);
 

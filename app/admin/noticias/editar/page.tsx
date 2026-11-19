@@ -330,6 +330,21 @@ function Editor() {
               ))}
             </div>
           </fieldset>
+                    <label className="flex min-h-11 items-start gap-3">
+            <input
+              type="checkbox"
+              className="mt-0.5 h-5 w-5"
+              checked={noticia.destacada}
+              onChange={(ev) => cambiar({ destacada: ev.target.checked })}
+              aria-describedby="destacada-ayuda"
+            />
+            <span>
+              <span className="block font-semibold">Destacada</span>
+              <span id="destacada-ayuda" className="text-sm text-muted-foreground">
+                Sale la primera, en grande, en la página de noticias aunque no sea la más reciente. Si hay varias destacadas, sale la más reciente de ellas.
+              </span>
+            </span>
+          </label>
         </section>
 
         {/* ── Foto principal ── */}

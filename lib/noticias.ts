@@ -103,10 +103,11 @@ export function urlArchivo(ruta: string): string {
 }
 
 /** Noticias publicadas, de la más reciente a la más antigua (sin el cuerpo). */
-export async function obtenerNoticias(params: { agrupacion?: Agrupacion; limite?: number } = {}): Promise<NoticiaResumen[]> {
+export async function obtenerNoticias(params: { agrupacion?: Agrupacion; limite?: number; buscar?: string } = {}): Promise<NoticiaResumen[]> {
   const query = new URLSearchParams()
   if (params.agrupacion) query.set("agrupacion", params.agrupacion)
   if (params.limite) query.set("limite", String(params.limite))
+  if (params.buscar) query.set("buscar", params.buscar)
 
   const res = await fetch(`${API_URL}/noticias.php?${query}`)
   if (!res.ok) throw new Error("No se pudieron cargar las noticias")

@@ -2,39 +2,86 @@
 
 // Listado completo de noticias con paginación y filtro por categoría.
 
-import { useState } from "react"
-import { ArrowRight } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Search, X } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PageHero } from "@/components/page-hero"
-import { useNoticias, urlNoticia, formatearFecha, BANNER_NOTICIAS, type Categoria } from "@/lib/noticias"
+import { useNoticias, obtenerNoticias, BANNER_NOTICIAS, type NoticiaResumen } from "@/lib/noticias"
+import { NoticiaApertura, NoticiaSecundaria, NoticiaFila, FilaArchivo } from "@/components/noticias-listado"
 import { RedesFlotante } from "@/components/redes-flotante"
 import { MigasDePan } from "@/components/migas-de-pan"
 
-const POR_PAGINA = 6
+const EN_PORTADA = 9          // las 9 más recientes salen en la portada; el resto, en el archivo
+const POR_TANDA_ARCHIVO = 10  // cuántas más se enseñan al pulsar «Mostrar más»
+
+const clasePastilla = (activa: boolean, oscura = false) =>
+  `min-h-11 rounded-full border-2 px-5 py-2 text-[15px] font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
+    activa
+      ? oscura
+        ? "border-dark bg-dark text-white"
+        : "border-primary-blue bg-primary-blue text-dark"
+      : "border-[#b9bcc4] bg-transparent text-dark hover:border-dark"
+  }`
 
 export default function NoticiasPage() {
   const { noticias, error } = useNoticias()
   const todas = noticias ?? []
-  const categorias = Array.from(new Set(todas.map((n) => n.categoria)))
+  const [anio, setAnio] = useState("Todos")
+  const [visiblesArchivo, setVisiblesArchivo] = useState(POR_TANDA_ARCHIVO)
 
-  const [categoria, setCategoria] = useState<Categoria | "Todas">("Todas")
-  const [pagina, setPagina] = useState(1)
+  // ── Buscador: busca en TODAS las noticias (título, resumen, texto y periódicos) en el PHP ──
+  const [busqueda, setBusqueda] = useState("")
+  const [resultados, setResultados] = useState<NoticiaResumen[] | null>(null)
+  const [errorBusqueda, setErrorBusqueda] = useState(false)
+  const termino = busqueda.trim()
+  const buscando = termino.length >= 2
 
-  const filtradas = categoria === "Todas" ? todas : todas.filter((n) => n.categoria === categoria)
-  const totalPaginas = Math.max(1, Math.ceil(filtradas.length / POR_PAGINA))
-  const actuales = filtradas.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA)
+  useEffect(() => {
+    if (!buscando) {
+      setResultados(null)
+      return
+    }
+    let cancelado = false
+    // Espera a que se deje de escribir un momento antes de preguntar al PHP
+    const espera = setTimeout(() => {
+      obtenerNoticias({ buscar: termino })
+        .then((datos) => {
+          if (!cancelado) {
+            setResultados(datos)
+            setErrorBusqueda(false)
+          }
+        })
+        .catch(() => {
+          if (!cancelado) setErrorBusqueda(true)
+        })
+    }, 300)
+    return () => {
+      cancelado = true
+      clearTimeout(espera)
+    }
+  }, [termino, buscando])
 
-  const irAPagina = (p: number) => {
-    setPagina(p)
-    window.scrollTo({ top: 0, behavior: "smooth" })
+   // ── Portada: la destacada (si hay) va primero; el resto, por fecha ──
+  const destacada = todas.find((n) => n.destacada)
+  const ordenadas = destacada ? [destacada, ...todas.filter((n) => n !== destacada)] : todas
+
+  const apertura = ordenadas[0]
+  const secundarias = ordenadas.slice(1, 3)
+  const filas = ordenadas.slice(3, EN_PORTADA)
+
+  // ── Archivo: todas las noticias, de la más reciente a la más antigua, filtrables por año ──
+  const archivoCompleto = todas
+  const anios = Array.from(new Set(archivoCompleto.map((n) => n.fecha.slice(0, 4))))
+  const archivo = anio === "Todos" ? archivoCompleto : archivoCompleto.filter((n) => n.fecha.startsWith(anio))
+
+
+  const cambiarAnio = (a: string) => {
+    setAnio(a)
+    setVisiblesArchivo(POR_TANDA_ARCHIVO)
   }
 
-  const cambiarCategoria = (c: Categoria | "Todas") => {
-    setCategoria(c)
-    setPagina(1)
-  }
-
+  const resultadosFiltrados = resultados
   return (
     <main className="min-h-screen">
       <Header />
@@ -47,103 +94,149 @@ export default function NoticiasPage() {
       {/* Migas de pan */}
           <MigasDePan items={[{ nombre: "Noticias" }]} />
 
-      <div className="bg-white pt-16 pb-20">
-        <div className="max-w-5xl mx-auto px-6">
-          {/* Filtro por categoría */}
-          <div className="flex flex-wrap gap-2 mb-12">
-            {(["Todas", ...categorias] as const).map((c) => (
-              <button
-                key={c}
-                onClick={() => cambiarCategoria(c)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                  categoria === c ? "bg-accent text-white" : "bg-muted text-foreground hover:bg-accent/10"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
+              <div className="bg-background pt-10 pb-20 md:pt-12">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          {/* Buscador */}
+          <div className="mb-8 flex md:justify-end">
 
-          {/* Feed */}
-          <div className="space-y-10">
-            {actuales.map((item) => (
-              <article key={item.slug} className="group border-b border-border pb-10">
-                <a
-                  href={urlNoticia(item.slug)}
-                  className="grid md:grid-cols-[2fr_3fr] gap-6 md:gap-10 items-center"
+            <div className="flex h-12 w-full items-center gap-2.5 rounded-full border-2 border-[#b9bcc4] bg-[#ffffff] px-4 focus-within:border-dark md:w-[340px]">
+              <Search aria-hidden="true" className="h-[18px] w-[18px] shrink-0 text-muted-foreground" />
+              <label htmlFor="buscar-noticias" className="sr-only">Buscar noticias</label>
+              <input
+                id="buscar-noticias"
+                type="search"
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                placeholder="Buscar noticias"
+                autoComplete="off"
+                className="w-full bg-transparent text-base text-dark outline-none placeholder:text-muted-foreground"
+              />
+              {busqueda && (
+                <button
+                  type="button"
+                  onClick={() => setBusqueda("")}
+                  aria-label="Borrar búsqueda"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full hover:bg-dark/10"
                 >
-                  {/* Foto con su proporción real (sin recortes), con un límite de altura */}
-                    <div className="flex justify-center">
-                      <div className="overflow-hidden rounded-2xl">
-                        <img
-                          src={item.imagen}
-                          alt={item.imagenAlt || item.titulo}
-                          loading="lazy"
-                          className="block w-auto h-auto max-w-full max-h-[20rem] group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    </div>
-
-                  {/* Texto */}
-                  <div>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground mb-3 uppercase tracking-wider">
-                      <span>{item.categoria}</span>
-                      <span>•</span>
-                      <time dateTime={item.fecha}>{formatearFecha(item.fecha)}</time>
-                       {item.fuentes.length > 0 && (
-                        <>
-                          <span>•</span>
-                          <span>{item.fuentes.map((f) => f.medio).join(", ")}</span>
-                        </>
-                      )}
-                    </div>
-
-                    <h2 className="font-serif text-2xl md:text-3xl mb-3 group-hover:text-accent transition-colors">
-                      {item.titulo}
-                    </h2>
-                    <p className="text-muted-foreground mb-4 line-clamp-3">{item.resumen}</p>
-
-                    <span className="inline-flex items-center text-accent font-semibold uppercase text-sm">
-                      Leer más
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </a>
-              </article>
-            ))}
-
-            {noticias === null && !error && (
-              <p role="status" aria-live="polite" className="text-center text-muted-foreground">Cargando noticias…</p>
-            )}
-            {error && (
-              <p role="alert" className="text-center text-muted-foreground">
-                No se han podido cargar las noticias. Inténtalo de nuevo más tarde.
-              </p>
-            )}
-            {noticias && actuales.length === 0 && (
-              <p className="text-center text-muted-foreground">No hay noticias en esta categoría.</p>
-            )}
+                  <X aria-hidden="true" className="h-4 w-4" />
+                </button>
+              )}
+            </div>
           </div>
 
-          {/* Paginación (solo si hace falta) */}
-          {totalPaginas > 1 && (
-            <div className="flex items-center justify-center gap-4 pt-12">
-              <button
-                onClick={() => irAPagina(pagina - 1)}
-                disabled={pagina === 1}
-                className="px-4 py-2 border rounded disabled:opacity-40"
-              >
-                Anterior
-              </button>
-              <span className="text-sm">Página {pagina} de {totalPaginas}</span>
-              <button
-                onClick={() => irAPagina(pagina + 1)}
-                disabled={pagina === totalPaginas}
-                className="px-4 py-2 border rounded disabled:opacity-40"
-              >
-                Siguiente
-              </button>
-            </div>
+          {/* ── Mientras se busca: lista de resultados ── */}
+          {buscando ? (
+            <section aria-labelledby="titulo-resultados" className="rounded-xl bg-[#ffffff] px-5 pb-6 pt-6 md:px-10 md:pt-9">
+              <h2 id="titulo-resultados" className="border-b-2 border-dark pb-4 text-2xl font-black">
+                <span role="status" aria-live="polite">
+                  {errorBusqueda
+                    ? "No se ha podido hacer la búsqueda"
+                    : resultadosFiltrados === null
+                      ? "Buscando…"
+                      : `${resultadosFiltrados.length} ${resultadosFiltrados.length === 1 ? "resultado" : "resultados"} para «${termino}»`}
+                </span>
+              </h2>
+              {resultadosFiltrados && resultadosFiltrados.length > 0 && (
+                <ul>
+                  {resultadosFiltrados.map((n) => (
+                    <FilaArchivo key={n.slug} noticia={n} />
+                  ))}
+                </ul>
+              )}
+              {resultadosFiltrados && resultadosFiltrados.length === 0 && (
+                <p className="pt-6 text-muted-foreground">Prueba con otra palabra o quita el filtro de categoría.</p>
+              )}
+            </section>
+          ) : (
+            <>
+              {/* ── Portada ── */}
+              {apertura && (
+                <div className="flex flex-wrap gap-8">
+                  <NoticiaApertura noticia={apertura} />
+                  {secundarias.length > 0 && (
+                    <aside
+                      aria-label="Otras noticias recientes"
+                      className="flex flex-[1_1_320px] flex-col gap-6 lg:border-l lg:border-[#c9ccd3] lg:pl-8"
+                    >
+                      {secundarias.map((n) => (
+                        <NoticiaSecundaria key={n.slug} noticia={n} />
+                      ))}
+                    </aside>
+                  )}
+                </div>
+              )}
+
+              {filas.length > 0 && (
+                <section aria-labelledby="titulo-mas-noticias" className="mt-12 md:mt-16">
+                  <h2 id="titulo-mas-noticias" className="text-2xl font-black md:text-[22px]">Más noticias</h2>
+                  <div aria-hidden="true" className="mb-7 mt-2.5 h-[5px] w-14 bg-accent-yellow" />
+                  <div className="grid gap-x-10 gap-y-6 lg:grid-cols-2">
+                    {filas.map((n) => (
+                      <NoticiaFila key={n.slug} noticia={n} />
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* ── Archivo (solo si hay noticias que no caben en la portada) ── */}
+              {archivoCompleto.length > 0 && (
+                <section aria-labelledby="titulo-archivo" className="mt-16 rounded-xl bg-[#ffffff] px-5 pb-6 pt-6 md:mt-20 md:px-10 md:pt-9">
+                  <div className="flex flex-col gap-4 border-b-2 border-dark pb-5 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <h2 id="titulo-archivo" className="text-2xl font-black md:text-[22px]">Archivo de noticias</h2>
+                      <p className="mt-1 text-[15px] text-muted-foreground">
+                        {archivo.length} {archivo.length === 1 ? "publicación" : "publicaciones"}
+                        {anio !== "Todos" && ` en ${anio}`}
+                      </p>
+                    </div>
+                    {anios.length > 1 && (
+                      <div role="group" aria-label="Filtrar archivo por año" className="-mx-5 flex gap-1.5 overflow-x-auto px-5 md:mx-0 md:flex-wrap md:px-0">
+                        {["Todos", ...anios].map((a) => (
+                          <button
+                            key={a}
+                            type="button"
+                            aria-pressed={anio === a}
+                            onClick={() => cambiarAnio(a)}
+                            className={`shrink-0 ${clasePastilla(anio === a, true)}`}
+                          >
+                            {a}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <ul>
+                    {archivo.slice(0, visiblesArchivo).map((n) => (
+                      <FilaArchivo key={n.slug} noticia={n} />
+                    ))}
+                  </ul>
+                  {visiblesArchivo < archivo.length && (
+                    <div className="mt-6 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setVisiblesArchivo((v) => v + POR_TANDA_ARCHIVO)}
+                        className="min-h-12 w-full rounded-full border-2 border-dark px-7 font-bold hover:bg-dark hover:text-white md:w-auto"
+                      >
+                        Mostrar más
+                      </button>
+                    </div>
+                  )}
+                </section>
+              )}
+            </>
+          )}
+
+          {/* Estados de carga y error */}
+          {noticias === null && !error && (
+            <p role="status" aria-live="polite" className="text-center text-muted-foreground">Cargando noticias…</p>
+          )}
+          {error && (
+            <p role="alert" className="text-center text-muted-foreground">
+              No se han podido cargar las noticias. Inténtalo de nuevo más tarde.
+            </p>
+          )}
+          {noticias && !buscando && todas.length === 0 && (
+            <p className="text-center text-muted-foreground">Todavía no hay noticias publicadas.</p>
           )}
         </div>
       </div>
